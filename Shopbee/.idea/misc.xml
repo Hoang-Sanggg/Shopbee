@@ -3,15 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Shopbee/Shopbee/app/src/main/res/drawable/background_button.xml" value="0.165" />
         <entry key="..\:/Shopbee/Shopbee/app/src/main/res/drawable/ic_text_help.xml" value="0.169" />
         <entry key="..\:/Shopbee/Shopbee/app/src/main/res/drawable/ic_unchecked.xml" value="0.245" />
         <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/activity_login.xml" value="0.22146739130434784" />
         <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/activity_main.xml" value="0.1322463768115942" />
         <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/activity_register.xml" value="0.22826086956521738" />
         <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/activity_reset_password.xml" value="0.22826086956521738" />
-        <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/activity_send_otpactivity.xml" value="0.22146739130434784" />
-        <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/activity_verify_otpactivity.xml" value="0.22146739130434784" />
+        <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/activity_send_otpactivity.xml" value="0.264" />
+        <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/activity_verify_otpactivity.xml" value="0.264" />
+        <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/toolbar_code_otp_login.xml" value="0.20521590423257802" />
         <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/toolbar_dat_lai_mat_khau.xml" value="0.22146739130434784" />
+        <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/toolbar_login_otp.xml" value="0.25" />
         <entry key="..\:/Shopbee/Shopbee/app/src/main/res/layout/toolbar_register.xml" value="0.22826086956521738" />
       </map>
     </option>

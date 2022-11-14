@@ -12,32 +12,39 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="80dp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/received"/>
+        <include layout="@layout/toolbar_code_otp_login"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/otp_verification"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="50dp"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:text="@string/enter_the_otp_send_so"
-            android:textColor="@color/colorTextSecondary"
-            android:textSize="14sp"/>
+            android:layout_marginTop="10dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã xác thực (OTP) đã được gửi qua"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tin Nhắn"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:paddingLeft="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="của số"
+                android:textSize="14sp"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/roboto_regular"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtMobile"
@@ -49,7 +56,7 @@
             android:gravity="center"
             android:hint="@string/app_name"
             android:textColor="@color/colorTextPrimary"
-            android:textSize="14sp"
+            android:textSize="20sp"
             android:textStyle="bold"/>
 
         <LinearLayout
@@ -76,7 +83,7 @@
                 android:id="@+id/edtCode2"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
@@ -90,7 +97,7 @@
                 android:id="@+id/edtCode3"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
@@ -104,7 +111,7 @@
                 android:id="@+id/edtCode4"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
@@ -118,7 +125,7 @@
                 android:id="@+id/edtCode5"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
@@ -132,7 +139,7 @@
                 android:id="@+id/edtCode6"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="10dp"
                 android:gravity="center"
                 android:imeOptions="actionNext"
                 android:importantForAutofill="no"
@@ -153,35 +160,65 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/didn_t_received_the_otp"
-                android:textSize="14sp"/>
+                android:text="Vui lòng chờ"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <TextView
+                android:id="@+id/txtCountdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#F80000"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:fontFamily="@font/roboto_regular"/>
 
             <TextView
                 android:id="@+id/txtResendOTP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/resend_otp"
-                android:textColor="@color/colorAccent"
+                android:text="@string/gi_y_g_i_l_i_m_x_c_th_c_m_i"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/roboto_regular"/>
         </LinearLayout>
 
         <TextView
-            android:id="@+id/txtCountdown"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:textColor="#F80000"
+            android:layout_marginTop="3dp"
+            android:text="Lưu ý:"
             android:textSize="14sp"
-            android:textStyle="bold" />
+            android:gravity="center"
+            android:fontFamily="@font/roboto_medium"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/ki_m_tra_th_ng_b_o_c_a_zalo_nh_n_m_k_p_th_i"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_regular"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/n_u_b_n_ch_a_c_t_i_kho_n_zalo_h_y_nh_n_m_i_t_n_tr_l_i_ch_n_ph_ng_th_c_kh_c"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:fontFamily="@font/roboto_regular"/>
 
         <FrameLayout
             android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnVerify"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -190,9 +227,9 @@
                 android:background="@drawable/background_button"
                 android:text="@string/verify"
                 android:textColor="@color/colorWhite"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"/>
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="40dp"

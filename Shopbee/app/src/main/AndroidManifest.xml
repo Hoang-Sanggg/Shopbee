@@ -34,7 +34,6 @@
             android:exported="false">
         </activity>
 
-
         <activity
             android:name=".SendOTPActivity"
             android:exported="true">
@@ -44,7 +43,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

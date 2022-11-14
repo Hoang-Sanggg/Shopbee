@@ -3,11 +3,16 @@ package com.duan1.shopbee;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +33,6 @@ import java.util.Stack;
 import java.util.concurrent.TimeUnit;
 
 public class VerifyOTPActivity extends AppCompatActivity {
-
     private EditText edtCode1, edtCode2, edtCode3, edtCode4, edtCode5, edtCode6;
     private String verifycationId;
     private TextView txtCountdown;
@@ -124,10 +128,10 @@ public class VerifyOTPActivity extends AppCompatActivity {
             public void onTick(long l) {
                 //when tick
                 //Convert millisecond to minute and second
-                String sDucation = String.format(Locale.ENGLISH, "%02d : %02d",
-                        TimeUnit.MILLISECONDS.toMinutes(l),
-                        TimeUnit.MILLISECONDS.toSeconds(l) -
-                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l)));
+                String sDucation = String.format(Locale.ENGLISH, "%02d",
+//                        TimeUnit.MILLISECONDS.toMinutes(l),
+                        TimeUnit.MILLISECONDS.toSeconds(l));
+//                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l)));
                 //Set convert string on text view
                 txtCountdown.setText(sDucation);
             }
@@ -337,4 +341,5 @@ public class VerifyOTPActivity extends AppCompatActivity {
             }
         });
     }
+
 }
