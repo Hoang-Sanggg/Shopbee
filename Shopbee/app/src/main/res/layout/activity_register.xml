@@ -122,17 +122,17 @@
         android:id="@+id/btnLoginFacebook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLoginGoogle"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/custom_button_2"
         android:drawableLeft="@drawable/facebook"
-        android:paddingLeft="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:text="Đăng ký bằng Facebook"
-        android:textSize="18sp"
         android:fontFamily="@font/roboto_regular"
+        android:paddingLeft="10dp"
+        android:text="Đăng ký bằng Facebook"
         android:textAllCaps="false"
-        android:layout_below="@+id/btnLoginGoogle"/>
+        android:textSize="18sp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"

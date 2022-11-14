@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,9 +34,11 @@ import java.util.Stack;
 import java.util.concurrent.TimeUnit;
 
 public class VerifyOTPActivity extends AppCompatActivity {
-    private EditText edtCode1, edtCode2, edtCode3, edtCode4, edtCode5, edtCode6;
-    private String verifycationId;
-    private TextView txtCountdown;
+
+    ImageView left_icon_arrow, right_icon_help, ivShopee;
+    EditText edtCode1, edtCode2, edtCode3, edtCode4, edtCode5, edtCode6;
+    String verifycationId;
+    TextView txtCountdown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -171,14 +171,15 @@
                 android:textColor="#F80000"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:paddingLeft="5dp"
+                android:layout_marginLeft="5dp"
+                android:hint="60"
                 android:fontFamily="@font/roboto_regular"/>
 
             <TextView
                 android:id="@+id/txtResendOTP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="5dp"
                 android:text="@string/gi_y_g_i_l_i_m_x_c_th_c_m_i"
                 android:textSize="14sp"
                 android:fontFamily="@font/roboto_regular"/>

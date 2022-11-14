@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -20,13 +21,16 @@ import java.util.concurrent.TimeUnit;
 
 public class SendOTPActivity extends AppCompatActivity {
 
+    ImageView left_icon_arrow, right_icon_help;
+    Button btnGetOTP;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_otpactivity);
 
         final EditText edtMobile = findViewById(R.id.edtMobile);
-        Button btnGetOTP = findViewById(R.id.btnGetOTP);
+        btnGetOTP = findViewById(R.id.btnGetOTP);
 
         final ProgressBar  progressBar = findViewById(R.id.progressBar);
 

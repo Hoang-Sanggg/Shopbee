@@ -20,20 +20,20 @@
             android:id="@+id/txtDangKy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:layout_toEndOf="@id/left_icon_arrow"
+            android:text="Đăng ký"
             android:textColor="@color/black"
-            android:layout_centerVertical="true"
-            android:textSize="20sp"
-            android:text="Đăng ký"/>
+            android:textSize="20sp" />
 
         <ImageView
+            android:id="@+id/right_icon_help"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/right_icon_help"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_baseline_help"/>
+            android:src="@drawable/ic_baseline_help" />
 
     </RelativeLayout>
 
