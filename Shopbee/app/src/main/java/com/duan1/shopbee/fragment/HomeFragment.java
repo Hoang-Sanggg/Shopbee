@@ -83,6 +83,7 @@ public class HomeFragment extends Fragment {
         categoryRecycler.setHasFixedSize(true);
         categoryRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
+        categoryList.size();
         categoryAdapter = new CategoryAdapter(categoryList);
         categoryRecycler.setAdapter(categoryAdapter);
     }
