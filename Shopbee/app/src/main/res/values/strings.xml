@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Shopbee</string>
+    <string name="facebook_app_id">1828308530843520</string>
+    <string name="facebook_client_token">806eb8060777e3f6bc5334e2dace1cef</string>
+
+    <string name="otp_verification">OTP Verification</string>
+    <string name="we_will_send_you_one_time_password_on_this_mobile_number">We will send you One Time Password on this mobile number</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="enter_the_otp_send_so">Enter the OTP send so</string>
+    <string name="didn_t_received_the_otp">Didn\'t received the OTP</string>
+    <string name="resend_otp">RESEND OTP</string>
+    <string name="verify">Verify</string>
+    <string name="get_otp">Get OTP</string>
+
+    <string name="so_dien_thoai">Số điện thoại</string>
+    <string name="next">Tiếp theo</string>
+    <string name="text_checkbox">Kích hoạt Ví điện tử ngay để tận hưởng nhiều chương trình ưu đãi, giảm giá và tích điểm </string>
+    <string name="dang_ly_google">Đăng ký bằng Google</string>
+    <string name="dat_lai_mat_khau">Đặt lại mật khẩu</string>
+    <string name="next_fragment_dat_lai_mat_khau">Tiếp</string>
+    <string name="so_dien_thoai_da_thay_doi">Số điện thoại đã thay đổi?</string>
+    <string name="ban_da_co_tai_khoan">Bạn đã có tài khoản?</string>
+    <string name="bang_viec_dang_ky_voi">Bằng việc đăng ký, bạn đồng ý với</string>
+    <string name="dieu_khoan">Điều khoản Dịch vụ</string>
+    <string name="ch_nh">Chính</string>
+    <string name="sach_bao_mat">sách bảo mật</string>
+    <string name="cua_Shopee">của Shopee</string>
+
 </resources>
