@@ -27,7 +27,7 @@ public class SendOTPActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_send_otpactivity);
+        setContentView(R.layout.activity_send_otp);
 
         final EditText edtMobile = findViewById(R.id.edtMobile);
         btnGetOTP = findViewById(R.id.btnGetOTP);
