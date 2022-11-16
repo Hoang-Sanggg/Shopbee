@@ -24,6 +24,7 @@ import com.duan1.shopbee.fragment.MallFragment;
 import com.duan1.shopbee.fragment.NotificationFragment;
 import com.duan1.shopbee.fragment.ProfileFragment;
 import com.duan1.shopbee.model.Category;
+import com.duan1.shopbee.model.Flashsale;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     List<Category> categoryList;
+    List<Flashsale> flashsaleList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         categoryList = new ArrayList<>();
+        flashsaleList.add(new Flashsale("hehe", "hehe", "hehe", "hehe"));
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -116,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadFragmentHome() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, "hihi"), "MainFragment")
+                .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, flashsaleList), "MainFragment")
                 .commit();
     }
     public void loadFragmentMall() {
