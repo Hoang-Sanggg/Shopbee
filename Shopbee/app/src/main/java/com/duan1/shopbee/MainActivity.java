@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         categoryList = new ArrayList<>();
+        flashsaleList = new ArrayList<>();
         flashsaleList.add(new Flashsale("hehe", "hehe", "hehe", "hehe"));
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
