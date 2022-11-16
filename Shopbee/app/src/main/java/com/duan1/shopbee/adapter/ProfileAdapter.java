@@ -18,10 +18,11 @@ import java.util.List;
 
 public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileHolder> {
 
-    private List<Category> profileList;
+    private List<Profilel> profilelList;
 
-    public ProfileAdapter(List<Category> profileList) {
-        this.profileList = profileList;
+
+    public ProfileAdapter(List<Profilel> profilelList) {
+        this.profilelList = profilelList;
     }
 
     @NonNull
@@ -34,15 +35,15 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileH
     @Override
     public void onBindViewHolder(@NonNull ProfileHolder holder, int position) {
         mFunction function = new mFunction();
-        holder.nameProfile.setText(profileList.get(position).getNameCategory());
-        holder.ivAvtProfile.setImageBitmap(function.StringBitMap(profileList.get(position).getImageCategory()));
+        holder.nameProfile.setText(profilelList.get(position).getNameProfile());
+        holder.ivAvtProfile.setImageBitmap(function.StringBitMap(profilelList.get(position).getImgProfile()));
     }
 
 
 
     @Override
     public int getItemCount() {
-        return profileList.size();
+        return profilelList.size();
     }
 
     public class ProfileHolder extends RecyclerView.ViewHolder{
