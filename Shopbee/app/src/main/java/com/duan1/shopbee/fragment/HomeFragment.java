@@ -69,8 +69,8 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             categoryList = (List<Category>) getArguments().getSerializable(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-            flashsaleList = (List<Flashsale>) getArguments().getSerializable(ARG_PARAM2);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//            flashsaleList = (List<Flashsale>) getArguments().getSerializable(ARG_PARAM2);
         }
     }
 
