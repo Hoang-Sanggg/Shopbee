@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_live.xml" value="0.1" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_category_home.xml" value="0.2" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_livefragment_bubbleliving.xml" value="0.11911231884057971" />
+        <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_livefragment_mainliving.xml" value="0.4466666666666667" />
+        <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_livefragment_voucher.xml" value="0.11911231884057971" />
       </map>
     </option>
   </component>

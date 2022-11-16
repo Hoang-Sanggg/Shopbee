@@ -87,4 +87,5 @@ public class HomeFragment extends Fragment {
         categoryAdapter = new CategoryAdapter(categoryList);
         categoryRecycler.setAdapter(categoryAdapter);
     }
+
 }

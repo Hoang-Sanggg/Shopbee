@@ -20,7 +20,7 @@
         android:layout_height="150dp"
         android:src="@mipmap/slide1"/>
     <androidx.recyclerview.widget.RecyclerView
-
+        android:id="@+id/recyclerLiveVoucher"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:orientation="horizontal"
@@ -36,6 +36,7 @@
             android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerLiveMain"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
