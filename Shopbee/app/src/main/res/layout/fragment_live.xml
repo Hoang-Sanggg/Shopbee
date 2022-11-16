@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".LiveFragment">
+    tools:context=".fragment.LiveFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-
+        android:id="@+id/recyclerLiveStories"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"

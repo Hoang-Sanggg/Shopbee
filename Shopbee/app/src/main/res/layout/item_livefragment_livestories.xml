@@ -22,13 +22,14 @@
             android:padding="8dp"
             android:layout_height="80dp"
             android:layout_width="match_parent"
-            android:id="@+id/imageView1"
+            android:id="@+id/ivAvatar"
             android:src="@mipmap/programmer"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true">
         </ImageView>
     </com.google.android.material.card.MaterialCardView>
     <TextView
+        android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
