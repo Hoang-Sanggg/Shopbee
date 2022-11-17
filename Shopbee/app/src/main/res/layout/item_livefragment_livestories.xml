@@ -2,40 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
+
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:elevation="12dp"
-
-        app:cardCornerRadius="40dp"
-        android:layout_centerHorizontal="true"
-        android:innerRadius="0dp"
-        android:shape="oval"
-        app:strokeColor="#F44336"
-        app:strokeWidth="2dp"
-
-        android:thicknessRatio="1.9">
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:orientation="vertical">
         <ImageView
-            android:padding="8dp"
-            android:layout_height="80dp"
-            android:layout_width="match_parent"
             android:id="@+id/ivAvatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="10dp"
             android:src="@mipmap/programmer"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true">
-        </ImageView>
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/txtName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Programer"
-        android:textColor="@color/black" />
+            android:background="@drawable/rounded_livestories"/>
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Programer"
+            android:textSize="10dp"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+    </LinearLayout>
 
 </LinearLayout>

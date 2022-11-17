@@ -2,9 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="190dp"
     android:layout_height="300dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="8dp">
-    
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -22,18 +21,18 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="5dp"
-            android:textStyle="bold"
-            android:drawableLeft="@drawable/ic_live_circle"
-            android:drawablePadding="1dp"
-            android:text="LIVE"
-            android:textSize="12dp"
-            android:textColor="@color/white"
-            android:background="#FF5722"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:drawableLeft="@drawable/ic_live_circle"
+                android:drawablePadding="1dp"
+                android:text="LIVE"
+                android:textSize="12dp"
+                android:textColor="@color/white"
+                android:background="#FF5722"/>
             <TextView
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
@@ -67,20 +66,21 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/ivUser"
-                    app:civ_border_width="4dp"
-                    android:layout_centerInParent="true"
-                    android:src="@color/black"
-                    android:layout_marginRight="7dp"
-                    app:civ_border_color="#FF000000"
                     android:layout_width="20dp"
-                    android:layout_height="20dp"/>
-            <TextView
-                android:id="@+id/txtStreamerName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Shopbee"
-                android:textColor="@color/white"
-                android:textSize="15dp"/>
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="7dp"
+
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="4dp" />
+
+                <TextView
+                    android:id="@+id/txtStreamerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Shopbee"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"/>
             </LinearLayout>
 
         </LinearLayout>

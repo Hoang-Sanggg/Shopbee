@@ -39,7 +39,7 @@ public class LiveVoucherAdapter extends RecyclerView.Adapter<LiveVoucherAdapter.
 
     @Override
     public int getItemCount() {
-        return 0;
+        return liveVoucherList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

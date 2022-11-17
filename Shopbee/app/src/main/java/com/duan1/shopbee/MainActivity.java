@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
         readFireStoreCategory();
         loadFragmentLive();
         readFireStoreLiveStories();
+        readFireStoreLiveVoucher();
+        readFireStoreLiveMain();
 
 //        for (int i = 0; i < 10; i++) {
 //            Map<String, Object> user = new HashMap<>();
@@ -197,7 +199,53 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
                         for (DocumentSnapshot snapshot : snapshots) {
-                            liveStoriesList.add(new LiveStories(snapshot.getString("name"), snapshot.getString("image")));
+                            liveStoriesList.add(new LiveStories(snapshot.getString("imageLiveStories"), snapshot.getString("nameLiveStories")));
+                        }
+                        loadFragmentLive();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("user", "khong tim ra ");
+                    }
+                });
+
+
+    }
+    public void readFireStoreLiveVoucher() {
+        FirebaseFirestore.getInstance()
+                .collection("livevoucher")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snapshot : snapshots) {
+                            liveVoucherList.add(new LiveVoucher(snapshot.getString("imageLiveVoucher"), snapshot.getString("nameLiveVoucher")));
+                        }
+                        loadFragmentLive();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("user", "khong tim ra ");
+                    }
+                });
+
+
+    }
+    public void readFireStoreLiveMain() {
+        FirebaseFirestore.getInstance()
+                .collection("livemain")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snapshot : snapshots) {
+                            liveMainList.add(new LiveMain(snapshot.getString("userimageLiveMain"), snapshot.getString("imageLiveMain"), snapshot.getString("usernameLiveMain"), snapshot.getString("descriptionLiveMain")));
                         }
                         loadFragmentLive();
                     }

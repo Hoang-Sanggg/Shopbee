@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Discouraged;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,7 +42,7 @@ public class LiveMainAdapter extends RecyclerView.Adapter<LiveMainAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return 0;
+        return liveMainList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -56,7 +55,7 @@ public class LiveMainAdapter extends RecyclerView.Adapter<LiveMainAdapter.ViewHo
             super(itemView);
             imgLiveMain = itemView.findViewById(R.id.ivLiving);
             imgUser = itemView.findViewById(R.id.ivUser);
-            userName  = itemView.findViewById(R.id.txtName);
+            userName  = itemView.findViewById(R.id.txtStreamerName);
             descriprion = itemView.findViewById(R.id.txtDescription);
         }
     }
