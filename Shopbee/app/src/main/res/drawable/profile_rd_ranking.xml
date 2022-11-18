@@ -4,16 +4,16 @@
         android:bottom="3dp"
         android:left="3dp"
         android:right="4dp"
-        android:top="3dp" />
+        android:top="3dp"/>
 
     <stroke
         android:width="2dp"
         android:color="#00ffff" />
 
     <corners
-        android:radius="7dp" />
+        android:radius="100dp" />
 
     <size
-        android:width="80dp"
-        android:height="10dp" />
+        android:width="50dp"
+        android:height="5dp" />
 </shape>
