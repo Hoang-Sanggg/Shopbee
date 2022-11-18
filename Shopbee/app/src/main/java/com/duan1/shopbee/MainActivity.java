@@ -28,6 +28,7 @@ import com.duan1.shopbee.model.Flashsale;
 import com.duan1.shopbee.model.LiveMain;
 import com.duan1.shopbee.model.LiveStories;
 import com.duan1.shopbee.model.LiveVoucher;
+import com.duan1.shopbee.slide_image.Photo;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     List<LiveStories> liveStoriesList;
     List<LiveVoucher> liveVoucherList;
     List<LiveMain> liveMainList;
+    private List<Photo> listPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadFragmentHome() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, flashsaleList), "MainFragment")
+                .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, flashsaleList, listPhoto), "MainFragment")
                 .commit();
     }
 
