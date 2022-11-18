@@ -61,28 +61,56 @@ public class MainActivity extends AppCompatActivity {
 
         binding.bottomNavigation.setItemIconTintList(null);
 
+
+        Menu menu = binding.bottomNavigation.getMenu();
+        menu.findItem(R.id.bnHome).setIcon(R.drawable.home_4);
+        menu.findItem(R.id.bnMall).setIcon(R.drawable.shopping_bag);
+        menu.findItem(R.id.bnNotification).setIcon(R.drawable.notification);
+        menu.findItem(R.id.bnLive).setIcon(R.drawable.video_camera);
+        menu.findItem(R.id.bnProfile).setIcon(R.drawable.user);
+
         binding.bottomNavigation.setItemTextColor(ColorStateList.valueOf(Color.BLACK));
 
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.bnHome:
-                    Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show();
+                    item.setIcon(R.drawable.home_4);
+                    menu.findItem(R.id.bnMall).setIcon(R.drawable.shopping_bag);
+                    menu.findItem(R.id.bnNotification).setIcon(R.drawable.notification);
+                    menu.findItem(R.id.bnLive).setIcon(R.drawable.video_camera);
+                    menu.findItem(R.id.bnProfile).setIcon(R.drawable.user);
                     loadFragmentHome();
                     break;
                 case R.id.bnMall:
-                    Toast.makeText(this, "Mall", Toast.LENGTH_SHORT).show();
+                    item.setIcon(R.drawable.shopping_bag_2);
+                    menu.findItem(R.id.bnHome).setIcon(R.drawable.home);
+                    menu.findItem(R.id.bnNotification).setIcon(R.drawable.notification);
+                    menu.findItem(R.id.bnLive).setIcon(R.drawable.video_camera);
+                    menu.findItem(R.id.bnProfile).setIcon(R.drawable.user);
                     loadFragmentMall();
                     break;
                 case R.id.bnLive:
-                    Toast.makeText(this, "Live", Toast.LENGTH_SHORT).show();
+                    item.setIcon(R.drawable.video_player_2);
+                    menu.findItem(R.id.bnHome).setIcon(R.drawable.home);
+                    menu.findItem(R.id.bnNotification).setIcon(R.drawable.notification);
+                    menu.findItem(R.id.bnMall).setIcon(R.drawable.shopping_bag);
+                    menu.findItem(R.id.bnProfile).setIcon(R.drawable.user);
                     loadFragmentLive();
                     break;
                 case R.id.bnNotification:
-                    Toast.makeText(this, "Notification", Toast.LENGTH_SHORT).show();
+                    item.setIcon(R.drawable.notification_2);
+                    menu.findItem(R.id.bnHome).setIcon(R.drawable.home);
+                    menu.findItem(R.id.bnLive).setIcon(R.drawable.video_camera);
+                    menu.findItem(R.id.bnLive).setIcon(R.drawable.video_camera);
+                    menu.findItem(R.id.bnProfile).setIcon(R.drawable.user);
                     loadFragmentNotification();
                     break;
                 case R.id.bnProfile:
-                    Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
+                    item.setIcon(R.drawable.user_2);
+                    menu.findItem(R.id.bnHome).setIcon(R.drawable.home);
+                    menu.findItem(R.id.bnNotification).setIcon(R.drawable.notification);
+                    menu.findItem(R.id.bnLive).setIcon(R.drawable.video_camera);
+                    menu.findItem(R.id.bnNotification).setIcon(R.drawable.notification);
                     loadFragmentProfile();
                     break;
                 default:
