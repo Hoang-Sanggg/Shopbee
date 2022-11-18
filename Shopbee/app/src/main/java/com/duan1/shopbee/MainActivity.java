@@ -132,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
 
         loadFragmentHome();
         readFireStoreCategory();
-        loadFragmentLive();
         readFireStoreLiveStories();
         readFireStoreLiveVoucher();
         readFireStoreLiveMain();
@@ -229,7 +228,6 @@ public class MainActivity extends AppCompatActivity {
                         for (DocumentSnapshot snapshot : snapshots) {
                             liveStoriesList.add(new LiveStories(snapshot.getString("imageLiveStories"), snapshot.getString("nameLiveStories")));
                         }
-                        loadFragmentLive();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -252,7 +250,6 @@ public class MainActivity extends AppCompatActivity {
                         for (DocumentSnapshot snapshot : snapshots) {
                             liveVoucherList.add(new LiveVoucher(snapshot.getString("imageLiveVoucher"), snapshot.getString("nameLiveVoucher")));
                         }
-                        loadFragmentLive();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -275,7 +272,6 @@ public class MainActivity extends AppCompatActivity {
                         for (DocumentSnapshot snapshot : snapshots) {
                             liveMainList.add(new LiveMain(snapshot.getString("userimageLiveMain"), snapshot.getString("imageLiveMain"), snapshot.getString("usernameLiveMain"), snapshot.getString("descriptionLiveMain")));
                         }
-                        loadFragmentLive();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
