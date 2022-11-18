@@ -12,7 +12,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginTop="8dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="18dp"
             android:src="@drawable/icons_shopee"
             android:background="@drawable/rounded_category"
             android:padding="3dp"/>
@@ -23,6 +23,7 @@
             android:text="Khung giờ săn sale"
             android:textSize="10dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:textColor="@color/black"
             android:gravity="center"/>
     </LinearLayout>
