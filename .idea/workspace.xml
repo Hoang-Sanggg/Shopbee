@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88a13220-8336-4eba-80b4-41f6621463fd" name="Changes" comment="" />
+    <list default="true" id="88a13220-8336-4eba-80b4-41f6621463fd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Shopbee/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Shopbee/.idea/gradle.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,9 +14,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2HOmsdJUyBfSIUSPXYbeDEeIGP5" />
   <component name="ProjectViewState">
