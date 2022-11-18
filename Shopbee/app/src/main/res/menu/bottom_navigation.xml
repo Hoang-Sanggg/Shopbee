@@ -9,7 +9,7 @@
     <item
         android:id="@+id/bnMall"
         android:enabled="true"
-        android:icon="@drawable/shopping_bag_2"
+        android:icon="@drawable/shopping_bag"
         android:title="Mall" />
     <item
         android:id="@+id/bnLive"
