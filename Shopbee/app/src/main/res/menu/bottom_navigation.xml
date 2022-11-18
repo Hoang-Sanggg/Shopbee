@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bnHome"
+        android:enabled="true"
+        android:icon="@drawable/home"
+        android:title="Home" />
+    <item
+        android:id="@+id/bnMall"
+        android:enabled="true"
+        android:icon="@drawable/shopping_bag_2"
+        android:title="Mall" />
+    <item
+        android:id="@+id/bnLive"
+        android:enabled="true"
+        android:icon="@drawable/video_camera"
+        android:title="Live"/>
+    <item
+        android:id="@+id/bnNotification"
+        android:enabled="true"
+        android:icon="@drawable/notification"
+        android:title="Thông báo"/>
+    <item
+        android:id="@+id/bnProfile"
+        android:enabled="true"
+        android:icon="@drawable/user"
+        android:title="Tôi"/>
+</menu>
