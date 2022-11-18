@@ -11,7 +11,7 @@
     <item
         android:id="@+id/bnChats"
         android:enabled="true"
-        android:icon="@drawable/shopping_bag"
+        android:icon="@drawable/shopping_bag_2"
         android:title="Mall"
         app:showAsAction="ifRoom|collapseActionView"/>
     <item
