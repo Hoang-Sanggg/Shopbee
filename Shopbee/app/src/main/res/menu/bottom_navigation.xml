@@ -20,7 +20,7 @@
         android:id="@+id/bnNotification"
         android:enabled="true"
         android:icon="@drawable/notification"
-        android:title="Thông báo"/>
+        android:title="Profile"/>
     <item
         android:id="@+id/bnProfile"
         android:enabled="true"
