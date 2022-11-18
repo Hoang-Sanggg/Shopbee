@@ -1,6 +1,8 @@
 package com.duan1.shopbee.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.LiveMainAdapter;
@@ -19,9 +22,15 @@ import com.duan1.shopbee.adapter.LiveVoucherAdapter;
 import com.duan1.shopbee.model.LiveMain;
 import com.duan1.shopbee.model.LiveStories;
 import com.duan1.shopbee.model.LiveVoucher;
+import com.duan1.shopbee.slide_image.LivePhoto;
+import com.duan1.shopbee.slide_image.Photo;
+import com.duan1.shopbee.slide_image.PhotoAdaper;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,10 +45,14 @@ public class LiveFragment extends Fragment {
     private static final String ARG_PARAM2 = "DATA_LIVEVOUCHER";
     private static final String ARG_PARAM3= "DATA_LIVEMAIN";
     private RecyclerView liveStoriesRecycler,liveVoucherRecycler,liveMainRecycler;
+    private LivePhoto listPhoto;
+    private ViewPager viewPager;
+    private Timer timer;
 
     private List<LiveStories> liveStoriesList;
     private List<LiveVoucher> liveVoucherList;
     private List<LiveMain> liveMainList;
+    private List<LivePhoto> livePhotoList;
 
     private LiveVoucherAdapter liveVoucherAdapter;
     private LiveStoriesAdapter liveStoriesAdapter;
@@ -120,6 +133,70 @@ public class LiveFragment extends Fragment {
 
         liveMainAdapter = new LiveMainAdapter(liveMainList);
         liveMainRecycler.setAdapter(liveMainAdapter);
+
+        //slideshow
+
+        viewPager = view.findViewById(R.id.viewPager_banner);
+//        circleIndicator = view.findViewById(R.id.circle_banner);
+
+//        livePhotoList = getListPhoto();
+//
+//        photoAdaper = new PhotoAdaper(getContext(), getListPhoto());
+//        viewPager.setAdapter(photoAdaper);
+
+//        circleIndicator.setViewPager(viewPager);
+
+//        photoAdaper.registerDataSetObserver(circleIndicator.getDataSetObserver());
+
+
+//        autoSlideImage();
+    }
+
+    private List<Photo> getListPhoto(){
+        List<Photo> list = new ArrayList<>();
+        list.add(new Photo(R.drawable.banner_1));
+        list.add(new Photo(R.drawable.banner_2));
+        list.add(new Photo(R.drawable.banner_3));
+        list.add(new Photo(R.drawable.banner_4));
+        list.add(new Photo(R.drawable.banner_5));
+        return list;
+    }
+
+//    private void autoSlideImage(){
+//        if (listPhoto == null || listPhoto.isEmpty() || viewPager == null){
+//            return;
+//        }
+//        if(timer == null){
+//            timer = new Timer();
+//            timer.schedule(new TimerTask() {
+//                @Override
+//                public void run() {
+//                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            int currentItem = viewPager.getCurrentItem();
+//                            int totalItem = listPhoto.size()-1;
+//                            if (currentItem < totalItem){
+//                                currentItem++;
+//                                viewPager.setCurrentItem(currentItem);
+//                            }else{
+//                                viewPager.setCurrentItem(0);
+//                            }
+//                        }
+//                    });
+//                }
+//            }, 500, 3000);
+//        }
+//    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (timer != null ){
+            timer.cancel();
+            timer = null;
+        }
+    }
 
 
     }
