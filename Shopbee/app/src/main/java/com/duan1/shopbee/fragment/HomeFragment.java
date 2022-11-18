@@ -58,7 +58,6 @@ public class HomeFragment extends Fragment {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM1, (Serializable) _categoryList);
-    /*    args.putString(ARG_PARAM2, param2);  */
         args.putSerializable(ARG_PARAM2, (Serializable) _flashsaleList);
         fragment.setArguments(args);
         return fragment;
@@ -69,7 +68,6 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             categoryList = (List<Category>) getArguments().getSerializable(ARG_PARAM1);
-        /*    mParam2 = getArguments().getString(ARG_PARAM2); */
             flashsaleList = (List<Flashsale>) getArguments().getSerializable(ARG_PARAM2);
         }
     }
