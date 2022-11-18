@@ -17,5 +17,6 @@
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="color_view_countdown">#FD0000</color>
+    <color name="bg_indicator">#F94700</color>
 
 </resources>
