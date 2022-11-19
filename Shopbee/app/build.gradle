@@ -50,6 +50,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.1.0'
     implementation 'com.google.firebase:firebase-database:20.1.0'
 
+    implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
     implementation "androidx.recyclerview:recyclerview:1.2.1"
     implementation "androidx.cardview:cardview:1.0.0"
 
@@ -63,5 +65,6 @@ dependencies {
 
     // circleindicator
     implementation 'me.relex:circleindicator:2.1.6'
+    implementation 'com.facebook.android:facebook-android-sdk:[8,9)'
 
 }
