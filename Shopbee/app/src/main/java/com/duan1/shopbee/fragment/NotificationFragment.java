@@ -2,13 +2,20 @@ package com.duan1.shopbee.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.duan1.shopbee.R;
+import com.duan1.shopbee.adapter.NotifiAdapter;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +28,10 @@ public class NotificationFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    TabLayout tabLayout;
+    ViewPager2 viewPager2;
+    NotifiAdapter notifiAdapter;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -61,6 +72,36 @@ public class NotificationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_notification, container, false);
+
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        tabLayout = view.findViewById(R.id.tabLayout);
+        viewPager2 = view.findViewById(R.id.view_pager);
+
+        notifiAdapter = new NotifiAdapter(getActivity());
+        viewPager2.setAdapter(notifiAdapter);
+
+        new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+
+                switch (position){
+                    case 0:
+                        tab.setText("Thông báo của tôi") ;
+                        break;
+                    case 1:
+                        tab.setText("Cập nhật người bán") ;
+                        break;
+                }
+            }
+        }).attach();
+
     }
 }
