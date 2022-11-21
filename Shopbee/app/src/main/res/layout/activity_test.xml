@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestActivity"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/edtProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ProductName"/>
+    <EditText
+        android:id="@+id/edtDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Discription"/>
+    <EditText
+        android:id="@+id/edtIndustry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Industry"/>
+    <EditText
+        android:id="@+id/edtProductDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product Detail"/>
+    <EditText
+        android:id="@+id/edtStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Status"/>
+    <EditText
+        android:id="@+id/edtWareHouse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ProductName"/>
+
+    <Button
+        android:id="@+id/Push"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Push"/>
+</LinearLayout>

@@ -49,6 +49,7 @@ public class LiveFragment extends Fragment {
     private ViewPager viewPager;
     private Timer timer;
 
+
     private List<LiveStories> liveStoriesList;
     private List<LiveVoucher> liveVoucherList;
     private List<LiveMain> liveMainList;
@@ -201,4 +202,3 @@ public class LiveFragment extends Fragment {
 
     }
 
-}
