@@ -135,7 +135,6 @@ public class MallFragment extends Fragment {
         list.add(new MallBanner(R.drawable.img_banner_07));
         list.add(new MallBanner(R.drawable.img_banner_08));
         list.add(new MallBanner(R.drawable.img_banner_09));
-        list.add(new MallBanner(R.drawable.img_banner_09));
         list.add(new MallBanner(R.drawable.img_banner_10));
 
 
