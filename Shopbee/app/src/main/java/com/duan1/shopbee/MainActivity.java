@@ -199,14 +199,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void readFireStoreCategory() {
         FirebaseFirestore.getInstance()
-                .collection("category")
+                .collection("mallcategory")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
                         for (DocumentSnapshot snapshot : snapshots) {
-                            categoryList.add(new Category(snapshot.getString("nameCategory"), snapshot.getString("imageCategory")));
+                            categoryList.add(new Category(snapshot.getString("images"), snapshot.getString("imageCategory")));
                         }
                         loadFragmentHome();
                     }

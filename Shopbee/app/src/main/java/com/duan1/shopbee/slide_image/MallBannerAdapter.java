@@ -1,6 +1,5 @@
-package com.duan1.shopbee.adapter;
+package com.duan1.shopbee.slide_image;
 
-import android.appwidget.AppWidgetHost;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,27 +11,26 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
-import com.duan1.shopbee.mode.Banner;
 
 import java.util.List;
 
-public class BannerAdpater extends PagerAdapter {
+public class MallBannerAdapter extends PagerAdapter {
 
-    public BannerAdpater(Context context, List<Banner> listBanner) {
+    public MallBannerAdapter(Context context, List<MallBanner> listBanner) {
         this.context = context;
         this.listBanner = listBanner;
     }
 
     private Context context;
-    private List<Banner> listBanner;
+    private List<MallBanner> listBanner;
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View  view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_banner, container, false);
-        ImageView imgBanner = view.findViewById(R.id.img_banner);
+        View  view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_slide_mall_banner, container, false);
+        ImageView imgBanner = view.findViewById(R.id.img_mall_banner);
 
-        Banner banner = listBanner.get(position);
+        MallBanner banner = listBanner.get(position);
         if (banner != null) {
             Glide.with(context).load(banner.getResoucreId()).into(imgBanner);
         }

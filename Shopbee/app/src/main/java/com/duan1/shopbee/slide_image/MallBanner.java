@@ -1,9 +1,9 @@
-package com.duan1.shopbee.mode;
+package com.duan1.shopbee.slide_image;
 
-public class Banner {
+public class MallBanner {
     private int resoucreId;
 
-    public Banner(int resoucreId) {
+    public MallBanner(int resoucreId) {
         this.resoucreId = resoucreId;
     }
 
