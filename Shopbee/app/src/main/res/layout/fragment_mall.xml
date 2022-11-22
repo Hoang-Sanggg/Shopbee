@@ -10,14 +10,16 @@
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
-            tools:ignore="MissingConstraints" />
+            android:layout_height="200dp"
+            tools:ignore="MissingConstraints"
+            android:background="#000"/>
 
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/circle_indicator"
@@ -30,263 +32,324 @@
             app:layout_constraintStart_toStartOf="@+id/viewPager"
             tools:ignore="MissingConstraints" />
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerCategory"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="#000"
-            app:layout_constraintTop_toBottomOf="@id/viewPager" />
-
-        <ImageView
-            android:id="@+id/ivHinh_2"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerCategory" />
-
-        <TextView
-            android:id="@+id/text"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/ivHinh_2" />
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/text">
-
-            <ImageView
-                android:id="@+id/ivHinh_3"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/black" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@+id/ivHinh_3"
-                android:layout_marginTop="20dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/recyclerCategory_2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/relativeLayout">
-
-            <ImageView
-                android:id="@+id/ivHinh_4"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/black" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@+id/ivHinh_4"
-                android:layout_marginTop="20dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/recyclerCategory_3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/recyclerCategory_2">
-
-            <ImageView
-                android:id="@+id/ivHinh_5"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/black" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@+id/ivHinh_5"
-                android:layout_marginTop="20dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/recyclerCategory_4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/recyclerCategory_3">
-
-            <ImageView
-                android:id="@+id/ivHinh_6"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/black" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@+id/ivHinh_6"
-                android:layout_marginTop="20dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/recyclerCategory_5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/recyclerCategory_4">
-
-            <ImageView
-                android:id="@+id/ivHinh_7"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/black" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ivHinh_7"
-                android:layout_marginTop="20dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout_2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/recyclerCategory_5">
-
-            <ImageView
-                android:id="@+id/ivHinh_8"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:background="@color/black" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ivHinh_8"
-                android:layout_marginTop="20dp" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/relativeLayout_2">
-
-            <LinearLayout
-                android:id="@+id/linearLayout_"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/black"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@id/recyclerCategory_6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@id/linearLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout_2">
+            app:layout_constraintTop_toBottomOf=" @id/viewPager"
+            android:orientation="horizontal"
+            android:gravity="center"
+            tools:ignore="MissingConstraints">
 
             <TextView
-                android:id="@+id/text_1"
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:drawableLeft="@drawable/ic_return_mall"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="Miễn phí trả hàng"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:drawableLeft="@drawable/ic_shield_mall"
+                android:drawablePadding="5dp"
+                    android:text="Chính hãng 100%"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:drawableLeft="@drawable/ic_free_delivery_mall"
+                android:drawablePadding="5dp"
+                android:text="Giao miễn phí"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_shopee_mall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout"
+            android:gravity="center"
+            tools:ignore="MissingConstraints">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:id="@+id/shopee_premium"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
+                android:orientation="vertical"
+                android:gravity="center">
                 <ImageView
-                    android:layout_width="100dp"
+                    android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@color/black" />
+                    android:layout_marginTop="8dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_diamond"
+                    android:background="@drawable/bg_mall"/>
+                <TextView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:text="SHOPEE PREMIUM"
+                    android:textSize="9sp"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"/>
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/shopee_mum_club"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
                 <ImageView
-                    android:layout_width="100dp"
+                    android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@color/black" />
+                    android:layout_marginTop="8dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_mum_club"
+                    android:background="@drawable/bg_mall"/>
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="SHOPEE MUM'S CLUB "
+                    android:textSize="9sp"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shopee_beauty_club"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_beauty_club"
+                    android:background="@drawable/bg_mall"/>
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="SHOPEE BEAUTY CLUB"
+                    android:textSize="9sp"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shopee_block_club"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_book_clus"
+                    android:background="@drawable/bg_mall"/>
+                <TextView
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:text="SHOPEE BLOCK CLUB"
+                    android:textSize="9sp"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shopee_thuong_hieu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_thanh_vien_thuong_hieu"
+                    android:background="@drawable/bg_mall"/>
+                <TextView
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:text="THÀNH VIÊN THƯƠNG HIỆU"
+                    android:textSize="8sp"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shopee_quoc_te"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_thuong_hieu_quoc_te"
+                    android:background="@drawable/bg_mall"/>
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="THƯƠNG HIỆU QUÔC TẾ"
+                    android:textSize="8sp"
+                    android:layout_gravity="center"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:gravity="center"/>
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@id/linearLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout3">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/text_2"
+            android:id="@+id/linearLayout_Image_Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout4" />
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout_shopee_mall">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:cardCornerRadius="10dp">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_next_btn_mall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/img_khuyen_mai"
+                    android:drawableRight="@drawable/ic_next_btn_mall"
+                    android:paddingRight="5dp"/>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_rcv_mall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout_Image_Button">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="THƯƠNG HIỆU NỔI BẬT TRONG NGÀY"
+                android:textSize="14sp"
+                android:textColor="@color/color_view_countdown"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/img_danisa"
+                    android:paddingRight="5dp"/>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerCategory"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toBottomOf="@id/linearLayout_rcv_mall">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Danh mục"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tìm hiểu ngay"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="200dp"
+                    android:textStyle="normal"
+                    android:drawableRight="@drawable/ic_right_arrow"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_Category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"/>
+        </LinearLayout>
 
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSanPham1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:layout_constraintTop_toBottomOf="@+id/text_2" />
+            android:layout_height="180dp"
+            android:layout_margin="10dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout_title"
+            tools:layout_editor_absoluteX="170dp" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSanPham2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerSanPham1"
+            tools:layout_editor_absoluteX="170dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerSanPham3"
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:layout_margin="10dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerSanPham2"
+            tools:layout_editor_absoluteX="67dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

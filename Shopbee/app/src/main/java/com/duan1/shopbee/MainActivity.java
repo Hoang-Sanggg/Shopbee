@@ -25,10 +25,12 @@ import com.duan1.shopbee.fragment.MallFragment;
 import com.duan1.shopbee.fragment.NotificationFragment;
 import com.duan1.shopbee.fragment.ProfileFragment;
 import com.duan1.shopbee.model.Category;
+import com.duan1.shopbee.model.CategoryMall;
 import com.duan1.shopbee.model.Flashsale;
 import com.duan1.shopbee.model.LiveMain;
 import com.duan1.shopbee.model.LiveStories;
 import com.duan1.shopbee.model.LiveVoucher;
+import com.duan1.shopbee.slide_image.MallBanner;
 import com.duan1.shopbee.slide_image.Photo;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,10 +52,15 @@ public class MainActivity extends AppCompatActivity {
     List<Category> categoryList;
     List<Flashsale> flashsaleList;
 
+    List<CategoryMall> categoryMallList;
+    private List<MallBanner> mallBannerList;
+
     List<LiveStories> liveStoriesList;
     List<LiveVoucher> liveVoucherList;
     List<LiveMain> liveMainList;
     private List<Photo> listPhoto;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadFragmentMall() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, MallFragment.newInstance("hehe", "hihi"), "MainFragment")
+                .replace(R.id.frame_layout, MallFragment.newInstance(categoryMallList, mallBannerList), "MallFragment")
                 .commit();
     }
 
@@ -201,14 +208,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void readFireStoreCategory() {
         FirebaseFirestore.getInstance()
-                .collection("mallcategory")
+                .collection("category")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
                         for (DocumentSnapshot snapshot : snapshots) {
-                            categoryList.add(new Category(snapshot.getString("images"), snapshot.getString("imageCategory")));
+                            categoryList.add(new Category(snapshot.getString("nameCategory"), snapshot.getString("imageCategory")));
                         }
                         loadFragmentHome();
                     }
