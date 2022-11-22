@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4EEED"
+    tools:context=".fragment.NotifFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_sale"
+                android:foregroundGravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_km"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Khuyến mãi"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:layout_toRightOf="@+id/iv_salse" />
+
+                    <TextView
+                        android:id="@+id/tv_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giảm 8% tối đa 50k đơn từ 250k"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_salse"
+                        android:layout_below="@+id/tv_km"/>
+
+                    <ImageView
+                        android:id="@+id/iv_salse"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:maxHeight="100dp"
+                        android:layout_alignParentLeft="true"/>
+
+                    <ImageView
+                        android:id="@+id/iv_next"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:maxHeight="100dp"
+                        android:layout_alignParentRight="true"/>
+
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:foregroundGravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_live"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Shopbee Live"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:layout_toRightOf="@+id/iv_live" />
+
+                    <TextView
+                        android:id="@+id/tv_description2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sale đồ trung niên"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_live"
+                        android:layout_below="@+id/tv_live"/>
+
+                    <ImageView
+                        android:id="@+id/iv_live"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:maxHeight="100dp"
+
+                        android:layout_alignParentLeft="true"/>
+
+                    <ImageView
+                        android:id="@+id/iv_next2"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:maxHeight="100dp"
+
+                        android:layout_alignParentRight="true"/>
+
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:foregroundGravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_wallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cập nhật ví"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:layout_toRightOf="@+id/iv_wallet" />
+
+                    <TextView
+                        android:id="@+id/tv_description3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tài khoản shopbee của bạn vừa được liên kết"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_wallet"
+                        android:layout_below="@+id/tv_wallet"/>
+
+                    <ImageView
+                        android:id="@+id/iv_wallet"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:maxHeight="100dp"
+
+                        android:layout_alignParentLeft="true"/>
+
+                    <ImageView
+                        android:id="@+id/iv_next3"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:maxHeight="100dp"
+
+                        android:layout_alignParentRight="true"/>
+
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:foregroundGravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_hd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hoạt động"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:layout_toRightOf="@+id/iv_activity" />
+
+                    <TextView
+                        android:id="@+id/tv_description4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="dunghoanganh đã đánh giá "
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_activity"
+                        android:layout_below="@+id/tv_hd"/>
+
+                    <ImageView
+                        android:id="@+id/iv_activity"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:maxHeight="100dp"
+
+                        android:layout_alignParentLeft="true"/>
+
+                    <ImageView
+                        android:id="@+id/iv_next4"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:maxHeight="100dp"
+
+                        android:layout_alignParentRight="true"/>
+
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:foregroundGravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_capnhat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cập nhật Shopbee"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:layout_toRightOf="@+id/iv_update" />
+
+                    <TextView
+                        android:id="@+id/tv_description5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Quảng cáo của Shopbee đã để lại cho bạn ấn tượng gì ?"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_update"
+                        android:layout_below="@+id/tv_capnhat"/>
+
+                    <ImageView
+                        android:id="@+id/iv_update"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:maxHeight="100dp"
+
+                        android:layout_alignParentLeft="true"/>
+
+                    <ImageView
+                        android:id="@+id/iv_next5"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:maxHeight="100dp"
+                        android:layout_alignParentRight="true"/>
+
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:foregroundGravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_reward"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giải thưởng Shopbee"
+                        android:textSize="20dp"
+                        android:textColor="@color/black"
+                        android:textStyle="normal"
+                        android:layout_toRightOf="@+id/iv_reward" />
+
+                    <TextView
+                        android:id="@+id/tv_description6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chúc mừng bạn đã nhận được 100 Shopbee coin"
+                        android:textSize="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/iv_reward"
+                        android:layout_below="@+id/tv_reward"/>
+
+                    <ImageView
+                        android:id="@+id/iv_reward"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:maxHeight="100dp"
+                        android:layout_alignParentLeft="true"/>
+
+                    <ImageView
+                        android:id="@+id/iv_next6"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:maxHeight="100dp"
+                        android:layout_alignParentRight="true"/>
+
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+            <TextView
+                android:gravity="left"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cập nhật đơn hàng"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:gravity="right"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đọc tất cả(36)"
+                android:textColor="#FF5722"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</FrameLayout>
