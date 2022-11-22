@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         liveVoucherList = new ArrayList<>();
         //profile
         mProfiles = new ArrayList<>();
+        mProfiles.add(new Profile("hehe", "hehe"));
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
