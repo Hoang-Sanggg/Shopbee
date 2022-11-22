@@ -79,16 +79,16 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ProfileRecycler = view.findViewById(R.id.recyclerProfile);
-
-        ProfileRecycler.setHasFixedSize(true);
-
-        ProfileRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-
-        mProfiles.size();
-
-        profileAdapter = new ProfileAdapter(mProfiles);
-
-        ProfileRecycler.setAdapter(profileAdapter);
+//        ProfileRecycler = view.findViewById(R.id.recyclerProfile);
+//
+//        ProfileRecycler.setHasFixedSize(true);
+//
+//        ProfileRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+//
+//        mProfiles.size();
+//
+//        profileAdapter = new ProfileAdapter(mProfiles);
+//
+//        ProfileRecycler.setAdapter(profileAdapter);
     }
 }
