@@ -8,7 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +21,16 @@ import com.duan1.shopbee.adapter.CategoryAdapter;
 import com.duan1.shopbee.adapter.FlashSaleAdapter;
 import com.duan1.shopbee.model.Category;
 import com.duan1.shopbee.model.Flashsale;
+import com.duan1.shopbee.slide_image.Photo;
+import com.duan1.shopbee.slide_image.PhotoAdaper;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import me.relex.circleindicator.CircleIndicator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +43,7 @@ public class HomeFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "DATA_CATEGORY";
     private static final String ARG_PARAM2 = "DATA_FLASESALE";
+    private static final String ARG_PARAM3 = "DATA_SRC_BANNER";
 
     // TODO: Rename and change types of parameters
     private List<Category> categoryList;
@@ -41,6 +52,12 @@ public class HomeFragment extends Fragment {
     private FlashSaleAdapter flashSaleAdapter;
 
     private RecyclerView categoryRecycler,flashsaleRecycler;
+
+    private ViewPager viewPager;
+    private CircleIndicator circleIndicator;
+    private PhotoAdaper photoAdaper;
+    private List<Photo> listPhoto;
+    private Timer timer;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -54,11 +71,12 @@ public class HomeFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(List<Category> _categoryList, List<Flashsale> _flashsaleList) {
+    public static HomeFragment newInstance(List<Category> _categoryList, List<Flashsale> _flashsaleList, List<Photo> _data) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM1, (Serializable) _categoryList);
         args.putSerializable(ARG_PARAM2, (Serializable) _flashsaleList);
+        args.putSerializable(ARG_PARAM3, (Serializable) _data );
         fragment.setArguments(args);
         return fragment;
     }
@@ -69,6 +87,7 @@ public class HomeFragment extends Fragment {
         if (getArguments() != null) {
             categoryList = (List<Category>) getArguments().getSerializable(ARG_PARAM1);
             flashsaleList = (List<Flashsale>) getArguments().getSerializable(ARG_PARAM2);
+            listPhoto = (List<Photo>) getArguments().getSerializable(ARG_PARAM3);
         }
     }
 
@@ -97,5 +116,67 @@ public class HomeFragment extends Fragment {
 
         flashSaleAdapter = new FlashSaleAdapter(flashsaleList);
         flashsaleRecycler.setAdapter(flashSaleAdapter);
+
+
+        viewPager = view.findViewById(R.id.viewPager_banner);
+//        circleIndicator = view.findViewById(R.id.circle_banner);
+
+        listPhoto = getListPhoto();
+
+        photoAdaper = new PhotoAdaper(getContext(), getListPhoto());
+        viewPager.setAdapter(photoAdaper);
+
+//        circleIndicator.setViewPager(viewPager);
+
+//        photoAdaper.registerDataSetObserver(circleIndicator.getDataSetObserver());
+
+
+        autoSlideImage();
+    }
+
+    private List<Photo> getListPhoto(){
+        List<Photo> list = new ArrayList<>();
+        list.add(new Photo(R.drawable.banner_7));
+        list.add(new Photo(R.drawable.banner_6));
+        list.add(new Photo(R.drawable.banner_8));
+        list.add(new Photo(R.drawable.banner_9));
+        list.add(new Photo(R.drawable.banner_10));
+        return list;
+    }
+
+    private void autoSlideImage(){
+        if (listPhoto == null || listPhoto.isEmpty() || viewPager == null){
+            return;
+        }
+        if(timer == null){
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            int currentItem = viewPager.getCurrentItem();
+                            int totalItem = listPhoto.size()-1;
+                            if (currentItem < totalItem){
+                                currentItem++;
+                                viewPager.setCurrentItem(currentItem);
+                            }else{
+                                viewPager.setCurrentItem(0);
+                            }
+                        }
+                    });
+                }
+            }, 500, 3000);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (timer != null ){
+            timer.cancel();
+            timer = null;
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.duan1.shopbee;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -25,9 +26,14 @@ import com.duan1.shopbee.fragment.NotificationFragment;
 import com.duan1.shopbee.fragment.ProfileFragment;
 import com.duan1.shopbee.model.Category;
 import com.duan1.shopbee.model.Flashsale;
+import com.duan1.shopbee.model.LiveMain;
+import com.duan1.shopbee.model.LiveStories;
+import com.duan1.shopbee.model.LiveVoucher;
+import com.duan1.shopbee.slide_image.Photo;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -44,15 +50,24 @@ public class MainActivity extends AppCompatActivity {
     List<Category> categoryList;
     List<Flashsale> flashsaleList;
 
+    List<LiveStories> liveStoriesList;
+    List<LiveVoucher> liveVoucherList;
+    List<LiveMain> liveMainList;
+    private List<Photo> listPhoto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //Home
         categoryList = new ArrayList<>();
         flashsaleList = new ArrayList<>();
         flashsaleList.add(new Flashsale("hehe", "hehe", "hehe", "hehe"));
+        //Live
+        liveMainList = new ArrayList<>();
+        liveStoriesList = new ArrayList<>();
+        liveVoucherList = new ArrayList<>();
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -121,6 +136,9 @@ public class MainActivity extends AppCompatActivity {
 
         loadFragmentHome();
         readFireStoreCategory();
+        readFireStoreLiveStories();
+        readFireStoreLiveVoucher();
+        readFireStoreLiveMain();
 
 //        for (int i = 0; i < 10; i++) {
 //            Map<String, Object> user = new HashMap<>();
@@ -148,27 +166,31 @@ public class MainActivity extends AppCompatActivity {
     public void loadFragmentHome() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, flashsaleList), "MainFragment")
+                .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, flashsaleList, listPhoto), "MainFragment")
                 .commit();
     }
+
     public void loadFragmentMall() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_layout, MallFragment.newInstance("hehe", "hihi"), "MainFragment")
                 .commit();
     }
+
     public void loadFragmentLive() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, LiveFragment.newInstance("hehe", "hihi"), "MainFragment")
+                .replace(R.id.frame_layout, LiveFragment.newInstance(liveStoriesList, liveVoucherList, liveMainList), "LiveFragment")
                 .commit();
     }
+
     public void loadFragmentNotification() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_layout, NotificationFragment.newInstance("hehe", "hihi"), "MainFragment")
                 .commit();
     }
+
     public void loadFragmentProfile() {
         getSupportFragmentManager()
                 .beginTransaction()
@@ -177,15 +199,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void readFireStoreCategory(){
+    public void readFireStoreCategory() {
         FirebaseFirestore.getInstance()
                 .collection("category")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        List<DocumentSnapshot> snapshots =  queryDocumentSnapshots.getDocuments();
-                        for(DocumentSnapshot snapshot :snapshots){
+                        List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snapshot : snapshots) {
                             categoryList.add(new Category(snapshot.getString("nameCategory"), snapshot.getString("imageCategory")));
                         }
                         loadFragmentHome();
@@ -199,4 +221,70 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    public void readFireStoreLiveStories() {
+        FirebaseFirestore.getInstance()
+                .collection("livestories")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snapshot : snapshots) {
+                            liveStoriesList.add(new LiveStories(snapshot.getString("imageLiveStories"), snapshot.getString("nameLiveStories")));
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("user", "khong tim ra ");
+                    }
+                });
+
+
+    }
+    public void readFireStoreLiveVoucher() {
+        FirebaseFirestore.getInstance()
+                .collection("livevoucher")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snapshot : snapshots) {
+                            liveVoucherList.add(new LiveVoucher(snapshot.getString("imageLiveVoucher"), snapshot.getString("nameLiveVoucher")));
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("user", "khong tim ra ");
+                    }
+                });
+
+
+    }
+    public void readFireStoreLiveMain() {
+        FirebaseFirestore.getInstance()
+                .collection("livemain")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snapshot : snapshots) {
+                            liveMainList.add(new LiveMain(snapshot.getString("userimageLiveMain"), snapshot.getString("imageLiveMain"), snapshot.getString("usernameLiveMain"), snapshot.getString("descriptionLiveMain")));
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("user", "khong tim ra ");
+                    }
+                });
+
+
+    }
 }

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    tools:context=".LoginActivity"
+    android:id="@+id/activity_login">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#E3DDDC"
+        app:title="Đăng nhập">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_gravity="center"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:src="@mipmap/shopbeeicon" />
+
+    <EditText
+        android:id="@+id/tdn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawablePadding="5dp"
+        android:hint="Email/Số điện thoại/Tên đăng nhập" />
+
+    <EditText
+        android:id="@+id/mk"
+        android:drawablePadding="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mật khẩu"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:backgroundTint="#E3DDDC"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="Đăng nhập"/>
+
+
+    <TextView
+        android:id="@+id/tvlogin"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="124dp"
+        android:textColor="#2196F3"
+        android:text="Đăng nhập bằng SMS" />
+
+    <TextView
+        android:layout_margin="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Hoặc"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLoginGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        app:backgroundTint="#FFFFFF"
+        app:icon="@drawable/google_icon_login"
+        app:iconSize="25dp"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:text="Đăng nhập với google" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLoginFace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        app:backgroundTint="#FFFFFF"
+        app:icon="@drawable/facebook_icon_login"
+        app:iconSize="25dp"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:text=" Đăng nhập với facebook" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLoginApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:textAllCaps="true"
+        app:backgroundTint="#FFFFFF"
+        app:icon="@drawable/apple_icon_login"
+        app:iconSize="25dp"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:text="Đăng nhập với App" />
+
+
+
+
+
+
+</LinearLayout>
+
