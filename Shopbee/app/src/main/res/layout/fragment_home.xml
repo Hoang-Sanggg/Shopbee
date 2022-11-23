@@ -17,7 +17,7 @@
 
         <LinearLayout
         android:id="@+id/view2"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="188dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,13 +58,14 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvFirst"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@color/white"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
