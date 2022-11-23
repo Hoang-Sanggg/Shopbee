@@ -60,6 +60,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:maxHeight="100dp"
+                        android:src="@drawable/sale"
                         android:layout_alignParentLeft="true"/>
 
                     <ImageView
@@ -69,6 +70,7 @@
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:maxHeight="100dp"
+                        android:src="@drawable/next"
                         android:layout_alignParentRight="true"/>
 
 
@@ -114,7 +116,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:maxHeight="100dp"
-
+                        android:src="@drawable/live"
                         android:layout_alignParentLeft="true"/>
 
                     <ImageView
@@ -124,7 +126,7 @@
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:maxHeight="100dp"
-
+                        android:src="@drawable/next"
                         android:layout_alignParentRight="true"/>
 
 
@@ -171,7 +173,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:maxHeight="100dp"
-
+                        android:src="@drawable/wallet"
                         android:layout_alignParentLeft="true"/>
 
                     <ImageView
@@ -181,7 +183,7 @@
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:maxHeight="100dp"
-
+                        android:src="@drawable/next"
                         android:layout_alignParentRight="true"/>
 
 
@@ -228,7 +230,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:maxHeight="100dp"
-
+                        android:src="@drawable/activity"
                         android:layout_alignParentLeft="true"/>
 
                     <ImageView
@@ -238,7 +240,7 @@
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:maxHeight="100dp"
-
+                        android:src="@drawable/next"
                         android:layout_alignParentRight="true"/>
 
 
@@ -285,7 +287,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:maxHeight="100dp"
-
+                        android:src="@drawable/shopbee"
                         android:layout_alignParentLeft="true"/>
 
                     <ImageView
@@ -295,6 +297,7 @@
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:maxHeight="100dp"
+                        android:src="@drawable/next"
                         android:layout_alignParentRight="true"/>
 
 
@@ -340,6 +343,7 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:maxHeight="100dp"
+                        android:src="@drawable/giftbox"
                         android:layout_alignParentLeft="true"/>
 
                     <ImageView
@@ -349,6 +353,7 @@
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:maxHeight="100dp"
+                        android:src="@drawable/next"
                         android:layout_alignParentRight="true"/>
 
 
