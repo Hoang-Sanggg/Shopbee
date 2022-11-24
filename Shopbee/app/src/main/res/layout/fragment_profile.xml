@@ -3,11 +3,1097 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.ProfileFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    tools:context=".fragment.ProfileFragment"
+    android:layout_marginTop="60dp">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".MainActivity"
+        android:background="#bebebe"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f5f5f5"
+            android:orientation="vertical">
+            <!-- TODO: Update blank fragment layout -->
+            <LinearLayout
+                android:background="#ff4500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_margin="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:src="@drawable/profile_avata_img"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        />
+                    <LinearLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/profile_username"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFF"
+                            android:text="Meo Meo"/>
+                        <LinearLayout
+                            android:background="@drawable/profile_rd_ranking"
+                            android:layout_width="180dp"
+                            android:backgroundTint="#a4dded"
+                            android:layout_height="25dp"
+                            >
+
+                            <TextView
+                                android:id="@+id/profile_ranking"
+                                android:layout_width="180dp"
+                                android:layout_height="wrap_content"
+                                android:text="Thành viên kim cương "
+                                android:textStyle="bold"
+                                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            >
+                            <TextView
+                                android:textColor="#FFFF"
+                                android:id="@+id/profile_follower"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Người theo dõi 1 | "/>
+                            <TextView
+                                android:textColor="#FFFF"
+                                android:id="@+id/profile_follow"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Đang theo dõi 1"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp"
+                >
+                <!--        <LinearLayout-->
+                <!--            android:background="@drawable/profile_notif"-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:orientation="horizontal"-->
+                <!--            android:padding="10dp">-->
+
+                <!--            <TextView-->
+                <!--                android:layout_marginLeft="5dp"-->
+                <!--                android:layout_width="match_parent"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:textColor="@color/black"-->
+                <!--                android:background="@drawable/profile_notifi_re"-->
+                <!--                android:textSize="15dp"-->
+                <!--                android:drawableRight="@drawable/ic_baseline_close_24"-->
+                <!--                android:text="Vui lòng thiết lập thêm profile của bạn!!!!" />-->
+
+                <!--        </LinearLayout>-->
+
+                <!--        <LinearLayout-->
+                <!--            android:background="@color/white"-->
+                <!--            android:padding="5dp"-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:orientation="horizontal"-->
+                <!--            >-->
+
+                <!--            <ImageView-->
+                <!--                android:id="@+id/profile_datesale"-->
+                <!--                android:layout_width="20dp"-->
+                <!--                android:layout_height="20dp"-->
+                <!--                android:layout_marginLeft="10dp"-->
+                <!--                android:src="@drawable/saleimg" />-->
+
+                <!--            <TextView-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:layout_marginLeft="15dp"-->
+                <!--                android:layout_marginTop="2dp"-->
+                <!--                android:textColor="@color/black"-->
+                <!--                android:text="Ngày 15 Sale giữa tháng"-->
+                <!--                android:textSize="15dp" />-->
+                <!--        </LinearLayout>-->
+
+                <!--        <LinearLayout-->
+                <!--            android:paddingLeft="10dp"-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:background="@drawable/profile_ic1"-->
+                <!--            android:gravity="center"-->
+                <!--            android:orientation="horizontal"-->
+                <!--            >-->
+
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="100dp"-->
+                <!--                android:layout_height="100dp"-->
+                <!--                android:gravity="center"-->
+                <!--                android:orientation="vertical"-->
+                <!--                android:padding="10dp">-->
+
+                <!--                <de.hdodenhof.circleimageview.CircleImageView-->
+                <!--                    android:id="@+id/profile_btn_pagemain"-->
+                <!--                    android:layout_width="40dp"-->
+                <!--                    android:layout_height="40dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:background="@color/white"-->
+                <!--                    android:src="@drawable/saleimg" />-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Trang Chính"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="10dp" />-->
+                <!--            </LinearLayout>-->
+
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="100dp"-->
+                <!--                android:gravity="center"-->
+                <!--                android:orientation="vertical"-->
+                <!--                android:padding="15dp">-->
+
+                <!--                <de.hdodenhof.circleimageview.CircleImageView-->
+                <!--                    android:id="@+id/profile_btn_flashsale"-->
+                <!--                    android:layout_width="40dp"-->
+                <!--                    android:layout_height="40dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:background="@color/white"-->
+                <!--                    android:src="@drawable/timesale" />-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="Khung gio san sale"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="10dp" />-->
+                <!--            </LinearLayout>-->
+
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="100dp"-->
+                <!--                android:layout_height="100dp"-->
+                <!--                android:gravity="center"-->
+                <!--                android:orientation="vertical"-->
+                <!--                android:padding="15dp">-->
+
+                <!--                <de.hdodenhof.circleimageview.CircleImageView-->
+                <!--                    android:id="@+id/profile_btn_voucher"-->
+                <!--                    android:layout_width="40dp"-->
+                <!--                    android:layout_height="40dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:background="@drawable/profile_rdt"-->
+                <!--                    android:src="@drawable/voucher" />-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:text="Voucher"-->
+                <!--                    android:textSize="10dp" />-->
+                <!--            </LinearLayout>-->
+
+                <!--            <LinearLayout-->
+                <!--                android:layout_width="106dp"-->
+                <!--                android:layout_height="100dp"-->
+                <!--                android:layout_marginRight="30dp"-->
+                <!--                android:gravity="center"-->
+                <!--                android:orientation="vertical"-->
+                <!--                android:padding="15dp">-->
+
+                <!--                <de.hdodenhof.circleimageview.CircleImageView-->
+                <!--                    android:id="@+id/profile_btn_shoplive"-->
+                <!--                    android:layout_width="40dp"-->
+                <!--                    android:layout_height="40dp"-->
+                <!--                    android:layout_marginTop="5dp"-->
+                <!--                    android:background="@color/white"-->
+                <!--                    android:src="@drawable/ic_live" />-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:text="shopbee live"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="10dp" />-->
+                <!--            </LinearLayout>-->
+                <!--        </LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:paddingLeft="10dp">
+
+                    <ImageView
+                        android:id="@+id/profile_img_bill"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="4dp"
+                        android:src="@drawable/profile_bill"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/profile_bill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="Đơn mua"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/profile_img_bill"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="133dp"
+                        android:layout_height="13dp"
+                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                        android:text="Xem lịch sử mua hàng"
+                        android:textSize="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.962"
+                        app:layout_constraintStart_toEndOf="@+id/profile_bill"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.518" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/profile_ic1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/profile_btn_wallet"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/white"
+                            android:src="@drawable/profile_wallet" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chờ xác nhận"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/profile_btn_shippingbox"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/white"
+                            android:src="@drawable/profile_package" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chờ xác nhận"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/profile_btn_truckShip"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/white"
+                            android:src="@drawable/profile_delivery_truck" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chờ xác nhận"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/profile_btn_medal"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/white"
+                            android:src="@drawable/profile_star" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chờ xác nhận"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:background="@color/white"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="10dp"
+                    android:paddingLeft="10dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/profile_phone"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginStart="4dp"
+                        android:src="@drawable/profile_smartphone_ringing"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="348dp"
+                        android:layout_height="23dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+
+                        android:text="Đơn Nạp thẻ và Dịch vụ"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/profile_phone"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/profile_img_wallet"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/profile_my_gadget"
+                        android:layout_marginLeft="5dp"/>
+                    <TextView
+                        android:id="@+id/profile_utility"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tiện ích của tôi"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="13dp"
+                        android:textColor="@color/black"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/profile_ic1"
+                    android:orientation="horizontal"
+                    >
+
+                    <LinearLayout
+                        android:layout_marginRight="50dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/profile_utility_shopbeepay"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/profile_shopee_pay_icon" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Ví ShopbeePay"
+                            android:textSize="10dp"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginRight="45dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/profile_utility_scoin"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/profile_scoin2_0" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Shopbee xu"
+                            android:textSize="10dp"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:id="@+id/profile_utility_shopbeeVoucher"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="5dp"
+                            android:src="@drawable/profile_voucher" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Kho Voucher"
+                            android:textColor="@color/black"
+                            android:textSize="10dp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:id="@+id/profile_shopping_bag_img"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginLeft="5dp"
+                            android:src="@drawable/profile_shopping_bag"
+                            ></ImageView>
+
+                        <TextView
+                            android:id="@+id/profile_repay"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="Mua lại"
+                            android:textColor="@color/black"
+                            android:layout_marginLeft="16dp"
+                            />
+
+                        <TextView
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                            android:text="Xem thêm sản phẩm"
+
+                            android:layout_marginLeft="90dp"/>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    >
+<!--                    <HorizontalScrollView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@color/white"-->
+<!--                        >-->
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            >-->
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_margin="20dp"-->
+<!--                                android:layout_width="100dp"-->
+<!--                                android:layout_height="100dp"-->
+<!--                                >-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:orientation="vertical">-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/profile_resp_img2"-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="61dp"-->
+<!--                                        android:src="@drawable/profile_item1" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="Đã mua 1 lần"-->
+<!--                                        android:textSize="10dp" />-->
+
+<!--                                    <LinearLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:orientation="horizontal">-->
+
+<!--                                        <TextView-->
+<!--                                            android:layout_width="64dp"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="đ10.000" />-->
+
+<!--                                        <ImageView-->
+<!--                                            android:layout_width="15dp"-->
+<!--                                            android:layout_height="15dp"-->
+<!--                                            android:layout_gravity="center"-->
+<!--                                            android:layout_marginLeft="10dp"-->
+<!--                                           />-->
+<!--                                    </LinearLayout>-->
+<!--                                </LinearLayout>-->
+<!--                            </androidx.cardview.widget.CardView>-->
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="100dp"-->
+<!--                                android:layout_height="100dp"-->
+<!--                                android:layout_margin="20dp"-->
+<!--                                >-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:orientation="vertical">-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/profile_resp_img3"-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="61dp"-->
+<!--                                        android:src="@drawable/profile_item2" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="Đã mua 1 lần"-->
+<!--                                        android:textSize="10dp" />-->
+
+<!--                                    <LinearLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:orientation="horizontal">-->
+
+<!--                                        <TextView-->
+<!--                                            android:layout_width="64dp"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="đ10.000" />-->
+
+<!--                                        <ImageView-->
+<!--                                            android:layout_width="15dp"-->
+<!--                                            android:layout_height="15dp"-->
+<!--                                            android:layout_gravity="center"-->
+<!--                                            android:layout_marginLeft="10dp"-->
+<!--                                             />-->
+<!--                                    </LinearLayout>-->
+<!--                                </LinearLayout>-->
+<!--                            </androidx.cardview.widget.CardView>-->
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_margin="20dp"-->
+<!--                                android:layout_width="100dp"-->
+<!--                                android:layout_height="100dp"-->
+<!--                                >-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:orientation="vertical">-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/profile_resp_img4"-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="61dp"-->
+<!--                                        android:src="@drawable/profile_item3" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="Đã mua 1 lần"-->
+<!--                                        android:textSize="10dp" />-->
+
+<!--                                    <LinearLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:orientation="horizontal">-->
+
+<!--                                        <TextView-->
+<!--                                            android:layout_width="64dp"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="đ10.000" />-->
+
+<!--                                        <ImageView-->
+<!--                                            android:layout_width="15dp"-->
+<!--                                            android:layout_height="15dp"-->
+<!--                                            android:layout_gravity="center"-->
+<!--                                            android:layout_marginLeft="10dp" />-->
+<!--                                    </LinearLayout>-->
+<!--                                </LinearLayout>-->
+<!--                            </androidx.cardview.widget.CardView>-->
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_margin="20dp"-->
+<!--                                android:layout_width="100dp"-->
+<!--                                android:layout_height="100dp"-->
+<!--                                >-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:orientation="vertical">-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/profile_resp_img5"-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="61dp"-->
+<!--                                        android:src="@drawable/profile_item2" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:text="Đã mua 1 lần"-->
+<!--                                        android:textSize="10dp" />-->
+
+<!--                                    <LinearLayout-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:orientation="horizontal">-->
+
+<!--                                        <TextView-->
+<!--                                            android:layout_width="64dp"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:text="đ10.000" />-->
+
+<!--                                        <ImageView-->
+<!--                                            android:layout_width="15dp"-->
+<!--                                            android:layout_height="15dp"-->
+<!--                                            android:layout_gravity="center"-->
+<!--                                            android:layout_marginLeft="10dp"-->
+<!--                                             />-->
+<!--                                    </LinearLayout>-->
+<!--                                </LinearLayout>-->
+<!--                            </androidx.cardview.widget.CardView>-->
+<!--                        </LinearLayout>-->
+<!--                    </HorizontalScrollView>-->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerProfile"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:padding="10dp"
+                        app:reverseLayout="true"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:background="@drawable/profile_ic1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:padding="10dp"
+                        android:background="#fbceb1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:id="@+id/profile_createShop"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/profile_store"
+                            android:layout_marginLeft="5dp"
+                            />
+
+                        <TextView
+                            android:layout_width="164dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="Bắt đầu bán"
+                            android:textColor="#ff8c00" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                                android:text="Đăng kí miễn phí" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/profile_medals"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/profile_medal"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/profile_tv_medals"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="5dp"
+                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                        android:text="Khách hàng thân thiết"
+                        android:textColor="@color/black" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/profile_like"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/profile_favorite"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/profile_tv_like"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Đã thích"
+                        android:textColor="@color/black"
+                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/profile_Clock"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/profile_clock"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/profile_tv_clock"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Đã xem gần đây"
+                        android:textColor="@color/black"
+                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/profile_pay"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/profile_pay"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/profile_tv_pay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Số dư TK Shopee"
+                        android:textColor="@color/black"
+                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/profile_Scoin"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/profile_scoin2_0"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/profile_tv_scoin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Shopee Xu"
+                        android:textColor="@color/black"
+                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/profile_evaluate"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/profile_giftbox"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/profile_tv_evaluate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Đánh giá của tôi"
+                        android:textColor="@color/black"
+                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/profile_share"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/profile_share"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/profile_tv_share"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Shopee liên kết tiếp thị"
+                        android:textColor="@color/black"
+                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="10dp"
+                    android:orientation="horizontal"
+                    >
+                    <ImageView
+                        android:id="@+id/profile_giftbox"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/profile_giftbox"
+                        android:layout_marginLeft="5dp"/>
+
+                    <TextView
+                        android:id="@+id/profile_tv_giftbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Gói Siêu Voucher"
+                        android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
+                        android:textColor="@color/black"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/profile_ic1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:padding="10dp"
+                        android:orientation="horizontal"
+                        >
+                        <ImageView
+                            android:id="@+id/profile_settingUser"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/profile_user"
+                            android:layout_marginLeft="5dp"/>
+
+                        <TextView
+                            android:id="@+id/profile_tv_settingUser"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Thiết lập người dùng"
+                            android:textColor="@color/black"
+                            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal"
+                        >
+                        <ImageView
+                            android:id="@+id/profile_help"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/profile_help"
+                            android:layout_marginLeft="5dp"/>
+
+                        <TextView
+                            android:id="@+id/profile_tv_help"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Trung tâm trợ giúp"
+                            android:textColor="@color/black"
+                            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="horizontal"
+                        >
+                        <ImageView
+                            android:id="@+id/profile_hotline"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/profile_customer_service"
+                            android:layout_marginLeft="5dp"/>
+
+                        <TextView
+                            android:id="@+id/profile_tv_hotline"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginTop="5dp"
+                            android:text="Trò Chuyện Với Shopee"
+                            android:textColor="@color/black"
+                            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

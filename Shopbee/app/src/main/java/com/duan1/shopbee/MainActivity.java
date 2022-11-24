@@ -31,6 +31,7 @@ import com.duan1.shopbee.model.LiveMain;
 import com.duan1.shopbee.model.LiveStories;
 import com.duan1.shopbee.model.LiveVoucher;
 import com.duan1.shopbee.slide_image.MallBanner;
+import com.duan1.shopbee.model.Profile;
 import com.duan1.shopbee.slide_image.Photo;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     List<LiveMain> liveMainList;
     private List<Photo> listPhoto;
 
-
+    List<Profile> mProfiles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
         liveMainList = new ArrayList<>();
         liveStoriesList = new ArrayList<>();
         liveVoucherList = new ArrayList<>();
+        //profile
+        mProfiles = new ArrayList<>();
+        mProfiles.add(new Profile("hehe", "hehe"));
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -201,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadFragmentProfile() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, ProfileFragment.newInstance("hehe", "hihi"), "MainFragment")
+                .replace(R.id.frame_layout, ProfileFragment.newInstance(mProfiles, "hihi"), "MainFragment")
                 .commit();
     }
 
