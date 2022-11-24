@@ -67,4 +67,6 @@ dependencies {
     implementation 'me.relex:circleindicator:2.1.6'
     implementation 'com.facebook.android:facebook-android-sdk:[8,9)'
 
+    //RoundedImageView
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }
