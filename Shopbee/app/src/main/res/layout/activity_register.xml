@@ -71,20 +71,26 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextInputLayOutUsername"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginLeft="28dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="28dp"
+                android:layout_below="@+id/ivShopee"
+                android:textColorHint="#B8B8B8"
+                app:boxStrokeColor="@color/purple_300"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconTint="@color/purple_300"
                 app:errorEnabled="true"
-                android:fontFamily="@font/nunito_light">
-
+                android:layout_centerHorizontal="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_username"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_light"
                     android:hint="Enter your username"
-                    android:inputType="text" />
-
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -100,38 +106,52 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextInputLayOutPassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginLeft="28dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="28dp"
+                android:layout_below="@+id/ivShopee"
+                android:textColorHint="#B8B8B8"
+                app:boxStrokeColor="@color/purple_300"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconTint="@color/purple_300"
                 app:passwordToggleEnabled="true"
-                app:errorEnabled="true">
-
+                app:errorEnabled="true"
+                android:layout_centerHorizontal="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_password"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_light"
                     android:hint="Enter your password"
-                    android:inputType="text" />
-
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextInputLayOutEnterPassword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginLeft="28dp"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="28dp"
+                android:layout_below="@+id/ivShopee"
+                android:textColorHint="#B8B8B8"
+                app:boxStrokeColor="@color/purple_300"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconTint="@color/purple_300"
                 app:passwordToggleEnabled="true"
-                app:errorEnabled="true">
-
+                app:errorEnabled="true"
+                android:layout_centerHorizontal="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_enter_password"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_light"
                     android:hint="Re-enter your password"
-                    android:inputType="text" />
-
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -144,7 +164,6 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="28dp"
                 android:textSize="18sp" />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -190,19 +209,26 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextInputLayOutEmail"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginLeft="28dp"
-                android:layout_marginRight="30dp"
-                app:errorEnabled="true">
-
+                android:layout_marginRight="28dp"
+                android:layout_below="@+id/ivShopee"
+                android:textColorHint="#B8B8B8"
+                app:boxStrokeColor="@color/purple_300"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconTint="@color/purple_300"
+                app:errorEnabled="true"
+                android:layout_centerHorizontal="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_email"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:hint="Enter your email"
-                    android:inputType="text" />
-
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_light"
+                    android:hint="Enter your username"
+                    android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -216,21 +242,29 @@
                 android:layout_marginLeft="28dp"
                 android:textSize="18sp" />
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/TextInputLayOutPhoneNumber"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginLeft="28dp"
-                android:layout_marginRight="30dp"
-                app:errorEnabled="true">
-
+                android:layout_marginRight="28dp"
+                android:layout_below="@+id/ivShopee"
+                android:textColorHint="#B8B8B8"
+                app:boxStrokeColor="@color/purple_300"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconTint="@color/purple_300"
+                app:errorEnabled="true"
+                android:layout_centerHorizontal="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_phone_number"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/nunito_light"
                     android:hint="Enter your phone number"
-                    android:inputType="text" />
-
+                    android:inputType="textPhonetic"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout

@@ -1,5 +1,6 @@
 package com.duan1.shopbee;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;

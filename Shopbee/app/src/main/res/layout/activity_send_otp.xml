@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:background="@drawable/background_button"
-            android:text="Login"
+            android:text="Đăng nhập"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_btn_register"
-            android:drawableLeft="@drawable/facebook"
+            android:drawableLeft="@drawable/ic_facebook_login"
             android:paddingLeft="10dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
@@ -118,6 +118,22 @@
             android:fontFamily="@font/roboto_regular"
             android:textAllCaps="false"
             android:layout_below="@+id/btnLoginGoogle"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLoginApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnLoginFacebook"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/bg_btn_register"
+            android:drawableLeft="@drawable/apple_logo"
+            android:fontFamily="@font/roboto_regular"
+            android:paddingLeft="10dp"
+            android:text="Đăng nhập với Apple ID"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
 
         <FrameLayout
             android:id="@+id/fragment_layout"

@@ -17,9 +17,9 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_height="180dp"
             tools:ignore="MissingConstraints"
-            android:background="#000"/>
+            android:background="@color/colorDivider"/>
 
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/circle_indicator"
@@ -48,18 +48,16 @@
                 android:drawablePadding="5dp"
                 android:gravity="center"
                 android:text="Miễn phí trả hàng"
-                android:fontFamily="@font/roboto_medium"
-                android:textSize="12sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/colorTextSecondary"
+                android:textSize="12sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:drawableLeft="@drawable/ic_shield_mall"
                 android:drawablePadding="5dp"
-                    android:text="Chính hãng 100%"
-                android:textColor="@color/black"
-                android:fontFamily="@font/roboto_medium"
+                android:text="Chính hãng 100%"
+                android:textColor="@color/colorTextSecondary"
                 android:gravity="center"
                 android:textSize="12sp"
                 android:layout_marginLeft="15dp"/>
@@ -70,8 +68,7 @@
                 android:drawableLeft="@drawable/ic_free_delivery_mall"
                 android:drawablePadding="5dp"
                 android:text="Giao miễn phí"
-                android:fontFamily="@font/roboto_medium"
-                android:textColor="@color/black"
+                android:textColor="@color/colorTextSecondary"
                 android:gravity="center"
                 android:textSize="12sp"
                 android:layout_marginLeft="15dp"/>
@@ -88,7 +85,7 @@
 
             <LinearLayout
                 android:id="@+id/shopee_premium"
-                android:layout_width="wrap_content"
+                android:layout_width="68dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
@@ -96,14 +93,14 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="8dp"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:src="@drawable/ic_diamond"
                     android:background="@drawable/bg_mall"/>
                 <TextView
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:text="SHOPEE PREMIUM"
-                    android:textSize="10sp"
+                    android:textSize="9sp"
                     android:fontFamily="@font/roboto_medium"
                     android:layout_gravity="center"
                     android:padding="5dp"
@@ -113,7 +110,7 @@
 
             <LinearLayout
                 android:id="@+id/shopee_mum_club"
-                android:layout_width="wrap_content"
+                android:layout_width="68dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
@@ -125,10 +122,10 @@
                     android:src="@drawable/ic_mum_club"
                     android:background="@drawable/bg_mall"/>
                 <TextView
-                    android:layout_width="70dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:text="SHOPEE MUM'S CLUB "
-                    android:textSize="10sp"
+                    android:textSize="9sp"
                     android:fontFamily="@font/roboto_medium"
                     android:layout_gravity="center"
                     android:padding="5dp"
@@ -138,7 +135,7 @@
 
             <LinearLayout
                 android:id="@+id/shopee_beauty_club"
-                android:layout_width="wrap_content"
+                android:layout_width="68dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
@@ -150,7 +147,7 @@
                     android:src="@drawable/ic_beauty_club"
                     android:background="@drawable/bg_mall"/>
                 <TextView
-                    android:layout_width="70dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:text="SHOPEE BEAUTY CLUB"
                     android:textSize="9sp"
@@ -163,7 +160,7 @@
 
             <LinearLayout
                 android:id="@+id/shopee_block_club"
-                android:layout_width="wrap_content"
+                android:layout_width="68dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
@@ -175,7 +172,7 @@
                     android:src="@drawable/ic_book_clus"
                     android:background="@drawable/bg_mall"/>
                 <TextView
-                    android:layout_width="65dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:text="SHOPEE BLOCK CLUB"
                     android:textSize="9sp"
@@ -188,7 +185,7 @@
 
             <LinearLayout
                 android:id="@+id/shopee_thuong_hieu"
-                android:layout_width="wrap_content"
+                android:layout_width="68dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
@@ -200,7 +197,7 @@
                     android:src="@drawable/ic_thanh_vien_thuong_hieu"
                     android:background="@drawable/bg_mall"/>
                 <TextView
-                    android:layout_width="65dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:text="THÀNH VIÊN THƯƠNG HIỆU"
                     android:textSize="8.5sp"
@@ -213,7 +210,7 @@
 
             <LinearLayout
                 android:id="@+id/shopee_quoc_te"
-                android:layout_width="wrap_content"
+                android:layout_width="68dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center">
@@ -225,9 +222,9 @@
                     android:src="@drawable/ic_thuong_hieu_quoc_te"
                     android:background="@drawable/bg_mall"/>
                 <TextView
-                    android:layout_width="70dp"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:text="THƯƠNG HIỆU QUÔC TẾ"
+                    android:text="THƯƠNG HIỆU QUỐC TẾ"
                     android:textSize="8.5sp"
                     android:fontFamily="@font/roboto_medium"
                     android:layout_gravity="center"
@@ -265,7 +262,7 @@
                <ImageView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:layout_marginEnd="16dp"
+                   android:layout_marginEnd="5dp"
                    android:src="@drawable/ic_next_btn_mall"
                    app:layout_constraintBottom_toBottomOf="parent"
                    app:layout_constraintEnd_toEndOf="parent"

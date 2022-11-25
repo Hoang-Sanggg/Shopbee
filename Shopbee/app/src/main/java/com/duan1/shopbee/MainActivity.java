@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         Menu menu = binding.bottomNavigation.getMenu();
-        menu.findItem(R.id.bnHome).setIcon(R.drawable.home_4);
+        menu.findItem(R.id.bnHome).setIcon(R.drawable
+                .home_4);
         menu.findItem(R.id.bnMall).setIcon(R.drawable.shopping_bag);
         menu.findItem(R.id.bnNotification).setIcon(R.drawable.notification);
         menu.findItem(R.id.bnLive).setIcon(R.drawable.video_camera);

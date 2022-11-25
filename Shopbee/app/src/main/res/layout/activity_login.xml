@@ -39,20 +39,25 @@
         android:fontFamily="@font/nunito_black"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputLayOutEmail"
+        android:id="@+id/TextInputLayOutUsername"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginRight="30dp"
-        android:fontFamily="@font/nunito_light">
-
+        android:layout_marginRight="28dp"
+        android:layout_below="@+id/ivShopee"
+        android:hint="Enter your username"
+        android:textColorHint="#B8B8B8"
+        app:boxStrokeColor="@color/purple_300"
+        app:boxStrokeWidthFocused="2dp"
+        app:endIconTint="@color/purple_300"
+        android:layout_centerHorizontal="true">
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_email"
+            android:id="@+id/edt_username"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:hint="Enter your username"
-            android:inputType="text" />
-
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito_light"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -69,20 +74,25 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TextInputLayOutPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginRight="30dp"
-        android:fontFamily="@font/nunito_light"
-        app:passwordToggleEnabled="true">
-
+        android:layout_marginRight="28dp"
+        android:layout_below="@+id/ivShopee"
+        android:hint="Enter your password"
+        android:textColorHint="#B8B8B8"
+        app:boxStrokeColor="@color/purple_300"
+        app:boxStrokeWidthFocused="2dp"
+        app:endIconTint="@color/purple_300"
+        android:layout_centerHorizontal="true">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_password"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:hint="Enter your password"
-            android:inputType="text" />
-
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito_light"
+            android:inputType="textPassword" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
@@ -93,17 +103,17 @@
         android:text="Stay logged in?"
         android:textColor="#747679"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
         android:backgroundTint="#E3DDDC"
         android:textColor="@color/black"
+        android:background="@drawable/custom_btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:onClick="onClickLogin"
         android:text="Đăng nhập"/>
-
 
    <LinearLayout
        android:layout_width="match_parent"
@@ -142,18 +152,19 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:padding="10dp"
-        app:backgroundTint="#EAEAEA"
+        android:background="@drawable/custom_btn_login"
         android:gravity="center"
+        android:padding="10dp"
+        android:text="Đăng nhập với google"
         android:textAllCaps="true"
-        app:icon="@drawable/google_icon_login"
+        android:textColor="@color/black"
+        app:backgroundTint="#EAEAEA"
+        app:icon="@drawable/icon_google"
         app:iconSize="25dp"
         app:iconTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="@color/black"
-        android:text="Đăng nhập với google" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLoginFace"
@@ -165,7 +176,9 @@
         android:textAllCaps="true"
         android:padding="10dp"
         app:backgroundTint="#EAEAEA"
-        app:icon="@drawable/facebook_icon_login"
+        android:background="@drawable/custom_btn_login"
+        android:layout_marginTop="10dp"
+        app:icon="@drawable/icon_facebook"
         app:iconSize="30dp"
         app:iconTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -184,7 +197,9 @@
         android:textAllCaps="true"
         android:padding="10dp"
         app:backgroundTint="#EAEAEA"
-        app:icon="@drawable/apple_icon_login"
+        android:background="@drawable/custom_btn_login"
+        android:layout_marginTop="10dp"
+        app:icon="@drawable/apple_logo"
         app:iconSize="30dp"
         app:iconTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -192,11 +207,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:textColor="@color/black"
         android:text="Đăng nhập với Apple ID" />
-
-
-
-
-
 
 </LinearLayout>
 
