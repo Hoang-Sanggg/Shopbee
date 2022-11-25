@@ -4,42 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TestActivity"
+    tools:context=".ProductCreateActivity"
     android:orientation="vertical">
+
     <EditText
         android:id="@+id/edtProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ProductName"/>
+        android:hint="Tên sản phẩm"/>
     <EditText
         android:id="@+id/edtDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Discription"/>
+        android:hint="Mô tả"/>
     <EditText
         android:id="@+id/edtIndustry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Industry"/>
+        android:hint="Loại sản phẩm"/>
     <EditText
         android:id="@+id/edtProductDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Product Detail"/>
+        android:hint="Chi tiết sản phẩm"/>
+    <EditText
+        android:id="@+id/edtWarehouse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kho"/>
     <EditText
         android:id="@+id/edtStatus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Status"/>
+        android:hint="Trạng thái"/>
     <EditText
-        android:id="@+id/edtWareHouse"
+        android:id="@+id/edtTransportfee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ProductName"/>
+        android:hint="Phí vận chuyển"/>
 
     <Button
-        android:id="@+id/Push"
+        android:id="@+id/btnPush"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Push"/>
+    <Button
+        android:id="@+id/btnPull"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pull data vừa add vào"/>
+    <Button
+        android:id="@+id/btnPullbyID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pull data theo id"/>
+
+    <TextView
+        android:id="@+id/txtViewData"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
 </LinearLayout>

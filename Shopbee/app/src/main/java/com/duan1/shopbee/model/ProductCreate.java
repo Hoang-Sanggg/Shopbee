@@ -3,7 +3,7 @@ package com.duan1.shopbee.model;
 import java.io.Serializable;
 
 public class ProductCreate implements Serializable {
-    private String id;
+
     private String name;
     private String description;
     private String industry;
@@ -13,8 +13,7 @@ public class ProductCreate implements Serializable {
     private String status;
     public ProductCreate(){}
 
-    public ProductCreate(String id, String name, String description, String industry, String productdetail, String warehouse, String transportfee, String status) {
-        this.id = id;
+    public ProductCreate(String name, String description, String industry, String productdetail, String warehouse, String transportfee, String status) {
         this.name = name;
         this.description = description;
         this.industry = industry;
@@ -22,14 +21,6 @@ public class ProductCreate implements Serializable {
         this.warehouse = warehouse;
         this.transportfee = transportfee;
         this.status = status;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -40,8 +31,8 @@ public class ProductCreate implements Serializable {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescription(String description) {
+        return this.description;
     }
 
     public void setDescription(String description) {
