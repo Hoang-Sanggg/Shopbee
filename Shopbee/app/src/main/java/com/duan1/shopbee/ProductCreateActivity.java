@@ -2,6 +2,7 @@ package com.duan1.shopbee;
 
 import static android.service.controls.ControlsProviderService.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.duan1.shopbee.ProductCreateSubActiviity.IndustryActivity;
 import com.duan1.shopbee.model.ProductCreate;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -48,10 +50,10 @@ public class ProductCreateActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();;
     CollectionReference collectionReference = db.collection("product");
     DocumentReference docref = db.collection("product").document();
-    TextView textviewdata;
+    TextView textviewdata,txtIndustry;
     Button btnPush,btnPull, btnPullbyID;
     long maxId = 0;
-    EditText edtProductName, edtProductDetail, edtIndustry, edtDescription, edtStatus, edtTransportfee, edtWarehouse;
+    EditText edtProductName, edtProductDetail,  edtDescription, edtStatus, edtTransportfee, edtWarehouse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +63,11 @@ public class ProductCreateActivity extends AppCompatActivity {
 
 
 
+
+
+        txtIndustry = findViewById(R.id.txtIndustry);
         edtProductName = findViewById(R.id.edtProductName);
         edtProductDetail = findViewById(R.id.edtProductDetail);
-        edtIndustry = findViewById(R.id.edtIndustry);
         edtDescription = findViewById(R.id.edtDescription);
         edtStatus = findViewById(R.id.edtStatus);
         edtTransportfee = findViewById(R.id.edtTransportfee);
@@ -72,6 +76,8 @@ public class ProductCreateActivity extends AppCompatActivity {
         btnPush = findViewById(R.id.btnPush);
         btnPull = findViewById(R.id.btnPull);
         btnPullbyID = findViewById(R.id.btnPullbyID);
+
+
         btnPush.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,16 +90,24 @@ public class ProductCreateActivity extends AppCompatActivity {
                 readProductDatafromFirestore();
             }
         });
-        btnPullbyID.setOnClickListener(new View.OnClickListener() {
+//        btnPullbyID.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                readProductDatafromFirestorebyID();
+//            }
+//        });
+        txtIndustry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readProductDatafromFirestorebyID();
+                startActivity(new Intent(ProductCreateActivity.this,IndustryActivity.class));
             }
         });
 
 
     }
-
+//    public void gotoIndustry(){
+//        startActivity(new Intent(ProductCreateActivity.this, IndustryActivity.class));
+//    }
     public void addProductDatatoFirestore() {
 
 
@@ -111,11 +125,12 @@ public class ProductCreateActivity extends AppCompatActivity {
 //            }
 //        });
         productCreate = new ProductCreate();
+        Bundle bundle = getIntent().getExtras();
 
         Map<String, Object> product = new HashMap<>();
         String name = edtProductName.getText().toString();
         String detail = edtProductDetail.getText().toString();
-        String industry = edtIndustry.getText().toString();
+        String industry = bundle.getString("industry");
         String description = edtDescription.getText().toString();
         String status = edtStatus.getText().toString();
         String transportfee = edtTransportfee.getText().toString();
@@ -148,32 +163,32 @@ public class ProductCreateActivity extends AppCompatActivity {
                 });
     }
 
-    public void readProductDatafromFirestorebyID(){
-        db.collection("product")
-                .whereEqualTo("id","01")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                String name = document.getString("name");
-                                String industry = document.getString("industry");
-                                String description = document.getString("description");
-                                String detail = document.getString("detail");
-                                String status = document.getString("status");
-                                String warehouse = document.getString("warehouse");
-                                String transportfee = document.getString("transportfee");
-                                String id = document.getString("id");
-                                textviewdata.setText("id: " + id + "\n" + "name: "+ name + "\n" + "industry: " + industry + "\n" + "description: " + description + "\n" + "detail: " + detail + "\n" + "status: " + status + "\n" + "warehouse: " + warehouse + "\n" + "transportfee: " + transportfee);
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                            }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
-    }
+//    public void readProductDatafromFirestorebyID(){
+//        db.collection("product")
+//                .whereEqualTo("id","01")
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                String name = document.getString("name");
+//                                String industry = document.getString("industry");
+//                                String description = document.getString("description");
+//                                String detail = document.getString("detail");
+//                                String status = document.getString("status");
+//                                String warehouse = document.getString("warehouse");
+//                                String transportfee = document.getString("transportfee");
+//                                String id = document.getString("id");
+//                                textviewdata.setText("id: " + id + "\n" + "name: "+ name + "\n" + "industry: " + industry + "\n" + "description: " + description + "\n" + "detail: " + detail + "\n" + "status: " + status + "\n" + "warehouse: " + warehouse + "\n" + "transportfee: " + transportfee);
+//                                Log.d(TAG, document.getId() + " => " + document.getData());
+//                            }
+//                        } else {
+//                            Log.w(TAG, "Error getting documents.", task.getException());
+//                        }
+//                    }
+//                });
+//    }
     public void readProductDatafromFirestore() {
 //        DocumentReference docref = db.collection("product").document("abc");
         db.collection("product")

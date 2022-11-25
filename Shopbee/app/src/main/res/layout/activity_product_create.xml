@@ -6,22 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".ProductCreateActivity"
     android:orientation="vertical">
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tên sản phẩm"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"/>
     <EditText
+        android:textSize="16sp"
         android:id="@+id/edtProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tên sản phẩm"/>
+        android:hint="Nhập tên sản phẩm"
+        android:layout_margin="5dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mô tả sản phẩm"
+        android:textColor="@color/black"
+        android:layout_margin="5dp"/>
+
     <EditText
+        android:layout_margin="5dp"
+        android:textSize="16sp"
         android:id="@+id/edtDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mô tả"/>
-    <EditText
-        android:id="@+id/edtIndustry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Loại sản phẩm"/>
+        android:hint="Nhập mô tả sản phẩm"/>
+    ?<TextView
+    android:id="@+id/txtIndustry"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Ngành hàng"
+    android:layout_margin="5dp"
+    android:textColor="@color/black"
+   />
+
     <EditText
         android:id="@+id/edtProductDetail"
         android:layout_width="match_parent"
