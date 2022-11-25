@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductCreateActivity"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tên sản phẩm"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"/>
+    <EditText
+        android:textSize="13sp"
+        android:id="@+id/edtProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập tên sản phẩm"
+        android:layout_margin="5dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mô tả sản phẩm"
+        android:textColor="@color/black"
+        android:layout_margin="5dp"/>
+
+
+
+    <EditText
+        android:id="@+id/edtDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="Nhập mô tả sản phẩm"
+        android:textSize="13sp" />
+
+    <TextView
+    android:id="@+id/txtIndustry"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Ngành hàng"
+    android:layout_margin="5dp"
+    android:textColor="@color/black"
+   />
+
+    <TextView
+        android:id="@+id/txtProductDetail"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phân loại hàng"/>
+    <EditText
+        android:id="@+id/edtWarehouse"
+        android:textSize="13sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kho"/>
+    <EditText
+        android:id="@+id/edtStatus"
+        android:textSize="13sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Trạng thái"/>
+    <EditText
+        android:id="@+id/edtTransportfee"
+        android:layout_width="match_parent"
+        android:textSize="13sp"
+        android:layout_height="wrap_content"
+        android:hint="Phí vận chuyển"/>
+
+    <Button
+        android:id="@+id/btnPush"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Push"/>
+
+
+
+
+
+</LinearLayout>
