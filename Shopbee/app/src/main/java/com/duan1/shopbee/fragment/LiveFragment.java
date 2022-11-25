@@ -154,7 +154,7 @@ public class LiveFragment extends Fragment {
 
 //        photoAdaper.registerDataSetObserver(circleIndicator.getDataSetObserver());
 
-
+    
         autoSlideImage();
     }
 
