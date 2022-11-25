@@ -411,8 +411,8 @@
 
                     <ImageView
                         android:id="@+id/profile_phone"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginStart="4dp"
                         android:src="@drawable/profile_smartphone_ringing"
 
@@ -448,8 +448,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_img_wallet"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_my_gadget"
                         android:layout_marginLeft="5dp"/>
                     <TextView
@@ -482,8 +482,8 @@
 
                         <ImageView
                             android:id="@+id/profile_utility_shopbeepay"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
                             android:layout_marginTop="5dp"
                             android:src="@drawable/profile_shopee_pay_icon" />
 
@@ -506,8 +506,8 @@
 
                         <ImageView
                             android:id="@+id/profile_utility_scoin"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
                             android:layout_marginTop="5dp"
                             android:src="@drawable/profile_scoin2_0" />
 
@@ -530,8 +530,8 @@
 
                         <ImageView
                             android:id="@+id/profile_utility_shopbeeVoucher"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
                             android:layout_marginTop="5dp"
                             android:src="@drawable/profile_voucher" />
 
@@ -560,8 +560,8 @@
                         >
                         <ImageView
                             android:id="@+id/profile_shopping_bag_img"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:layout_marginLeft="5dp"
                             android:src="@drawable/profile_shopping_bag"
                             ></ImageView>
@@ -797,8 +797,8 @@
                         >
                         <ImageView
                             android:id="@+id/profile_createShop"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/profile_store"
                             android:layout_marginLeft="5dp"
                             />
@@ -832,8 +832,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_medals"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_medal"
                         android:layout_marginLeft="5dp"/>
 
@@ -857,8 +857,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_like"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_favorite"
                         android:layout_marginLeft="5dp"/>
 
@@ -881,8 +881,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_Clock"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_clock"
                         android:layout_marginLeft="5dp"/>
 
@@ -905,8 +905,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_pay"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_pay"
                         android:layout_marginLeft="5dp"/>
 
@@ -929,8 +929,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_Scoin"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_scoin2_0"
                         android:layout_marginLeft="5dp"/>
 
@@ -953,8 +953,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_evaluate"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_giftbox"
                         android:layout_marginLeft="5dp"/>
 
@@ -977,8 +977,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_share"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_share"
                         android:layout_marginLeft="5dp"/>
 
@@ -1001,8 +1001,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_giftbox"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_giftbox"
                         android:layout_marginLeft="5dp"/>
 
@@ -1034,8 +1034,8 @@
                         >
                         <ImageView
                             android:id="@+id/profile_settingUser"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/profile_user"
                             android:layout_marginLeft="5dp"/>
 
@@ -1057,8 +1057,8 @@
                         >
                         <ImageView
                             android:id="@+id/profile_help"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/profile_help"
                             android:layout_marginLeft="5dp"/>
 
@@ -1080,8 +1080,8 @@
                         >
                         <ImageView
                             android:id="@+id/profile_hotline"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/profile_customer_service"
                             android:layout_marginLeft="5dp"/>
 
