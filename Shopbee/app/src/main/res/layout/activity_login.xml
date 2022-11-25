@@ -39,25 +39,19 @@
         android:fontFamily="@font/nunito_black"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputLayOutUsername"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:id="@+id/TextInputLayOutEmail"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_below="@+id/ivShopee"
+        android:layout_marginRight="30dp"
+        android:fontFamily="@font/nunito_light">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:hint="Enter your username"
-        android:textColorHint="#B8B8B8"
-        app:boxStrokeColor="@color/purple_300"
-        app:boxStrokeWidthFocused="2dp"
-        app:endIconTint="@color/purple_300"
-        android:layout_centerHorizontal="true">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito_light"/>
+        android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -74,25 +68,20 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TextInputLayOutPassword"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_below="@+id/ivShopee"
-        android:hint="Enter your password"
-        android:textColorHint="#B8B8B8"
-        app:boxStrokeColor="@color/purple_300"
-        app:boxStrokeWidthFocused="2dp"
-        app:endIconTint="@color/purple_300"
-        android:layout_centerHorizontal="true">
+        android:layout_marginRight="30dp"
+        android:fontFamily="@font/nunito_light"
+        app:passwordToggleEnabled="true">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edt_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:fontFamily="@font/nunito_light"
-            android:inputType="textPassword" />
+            android:layout_height="40dp"
+            android:hint="Enter your password"
+            android:inputType="text" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
