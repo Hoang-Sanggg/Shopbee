@@ -300,7 +300,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/profile_ic1"
@@ -311,7 +311,7 @@
                         android:layout_height="100dp"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:padding="5dp">
 
                         <ImageView
                             android:id="@+id/profile_btn_wallet"
@@ -465,7 +465,7 @@
                 </LinearLayout>
                 <LinearLayout
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/profile_ic1"
@@ -475,9 +475,9 @@
                     <LinearLayout
                         android:layout_marginRight="50dp"
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_height="50dp"
                         android:gravity="center"
-                        android:padding="10dp"
+                        android:padding="5dp"
                         android:orientation="vertical">
 
                         <ImageView
@@ -499,9 +499,9 @@
                     <LinearLayout
                         android:layout_marginRight="45dp"
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_height="50dp"
                         android:gravity="center"
-                        android:padding="10dp"
+                        android:padding="5dp"
                         android:orientation="vertical">
 
                         <ImageView
@@ -523,10 +523,10 @@
 
                     <LinearLayout
                         android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_height="50dp"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:padding="5dp">
 
                         <ImageView
                             android:id="@+id/profile_utility_shopbeeVoucher"
