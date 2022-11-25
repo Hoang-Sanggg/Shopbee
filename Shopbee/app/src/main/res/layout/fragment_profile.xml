@@ -781,13 +781,13 @@
                             </androidx.cardview.widget.CardView>
                         </LinearLayout>
                     </HorizontalScrollView>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerProfile"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:padding="10dp"
-                        app:reverseLayout="true"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/recyclerProfile"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="60dp"-->
+<!--                        android:padding="10dp"-->
+<!--                        app:reverseLayout="true"-->
+<!--                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>-->
 
                 </LinearLayout>
 
