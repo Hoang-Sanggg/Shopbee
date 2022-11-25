@@ -22,13 +22,16 @@
         android:theme="@style/Theme.Shopbee"
         tools:targetApi="31">
         <activity
+            android:name=".ProductCreateSubActiviity.ProductDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProductCreateSubActiviity.IndustryActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ProductCreateActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductCreateActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

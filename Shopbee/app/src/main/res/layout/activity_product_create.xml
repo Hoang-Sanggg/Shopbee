@@ -13,7 +13,7 @@
         android:layout_margin="5dp"
         android:textColor="@color/black"/>
     <EditText
-        android:textSize="16sp"
+        android:textSize="13sp"
         android:id="@+id/edtProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,14 +26,17 @@
         android:textColor="@color/black"
         android:layout_margin="5dp"/>
 
+
+
     <EditText
-        android:layout_margin="5dp"
-        android:textSize="16sp"
         android:id="@+id/edtDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập mô tả sản phẩm"/>
-    ?<TextView
+        android:layout_margin="5dp"
+        android:hint="Nhập mô tả sản phẩm"
+        android:textSize="13sp" />
+
+    <TextView
     android:id="@+id/txtIndustry"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -42,24 +45,29 @@
     android:textColor="@color/black"
    />
 
-    <EditText
-        android:id="@+id/edtProductDetail"
+    <TextView
+        android:id="@+id/txtProductDetail"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Chi tiết sản phẩm"/>
+        android:text="Phân loại hàng"/>
     <EditText
         android:id="@+id/edtWarehouse"
+        android:textSize="13sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Kho"/>
     <EditText
         android:id="@+id/edtStatus"
+        android:textSize="13sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Trạng thái"/>
     <EditText
         android:id="@+id/edtTransportfee"
         android:layout_width="match_parent"
+        android:textSize="13sp"
         android:layout_height="wrap_content"
         android:hint="Phí vận chuyển"/>
 
@@ -68,22 +76,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Push"/>
-    <Button
-        android:id="@+id/btnPull"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pull data vừa add vào"/>
-    <Button
-        android:id="@+id/btnPullbyID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pull data theo id"/>
 
-    <TextView
-        android:id="@+id/txtViewData"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
 
 
 

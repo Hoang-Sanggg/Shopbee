@@ -23,6 +23,7 @@ import com.duan1.shopbee.model.LiveMain;
 import com.duan1.shopbee.model.LiveStories;
 import com.duan1.shopbee.model.LiveVoucher;
 import com.duan1.shopbee.slide_image.LivePhoto;
+import com.duan1.shopbee.slide_image.LivePhotoAdapter;
 import com.duan1.shopbee.slide_image.Photo;
 import com.duan1.shopbee.slide_image.PhotoAdaper;
 
@@ -44,6 +45,7 @@ public class LiveFragment extends Fragment {
     private static final String ARG_PARAM1 = "DATA_LIVESTORIES";
     private static final String ARG_PARAM2 = "DATA_LIVEVOUCHER";
     private static final String ARG_PARAM3= "DATA_LIVEMAIN";
+    private static final String ARG_PARAM4 = "DATA_LIVEPHOTO";
     private RecyclerView liveStoriesRecycler,liveVoucherRecycler,liveMainRecycler;
     private LivePhoto listPhoto;
     private ViewPager viewPager;
@@ -58,6 +60,7 @@ public class LiveFragment extends Fragment {
     private LiveVoucherAdapter liveVoucherAdapter;
     private LiveStoriesAdapter liveStoriesAdapter;
     private LiveMainAdapter liveMainAdapter;
+    private LivePhotoAdapter livePhotoAdapter;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -75,12 +78,13 @@ public class LiveFragment extends Fragment {
      *
      */
     // TODO: Rename and change types and number of parameters
-    public static LiveFragment newInstance(List<LiveStories>_liveStoriesList, List<LiveVoucher> _liveVoucherList, List<LiveMain> _liveMainList) {
+    public static LiveFragment newInstance(List<LiveStories>_liveStoriesList, List<LiveVoucher> _liveVoucherList, List<LiveMain> _liveMainList,List<LivePhoto> _livePhotoList) {
         LiveFragment fragment = new LiveFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM1,(Serializable) _liveStoriesList);
         args.putSerializable(ARG_PARAM2,(Serializable) _liveVoucherList);
         args.putSerializable(ARG_PARAM3,(Serializable) _liveMainList);
+        args.putSerializable(ARG_PARAM4,(Serializable) _livePhotoList);
         fragment.setArguments(args);
         return fragment;
     }
@@ -92,6 +96,7 @@ public class LiveFragment extends Fragment {
             liveStoriesList = (List<LiveStories>) getArguments().getSerializable(ARG_PARAM1);
             liveVoucherList = (List<LiveVoucher>) getArguments().getSerializable(ARG_PARAM2);
             liveMainList = (List<LiveMain>) getArguments().getSerializable(ARG_PARAM3);
+            livePhotoList = (List<LivePhoto>) getArguments().getSerializable(ARG_PARAM4);
 
         }
     }
@@ -140,55 +145,53 @@ public class LiveFragment extends Fragment {
         viewPager = view.findViewById(R.id.viewPager_banner);
 //        circleIndicator = view.findViewById(R.id.circle_banner);
 
-//        livePhotoList = getListPhoto();
+        livePhotoList = getListPhoto();
 //
-//        photoAdaper = new PhotoAdaper(getContext(), getListPhoto());
-//        viewPager.setAdapter(photoAdaper);
+        livePhotoAdapter= new LivePhotoAdapter(getContext(), getListPhoto());
+        viewPager.setAdapter(livePhotoAdapter);
 
 //        circleIndicator.setViewPager(viewPager);
 
 //        photoAdaper.registerDataSetObserver(circleIndicator.getDataSetObserver());
 
 
-//        autoSlideImage();
+        autoSlideImage();
     }
 
-    private List<Photo> getListPhoto(){
-        List<Photo> list = new ArrayList<>();
-        list.add(new Photo(R.drawable.banner_1));
-        list.add(new Photo(R.drawable.banner_2));
-        list.add(new Photo(R.drawable.banner_3));
-        list.add(new Photo(R.drawable.banner_4));
-        list.add(new Photo(R.drawable.banner_5));
+    private List<LivePhoto> getListPhoto(){
+        List<LivePhoto> list = new ArrayList<>();
+        list.add(new LivePhoto(R.mipmap.live_banner01));
+        list.add(new LivePhoto(R.mipmap.live_banner02));
+        list.add(new LivePhoto(R.mipmap.live_banner03));
         return list;
     }
 
-//    private void autoSlideImage(){
-//        if (listPhoto == null || listPhoto.isEmpty() || viewPager == null){
-//            return;
-//        }
-//        if(timer == null){
-//            timer = new Timer();
-//            timer.schedule(new TimerTask() {
-//                @Override
-//                public void run() {
-//                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            int currentItem = viewPager.getCurrentItem();
-//                            int totalItem = listPhoto.size()-1;
-//                            if (currentItem < totalItem){
-//                                currentItem++;
-//                                viewPager.setCurrentItem(currentItem);
-//                            }else{
-//                                viewPager.setCurrentItem(0);
-//                            }
-//                        }
-//                    });
-//                }
-//            }, 500, 3000);
-//        }
-//    }
+    private void autoSlideImage(){
+        if (livePhotoList == null || livePhotoList.isEmpty() || viewPager == null){
+            return;
+        }
+        if(timer == null){
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            int currentItem = viewPager.getCurrentItem();
+                            int totalItem = livePhotoList.size()-1;
+                            if (currentItem < totalItem){
+                                currentItem++;
+                                viewPager.setCurrentItem(currentItem);
+                            }else{
+                                viewPager.setCurrentItem(0);
+                            }
+                        }
+                    });
+                }
+            }, 500, 3000);
+        }
+    }
 
     @Override
     public void onDestroy() {

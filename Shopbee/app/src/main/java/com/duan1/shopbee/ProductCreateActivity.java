@@ -50,7 +50,7 @@ public class ProductCreateActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();;
     CollectionReference collectionReference = db.collection("product");
     DocumentReference docref = db.collection("product").document();
-    TextView textviewdata,txtIndustry;
+    TextView textviewdata,txtIndustry,txtProductDetail;
     Button btnPush,btnPull, btnPullbyID;
     long maxId = 0;
     EditText edtProductName, edtProductDetail,  edtDescription, edtStatus, edtTransportfee, edtWarehouse;
@@ -66,16 +66,17 @@ public class ProductCreateActivity extends AppCompatActivity {
 
 
         txtIndustry = findViewById(R.id.txtIndustry);
+        txtProductDetail = findViewById(R.id.txtProductDetail);
         edtProductName = findViewById(R.id.edtProductName);
-        edtProductDetail = findViewById(R.id.edtProductDetail);
+
         edtDescription = findViewById(R.id.edtDescription);
         edtStatus = findViewById(R.id.edtStatus);
         edtTransportfee = findViewById(R.id.edtTransportfee);
         edtWarehouse = findViewById(R.id.edtWarehouse);
-        textviewdata = findViewById(R.id.txtViewData);
+
         btnPush = findViewById(R.id.btnPush);
-        btnPull = findViewById(R.id.btnPull);
-        btnPullbyID = findViewById(R.id.btnPullbyID);
+
+
 
 
         btnPush.setOnClickListener(new View.OnClickListener() {
@@ -84,18 +85,7 @@ public class ProductCreateActivity extends AppCompatActivity {
                 addProductDatatoFirestore();
             }
         });
-        btnPull.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                readProductDatafromFirestore();
-            }
-        });
-//        btnPullbyID.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                readProductDatafromFirestorebyID();
-//            }
-//        });
+
         txtIndustry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,31 +95,13 @@ public class ProductCreateActivity extends AppCompatActivity {
 
 
     }
-//    public void gotoIndustry(){
-//        startActivity(new Intent(ProductCreateActivity.this, IndustryActivity.class));
-//    }
+
     public void addProductDatatoFirestore() {
-
-
-//        db.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if(snapshot.exists()){
-//                    maxId = (snapshot.getChildrenCount());
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
         productCreate = new ProductCreate();
         Bundle bundle = getIntent().getExtras();
-
         Map<String, Object> product = new HashMap<>();
         String name = edtProductName.getText().toString();
-        String detail = edtProductDetail.getText().toString();
+        String detail = bundle.getString("productdetail");
         String industry = bundle.getString("industry");
         String description = edtDescription.getText().toString();
         String status = edtStatus.getText().toString();
@@ -189,32 +161,32 @@ public class ProductCreateActivity extends AppCompatActivity {
 //                    }
 //                });
 //    }
-    public void readProductDatafromFirestore() {
-//        DocumentReference docref = db.collection("product").document("abc");
-        db.collection("product")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                String name = document.getString("name");
-                                String industry = document.getString("industry");
-                                String description = document.getString("description");
-                                String detail = document.getString("detail");
-                                String status = document.getString("status");
-                                String warehouse = document.getString("warehouse");
-                                String transportfee = document.getString("transportfee");
-                                String id = document.getString("id");
-                                textviewdata.setText("id: " + id + "\n" + "name: "+ name + "\n" + "industry: " + industry + "\n" + "description: " + description + "\n" + "detail: " + detail + "\n" + "status: " + status + "\n" + "warehouse: " + warehouse + "\n" + "transportfee: " + transportfee);
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                            }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
-    }
+//    public void readProductDatafromFirestore() {
+////        DocumentReference docref = db.collection("product").document("abc");
+//        db.collection("product")
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                String name = document.getString("name");
+//                                String industry = document.getString("industry");
+//                                String description = document.getString("description");
+//                                String detail = document.getString("detail");
+//                                String status = document.getString("status");
+//                                String warehouse = document.getString("warehouse");
+//                                String transportfee = document.getString("transportfee");
+//                                String id = document.getString("id");
+//                                textviewdata.setText("id: " + id + "\n" + "name: "+ name + "\n" + "industry: " + industry + "\n" + "description: " + description + "\n" + "detail: " + detail + "\n" + "status: " + status + "\n" + "warehouse: " + warehouse + "\n" + "transportfee: " + transportfee);
+//                                Log.d(TAG, document.getId() + " => " + document.getData());
+//                            }
+//                        } else {
+//                            Log.w(TAG, "Error getting documents.", task.getException());
+//                        }
+//                    }
+//                });
+//    }
 
 //     counters/${ID}
 //    public class Counter {
