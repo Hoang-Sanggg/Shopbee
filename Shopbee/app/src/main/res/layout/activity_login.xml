@@ -19,76 +19,111 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
-        android:layout_width="60dp"
+        android:layout_width="100dp"
         android:layout_gravity="center"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:src="@mipmap/shopbeeicon" />
 
-    <TextView
-        android:id="@+id/tv_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="28dp"
-        android:textSize="18sp"
-        android:fontFamily="@font/nunito_black"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputLayOutEmail"
+        android:id="@+id/TextInputLayOutUsernameLogin"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="30dp"
-        android:fontFamily="@font/nunito_light">
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edt_email"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="Enter your username"
-        android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/tv_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:textStyle="bold"
-        android:textColor="@color/black"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="28dp"
-        android:textSize="18sp"
-        android:fontFamily="@font/nunito_black"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputLayOutPassword"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="30dp"
-        android:fontFamily="@font/nunito_light"
-        app:passwordToggleEnabled="true">
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:hint="Username"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/shopbee_color"
+        app:hintTextColor="@color/shopbee_color"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edt_password"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:hint="Enter your password"
-            android:inputType="text" />
+            android:layout_height="55dp"
+            android:textSize="17dp"
+            android:drawablePadding="10dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nunito_bold"
+            android:textColor="@color/shopbee_color"
+            android:textCursorDrawable="@drawable/cusor"
+            android:drawableStart="@drawable/ic_baseline_person_24" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TextInputLayOutPasswordLogin"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="15dp"
+        android:hint="Password"
+        android:textColorHint="@color/black"
+        android:fontFamily="@font/nunito_light"
+        app:boxStrokeColor="@color/shopbee_color"
+        app:hintTextColor="@color/shopbee_color"
+        app:endIconMode="password_toggle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtUsernameLogin">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:textSize="17dp"
+            android:drawablePadding="8dp"
+            android:drawableTintMode="multiply"
+            android:textColor="@color/shopbee_color"
+            android:fontFamily="@font/nunito_bold"
+            android:textCursorDrawable="@drawable/cusor"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="35dp"
+            android:layout_weight="1"
+            android:text="Đăng kí tài khoản mới"
+            android:textColor="@color/shopbee_color" />
+
+        <TextView
+            android:id="@+id/tvlogin"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginEnd="35dp"
+            android:text="Đăng nhập bằng SMS"
+            android:textColor="@color/shopbee_color" />
+    </LinearLayout>
 
     <CheckBox
         android:id="@+id/chk_remember_login"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:text="Stay logged in?"
         android:textColor="#747679"/>
 

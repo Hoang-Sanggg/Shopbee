@@ -31,6 +31,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     //Google
     private GoogleSignInClient gsc;
     private GoogleSignInAccount account;
-    private TextInputEditText edt_email, edt_password;
+    private TextInputLayout edt_email, edt_password;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CheckBox chk_remember_login;
     private String idUser, usernameIntent;
@@ -57,9 +58,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        edt_email = findViewById(R.id.edt_email);
-        edt_password = findViewById(R.id.edt_password);
+        edt_email = (TextInputLayout)findViewById(R.id.TextInputLayOutUsernameLogin);
+        edt_password = (TextInputLayout)findViewById(R.id.TextInputLayOutPasswordLogin);
         chk_remember_login = findViewById(R.id.chk_remember_login);
+        btnLogin = findViewById(R.id.btnLogin);
 
 
         //Đăng nhập google
@@ -124,9 +126,9 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onClickLogin(View view) {
-        String username = edt_email.getText().toString();
-        String password = edt_password.getText().toString();
+    public void onClickLogin() {
+        String username = String.valueOf(edt_email.getEditText().getText());
+        String password = String.valueOf(edt_password.getEditText().getText());
 
         if (username.length() == 0 || password.length() == 0) {
             new AlertDialog.Builder(LoginActivity.this)

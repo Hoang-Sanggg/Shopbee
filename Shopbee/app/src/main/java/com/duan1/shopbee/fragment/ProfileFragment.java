@@ -91,4 +91,5 @@ public class ProfileFragment extends Fragment {
 //
 //        ProfileRecycler.setAdapter(profileAdapter);
     }
+
 }
