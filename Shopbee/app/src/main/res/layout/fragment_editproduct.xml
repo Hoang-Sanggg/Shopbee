@@ -206,6 +206,7 @@
                         android:text="/ 120"
                         android:padding="10dp"/>
                     <TextView
+                        android:id="@+id/numberOfWordsName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@id/txt120"
@@ -241,6 +242,7 @@
                         android:text="/ 3000"
                         android:padding="10dp"/>
                     <TextView
+                        android:id="@+id/numberOfWordsDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@id/txt3000"
@@ -415,7 +417,7 @@
                             android:textStyle="bold"
                             android:padding="5dp"
                             android:layout_marginLeft="5dp"
-                            android:drawableLeft="@drawable/list"/>
+                            android:drawableLeft="@drawable/comment"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
