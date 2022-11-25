@@ -25,10 +25,12 @@ import com.duan1.shopbee.fragment.MallFragment;
 import com.duan1.shopbee.fragment.NotificationFragment;
 import com.duan1.shopbee.fragment.ProfileFragment;
 import com.duan1.shopbee.model.Category;
+import com.duan1.shopbee.model.CategoryMall;
 import com.duan1.shopbee.model.Flashsale;
 import com.duan1.shopbee.model.LiveMain;
 import com.duan1.shopbee.model.LiveStories;
 import com.duan1.shopbee.model.LiveVoucher;
+import com.duan1.shopbee.slide_image.MallBanner;
 import com.duan1.shopbee.model.Profile;
 import com.duan1.shopbee.slide_image.LivePhoto;
 import com.duan1.shopbee.slide_image.Photo;
@@ -51,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     List<Category> categoryList;
     List<Flashsale> flashsaleList;
+
+    List<CategoryMall> categoryMallList;
+    private List<MallBanner> mallBannerList;
 
     List<LiveStories> liveStoriesList;
     List<LiveVoucher> liveVoucherList;
@@ -86,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         Menu menu = binding.bottomNavigation.getMenu();
-        menu.findItem(R.id.bnHome).setIcon(R.drawable.home_4);
+        menu.findItem(R.id.bnHome).setIcon(R.drawable
+                .home_4);
         menu.findItem(R.id.bnMall).setIcon(R.drawable.shopping_bag);
         menu.findItem(R.id.bnNotification).setIcon(R.drawable.notification);
         menu.findItem(R.id.bnLive).setIcon(R.drawable.video_camera);
@@ -160,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadFragmentMall() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, MallFragment.newInstance("hehe", "hihi"), "MainFragment")
+                .replace(R.id.frame_layout, MallFragment.newInstance(categoryMallList, mallBannerList), "MallFragment")
                 .commit();
     }
 

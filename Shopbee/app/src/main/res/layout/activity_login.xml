@@ -28,23 +28,53 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputLayOutUsernameLogin"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/TextInputLayOutUsername"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:hint="Username"
-        android:textColorHint="@color/black"
-        app:boxStrokeColor="@color/shopbee_color"
-        app:hintTextColor="@color/shopbee_color"
-        app:endIconMode="clear_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_below="@+id/ivShopee"
+        android:hint="Enter your username"
+        android:textColorHint="#B8B8B8"
+        app:boxStrokeColor="@color/purple_300"
+        app:boxStrokeWidthFocused="2dp"
+        app:endIconTint="@color/purple_300"
+        android:layout_centerHorizontal="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nunito_light"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/tv_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="28dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/nunito_black"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/TextInputLayOutPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_below="@+id/ivShopee"
+        android:hint="Enter your password"
+        android:textColorHint="#B8B8B8"
+        app:boxStrokeColor="@color/purple_300"
+        app:boxStrokeWidthFocused="2dp"
+        app:endIconTint="@color/purple_300"
+        android:layout_centerHorizontal="true">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -127,18 +157,40 @@
         android:text="Stay logged in?"
         android:textColor="#747679"/>
 
-
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
+        android:background="@drawable/custom_btn_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginEnd="120dp"
-        android:backgroundTint="#E3DDDC"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:text="Đăng nhập"
-        android:textColor="@color/black" />
+        android:textSize="20dp"
+        android:textAllCaps="false"/>
 
-
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10dp">
+       <TextView
+           android:id="@+id/tvRegister"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_marginStart="18dp"
+           android:text="Đăng kí tài khoản mới"
+           android:textColor="@color/shopbee_color" />
+       <TextView
+           android:id="@+id/tvLogin1"
+           android:layout_width="0dp"
+           android:layout_weight="1"
+           android:layout_height="wrap_content"
+           android:gravity="right"
+           android:layout_marginEnd="18dp"
+           android:text="Đăng nhập bằng SMS"
+           android:textColor="@color/shopbee_color" />
+   </LinearLayout>
 
     <TextView
         android:layout_margin="15dp"
@@ -155,61 +207,45 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:padding="10dp"
-        app:backgroundTint="#EAEAEA"
+        android:background="@drawable/custom_btn_login"
         android:gravity="center"
-        android:textAllCaps="true"
-        app:icon="@drawable/google_icon_login"
-        app:iconSize="25dp"
-        app:iconTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="10dp"
+        android:text="Đăng nhập với google"
+        android:textSize="20sp"
+        android:textAllCaps="false"
         android:textColor="@color/black"
-        android:text="Đăng nhập với google" />
+        android:drawableLeft="@drawable/icon_google"/>
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLoginFace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:gravity="center"
-        android:textAllCaps="true"
         android:padding="10dp"
-        app:backgroundTint="#EAEAEA"
-        app:icon="@drawable/facebook_icon_login"
-        app:iconSize="30dp"
-        app:iconTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/custom_btn_login"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/icon_facebook"
         android:textColor="@color/black"
-        android:text=" Đăng nhập với facebook" />
+        android:text="Đăng nhập với facebook"
+        android:textSize="20sp"
+        android:textAllCaps="false"/>
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLoginApp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:gravity="center"
-        android:textAllCaps="true"
         android:padding="10dp"
-        app:backgroundTint="#EAEAEA"
-        app:icon="@drawable/apple_icon_login"
-        app:iconSize="30dp"
-        app:iconTint="@null"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/custom_btn_login"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/apple_logo"
         android:textColor="@color/black"
-        android:text="Đăng nhập với Apple ID" />
-
-
-
-
-
-
+        android:text="Đăng nhập với Apple ID"
+        android:textSize="20sp"
+        android:textAllCaps="false"/>
 </LinearLayout>
 

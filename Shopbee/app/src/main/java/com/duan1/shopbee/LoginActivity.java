@@ -1,5 +1,6 @@
 package com.duan1.shopbee;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -46,9 +48,10 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CheckBox chk_remember_login;
     private String idUser, usernameIntent;
+    private TextView tvLogin, tvRegister;
     private Button btnLogin;
 
-
+    @SuppressLint("MissingInflatedId")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         edt_password = (TextInputLayout)findViewById(R.id.TextInputLayOutPasswordLogin);
         chk_remember_login = findViewById(R.id.chk_remember_login);
         btnLogin = findViewById(R.id.btnLogin);
+
 
         //Đăng nhập google
         GoogleSignInOptions gso = new GoogleSignInOptions
@@ -84,10 +88,25 @@ public class LoginActivity extends AppCompatActivity {
 //            }
 //        });
 
+        tvLogin = findViewById(R.id.tvLogin1);
+        //Đăng nhập
+
+        btnLogin = findViewById(R.id.btnLogin);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickLogin();
+                onClickLogin(view);
+            }
+        });
+
+        tvRegister = findViewById(R.id.tvRegister);
+        //Đăng ký
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, LoginNPActivity.class);
+                startActivity(intent);
             }
         });
 
