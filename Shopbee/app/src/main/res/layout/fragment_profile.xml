@@ -28,17 +28,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <LinearLayout
-                    android:layout_margin="25dp"
+                    android:layout_margin="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_image"
-                        android:src="@drawable/profile_avata_img"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        />
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
+                        android:src="@drawable/profile_avata_img" />
+
                     <LinearLayout
                         android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
@@ -315,8 +315,8 @@
 
                         <ImageView
                             android:id="@+id/profile_btn_wallet"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginTop="5dp"
                             android:background="@color/white"
                             android:src="@drawable/profile_wallet" />
@@ -338,8 +338,8 @@
 
                         <ImageView
                             android:id="@+id/profile_btn_shippingbox"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginTop="5dp"
                             android:background="@color/white"
                             android:src="@drawable/profile_package" />
@@ -361,8 +361,8 @@
 
                         <ImageView
                             android:id="@+id/profile_btn_truckShip"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginTop="5dp"
                             android:background="@color/white"
                             android:src="@drawable/profile_delivery_truck" />
@@ -385,8 +385,8 @@
 
                         <ImageView
                             android:id="@+id/profile_btn_medal"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:layout_marginTop="5dp"
                             android:background="@color/white"
                             android:src="@drawable/profile_star" />
@@ -411,8 +411,8 @@
 
                     <ImageView
                         android:id="@+id/profile_phone"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_marginStart="4dp"
                         android:src="@drawable/profile_smartphone_ringing"
 
@@ -448,8 +448,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_img_wallet"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_my_gadget"
                         android:layout_marginLeft="5dp"/>
                     <TextView
@@ -482,8 +482,8 @@
 
                         <ImageView
                             android:id="@+id/profile_utility_shopbeepay"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
                             android:layout_marginTop="5dp"
                             android:src="@drawable/profile_shopee_pay_icon" />
 
@@ -506,8 +506,8 @@
 
                         <ImageView
                             android:id="@+id/profile_utility_scoin"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
                             android:layout_marginTop="5dp"
                             android:src="@drawable/profile_scoin2_0" />
 
@@ -530,8 +530,8 @@
 
                         <ImageView
                             android:id="@+id/profile_utility_shopbeeVoucher"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
                             android:layout_marginTop="5dp"
                             android:src="@drawable/profile_voucher" />
 
@@ -550,7 +550,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     >
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -558,33 +558,46 @@
                         android:padding="10dp"
                         android:gravity="center"
                         >
+
                         <ImageView
                             android:id="@+id/profile_shopping_bag_img"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:layout_marginLeft="5dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/profile_shopping_bag"
-                            ></ImageView>
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/profile_repay"
+                            app:layout_constraintHorizontal_bias="0.126"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.428"></ImageView>
 
                         <TextView
                             android:id="@+id/profile_repay"
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginEnd="144dp"
                             android:text="Mua lại"
                             android:textColor="@color/black"
-                            android:layout_marginLeft="16dp"
-                            />
+                            android:textSize="12dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/textView4"
+                            app:layout_constraintStart_toEndOf="@+id/profile_shopping_bag_img"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:layout_width="200dp"
-                            android:layout_height="wrap_content"
+                            android:id="@+id/textView4"
+                            android:layout_width="138dp"
+                            android:layout_height="14dp"
                             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
                             android:text="Xem thêm sản phẩm"
+                            android:textSize="10dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                            android:layout_marginLeft="90dp"/>
 
-
-                    </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -797,8 +810,8 @@
                         >
                         <ImageView
                             android:id="@+id/profile_createShop"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/profile_store"
                             android:layout_marginLeft="5dp"
                             />
@@ -808,7 +821,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="16dp"
                             android:text="Bắt đầu bán"
-                            android:textColor="#ff8c00" />
+                            android:textColor="#ff8c00"
+                            android:textSize="15dp"/>
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -832,8 +846,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_medals"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_medal"
                         android:layout_marginLeft="5dp"/>
 
@@ -843,6 +857,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"
                         android:layout_marginTop="5dp"
+                        android:textSize="12dp"
                         android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
                         android:text="Khách hàng thân thiết"
                         android:textColor="@color/black" />
@@ -857,8 +872,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_like"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_favorite"
                         android:layout_marginLeft="5dp"/>
 
@@ -869,6 +884,7 @@
                         android:layout_marginLeft="13dp"
                         android:layout_marginTop="5dp"
                         android:text="Đã thích"
+                        android:textSize="12dp"
                         android:textColor="@color/black"
                         android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24" />
                 </LinearLayout>
@@ -881,8 +897,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_Clock"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_clock"
                         android:layout_marginLeft="5dp"/>
 
@@ -892,6 +908,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"
                         android:layout_marginTop="5dp"
+                        android:textSize="12dp"
                         android:text="Đã xem gần đây"
                         android:textColor="@color/black"
                         android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
@@ -905,8 +922,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_pay"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_pay"
                         android:layout_marginLeft="5dp"/>
 
@@ -917,6 +934,7 @@
                         android:layout_marginLeft="13dp"
                         android:layout_marginTop="5dp"
                         android:text="Số dư TK Shopee"
+                        android:textSize="12dp"
                         android:textColor="@color/black"
                         android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
                 </LinearLayout>
@@ -929,8 +947,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_Scoin"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_scoin2_0"
                         android:layout_marginLeft="5dp"/>
 
@@ -941,6 +959,7 @@
                         android:layout_marginLeft="13dp"
                         android:layout_marginTop="5dp"
                         android:text="Shopee Xu"
+                        android:textSize="12dp"
                         android:textColor="@color/black"
                         android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
                 </LinearLayout>
@@ -953,8 +972,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_evaluate"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_giftbox"
                         android:layout_marginLeft="5dp"/>
 
@@ -964,6 +983,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"
                         android:layout_marginTop="5dp"
+                        android:textSize="12dp"
                         android:text="Đánh giá của tôi"
                         android:textColor="@color/black"
                         android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
@@ -977,8 +997,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_share"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_share"
                         android:layout_marginLeft="5dp"/>
 
@@ -988,6 +1008,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"
                         android:layout_marginTop="5dp"
+                        android:textSize="12dp"
                         android:text="Shopee liên kết tiếp thị"
                         android:textColor="@color/black"
                         android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
@@ -1001,8 +1022,8 @@
                     >
                     <ImageView
                         android:id="@+id/profile_giftbox"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:src="@drawable/profile_giftbox"
                         android:layout_marginLeft="5dp"/>
 
@@ -1011,6 +1032,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13dp"
+                        android:textSize="12dp"
                         android:layout_marginTop="5dp"
                         android:text="Gói Siêu Voucher"
                         android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
@@ -1034,8 +1056,8 @@
                         >
                         <ImageView
                             android:id="@+id/profile_settingUser"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/profile_user"
                             android:layout_marginLeft="5dp"/>
 
@@ -1045,6 +1067,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="13dp"
                             android:layout_marginTop="5dp"
+                            android:textSize="12dp"
                             android:text="Thiết lập người dùng"
                             android:textColor="@color/black"
                             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
@@ -1057,8 +1080,8 @@
                         >
                         <ImageView
                             android:id="@+id/profile_help"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/profile_help"
                             android:layout_marginLeft="5dp"/>
 
@@ -1068,6 +1091,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="13dp"
                             android:layout_marginTop="5dp"
+                            android:textSize="12dp"
                             android:text="Trung tâm trợ giúp"
                             android:textColor="@color/black"
                             android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
@@ -1080,8 +1104,8 @@
                         >
                         <ImageView
                             android:id="@+id/profile_hotline"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:src="@drawable/profile_customer_service"
                             android:layout_marginLeft="5dp"/>
 
@@ -1090,6 +1114,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="13dp"
+                            android:textSize="12dp"
                             android:layout_marginTop="5dp"
                             android:text="Trò Chuyện Với Shopee"
                             android:textColor="@color/black"
