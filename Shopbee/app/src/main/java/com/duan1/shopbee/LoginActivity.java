@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 //            }
 //        });
 
-        tvLogin = findViewById(R.id.tvLogin1);
+        tvLogin = findViewById(R.id.tvLogin);
         //Đăng nhập
 
         btnLogin = findViewById(R.id.btnLogin);
@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClickLogin(view);
+                onClickLogin();
             }
         });
 
