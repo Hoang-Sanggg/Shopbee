@@ -28,10 +28,10 @@
             android:name=".ProductCreateSubActiviity.IndustryActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductCreateActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ProductCreateActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

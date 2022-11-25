@@ -38,11 +38,14 @@ public class IndustryActivity extends AppCompatActivity {
         lvIndustry.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectdFromList = lvIndustry.getItemAtPosition(position).toString();
-                Intent intent = new Intent(IndustryActivity.this, ProductCreateActivity.class);
-                intent.putExtra("industry",selectdFromList);
-                startActivity(intent);
+                String selectedFromList = lvIndustry.getItemAtPosition(position).toString();
+                Intent intent1 = new Intent(IndustryActivity.this, ProductCreateActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("industry",selectedFromList);
+                intent1.putExtras(bundle);
                 finish();
+                startActivity(intent1);
+
             }
         });
 

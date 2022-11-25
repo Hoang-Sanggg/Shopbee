@@ -2,7 +2,9 @@ package com.duan1.shopbee;
 
 import static android.service.controls.ControlsProviderService.TAG;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.duan1.shopbee.ProductCreateSubActiviity.IndustryActivity;
+import com.duan1.shopbee.ProductCreateSubActiviity.ProductDetailActivity;
 import com.duan1.shopbee.model.ProductCreate;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -47,6 +50,7 @@ import java.util.Map;
 
 public class ProductCreateActivity extends AppCompatActivity {
     ProductCreate productCreate;
+    Context context;
     FirebaseFirestore db = FirebaseFirestore.getInstance();;
     CollectionReference collectionReference = db.collection("product");
     DocumentReference docref = db.collection("product").document();
@@ -79,6 +83,7 @@ public class ProductCreateActivity extends AppCompatActivity {
 
 
 
+
         btnPush.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,20 +94,34 @@ public class ProductCreateActivity extends AppCompatActivity {
         txtIndustry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 startActivity(new Intent(ProductCreateActivity.this,IndustryActivity.class));
             }
         });
+        txtProductDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProductCreateActivity.this, ProductDetailActivity.class));
+            }
+        });
+
 
 
     }
 
     public void addProductDatatoFirestore() {
         productCreate = new ProductCreate();
-        Bundle bundle = getIntent().getExtras();
+
         Map<String, Object> product = new HashMap<>();
+        Bundle bundle = getIntent().getExtras();
         String name = edtProductName.getText().toString();
-        String detail = bundle.getString("productdetail");
-        String industry = bundle.getString("industry");
+        String detail = null;
+        String industry = null;
+        if(bundle!=null){
+            detail = bundle.getString("detail");
+            industry =  bundle.getString("industry");
+        }
         String description = edtDescription.getText().toString();
         String status = edtStatus.getText().toString();
         String transportfee = edtTransportfee.getText().toString();
