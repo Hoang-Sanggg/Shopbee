@@ -30,6 +30,7 @@ import com.duan1.shopbee.model.LiveMain;
 import com.duan1.shopbee.model.LiveStories;
 import com.duan1.shopbee.model.LiveVoucher;
 import com.duan1.shopbee.model.Profile;
+import com.duan1.shopbee.slide_image.LivePhoto;
 import com.duan1.shopbee.slide_image.Photo;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
