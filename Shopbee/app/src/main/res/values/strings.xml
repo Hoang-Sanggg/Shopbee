@@ -9,7 +9,7 @@
     <string name="enter_the_otp_send_so">Enter the OTP send so</string>
     <string name="didn_t_received_the_otp">Didn\'t received the OTP</string>
     <string name="resend_otp">RESEND OTP</string>
-    <string name="verify">Verify</string>
+    <string name="verify">Đăng nhập</string>
     <string name="get_otp">Get OTP</string>
 
     <string name="so_dien_thoai">Số điện thoại</string>

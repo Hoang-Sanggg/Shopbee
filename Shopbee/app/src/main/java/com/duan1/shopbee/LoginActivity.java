@@ -8,8 +8,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -45,7 +47,10 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CheckBox chk_remember_login;
     private String idUser, usernameIntent;
+    private TextView tvLogin, tvRegister;
+    private Button btnLogin;
 
+    @SuppressLint("MissingInflatedId")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         edt_email = findViewById(R.id.edt_email);
         edt_password = findViewById(R.id.edt_password);
         chk_remember_login = findViewById(R.id.chk_remember_login);
+
 
         //Đăng nhập google
         GoogleSignInOptions gso = new GoogleSignInOptions
@@ -79,6 +85,28 @@ public class LoginActivity extends AppCompatActivity {
 //                googleLauncher.launch(googleIntent);
 //            }
 //        });
+
+        tvLogin = findViewById(R.id.tvLogin1);
+        //Đăng nhập
+
+        btnLogin = findViewById(R.id.btnLogin);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickLogin(view);
+            }
+        });
+
+        tvRegister = findViewById(R.id.tvRegister);
+        //Đăng ký
+        tvRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, LoginNPActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
