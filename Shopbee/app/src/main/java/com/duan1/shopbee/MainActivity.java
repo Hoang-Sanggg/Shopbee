@@ -6,8 +6,10 @@ import androidx.core.view.MenuItemCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ import com.duan1.shopbee.model.Flashsale;
 import com.duan1.shopbee.model.LiveMain;
 import com.duan1.shopbee.model.LiveStories;
 import com.duan1.shopbee.model.LiveVoucher;
+import com.duan1.shopbee.model.User;
 import com.duan1.shopbee.slide_image.LivePhoto;
 import com.duan1.shopbee.model.ProductCreate;
 import com.duan1.shopbee.slide_image.MallBanner;
@@ -45,6 +48,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -56,6 +64,8 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements HideBottomNav, ShowBottomNav, ShowAddProduct {
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
     ActivityMainBinding binding;
     List<Category> categoryList;
@@ -69,13 +79,21 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
     List<LiveMain> liveMainList;
     List<LivePhoto> livePhotoList;
     private List<Photo> listPhoto;
-
+    private String name;
     List<Profile> mProfiles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        name = getIntent().getStringExtra("username");
+//        if (name == null) {
+//            name = LoginActivity.USERNAME;
+//        }
+        SharedPreferences sharedPref = MainActivity.this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        String name = sharedPref.getString("username", "");
+        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
 
         //Home
         categoryList = new ArrayList<>();
@@ -159,7 +177,9 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
         readFireStoreLiveStories();
         readFireStoreLiveVoucher();
         readFireStoreLiveMain();
-        readFireStoreFlashSales();
+//        readFireStoreFlashSales();
+        addData();
+        readData();
     }
 
     public void loadFragmentHome() {
@@ -325,4 +345,60 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
     public void showAddProduct() {
         binding.bottomNavigation.setVisibility(View.VISIBLE);
     }
+
+    private void addData(){
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("nameProduct").setValue("1");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("description").setValue("2");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("industry").setValue("3");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("industry").setValue("4");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("priceProduct").setValue("5");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("productdetail").setValue("6");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("warehouse").setValue("7");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("transportfee").setValue("8");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("status").setValue("9");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("nameShop").setValue("10");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("soldProduct").setValue("11");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("brandProduct").setValue("12");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("originProduct").setValue("13");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("baoHanhSp").setValue("15");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("shippingProduct").setValue("15");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("brandProduct").setValue("16");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("priceFlashSale").setValue("17");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("discountFlashSale").setValue("18");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("soldFlashSale").setValue("18");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("imageProduct").setValue("19");
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void readData(){
+
+        databaseReference.child("product").child("nameShop").child("productShop").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                flashsaleList.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ProductCreate productCreate = postSnapshot.getValue(ProductCreate.class);
+                    flashsaleList.add(productCreate);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
 }

@@ -92,7 +92,7 @@ public class FragmentProduct extends Fragment {
         tvNameShop.setText(nameShop); //10
         tvPriceFlashSale.setText(priceFlashSale);
         tvPriceProduct.setPaintFlags(tvPriceProduct.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        Toast.makeText(getContext(), imageProduct, Toast.LENGTH_SHORT).show();
+
         Glide.with(this)
                 .load(imageProduct)
                 .into(ivProduct);

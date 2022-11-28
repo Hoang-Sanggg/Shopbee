@@ -217,7 +217,6 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
                 .addToBackStack(null)
                 .commit();
         hideBottomNav.hideBottomNav();
-        Toast.makeText(getContext(), flashsaleList.get(position).getIdProduct(), Toast.LENGTH_SHORT).show();
     }
 
 
