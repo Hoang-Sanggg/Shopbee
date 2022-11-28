@@ -17,6 +17,22 @@ import com.duan1.shopbee.R;
  */
 public class ProductFragment extends Fragment {
 
+    private String nameProduct;
+    private String description; // mo ta
+    private String industry; // nganh hang
+    private String priceProduct; // gia
+    private String productdetail; // chi tiet san pham
+    private String warehouse; // ton kho
+    private String transportfee; // phi van chuyen
+    private String status; // trang thai
+    private String nameShop;
+    private String soldProduct; // da ban
+    private String brandProduct;
+    private String originProduct; // xuat xu
+    private String baoHanhSp;
+    private String shippingProduct;
+    private String imageProduct;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,6 +45,27 @@ public class ProductFragment extends Fragment {
     public ProductFragment() {
         // Required empty public constructor
     }
+
+    public ProductFragment(String nameProduct, String description, String industry, String priceProduct, String productdetail, String warehouse, String transportfee, String status, String nameShop, String soldProduct, String brandProduct, String originProduct, String baoHanhSp, String shippingProduct, String imageProduct, String mParam1, String mParam2) {
+        this.nameProduct = nameProduct;
+        this.description = description;
+        this.industry = industry;
+        this.priceProduct = priceProduct;
+        this.productdetail = productdetail;
+        this.warehouse = warehouse;
+        this.transportfee = transportfee;
+        this.status = status;
+        this.nameShop = nameShop;
+        this.soldProduct = soldProduct;
+        this.brandProduct = brandProduct;
+        this.originProduct = originProduct;
+        this.baoHanhSp = baoHanhSp;
+        this.shippingProduct = shippingProduct;
+        this.imageProduct = imageProduct;
+        this.mParam1 = mParam1;
+        this.mParam2 = mParam2;
+    }
+
 
     /**
      * Use this factory method to create a new instance of

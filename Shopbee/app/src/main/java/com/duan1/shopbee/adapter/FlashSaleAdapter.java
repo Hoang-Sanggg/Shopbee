@@ -16,16 +16,17 @@ import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.function.mFunction;
 
 import com.duan1.shopbee.model.Flashsale;
+import com.duan1.shopbee.model.ProductCreate;
 
 import java.util.List;
 
 public class FlashSaleAdapter extends RecyclerView.Adapter<FlashSaleAdapter.FlashSaleHoder> {
 
-    private List<Flashsale> flashsaleList;
+    private List<ProductCreate> flashsaleList;
     private Context context;
     private ClickToProductSale clickToProductSale;
 
-    public FlashSaleAdapter(List<Flashsale> flashsaleList, Context context, ClickToProductSale clickToProductSale) {
+    public FlashSaleAdapter(List<ProductCreate> flashsaleList, Context context, ClickToProductSale clickToProductSale) {
         this.flashsaleList = flashsaleList;
         this.context = context;
         this.clickToProductSale = clickToProductSale;
@@ -43,7 +44,7 @@ public class FlashSaleAdapter extends RecyclerView.Adapter<FlashSaleAdapter.Flas
         mFunction function = new mFunction();
         holder.priceFlashSale.setText(flashsaleList.get(position).getPriceFlashSale());
         holder.soldFlashSale.setText(flashsaleList.get(position).getSoldFlashSale());
-        holder.ivFlashSale.setImageBitmap(function.StringBitMap(flashsaleList.get(position).getImageFlashSale()));
+//        holder.ivFlashSale.setImageBitmap(function.StringBitMap(flashsaleList.get(position).getImageFlashSale()));
 //        holder.discountFlashSale.setText(flashsaleList.get(position).getDiscountFlashSale());
 
         holder.rootFlashSale.setOnClickListener(new View.OnClickListener() {
