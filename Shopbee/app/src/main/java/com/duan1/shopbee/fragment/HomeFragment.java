@@ -21,6 +21,8 @@ import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.CategoryAdapter;
 import com.duan1.shopbee.adapter.FlashSaleAdapter;
 import com.duan1.shopbee.callback.ClickToProductSale;
+import com.duan1.shopbee.callback.HideBottomNav;
+import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.Category;
 import com.duan1.shopbee.model.Flashsale;
 import com.duan1.shopbee.model.ProductCreate;
@@ -40,7 +42,7 @@ import me.relex.circleindicator.CircleIndicator;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements ClickToProductSale {
+public class HomeFragment extends Fragment implements ClickToProductSale, ShowBottomNav{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,8 +64,17 @@ public class HomeFragment extends Fragment implements ClickToProductSale {
     private List<Photo> listPhoto;
     private Timer timer;
 
-    public HomeFragment() {
+    ShowBottomNav showBottomNav;
+
+    HideBottomNav hideBottomNav;
+
+    public HomeFragment(HideBottomNav hideBottomNav, ShowBottomNav showBottomNav) {
         // Required empty public constructor
+        this.hideBottomNav = hideBottomNav;
+        this.showBottomNav = showBottomNav;
+    }
+
+    public HomeFragment() {
     }
 
     /**
@@ -74,8 +85,8 @@ public class HomeFragment extends Fragment implements ClickToProductSale {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(List<Category> _categoryList, List<ProductCreate> _flashsaleList, List<Photo> _data) {
-        HomeFragment fragment = new HomeFragment();
+    public static HomeFragment newInstance(List<Category> _categoryList, List<ProductCreate> _flashsaleList, List<Photo> _data, HideBottomNav hideBottomNav, ShowBottomNav showBottomNav) {
+        HomeFragment fragment = new HomeFragment(hideBottomNav, showBottomNav);
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM1, (Serializable) _categoryList);
         args.putSerializable(ARG_PARAM2, (Serializable) _flashsaleList);
@@ -83,6 +94,16 @@ public class HomeFragment extends Fragment implements ClickToProductSale {
         fragment.setArguments(args);
         return fragment;
     }
+
+//    public static HomeFragment newInstance(List<Category> _categoryList, List<ProductCreate> _flashsaleList, List<Photo> _data) {
+//        HomeFragment fragment = new HomeFragment();
+//        Bundle args = new Bundle();
+//        args.putSerializable(ARG_PARAM1, (Serializable) _categoryList);
+//        args.putSerializable(ARG_PARAM2, (Serializable) _flashsaleList);
+//        args.putSerializable(ARG_PARAM3, (Serializable) _data );
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -137,6 +158,7 @@ public class HomeFragment extends Fragment implements ClickToProductSale {
 
 
         autoSlideImage();
+        showBottomNav();
 
 
     }
@@ -191,9 +213,16 @@ public class HomeFragment extends Fragment implements ClickToProductSale {
     public void onClickToProductSale(List<ProductCreate> flashsaleList, int position) {
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, new FragmentProduct(flashsaleList.get(position).getIdProduct(),flashsaleList.get(position).getNameProduct(), flashsaleList.get(position).getDescription(), flashsaleList.get(position).getIndustry(), flashsaleList.get(position).getPriceProduct(), flashsaleList.get(position).getProductdetail(), flashsaleList.get(position).getWarehouse(),flashsaleList.get(position).getTransportfee(), flashsaleList.get(position).getStatus(), flashsaleList.get(position).getNameShop(), flashsaleList.get(position).getSoldProduct(), flashsaleList.get(position).getBrandProduct(), flashsaleList.get(position).getOriginProduct(), flashsaleList.get(position).getBaoHanhSp(), flashsaleList.get(position).getShippingProduct(), flashsaleList.get(position).getPriceFlashSale(), flashsaleList.get(position).getDiscountFlashSale(), flashsaleList.get(position).getSoldFlashSale(), flashsaleList.get(position).getImageProduct()), "MainFragment")
+                .replace(R.id.frame_layout, new FragmentProduct(flashsaleList.get(position).getIdProduct(),flashsaleList.get(position).getNameProduct(), flashsaleList.get(position).getDescription(), flashsaleList.get(position).getIndustry(), flashsaleList.get(position).getPriceProduct(), flashsaleList.get(position).getProductdetail(), flashsaleList.get(position).getWarehouse(),flashsaleList.get(position).getTransportfee(), flashsaleList.get(position).getStatus(), flashsaleList.get(position).getNameShop(), flashsaleList.get(position).getSoldProduct(), flashsaleList.get(position).getBrandProduct(), flashsaleList.get(position).getOriginProduct(), flashsaleList.get(position).getBaoHanhSp(), flashsaleList.get(position).getShippingProduct(), flashsaleList.get(position).getPriceFlashSale(), flashsaleList.get(position).getDiscountFlashSale(), flashsaleList.get(position).getSoldFlashSale(), flashsaleList.get(position).getImageProduct(), HomeFragment.this), "MainFragment")
                 .addToBackStack(null)
                 .commit();
+        hideBottomNav.hideBottomNav();
         Toast.makeText(getContext(), flashsaleList.get(position).getIdProduct(), Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void showBottomNav() {
+        showBottomNav.showBottomNav();
     }
 }

@@ -13,7 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
+import com.duan1.shopbee.callback.ShowBottomNav;
 
 import org.checkerframework.checker.index.qual.PolyUpperBound;
 
@@ -22,6 +24,8 @@ public class FragmentProduct extends Fragment {
     private TextView  tvDecription, tvIndustry, tvNameProduct, tvPriceProduct, tvbrandProduct,tvOrigin ,tvProductdetail,tvWarehouse,tvTransportfee,tvStatus,
     tvNameShop, tvSoldProduct, tvBaoHanhSp, tvShippingProduct, tvPriceFlashSale;
     private ImageView ivProduct;
+
+    ShowBottomNav showBottomNav;
 
     private String idProduct;
     private String nameProduct;
@@ -43,7 +47,7 @@ public class FragmentProduct extends Fragment {
     private String discountFlashSale;
     private String soldFlashSale;
 
-    public FragmentProduct(String idProduct, String nameProduct, String description, String industry, String priceProduct, String productdetail, String warehouse, String transportfee, String status, String nameShop, String soldProduct, String brandProduct, String originProduct, String baoHanhSp, String shippingProduct, String imageProduct, String priceFlashSale, String discountFlashSale, String soldFlashSale) {
+    public FragmentProduct(String idProduct, String nameProduct, String description, String industry, String priceProduct, String productdetail, String warehouse, String transportfee, String status, String nameShop, String soldProduct, String brandProduct, String originProduct, String baoHanhSp, String shippingProduct, String priceFlashSale, String discountFlashSale, String soldFlashSale, String imageProduct, ShowBottomNav showBottomNav) {
         this.idProduct = idProduct;
         this.nameProduct = nameProduct;
         this.description = description;
@@ -63,6 +67,7 @@ public class FragmentProduct extends Fragment {
         this.priceFlashSale = priceFlashSale;
         this.discountFlashSale = discountFlashSale;
         this.soldFlashSale = soldFlashSale;
+        this.showBottomNav = showBottomNav;
     }
 
     @Nullable
@@ -87,7 +92,10 @@ public class FragmentProduct extends Fragment {
         tvNameShop.setText(nameShop); //10
         tvPriceFlashSale.setText(priceFlashSale);
         tvPriceProduct.setPaintFlags(tvPriceProduct.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        Toast.makeText(getContext(), brandProduct, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), imageProduct, Toast.LENGTH_SHORT).show();
+        Glide.with(this)
+                .load(imageProduct)
+                .into(ivProduct);
     }
 
     private void initViews(View view){

@@ -15,10 +15,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.duan1.shopbee.callback.HideBottomNav;
+import com.duan1.shopbee.callback.ShowAddProduct;
+import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.databinding.ActivityMainBinding;
+import com.duan1.shopbee.fragment.FragmentProduct;
 import com.duan1.shopbee.fragment.HomeFragment;
 import com.duan1.shopbee.fragment.LiveFragment;
 import com.duan1.shopbee.fragment.MallFragment;
@@ -49,7 +54,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HideBottomNav, ShowBottomNav, ShowAddProduct {
 
     ActivityMainBinding binding;
     List<Category> categoryList;
@@ -159,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
     public void loadFragmentHome() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, flashsaleList, listPhoto), "MainFragment")
+                .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, flashsaleList, listPhoto, this, this), "MainFragment")
                 .commit();
     }
 
@@ -305,5 +310,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void hideBottomNav() {
+        binding.bottomNavigation.setVisibility(View.INVISIBLE);
+    }
 
+    @Override
+    public void showBottomNav() {
+        binding.bottomNavigation.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showAddProduct() {
+        binding.bottomNavigation.setVisibility(View.VISIBLE);
+    }
 }
