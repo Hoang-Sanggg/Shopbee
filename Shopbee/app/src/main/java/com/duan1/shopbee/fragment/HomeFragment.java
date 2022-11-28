@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.CategoryAdapter;
 import com.duan1.shopbee.adapter.FlashSaleAdapter;
+import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.model.Category;
 import com.duan1.shopbee.model.Flashsale;
 import com.duan1.shopbee.slide_image.Photo;
@@ -37,7 +38,7 @@ import me.relex.circleindicator.CircleIndicator;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ClickToProductSale {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -101,6 +102,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
         categoryRecycler = view.findViewById(R.id.recyclerCategory);
         categoryRecycler.setHasFixedSize(true);
         categoryRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -114,7 +117,7 @@ public class HomeFragment extends Fragment {
         flashsaleRecycler.setHasFixedSize(true);
         flashsaleRecycler.setLayoutManager(new GridLayoutManager(getContext(), 1,GridLayoutManager.HORIZONTAL, false));
 
-        flashSaleAdapter = new FlashSaleAdapter(flashsaleList);
+        flashSaleAdapter = new FlashSaleAdapter(flashsaleList, getContext(), HomeFragment.this);
         flashsaleRecycler.setAdapter(flashSaleAdapter);
 
 
@@ -132,6 +135,8 @@ public class HomeFragment extends Fragment {
 
 
         autoSlideImage();
+
+
     }
 
     private List<Photo> getListPhoto(){
@@ -178,5 +183,14 @@ public class HomeFragment extends Fragment {
             timer.cancel();
             timer = null;
         }
+    }
+
+    @Override
+    public void onClickToProductSale(List<Flashsale> flashsaleList, int position) {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, new ProductFragment(), "MainFragment")
+                .addToBackStack(null)
+                .commit();
     }
 }

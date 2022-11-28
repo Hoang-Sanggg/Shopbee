@@ -31,5 +31,7 @@
     <string name="gi_y_g_i_l_i_m_x_c_th_c_m_i">giây để gửi lại Mã xác thực mới.</string>
     <string name="login_facebook">Đăng nhập bằng Facebook</string>
     <string name="register_google">Đăng ký bằng Google</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

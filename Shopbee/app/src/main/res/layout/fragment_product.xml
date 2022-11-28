@@ -8,148 +8,7 @@
     android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="250dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/blackmores"/>
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/back"
-                android:backgroundTint="#FFFFFF"
-                android:alpha="0.5"
-                android:layout_margin="5dp">
-            </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/menu"
-                android:backgroundTint="#FFFFFF"
-                android:alpha="0.5"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_margin="5dp">
-            </com.google.android.material.floatingactionbutton.FloatingActionButton><com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/edit"
-                android:backgroundTint="#FFFFFF"
-                android:alpha="0.5"
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@id/btnMenu"
-                android:layout_margin="5dp">
-            </com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnShare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_toLeftOf="@+id/btnEdit"
-                android:alpha="0.5"
-                android:backgroundTint="#FFFFFF"
-                android:src="@drawable/share"></com.google.android.material.floatingactionbutton.FloatingActionButton>
-
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/txtLiked"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#FF0000"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:text="Yêu thích"
-                android:textColor="#fff"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:visibility="visible"
-                android:layout_marginLeft="10dp"/>
-
-            <TextView
-                android:id="@+id/txtName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thanh lí sữa Blackmores, Hikid dê núi, sữa thanh Meji"
-                android:layout_marginLeft="90dp"
-                android:textStyle="bold"
-                android:textSize="16dp"
-                android:textColor="@color/black"/>
-            <TextView
-                android:id="@+id/txtPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="đ500.000 - đ600.000"
-                android:textColor="#FF0000"
-                android:textStyle="bold"
-                android:textSize="24dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginLeft="10dp"/>
-            <TextView
-                android:id="@+id/txtFeedback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="95dp"
-                android:text="Chưa có đánh giá"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="130dp"
-                android:text="|"
-                android:layout_marginTop="95dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
-                android:layout_marginTop="95dp"
-                android:text="Đã bán"/>
-            <TextView
-                android:id="@+id/txtSold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
-                android:layout_marginTop="95dp"
-                android:text="0"/>
-            <TextView
-                android:id="@+id/btnLiked"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="95dp"
-                android:layout_marginLeft="290dp"
-                android:drawableLeft="@drawable/heart"/>
-            <TextView
-                android:id="@+id/btnShare1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="95dp"
-                android:layout_marginLeft="330dp"
-                android:drawableLeft="@drawable/share"/>
-            <TextView
-                android:id="@+id/btnShare2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="95dp"
-                android:layout_marginLeft="370dp"
-                android:drawableLeft="@drawable/share2"/>
-        </RelativeLayout>
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -303,7 +162,7 @@
                         android:gravity="right"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:drawableRight="@drawable/next"/>
+                        android:drawableRight="@drawable/ic_baseline_navigate_next_24"/>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -387,7 +246,7 @@
                         android:id="@+id/btnFreeShip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/next"
+                        android:drawableLeft="@drawable/ic_baseline_navigate_next_24"
                         android:paddingTop="25dp"/>
                 </LinearLayout>
             </LinearLayout>
@@ -419,7 +278,7 @@
                         android:id="@+id/btnChoose"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/next" />
+                        android:drawableLeft="@drawable/ic_baseline_navigate_next_24" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
