@@ -44,6 +44,7 @@
     android:layout_margin="5dp"
     android:textColor="@color/black"
    />
+   
 
     <TextView
         android:id="@+id/txtProductDetail"
@@ -52,18 +53,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Phân loại hàng"/>
+
+
+    <TextView
+        android:id="@+id/txtWareHouse"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kho"/>
     <EditText
         android:id="@+id/edtWarehouse"
         android:textSize="13sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Kho"/>
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Trạng thái"/>
     <EditText
         android:id="@+id/edtStatus"
         android:textSize="13sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Trạng thái"/>
+    <TextView
+
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phân loại hàng"/>
+
     <EditText
         android:id="@+id/edtTransportfee"
         android:layout_width="match_parent"
