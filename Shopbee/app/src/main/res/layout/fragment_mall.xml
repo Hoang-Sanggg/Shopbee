@@ -257,12 +257,12 @@
                    app:layout_constraintEnd_toEndOf="parent"
                    app:layout_constraintStart_toStartOf="parent"
                    app:layout_constraintTop_toTopOf="parent"
-                   app:riv_corner_radius="12dp" />
+                   app:riv_corner_radius="10dp" />
 
                <ImageView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:layout_marginEnd="5dp"
+                   android:layout_marginEnd="4dp"
                    android:src="@drawable/ic_next_btn_mall"
                    app:layout_constraintBottom_toBottomOf="parent"
                    app:layout_constraintEnd_toEndOf="parent"
@@ -299,12 +299,6 @@
                     android:background="@drawable/img_danisa"
                     android:paddingRight="5dp"/>
             </androidx.cardview.widget.CardView>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerCategory"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="5dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -335,44 +329,200 @@
                     android:layout_height="wrap_content"
                     android:text="Tìm hiểu ngay"
                     android:textSize="15sp"
-                    android:layout_marginLeft="200dp"
+                    android:layout_marginLeft="180dp"
                     android:textStyle="normal"
                     android:drawableRight="@drawable/ic_right_arrow"/>
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcv_Category"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/black"/>
+                android:background="@color/white"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="20dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/PivAvatar"
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginStart="10dp"
+                                android:padding="10dp"
+                                android:src="@mipmap/programmer"
+                                android:background="@drawable/custom_login"/>
+                            <TextView
+                                android:id="@+id/PtxtName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Programer"
+                                android:textSize="10dp"
+                                android:textColor="@color/black"
+                                android:gravity="center"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Đã mua 1 lần"
+                                android:textSize="10dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="64dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="đ10.000" />
+
+                                <ImageView
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mall_resp_img2"
+                                android:layout_width="match_parent"
+                                android:layout_height="61dp"
+                                android:src="@drawable/profile_item2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Đã mua 1 lần"
+                                android:textSize="10dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="64dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="đ10.000" />
+
+                                <ImageView
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="20dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mall_resp_img3"
+                                android:layout_width="match_parent"
+                                android:layout_height="61dp"
+                                android:src="@drawable/profile_item3" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Đã mua 1 lần"
+                                android:textSize="10dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="64dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="đ10.000" />
+
+                                <ImageView
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="20dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mall_resp_img4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/profile_item2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Đã mua 1 lần"
+                                android:textSize="10dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="64dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="đ10.000" />
+
+                                <ImageView
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="10dp"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </HorizontalScrollView>
         </LinearLayout>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerSanPham1"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_margin="10dp"
-            android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout_title"
-            tools:layout_editor_absoluteX="170dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerSanPham2"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerSanPham1"
-            tools:layout_editor_absoluteX="170dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerSanPham3"
-            android:layout_width="match_parent"
-            android:layout_height="1000dp"
-            android:layout_margin="10dp"
-            android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerSanPham2"
-            tools:layout_editor_absoluteX="67dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

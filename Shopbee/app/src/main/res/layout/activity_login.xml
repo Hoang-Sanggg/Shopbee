@@ -145,7 +145,7 @@
 
 
 
-    <com.google.android.material.button.MaterialButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/imb_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

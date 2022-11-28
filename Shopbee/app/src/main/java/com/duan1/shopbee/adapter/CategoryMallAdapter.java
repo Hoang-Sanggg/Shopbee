@@ -38,8 +38,9 @@ public class CategoryMallAdapter extends RecyclerView.Adapter<CategoryMallAdapte
     @Override
     public void onBindViewHolder(@NonNull CategoryMallViewHolder holder, int position) {
         mFunction function = new mFunction();
-        holder.nameCategory.setText(categoryMallList.get(position).getNameCategory());
-        holder.ivAvtCategory.setImageBitmap(function.StringBitMap(categoryMallList.get(position).getImageCategory()));
+        holder.mall_Name_item.setText(categoryMallList.get(position).getNameCategoryMall());
+        holder.mall_Img_item.setImageBitmap(function.StringBitMap(categoryMallList.get(position).getImageCategoryMall()));
+
     }
 
     @Override
@@ -50,13 +51,13 @@ public class CategoryMallAdapter extends RecyclerView.Adapter<CategoryMallAdapte
 
     public class CategoryMallViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView nameCategory;
-        private ImageView ivAvtCategory;
+        private TextView mall_Name_item;
+        private ImageView mall_Img_item;
 
         public CategoryMallViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameCategory = itemView.findViewById(R.id.tvNameCatrgory);
-            ivAvtCategory = itemView.findViewById(R.id.ivCategory);
+            mall_Img_item = itemView.findViewById(R.id.ivCategoryMall);
+            mall_Name_item = itemView.findViewById(R.id.txtNameCatrgoryMall);
         }
     }
 }

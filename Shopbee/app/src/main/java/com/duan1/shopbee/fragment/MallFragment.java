@@ -23,6 +23,7 @@ import com.duan1.shopbee.adapter.CategoryMallAdapter;
 import com.duan1.shopbee.model.Category;
 import com.duan1.shopbee.model.CategoryMall;
 import com.duan1.shopbee.model.Flashsale;
+import com.duan1.shopbee.model.Profile;
 import com.duan1.shopbee.slide_image.MallBanner;
 import com.duan1.shopbee.slide_image.MallBannerAdapter;
 import com.duan1.shopbee.slide_image.Photo;
@@ -45,12 +46,13 @@ public class MallFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM1 = "DATA_CATEGORY";
+    private static final String ARG_PARAM2 = "DATA_FLASESALE";
+    private static final String ARG_PARAM3 = "DATA_SRC_BANNER";
 
 
     // TODO: Rename and change types of parameters
-    private List<CategoryMall> categoryList;
+    private List<CategoryMall> mcategoryList;
     private RecyclerView categoryRecycler;
     private CategoryMallAdapter categoryMallAdapter;
 
@@ -85,9 +87,11 @@ public class MallFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            categoryList = (List<CategoryMall>) getArguments().getSerializable(ARG_PARAM1);
+            mcategoryList = (List<CategoryMall>) getArguments().getSerializable(ARG_PARAM1);
             listBanner = (List<MallBanner>) getArguments().getSerializable(ARG_PARAM2);
         }
+
+        mcategoryList = (List<CategoryMall>) getArguments().getSerializable(ARG_PARAM1);
     }
 
     @Override
@@ -104,11 +108,14 @@ public class MallFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        categoryRecycler = view.findViewById(R.id.rcv_Category);
-        categoryRecycler.setHasFixedSize(true);
-        categoryRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        categoryRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2,GridLayoutManager.HORIZONTAL, false));
-
+//        categoryRecycler = view.findViewById(R.id.recyclerCategory);
+//        categoryRecycler.setHasFixedSize(true);
+//        categoryRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+//        categoryRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2,GridLayoutManager.HORIZONTAL, false));
+//
+//        mcategoryList.size();
+//        categoryMallAdapter = new CategozzzzzzryMallAdapter(mcategoryList);
+//        categoryRecycler.setAdapter(categoryMallAdapter);
 
         viewPager = view.findViewById(R.id.viewPager);
         circleIndicator = view.findViewById(R.id.circle_indicator);
@@ -180,5 +187,7 @@ public class MallFragment extends Fragment {
             timer = null;
         }
     }
+
+
 
 }

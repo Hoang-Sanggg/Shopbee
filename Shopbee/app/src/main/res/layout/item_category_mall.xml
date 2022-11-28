@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="10dp">
-    
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
         android:orientation="vertical">
-        
         <ImageView
-            android:id="@+id/img_product_mall"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/icons_shopee"/>
-        
+            android:id="@+id/ivCategoryMall"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="14dp"
+            android:src="@drawable/icons_shopee"
+            android:background="@drawable/rounded_category"
+            android:padding="5dp"/>
         <TextView
-            android:id="@+id/tv_name_category"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtNameCatrgoryMall"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="6dp"
-            android:textSize="14sp"
+            android:text="Khung giờ săn sale"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:textColor="@color/black"
-            android:text="Thể thao &amp; Du lịch"
             android:gravity="center"/>
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</LinearLayout>
