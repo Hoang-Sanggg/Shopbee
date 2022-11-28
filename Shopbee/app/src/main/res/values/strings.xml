@@ -9,13 +9,13 @@
     <string name="enter_the_otp_send_so">Enter the OTP send so</string>
     <string name="didn_t_received_the_otp">Didn\'t received the OTP</string>
     <string name="resend_otp">RESEND OTP</string>
-    <string name="verify">Verify</string>
+    <string name="verify">Đăng nhập</string>
     <string name="get_otp">Get OTP</string>
 
     <string name="so_dien_thoai">Số điện thoại</string>
     <string name="next">Tiếp theo</string>
     <string name="text_checkbox">Kích hoạt Ví điện tử ngay để tận hưởng nhiều chương trình ưu đãi, giảm giá và tích điểm </string>
-    <string name="dang_ly_google">Đăng ký bằng Google</string>
+    <string name="login_google">Đăng nhập bằng Google</string>
     <string name="dat_lai_mat_khau">Đặt lại mật khẩu</string>
     <string name="next_fragment_dat_lai_mat_khau">Tiếp</string>
     <string name="so_dien_thoai_da_thay_doi">Số điện thoại đã thay đổi?</string>
@@ -29,5 +29,7 @@
     <string name="ki_m_tra_th_ng_b_o_c_a_zalo_nh_n_m_k_p_th_i">Kiểm tra thông báo của Zalo để nhận Mã kịp thời.</string>
     <string name="n_u_b_n_ch_a_c_t_i_kho_n_zalo_h_y_nh_n_m_i_t_n_tr_l_i_ch_n_ph_ng_th_c_kh_c">Nếu bạn chưa có tài khoản Zalo, hãy nhấn mũi tên trở lại để chọn phương thức khác.</string>
     <string name="gi_y_g_i_l_i_m_x_c_th_c_m_i">giây để gửi lại Mã xác thực mới.</string>
+    <string name="login_facebook">Đăng nhập bằng Facebook</string>
+    <string name="register_google">Đăng ký bằng Google</string>
 
 </resources>

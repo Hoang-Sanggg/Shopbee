@@ -43,7 +43,7 @@ public class FlashSaleAdapter extends RecyclerView.Adapter<FlashSaleAdapter.Flas
     @Override
     public int getItemCount() {
         return flashsaleList.size();
-    }
+    } //quan trong
 
     public class FlashSaleHoder extends RecyclerView.ViewHolder{
 
