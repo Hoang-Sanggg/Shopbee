@@ -24,6 +24,7 @@ public class OpenAppActivity extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new Intent(OpenAppActivity.this, LoginActivity.class));
+                finish();
             }
         },3000);
     }
