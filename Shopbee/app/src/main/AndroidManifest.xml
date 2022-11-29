@@ -29,8 +29,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopbee"
         tools:targetApi="31">
-        <activity android:name=".MallActivity"
-            android:exported="false"/>
+
         
         <activity
             android:name=".ProductCreateSubActiviity.ProductDetailActivity"
@@ -54,11 +53,14 @@
         <activity
             android:name=".LoginNPActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+
         <activity
             android:name=".ResetPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="false" />
 
         <activity
