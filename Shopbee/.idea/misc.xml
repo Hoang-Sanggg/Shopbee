@@ -41,54 +41,11 @@
         <entry key="..\:/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_banner.xml" value="0.22826086956521738" />
         <entry key="..\:/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_mall_banner.xml" value="0.22826086956521738" />
         <entry key="..\:/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_slide_banner.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable-v24/bg_btn_register.xml" value="0.2135" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable-v24/bg_checkbox_register.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable-v24/ic_baseline_lock_24.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/bg_indicator.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/bg_list_mall.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_android_black_24dp.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_baseline_arrow.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_baseline_fiber_new_24.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_12.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_live_circle.xml" value="0.192" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_text_help.xml" value="0.2135" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_unchecked.xml" value="0.2135" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/rounded_livestories.xml" value="0.2135" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_industry.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_login.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_login_number_phone.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_main.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_pay_fragment.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_product_detail.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_register.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_reset_password.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_send_otp.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_verify_otp.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_editproduct.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_home.xml" value="0.264" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_live.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_mall.xml" value="0.264" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_notif.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_notification.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_product.xml" value="0.128" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_profile.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_upseller.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_banner.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_category_home.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_category_mall.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_flash_sale.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_live_slide_banner.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_livefragment_livestories.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_livefragment_mainliving.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_livefragment_voucher.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_pc_industry.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_profile.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_sanpham.xml" value="0.23731884057971014" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_slide_banner.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_slide_mall_banner.xml" value="0.25" />
-        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_toll_bar.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_product_create.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_product_detail.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_mall.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_product.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
       </map>
     </option>
   </component>
