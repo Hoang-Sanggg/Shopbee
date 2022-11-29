@@ -119,16 +119,16 @@ public class HomeFragment extends Fragment {
 
 
         viewPager = view.findViewById(R.id.viewPager_banner);
-//        circleIndicator = view.findViewById(R.id.circle_banner);
+        circleIndicator = view.findViewById(R.id.circle_indicator);
 
         listPhoto = getListPhoto();
 
         photoAdaper = new PhotoAdaper(getContext(), getListPhoto());
         viewPager.setAdapter(photoAdaper);
 
-//        circleIndicator.setViewPager(viewPager);
+        circleIndicator.setViewPager(viewPager);
 
-//        photoAdaper.registerDataSetObserver(circleIndicator.getDataSetObserver());
+        photoAdaper.registerDataSetObserver(circleIndicator.getDataSetObserver());
 
 
         autoSlideImage();

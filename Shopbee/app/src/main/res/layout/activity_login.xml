@@ -170,6 +170,10 @@
         android:text="Hoặc"/>
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/imb_login"
         android:layout_width="match_parent"

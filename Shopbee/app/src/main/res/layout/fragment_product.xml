@@ -4,18 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
+<<<<<<< Updated upstream
     android:background="#EAE7E7">
     <LinearLayout
+=======
+    android:background="#EAE7E7"
+    android:orientation="vertical">
+
+    <ScrollView
+>>>>>>> Stashed changes
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="250dp">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/blackmores"/>
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,16 +46,16 @@
                 android:layout_alignParentRight="true"
                 android:layout_margin="5dp">
             </com.google.android.material.floatingactionbutton.FloatingActionButton><com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/btnEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/edit"
-                android:backgroundTint="#FFFFFF"
-                android:alpha="0.5"
-                android:layout_alignParentTop="true"
-                android:layout_toLeftOf="@id/btnMenu"
-                android:layout_margin="5dp">
-            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/edit"
+            android:backgroundTint="#FFFFFF"
+            android:alpha="0.5"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/btnMenu"
+            android:layout_margin="5dp">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/btnShare"
@@ -60,9 +70,9 @@
                 android:alpha="0.5"
                 android:backgroundTint="#FFFFFF"
                 android:src="@drawable/share"></com.google.android.material.floatingactionbutton.FloatingActionButton>
-
         </RelativeLayout>
-        <RelativeLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
@@ -148,6 +158,7 @@
                 android:layout_marginTop="95dp"
                 android:layout_marginLeft="370dp"
                 android:drawableLeft="@drawable/share2"/>
+<<<<<<< Updated upstream
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -301,3 +312,11 @@
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
+=======
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>
+>>>>>>> Stashed changes

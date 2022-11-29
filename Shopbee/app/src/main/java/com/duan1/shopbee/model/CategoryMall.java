@@ -4,27 +4,27 @@ import java.util.List;
 
 public class CategoryMall {
 
-    private String nameCategory;
-    private String imageCategory;
+    private String nameCategoryMall;
+    private String imageCategoryMall;
 
-    public CategoryMall(String nameCategory, String imageCategory) {
-        this.nameCategory = nameCategory;
-        this.imageCategory = imageCategory;
+    public CategoryMall(String nameCategoryMall, String imageCategoryMall) {
+        this.nameCategoryMall = nameCategoryMall;
+        this.imageCategoryMall = imageCategoryMall;
     }
 
-    public String getNameCategory() {
-        return nameCategory;
+    public String getNameCategoryMall() {
+        return nameCategoryMall;
     }
 
-    public void setNameCategory(String nameCategory) {
-        this.nameCategory = nameCategory;
+    public void setNameCategoryMall(String nameCategoryMall) {
+        this.nameCategoryMall = nameCategoryMall;
     }
 
-    public String getImageCategory() {
-        return imageCategory;
+    public String getImageCategoryMall() {
+        return imageCategoryMall;
     }
 
-    public void setImageCategory(String imageCategory) {
-        this.imageCategory = imageCategory;
+    public void setImageCategoryMall(String imageCategoryMall) {
+        this.imageCategoryMall = imageCategoryMall;
     }
 }
