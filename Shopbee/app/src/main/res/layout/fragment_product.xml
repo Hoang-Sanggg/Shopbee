@@ -3,9 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="#EAE7E7"
-    android:orientation="vertical">
+    android:background="#EAE7E7">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,6 +16,7 @@
                 android:layout_height="250dp">
 
                 <ImageView
+                    android:id="@+id/ivProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/meiji_0_1"/>
@@ -53,15 +52,50 @@
                     android:textSize="16dp"
                     android:textStyle="bold" />
                 <TextView
+                    android:id="@+id/txtPriceFlashsale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:text="đ500.000 - đ600.000"
+                    android:textColor="#FF0000"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:id="@+id/txtPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="60dp"
                     android:text="đ500.000 - đ600.000"
-                    android:textColor="#FF0000"
-                    android:textStyle="bold"
-                    android:textSize="24dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/txtDiscount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="100dp"
+                        android:layout_marginTop="55dp"
+                        android:text="đ500.000 - đ600.000"
+                        android:textColor="#FF0000"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.7"
+                        android:paddingLeft="5dp"/>
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
@@ -744,7 +778,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="2">
                         <TextView
-                            android:id="@+id/txtBrand"
+                            android:id="@+id/txtBrandProduct"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Meiji"
@@ -790,7 +824,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Giai đoạn"
+                            android:text="Trạng thái"
                             android:padding="5dp"/>
                     </LinearLayout>
                     <LinearLayout
@@ -898,7 +932,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Ngày hết hạn"
+                            android:text="Bảo hành"
                             android:padding="5dp"/>
                     </LinearLayout>
                     <LinearLayout
@@ -909,7 +943,7 @@
                             android:id="@+id/txtExpiredDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="1-12-2024"
+                            android:text=""
                             android:padding="5dp"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -939,6 +973,22 @@
                             android:padding="5dp"/>
                     </LinearLayout>
                 </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff"
+                        android:orientation="vertical">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1.5dp"
+                            android:background="#D6D6D6"/>
+                        <TextView
+                            android:id="@+id/txtDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp"
+                            android:text="Nón sơn cao cấp"/>
+                    </LinearLayout>
             </LinearLayout>
 
             <RelativeLayout
@@ -1001,7 +1051,7 @@
                     android:text="Xem tất cả"
                     android:textColor="#f00"
                     android:textStyle="bold"
-                    android:drawableRight="@drawable/next"
+                    android:drawableRight="@drawable/ic_baseline_navigate_next_24"
                     android:drawableTint="#f00"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="15dp"/>

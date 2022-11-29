@@ -2,6 +2,7 @@ package com.duan1.shopbee;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -50,6 +51,9 @@ public class LoginActivity extends AppCompatActivity {
     private String idUser, usernameIntent;
     private TextView tvLogin, tvRegister;
     private Button btnLogin;
+
+    public static String USERNAME = "";
+    public static String _id ;
 
     @SuppressLint("MissingInflatedId")
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -165,7 +169,15 @@ public class LoginActivity extends AppCompatActivity {
 
                                     intent.putExtra("idUser", idUser);
                                     intent.putExtra("username", usernameIntent);
+                                    USERNAME = usernameIntent;
 
+                                    SharedPreferences sharedPref = LoginActivity.this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPref.edit();
+                                    editor.putString("username", username);
+                                    editor.commit();
+
+                                    mFunction function = new mFunction();
+                                    mFunction.data(usernameIntent, LoginActivity.this);
 
                                     startActivity(intent);
                                     finish();

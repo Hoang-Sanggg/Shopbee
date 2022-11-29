@@ -6,8 +6,10 @@ import androidx.core.view.MenuItemCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -15,10 +17,15 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.duan1.shopbee.callback.HideBottomNav;
+import com.duan1.shopbee.callback.ShowAddProduct;
+import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.databinding.ActivityMainBinding;
+import com.duan1.shopbee.fragment.FragmentProduct;
 import com.duan1.shopbee.fragment.HomeFragment;
 import com.duan1.shopbee.fragment.LiveFragment;
 import com.duan1.shopbee.fragment.MallFragment;
@@ -30,6 +37,9 @@ import com.duan1.shopbee.model.Flashsale;
 import com.duan1.shopbee.model.LiveMain;
 import com.duan1.shopbee.model.LiveStories;
 import com.duan1.shopbee.model.LiveVoucher;
+import com.duan1.shopbee.model.User;
+import com.duan1.shopbee.slide_image.LivePhoto;
+import com.duan1.shopbee.model.ProductCreate;
 import com.duan1.shopbee.slide_image.MallBanner;
 import com.duan1.shopbee.model.Profile;
 import com.duan1.shopbee.slide_image.LivePhoto;
@@ -38,6 +48,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -48,11 +63,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HideBottomNav, ShowBottomNav, ShowAddProduct {
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
     ActivityMainBinding binding;
     List<Category> categoryList;
-    List<Flashsale> flashsaleList;
+    List<ProductCreate> flashsaleList;
 
     List<CategoryMall> categoryMallList;
     private List<MallBanner> mallBannerList;
@@ -62,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     List<LiveMain> liveMainList;
     List<LivePhoto> livePhotoList;
     private List<Photo> listPhoto;
-
+    private String name;
     List<Profile> mProfiles;
 
     @Override
@@ -70,10 +87,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        name = getIntent().getStringExtra("username");
+//        if (name == null) {
+//            name = LoginActivity.USERNAME;
+//        }
+        SharedPreferences sharedPref = MainActivity.this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        String name = sharedPref.getString("username", "");
+        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+
         //Home
         categoryList = new ArrayList<>();
         flashsaleList = new ArrayList<>();
-        flashsaleList.add(new Flashsale("hehe", "hehe", "hehe", "hehe"));
         //Live
         liveMainList = new ArrayList<>();
         liveStoriesList = new ArrayList<>();
@@ -153,13 +177,15 @@ public class MainActivity extends AppCompatActivity {
         readFireStoreLiveStories();
         readFireStoreLiveVoucher();
         readFireStoreLiveMain();
-
+//        readFireStoreFlashSales();
+        addData();
+        readData();
     }
 
     public void loadFragmentHome() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, flashsaleList, listPhoto), "MainFragment")
+                .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, flashsaleList, listPhoto, this, this), "MainFragment")
                 .commit();
     }
 
@@ -212,6 +238,31 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("user", "khong tim ra ");
                     }
                 });
+    }
+
+    public void readFireStoreFlashSales() {
+        FirebaseFirestore.getInstance()
+                .collection("product")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snapshot : snapshots) {
+                                flashsaleList.add(new ProductCreate(snapshot.getString("idProduct"),snapshot.getString("nameProduct"),snapshot.getString("description"),snapshot.getString("industry"),snapshot.getString("priceProduct"),snapshot.getString("productdetail"),snapshot.getString("wirehouse"),snapshot.getString("transportfree"),snapshot.getString("status"),snapshot.getString("nameShop"),snapshot.getString("soldProduct"),snapshot.getString("brandProduct"),snapshot.getString("originProduct"),snapshot.getString("baoHanhSP"),snapshot.getString("shippingProduct"),snapshot.getString("priceFlashSale"),snapshot.getString("discountFlashSale"),snapshot.getString("soldFlashSale"),snapshot.getString("imageProduct")));
+                           // Toast.makeText(MainActivity.this, ""+snapshot.getString("idProduct")+snapshot.getString("description")+snapshot.getString("industry")+snapshot.getString("priceProduct")+snapshot.getString("productdetail")+snapshot.getString("wirehouse")+snapshot.getString("transportfree")+snapshot.getString("status")+snapshot.getString("nameShop")+snapshot.getString("soldProduct")+snapshot.getString("brandProduct")+snapshot.getString("originProduct")+snapshot.getString("baoHanhSP")+snapshot.getString("shippingProduct")+snapshot.getString("priceFlashSale")+snapshot.getString("discountFlashSale")+snapshot.getString("soldFlashSale")+snapshot.getString("imageProduct"), Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("user", "khong tim ra ");
+                    }
+                });
+
+
     }
 
     public void readFireStoreLiveStories() {
@@ -279,6 +330,75 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+
+    @Override
+    public void hideBottomNav() {
+        binding.bottomNavigation.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void showBottomNav() {
+        binding.bottomNavigation.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showAddProduct() {
+        binding.bottomNavigation.setVisibility(View.VISIBLE);
+    }
+
+    private void addData(){
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("nameProduct").setValue("1");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("description").setValue("2");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("industry").setValue("3");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("industry").setValue("4");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("priceProduct").setValue("5");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("productdetail").setValue("6");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("warehouse").setValue("7");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("transportfee").setValue("8");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("status").setValue("9");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("nameShop").setValue("10");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("soldProduct").setValue("11");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("brandProduct").setValue("12");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("originProduct").setValue("13");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("baoHanhSp").setValue("15");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("shippingProduct").setValue("15");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("brandProduct").setValue("16");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("priceFlashSale").setValue("17");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("discountFlashSale").setValue("18");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("soldFlashSale").setValue("18");
+            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("imageProduct").setValue("19");
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void readData(){
+
+        databaseReference.child("product").child("nameShop").child("productShop").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                flashsaleList.clear();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ProductCreate productCreate = postSnapshot.getValue(ProductCreate.class);
+                    flashsaleList.add(productCreate);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
 
 }
