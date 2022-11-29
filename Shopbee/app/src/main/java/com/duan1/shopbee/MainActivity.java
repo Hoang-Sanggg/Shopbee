@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -82,10 +83,19 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
     private String name;
     List<Profile> mProfiles;
 
+    LinearLayout toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ///
+
+
+
+
+        ///
 
 //        name = getIntent().getStringExtra("username");
 //        if (name == null) {
@@ -213,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
     public void loadFragmentProfile() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, ProfileFragment.newInstance(mProfiles, "hihi"), "MainFragment")
+                .replace(R.id.frame_layout, ProfileFragment.newInstance(mProfiles, "hihi", this, this), "MainFragment")
                 .commit();
     }
 
@@ -333,12 +343,16 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
 
     @Override
     public void hideBottomNav() {
+        toolbar = findViewById(R.id.linearLayout1);
         binding.bottomNavigation.setVisibility(View.INVISIBLE);
+        toolbar.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void showBottomNav() {
         binding.bottomNavigation.setVisibility(View.VISIBLE);
+        toolbar = findViewById(R.id.linearLayout1);
+        toolbar.setVisibility(View.VISIBLE);
     }
 
     @Override

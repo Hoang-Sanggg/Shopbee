@@ -9,26 +9,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
-
         <ImageView
-            android:id="@+id/left_icon_arrow"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:id="@+id/left_icon_arrow"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_baseline_arrow" />
+            android:src="@drawable/ic_baseline_arrow"/>
 
         <TextView
             android:id="@+id/txtDangKy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="60dp"
             android:layout_toEndOf="@id/left_icon_arrow"
-            android:text="Thanh toán"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:layout_centerVertical="true"
+            android:textSize="20sp"
+            android:text="Sản Phẩm Của Tôi"/>
 
+        <ImageView
+            android:id="@+id/ic_earch"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="50dp"
+            android:src="@drawable/ic_earch" />
 
+        <ImageView
+            android:id="@+id/ic_chat"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_chat" />
     </RelativeLayout>
 
 
