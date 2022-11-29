@@ -54,6 +54,49 @@
         <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_mall.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_product.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable-v24/custom_btn_login.xml" value="0.188" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_baseline_arrow.xml" value="0.188" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_baseline_help.xml" value="0.188" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_baseline_text_snippet_24.xml" value="0.188" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_earch.xml" value="0.188" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_launcher_background.xml" value="0.188" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/drawable/ic_text_help.xml" value="0.188" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_industry.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_login.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_login_number_phone.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_open_app.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_pay_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_product_create.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_product_detail.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_reset_password.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_send_otp.xml" value="0.13134057971014493" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/activity_verify_otp.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/buynow_fragment.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_editproduct.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_live.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_mall.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_my_product.xml" value="0.264" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_notif.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_notification.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_product.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragment_upseller.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/fragmnet_my_product.xml" value="0.16" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_banner.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_category_home.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_category_mall.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_flash_sale.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/item_livefragment_livestories.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/toolbar.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/toolbar_buynow.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/toolbar_code_otp_login.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/toolbar_dat_lai_mat_khau.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/toolbar_login_otp.xml" value="0.25" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/toolbar_my_product.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/phudh/OneDrive/Documents/GitHub/Shopbee/Shopbee/app/src/main/res/layout/toolbar_register.xml" value="0.25" />
       </map>
     </option>
   </component>
