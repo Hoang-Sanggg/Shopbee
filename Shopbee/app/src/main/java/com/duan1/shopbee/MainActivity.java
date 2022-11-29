@@ -31,6 +31,7 @@ import com.duan1.shopbee.model.LiveMain;
 import com.duan1.shopbee.model.LiveStories;
 import com.duan1.shopbee.model.LiveVoucher;
 import com.duan1.shopbee.slide_image.LivePhoto;
+import com.duan1.shopbee.model.ProductCreate;
 import com.duan1.shopbee.slide_image.MallBanner;
 import com.duan1.shopbee.model.Profile;
 import com.duan1.shopbee.slide_image.LivePhoto;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     List<Category> categoryList;
-    List<Flashsale> flashsaleList;
+    List<ProductCreate> flashsaleList;
 
     List<CategoryMall> categoryMallList;
     private List<MallBanner> mallBannerList;
@@ -74,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         //Home
         categoryList = new ArrayList<>();
         flashsaleList = new ArrayList<>();
-        flashsaleList.add(new Flashsale("hehe", "hehe", "hehe", "hehe"));
         //Live
         liveMainList = new ArrayList<>();
         liveStoriesList = new ArrayList<>();
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         readFireStoreLiveStories();
         readFireStoreLiveVoucher();
         readFireStoreLiveMain();
-
+        readFireStoreFlashSales();
     }
 
     public void loadFragmentHome() {
@@ -213,6 +213,31 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("user", "khong tim ra ");
                     }
                 });
+    }
+
+    public void readFireStoreFlashSales() {
+        FirebaseFirestore.getInstance()
+                .collection("product")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<DocumentSnapshot> snapshots = queryDocumentSnapshots.getDocuments();
+                        for (DocumentSnapshot snapshot : snapshots) {
+                                flashsaleList.add(new ProductCreate(snapshot.getString("idProduct"),snapshot.getString("nameProduct"),snapshot.getString("description"),snapshot.getString("industry"),snapshot.getString("priceProduct"),snapshot.getString("productdetail"),snapshot.getString("wirehouse"),snapshot.getString("transportfree"),snapshot.getString("status"),snapshot.getString("nameShop"),snapshot.getString("soldProduct"),snapshot.getString("brandProduct"),snapshot.getString("originProduct"),snapshot.getString("baoHanhSP"),snapshot.getString("shippingProduct"),snapshot.getString("priceFlashSale"),snapshot.getString("discountFlashSale"),snapshot.getString("soldFlashSale"),snapshot.getString("imageProduct")));
+                           // Toast.makeText(MainActivity.this, ""+snapshot.getString("idProduct")+snapshot.getString("description")+snapshot.getString("industry")+snapshot.getString("priceProduct")+snapshot.getString("productdetail")+snapshot.getString("wirehouse")+snapshot.getString("transportfree")+snapshot.getString("status")+snapshot.getString("nameShop")+snapshot.getString("soldProduct")+snapshot.getString("brandProduct")+snapshot.getString("originProduct")+snapshot.getString("baoHanhSP")+snapshot.getString("shippingProduct")+snapshot.getString("priceFlashSale")+snapshot.getString("discountFlashSale")+snapshot.getString("soldFlashSale")+snapshot.getString("imageProduct"), Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("user", "khong tim ra ");
+                    }
+                });
+
+
     }
 
     public void readFireStoreLiveStories() {

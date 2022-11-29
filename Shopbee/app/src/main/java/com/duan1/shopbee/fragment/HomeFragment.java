@@ -15,12 +15,15 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.CategoryAdapter;
 import com.duan1.shopbee.adapter.FlashSaleAdapter;
+import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.model.Category;
 import com.duan1.shopbee.model.Flashsale;
+import com.duan1.shopbee.model.ProductCreate;
 import com.duan1.shopbee.slide_image.Photo;
 import com.duan1.shopbee.slide_image.PhotoAdaper;
 
@@ -37,7 +40,7 @@ import me.relex.circleindicator.CircleIndicator;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements ClickToProductSale {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,7 +50,7 @@ public class HomeFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private List<Category> categoryList;
-    private List<Flashsale> flashsaleList;
+    private List<ProductCreate> flashsaleList;
     private CategoryAdapter categoryAdapter;
     private FlashSaleAdapter flashSaleAdapter;
 
@@ -71,7 +74,7 @@ public class HomeFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(List<Category> _categoryList, List<Flashsale> _flashsaleList, List<Photo> _data) {
+    public static HomeFragment newInstance(List<Category> _categoryList, List<ProductCreate> _flashsaleList, List<Photo> _data) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM1, (Serializable) _categoryList);
@@ -86,7 +89,7 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             categoryList = (List<Category>) getArguments().getSerializable(ARG_PARAM1);
-            flashsaleList = (List<Flashsale>) getArguments().getSerializable(ARG_PARAM2);
+            flashsaleList = (List<ProductCreate>) getArguments().getSerializable(ARG_PARAM2);
             listPhoto = (List<Photo>) getArguments().getSerializable(ARG_PARAM3);
         }
     }
@@ -101,6 +104,8 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
         categoryRecycler = view.findViewById(R.id.recyclerCategory);
         categoryRecycler.setHasFixedSize(true);
         categoryRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -114,7 +119,7 @@ public class HomeFragment extends Fragment {
         flashsaleRecycler.setHasFixedSize(true);
         flashsaleRecycler.setLayoutManager(new GridLayoutManager(getContext(), 1,GridLayoutManager.HORIZONTAL, false));
 
-        flashSaleAdapter = new FlashSaleAdapter(flashsaleList);
+        flashSaleAdapter = new FlashSaleAdapter(flashsaleList, getContext(), HomeFragment.this);
         flashsaleRecycler.setAdapter(flashSaleAdapter);
 
 
@@ -132,6 +137,8 @@ public class HomeFragment extends Fragment {
 
 
         autoSlideImage();
+
+
     }
 
     private List<Photo> getListPhoto(){
@@ -178,5 +185,15 @@ public class HomeFragment extends Fragment {
             timer.cancel();
             timer = null;
         }
+    }
+
+    @Override
+    public void onClickToProductSale(List<ProductCreate> flashsaleList, int position) {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, new FragmentProduct(flashsaleList.get(position).getIdProduct(),flashsaleList.get(position).getNameProduct(), flashsaleList.get(position).getDescription(), flashsaleList.get(position).getIndustry(), flashsaleList.get(position).getPriceProduct(), flashsaleList.get(position).getProductdetail(), flashsaleList.get(position).getWarehouse(),flashsaleList.get(position).getTransportfee(), flashsaleList.get(position).getStatus(), flashsaleList.get(position).getNameShop(), flashsaleList.get(position).getSoldProduct(), flashsaleList.get(position).getBrandProduct(), flashsaleList.get(position).getOriginProduct(), flashsaleList.get(position).getBaoHanhSp(), flashsaleList.get(position).getShippingProduct(), flashsaleList.get(position).getPriceFlashSale(), flashsaleList.get(position).getDiscountFlashSale(), flashsaleList.get(position).getSoldFlashSale(), flashsaleList.get(position).getImageProduct()), "MainFragment")
+                .addToBackStack(null)
+                .commit();
+        Toast.makeText(getContext(), flashsaleList.get(position).getIdProduct(), Toast.LENGTH_SHORT).show();
     }
 }
