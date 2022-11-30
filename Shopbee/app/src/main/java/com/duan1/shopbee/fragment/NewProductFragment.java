@@ -72,6 +72,7 @@ public class NewProductFragment extends Fragment {
 
     ImageView imageView;
     String linkDL;
+    TextView txtNewIndustry;
 
     final String[] c = new String[1];
 
@@ -120,6 +121,10 @@ public class NewProductFragment extends Fragment {
         EditText tvDecription = view.findViewById(R.id.edtNewDescription);
         LinearLayout edtindustry = view.findViewById(R.id.edtindustry);
         imageView = view.findViewById(R.id.ivNewProduct1);
+        txtNewIndustry = view.findViewById(R.id.txtNewIndustry);
+
+
+
         Button button = view.findViewById(R.id.btn_addProduct);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -208,11 +213,11 @@ public class NewProductFragment extends Fragment {
                 switch(which){
                     case 0:
                         c[0] = types[which];
-                        Toast.makeText(getContext(), types[which], Toast.LENGTH_SHORT).show();
+                        txtNewIndustry.setText(String.valueOf(c[0]));
                         break;
                     case 1:
                         c[0] = types[which];
-                        Toast.makeText(getContext(), types[which], Toast.LENGTH_SHORT).show();
+                        txtNewIndustry.setText(String.valueOf(c[0]));
                         break;
                 }
             }

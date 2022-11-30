@@ -288,7 +288,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="3">
                             <TextView
-                                android:id="@+id/txtProduct"
+                                android:id="@+id/txtNewIndustry"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
@@ -296,7 +296,6 @@
                                 android:gravity="right"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:hint="a"
                                 android:textSize="16dp"/>
                         </LinearLayout>
                     </LinearLayout>
