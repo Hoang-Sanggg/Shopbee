@@ -1,5 +1,9 @@
 package com.duan1.shopbee.model;
 
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.io.Serializable;
 
 public class ProductCreate implements Serializable {
