@@ -12,24 +12,19 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-
         android:icon="@mipmap/ic_app_shopee"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_app_shopee"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopbee"
         tools:targetApi="31">
-
-        android:hardwareAccelerated="false"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:largeHeap="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Shopbee"
-        tools:targetApi="31">
-
-        
+        <activity
+            android:name=".Fragment_Search"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ProductCreateSubActiviity.ProductDetailActivity"
             android:exported="false" />
@@ -41,34 +36,28 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SendOTPActivity"
             android:exported="false" />
         <activity
             android:name=".VerifyOTPActivity"
             android:exported="false" />
-
         <activity
             android:name=".LoginNPActivity"
             android:exported="false" />
-
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
-
-
         <activity
             android:name=".ResetPasswordActivity"
             android:exported="false" />
-
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".OpenAppActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
