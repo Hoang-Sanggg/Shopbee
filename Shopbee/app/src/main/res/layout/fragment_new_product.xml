@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.NewProductFragment">
     <LinearLayout
         android:layout_width="match_parent"
@@ -266,20 +267,21 @@
                     <LinearLayout
                         android:id="@+id/edtindustry"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:background="#fff"
-                        android:layout_marginTop="15dp">
+                        android:layout_marginTop="15dp"
+                        android:padding="5dp">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="2">
                             <TextView
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:text="  Ngành hàng"
                                 android:textSize="16dp"
                                 android:textStyle="bold"
-                                android:padding="5dp"
+                                android:padding="8dp"
                                 android:layout_marginLeft="5dp"
                                 android:drawableLeft="@drawable/list"/>
                         </LinearLayout>
@@ -290,8 +292,8 @@
                             <TextView
                                 android:id="@+id/txtNewIndustry"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
+                                android:layout_height="match_parent"
+                                android:padding="8dp"
                                 android:drawableRight="@drawable/ic_baseline_navigate_next_24"
                                 android:gravity="right"
                                 android:ellipsize="end"
@@ -335,6 +337,7 @@
                                 android:textSize="16dp"/>
                         </LinearLayout>
                     </LinearLayout><LinearLayout
+                    android:id="@+id/lnOriginNewProduct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#fff"
@@ -346,7 +349,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="  Độ tuổi khuyến nghị"
+                            android:text="  Xuất xứ "
                             android:textSize="16dp"
                             android:textStyle="bold"
                             android:padding="5dp"
@@ -357,20 +360,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="3">
-                        <TextView
-                            android:id="@+id/txtAge"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="5dp"
-                            android:drawableRight="@drawable/ic_baseline_navigate_next_24"
-                            android:gravity="right"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:hint="a"
-                            android:textSize="16dp"/>
+<!--                        <com.hbb20.CountryCodePicker-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"/>-->
                     </LinearLayout>
                 </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/lnBaoHanhSp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#fff"
@@ -382,7 +378,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="  Thể tích"
+                                android:text="  Bảo hành "
                                 android:textSize="16dp"
                                 android:textStyle="bold"
                                 android:padding="5dp"
@@ -402,11 +398,11 @@
                                 android:gravity="right"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:hint="a"
                                 android:textSize="16dp"/>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/lnStatus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#fff"
@@ -418,43 +414,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="  Giai đoạn"
-                                android:textSize="16dp"
-                                android:textStyle="bold"
-                                android:padding="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:drawableLeft="@drawable/comment"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3">
-                            <TextView
-                                android:id="@+id/txtProcess"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="5dp"
-                                android:drawableRight="@drawable/ic_baseline_navigate_next_24"
-                                android:gravity="right"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:hint="a"
-                                android:textSize="16dp"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#fff"
-                        android:layout_marginTop="1dp">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="2">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="  Kiểu đóng gói"
+                                android:text="  Trạng thái"
                                 android:textSize="16dp"
                                 android:textStyle="bold"
                                 android:padding="5dp"
@@ -474,7 +434,6 @@
                                 android:gravity="right"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:hint="a"
                                 android:textSize="16dp"/>
                         </LinearLayout>
                     </LinearLayout>
@@ -499,6 +458,7 @@
 <!--                        </LinearLayout>-->
 <!--                    </LinearLayout>-->
             <LinearLayout
+                android:id="@+id/lnDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#fff"
@@ -510,7 +470,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="  Tất cả thuộc tính"
+                            android:text="  Mô tả sản phẩm "
                             android:textSize="16dp"
                             android:textStyle="bold"
                             android:padding="5dp"
@@ -530,7 +490,6 @@
                             android:gravity="right"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:hint="a"
                             android:textSize="16dp"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -593,8 +552,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="3">
-                            <TextView
-                                android:id="@+id/txtPrice"
+                            <EditText
+                                android:id="@+id/edtNewPrice"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
@@ -629,8 +588,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="3">
-                            <TextView
-                                android:id="@+id/txtStorage"
+                            <EditText
+                                android:id="@+id/edtStorage"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="5dp"
