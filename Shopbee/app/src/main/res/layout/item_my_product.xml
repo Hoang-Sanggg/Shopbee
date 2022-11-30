@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivMyProduct"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/bun_ngu_sac"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp">
+
+                    <TextView
+                        android:id="@+id/tvThongTinSP_My_Product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bún ngũ sắc rau củ 1kg thực phẩm ăn
+                                                            kiêng, hỗ trợ giảm cân 1kg"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
+
+                    <ImageView
+                        android:id="@+id/ivUuDai_My_Product"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/img_uu_dai"/>
+
+                    <TextView
+                        android:id="@+id/txtGiaSP_My_Product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="đ35.000 - đ68.000"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#ECEBEB"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/img_kho_hang"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/txtKhoHang_My_Product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kho hàng 497"
+                        android:textSize="14sp"
+                        android:paddingLeft="5dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/img_da_ban"
+                        android:layout_marginLeft="80dp"/>
+
+                    <TextView
+                        android:id="@+id/txtDaBan_My_Product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đã bán 780"
+                        android:textSize="14sp"
+                        android:paddingLeft="5dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/img_thich"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:id="@+id/txtLuotThich_My_Product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thích 40"
+                        android:textSize="14sp"
+                        android:paddingLeft="5dp"/>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/img_luot_xem"
+                        android:layout_marginLeft="115dp"/>
+
+                    <TextView
+                        android:id="@+id/txtLuotXem_My_Product"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lược xem 32"
+                        android:textSize="14sp"
+                        android:paddingLeft="5dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#ECEBEB"
+                android:layout_marginTop="5dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAn_My_Product"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:text="Ẩn"
+                    android:textSize="18sp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:background="@drawable/custom_btn_login"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSua_My_Product"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:text="Sửa"
+                    android:textSize="16sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/custom_btn_login"
+                    android:layout_marginLeft="10dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnThem_My_Product"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:text="..."
+                    android:textSize="16sp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/custom_btn_login"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+</androidx.cardview.widget.CardView>

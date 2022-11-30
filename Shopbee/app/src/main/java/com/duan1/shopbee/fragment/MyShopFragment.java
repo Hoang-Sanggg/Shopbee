@@ -6,14 +6,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ShowBottomNav;
+import com.duan1.shopbee.model.ProductCreate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MyShopFragment extends Fragment{
 
@@ -25,12 +31,15 @@ public class MyShopFragment extends Fragment{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private List<ProductCreate> productCreateList;
     ShowBottomNav showBottomNav;
 
-
-    public MyShopFragment(ShowBottomNav showBottomNav) {
+    public MyShopFragment(List<ProductCreate> productCreateList, ShowBottomNav showBottomNav) {
+        this.productCreateList = productCreateList;
         this.showBottomNav = showBottomNav;
     }
+
+
 
 
     @Override
@@ -52,7 +61,7 @@ public class MyShopFragment extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ImageView btn_back_myProduct = view.findViewById(R.id.btn_back_myProduct);
+        ImageView btn_back_myProduct = view.findViewById(R.id.btn_back_myShop);
         LinearLayout lnMyProduct = view.findViewById(R.id.lnMyProduct);
 
         btn_back_myProduct.setOnClickListener(new View.OnClickListener() {
@@ -69,12 +78,15 @@ public class MyShopFragment extends Fragment{
                 onClickMyProduct(view);
             }
         });
+
+//        Toast.makeText(getContext(), productCreateList.size(), Toast.LENGTH_SHORT).show();
+
     }
 
     public void onClickMyProduct(View view) {
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, new MyProductFragment(), "MainFragment")
+                .replace(R.id.frame_layout, new MyProductFragment(productCreateList), "MainFragment")
                 .addToBackStack(null)
                 .commit();
     }

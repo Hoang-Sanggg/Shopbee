@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.function.mFunction;
@@ -46,7 +47,9 @@ public class FlashSaleAdapter extends RecyclerView.Adapter<FlashSaleAdapter.Flas
         holder.soldFlashSale.setText(flashsaleList.get(position).getSoldFlashSale());
 //        holder.ivFlashSale.setImageBitmap(function.StringBitMap(flashsaleList.get(position).getImageFlashSale()));
 //        holder.discountFlashSale.setText(flashsaleList.get(position).getDiscountFlashSale());
-
+        Glide.with(context)
+                .load(flashsaleList.get(position).getImageProduct())
+                .into(holder.ivFlashSale);
         holder.rootFlashSale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

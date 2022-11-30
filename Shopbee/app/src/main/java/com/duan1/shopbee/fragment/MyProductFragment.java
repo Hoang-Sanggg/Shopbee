@@ -5,14 +5,25 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.duan1.shopbee.R;
+import com.duan1.shopbee.adapter.AddMyProductAdapter;
+import com.duan1.shopbee.adapter.CategoryAdapter;
 import com.duan1.shopbee.callback.HideBottomNav;
 import com.duan1.shopbee.callback.ShowBottomNav;
+import com.duan1.shopbee.model.ProductCreate;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,10 +40,15 @@ public class MyProductFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private List<ProductCreate> productCreateList;
+
+    private AddMyProductAdapter addMyProductAdapter;
+
+    private RecyclerView rcyMyProduct;
 
 
-    public MyProductFragment() {
-        // Required empty public constructor
+    public MyProductFragment(List<ProductCreate> productCreateList) {
+        this.productCreateList = productCreateList;
     }
 
     /**
@@ -72,6 +88,39 @@ public class MyProductFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ImageView btn_back_myProduct = view.findViewById(R.id.btn_back_myProduct);
+
+        rcyMyProduct = view.findViewById(R.id.rcyMyProduct);
+
+        Button btnAdd = view.findViewById(R.id.btn_addNewProduct);
+
+        rcyMyProduct.setHasFixedSize(true);
+        rcyMyProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
+        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList);
+        rcyMyProduct.setAdapter(addMyProductAdapter);
+
+        btn_back_myProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requireActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickAddNewMyProduct(view);
+            }
+        });
+
+    }
+    public void onClickAddNewMyProduct(View view) {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, new NewProductFragment(), "MainFragment")
+                .addToBackStack(null)
+                .commit();
     }
 
 
