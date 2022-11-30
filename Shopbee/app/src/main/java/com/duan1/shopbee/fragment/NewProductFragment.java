@@ -1,6 +1,7 @@
 package com.duan1.shopbee.fragment;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -16,6 +17,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -25,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,6 +73,8 @@ public class NewProductFragment extends Fragment {
     ImageView imageView;
     String linkDL;
 
+    final String[] c = new String[1];
+
     public NewProductFragment() {
         // Required empty public constructor
     }
@@ -113,10 +118,12 @@ public class NewProductFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         EditText tvNameProduct = view.findViewById(R.id.edtNewNameProduct);
         EditText tvDecription = view.findViewById(R.id.edtNewDescription);
+        LinearLayout edtindustry = view.findViewById(R.id.edtindustry);
         imageView = view.findViewById(R.id.ivNewProduct1);
         Button button = view.findViewById(R.id.btn_addProduct);
 
         button.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 String nameProduct = tvNameProduct.getText().toString();
@@ -127,8 +134,7 @@ public class NewProductFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("description").setValue(decription);
-                        databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("industry").setValue("3");
-                        databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("industry").setValue("4");
+                        databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("industry").setValue(c[0]);
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("priceProduct").setValue("5");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("productdetail").setValue("6");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("warehouse").setValue("7");
@@ -165,10 +171,53 @@ public class NewProductFragment extends Fragment {
             }
         });
 
+        edtindustry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialogIndustry = new AlertDialog.Builder(getContext());
+                dialogIndustry.setTitle("Ngành hàng");
+                String[] types = {"By Zip", "By Category"};
+                dialogIndustry.setItems(types, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        switch(which){
+                            case 0:
+                                 dialog_catelory(view, "By Zip", new String[]{"By Zip", "By Category"});
+                                break;
+                            case 1:
+                                 dialog_catelory(view, "By Category", new String[]{"By Zip", "By Category"});
+                                break;
+                        }
+                    }
+                });
+                dialogIndustry.show();
+            }
+
+        });
+
     }
 
-    private void addData(View view){
-
+    private void dialog_catelory(View view,String title, String[] list){
+        AlertDialog.Builder dialogIndustry = new AlertDialog.Builder(getContext());
+        dialogIndustry.setTitle(title);
+        String[] types = list;
+        final String[] category = {""};
+        dialogIndustry.setItems(types, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                switch(which){
+                    case 0:
+                        c[0] = types[which];
+                        Toast.makeText(getContext(), types[which], Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        c[0] = types[which];
+                        Toast.makeText(getContext(), types[which], Toast.LENGTH_SHORT).show();
+                        break;
+                }
+            }
+        });
+        dialogIndustry.show();
     }
     public static String RandomMaDonHang(int len)
     {
