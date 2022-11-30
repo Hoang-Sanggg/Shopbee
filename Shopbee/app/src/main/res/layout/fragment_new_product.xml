@@ -300,6 +300,7 @@
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
+                        android:id="@+id/lnNewBrand"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#fff"
@@ -331,7 +332,6 @@
                                 android:gravity="right"
                                 android:ellipsize="end"
                                 android:maxLines="1"
-                                android:hint="a"
                                 android:textSize="16dp"/>
                         </LinearLayout>
                     </LinearLayout><LinearLayout
@@ -478,26 +478,27 @@
                                 android:textSize="16dp"/>
                         </LinearLayout>
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#fff"
-                        android:layout_marginTop="1dp">
-                        <LinearLayout
-                            android:id="@+id/INVIMA"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="  INVIMA cerfication"
-                                android:textSize="16dp"
-                                android:textStyle="bold"
-                                android:padding="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:drawableLeft="@drawable/comment"/>
-                        </LinearLayout>
-                    </LinearLayout><LinearLayout
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="#fff"-->
+<!--                        android:layout_marginTop="1dp">-->
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/INVIMA"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent">-->
+<!--                            <TextView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="  INVIMA cerfication"-->
+<!--                                android:textSize="16dp"-->
+<!--                                android:textStyle="bold"-->
+<!--                                android:padding="5dp"-->
+<!--                                android:layout_marginLeft="5dp"-->
+<!--                                android:drawableLeft="@drawable/comment"/>-->
+<!--                        </LinearLayout>-->
+<!--                    </LinearLayout>-->
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#fff"

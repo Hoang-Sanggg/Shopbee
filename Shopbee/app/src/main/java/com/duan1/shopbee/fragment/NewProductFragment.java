@@ -72,9 +72,10 @@ public class NewProductFragment extends Fragment {
 
     ImageView imageView;
     String linkDL;
-    TextView txtNewIndustry;
+    TextView txtNewIndustry, txtNewBrand;
+    LinearLayout edtindustry, edtBrand;
 
-    final String[] c = new String[1];
+    final String[] industry = new String[1];
 
     public NewProductFragment() {
         // Required empty public constructor
@@ -119,10 +120,15 @@ public class NewProductFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         EditText tvNameProduct = view.findViewById(R.id.edtNewNameProduct);
         EditText tvDecription = view.findViewById(R.id.edtNewDescription);
-        LinearLayout edtindustry = view.findViewById(R.id.edtindustry);
+
+
+        edtindustry = view.findViewById(R.id.edtindustry);
+        edtBrand = view.findViewById(R.id.lnNewBrand);
+
+
         imageView = view.findViewById(R.id.ivNewProduct1);
         txtNewIndustry = view.findViewById(R.id.txtNewIndustry);
-
+        txtNewBrand = view.findViewById(R.id.txtBrand);
 
 
         Button button = view.findViewById(R.id.btn_addProduct);
@@ -139,7 +145,7 @@ public class NewProductFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("description").setValue(decription);
-                        databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("industry").setValue(c[0]);
+                        databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("industry").setValue(txtNewIndustry.getText());
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("priceProduct").setValue("5");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("productdetail").setValue("6");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("warehouse").setValue("7");
@@ -147,11 +153,10 @@ public class NewProductFragment extends Fragment {
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("status").setValue("9");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("nameShop").setValue("10");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("soldProduct").setValue("11");
-                        databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("brandProduct").setValue("12");
+                        databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("brandProduct").setValue(txtNewBrand.getText());
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("originProduct").setValue("13");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("baoHanhSp").setValue("15");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("shippingProduct").setValue("15");
-                        databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("brandProduct").setValue("16");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("priceFlashSale").setValue("17");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("discountFlashSale").setValue("18");
                         databaseReference.child("product").child("nameShop").child("productShop").child(maSp).child("soldFlashSale").setValue("18");
@@ -187,11 +192,12 @@ public class NewProductFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int which) {
                         switch(which){
                             case 0:
-                                 dialog_catelory(view, "By Zip", new String[]{"By Zip", "By Category"});
+                                 dialog_catelory(view, "By Zip", new String[]{"By Zip", "By Category"}, txtNewIndustry);
                                 break;
                             case 1:
-                                 dialog_catelory(view, "By Category", new String[]{"By Zip", "By Category"});
+                                 dialog_catelory(view, "By Category", new String[]{"By Zip", "By Category", "Zip", "Category"}, txtNewIndustry);
                                 break;
+                                // them case
                         }
                     }
                 });
@@ -200,29 +206,64 @@ public class NewProductFragment extends Fragment {
 
         });
 
+        edtBrand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder dialogIndustry = new AlertDialog.Builder(getContext());
+                dialogIndustry.setTitle("Thương hiệu");
+                String[] types = {"No Brand", "By Category"};
+                dialogIndustry.setItems(types, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        switch(which){
+                            case 0:
+                                industry[0] = types[which];
+                                break;
+                            case 1:
+                                dialog_catelory(view, "Brand", new String[]{"By Zip", "By Category", "Zip", "Category"}, txtNewBrand);
+                                break;
+                            // them case
+                        }
+                        txtNewBrand.setText(String.valueOf(industry[0]));
+                    }
+
+                });
+                dialogIndustry.show();
+            }
+        });
+
+
+
+
     }
 
-    private void dialog_catelory(View view,String title, String[] list){
+
+    private void dialog_catelory(View view,String title, String[] list, TextView textView){
         AlertDialog.Builder dialogIndustry = new AlertDialog.Builder(getContext());
         dialogIndustry.setTitle(title);
         String[] types = list;
-        final String[] category = {""};
         dialogIndustry.setItems(types, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
                 switch(which){
                     case 0:
-                        c[0] = types[which];
-                        txtNewIndustry.setText(String.valueOf(c[0]));
+                        industry[0] = types[which];
                         break;
                     case 1:
-                        c[0] = types[which];
-                        txtNewIndustry.setText(String.valueOf(c[0]));
+                        industry[0] = types[which];
+                        break;
+                    case 2:
+                        industry[0] = types[which];
+                        break;
+                    case 3:
+                        industry[0] = types[which];
                         break;
                 }
+                textView.setText(String.valueOf(industry[0]));
             }
         });
         dialogIndustry.show();
+
     }
     public static String RandomMaDonHang(int len)
     {
