@@ -181,18 +181,19 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
             }
             return true;
         });
-
+        readData();
         loadFragmentHome();
         readFireStoreCategory();
         readFireStoreLiveStories();
         readFireStoreLiveVoucher();
         readFireStoreLiveMain();
 //        readFireStoreFlashSales();
-        addData();
-        readData();
+//        addData();
+
     }
 
     public void loadFragmentHome() {
+        Log.d(">>>", "loadFragmentHome: "+ flashsaleList.size());
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_layout, HomeFragment.newInstance(categoryList, flashsaleList, listPhoto, this, this), "MainFragment")
@@ -221,9 +222,10 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
     }
 
     public void loadFragmentProfile() {
+        Log.d(">>>", "loadFragmentProfile: "+ flashsaleList.size());
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, ProfileFragment.newInstance(mProfiles, "hihi", this, this), "MainFragment")
+                .replace(R.id.frame_layout, ProfileFragment.newInstance(mProfiles, flashsaleList, this, this), "MainFragment")
                 .commit();
     }
 
@@ -360,40 +362,7 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
         binding.bottomNavigation.setVisibility(View.VISIBLE);
     }
 
-    private void addData(){
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("nameProduct").setValue("1");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("description").setValue("2");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("industry").setValue("3");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("industry").setValue("4");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("priceProduct").setValue("5");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("productdetail").setValue("6");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("warehouse").setValue("7");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("transportfee").setValue("8");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("status").setValue("9");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("nameShop").setValue("10");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("soldProduct").setValue("11");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("brandProduct").setValue("12");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("originProduct").setValue("13");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("baoHanhSp").setValue("15");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("shippingProduct").setValue("15");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("brandProduct").setValue("16");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("priceFlashSale").setValue("17");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("discountFlashSale").setValue("18");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("soldFlashSale").setValue("18");
-            databaseReference.child("product").child("nameShop").child("productShop").child("maSp1").child("imageProduct").setValue("19");
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 
     private void readData(){
 
@@ -413,6 +382,8 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
             }
         });
     }
+
+
 
 
 }

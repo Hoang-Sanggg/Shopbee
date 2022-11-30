@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.ProfileAdapter;
 import com.duan1.shopbee.callback.HideBottomNav;
 import com.duan1.shopbee.callback.ShowBottomNav;
+import com.duan1.shopbee.model.ProductCreate;
 import com.duan1.shopbee.model.Profile;
 
 import java.io.Serializable;
@@ -39,6 +41,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
     private RecyclerView ProfileRecycler;
 
     private List<Profile> mProfiles;
+    private List<ProductCreate> productCreateList;
 
     private ProfileAdapter profileAdapter;
 
@@ -63,10 +66,11 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
      *
      */
     // TODO: Rename and change types and number of parameters
-    public static ProfileFragment newInstance(List<Profile>_mProfiles, String param2, HideBottomNav hideBottomNav, ShowBottomNav showBottomNav) {
+    public static ProfileFragment newInstance(List<Profile>_mProfiles, List<ProductCreate> _listProduct, HideBottomNav hideBottomNav, ShowBottomNav showBottomNav) {
         ProfileFragment fragment = new ProfileFragment(hideBottomNav, showBottomNav);
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM1, (Serializable) _mProfiles);
+        args.putSerializable(ARG_PARAM2, (Serializable) _listProduct);
 //        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -77,6 +81,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mProfiles = (List<Profile>) getArguments().getSerializable(ARG_PARAM1);
+            productCreateList = (List<ProductCreate>) getArguments().getSerializable(ARG_PARAM2);
 //            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
@@ -102,7 +107,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
 //        profileAdapter = new ProfileAdapter(mProfiles);
 //
 //        ProfileRecycler.setAdapter(profileAdapter);
-
+        showBottomNav.showBottomNav();
         TextView textView = view.findViewById(R.id.btn_myShop);
 
         textView.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +122,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
     public void onClickMyShop(View view) {
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, new MyShopFragment(ProfileFragment.this), "MainFragment")
+                .replace(R.id.frame_layout, new MyShopFragment(productCreateList,ProfileFragment.this), "MainFragment")
                 .addToBackStack(null)
                 .commit();
         hideBottomNav.hideBottomNav();

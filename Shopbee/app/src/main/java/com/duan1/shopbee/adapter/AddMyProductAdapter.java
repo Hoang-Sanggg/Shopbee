@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.function.mFunction;
 import com.duan1.shopbee.model.ProductCreate;
@@ -26,6 +27,10 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
         this.mContext = mContext;
     }
 
+    public AddMyProductAdapter(Context mContext, List<ProductCreate> mListMyProduct) {
+        this.mContext = mContext;
+        this.mListMyProduct = mListMyProduct;
+    }
 
     public void setData(List<ProductCreate> list){
         this.mListMyProduct = list;
@@ -48,6 +53,10 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
         holder.txtDaBan_My_Product.setText(mListMyProduct.get(position).getSoldProduct());
         /** holder.txtLuotThich_My_Product.setText(mListMyProduct.get(position).getLuotThich());
         holder.txtLuotXem_My_Product.setText(mListMyProduct.get(position).getLuotThich()); */
+
+        Glide.with(mContext)
+                .load(mListMyProduct.get(position).getImageProduct())
+                .into(holder.ivHinhSP_My_Product);
     }
 
     @Override
@@ -68,7 +77,7 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
         public MyProductViewHodel(@NonNull View itemView) {
             super(itemView);
 
-            ivHinhSP_My_Product = itemView.findViewById(R.id.ivHinhSP_My_Product);
+            ivHinhSP_My_Product = itemView.findViewById(R.id.ivMyProduct);
             tvThongTinSP_My_Product = itemView.findViewById(R.id.tvThongTinSP_My_Product);
             txtGiaSP_My_Product = itemView.findViewById(R.id.txtGiaSP_My_Product);
             txtKhoHang_My_Product = itemView.findViewById(R.id.txtKhoHang_My_Product);
