@@ -20,9 +20,15 @@ import android.view.ViewGroup;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.CategoryAdapter;
 import com.duan1.shopbee.adapter.CategoryMallAdapter;
+import com.duan1.shopbee.adapter.FeaturedProductAdapter;
+import com.duan1.shopbee.adapter.FlashSaleAdapter;
+import com.duan1.shopbee.callback.ClickToProductSale;
+import com.duan1.shopbee.callback.HideBottomNav;
+import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.Category;
 import com.duan1.shopbee.model.CategoryMall;
 import com.duan1.shopbee.model.Flashsale;
+import com.duan1.shopbee.model.ProductCreate;
 import com.duan1.shopbee.model.Profile;
 import com.duan1.shopbee.slide_image.MallBanner;
 import com.duan1.shopbee.slide_image.MallBannerAdapter;
@@ -42,7 +48,7 @@ import me.relex.circleindicator.CircleIndicator;
  * Use the {@link MallFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MallFragment extends Fragment {
+public class MallFragment extends Fragment implements ClickToProductSale, ShowBottomNav {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -53,14 +59,27 @@ public class MallFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private List<CategoryMall> mcategoryList;
-    private RecyclerView categoryRecycler;
+    private RecyclerView categoryRecycler,flashsaleRecycler,productMallRecycler;
     private CategoryMallAdapter categoryMallAdapter;
+    private List<ProductCreate> flashsaleList;
+    private FlashSaleAdapter flashSaleAdapter;
+    private FeaturedProductAdapter featuredProductAdapter;
 
     private ViewPager viewPager;
     private CircleIndicator circleIndicator;
     private MallBannerAdapter bannerAdpater;
     private List<MallBanner> listBanner;
     private Timer timer;
+
+    ShowBottomNav showBottomNav;
+
+    HideBottomNav hideBottomNav;
+
+    public MallFragment(HideBottomNav hideBottomNav, ShowBottomNav showBottomNav) {
+        // Required empty public constructor
+        this.hideBottomNav = hideBottomNav;
+        this.showBottomNav = showBottomNav;
+    }
 
     public MallFragment() {
         // Required empty public constructor
@@ -74,11 +93,12 @@ public class MallFragment extends Fragment {
      * @return A new instance of fragment NewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MallFragment newInstance(List<CategoryMall> _categoryList, List<MallBanner> _data) {
-        MallFragment fragment = new MallFragment();
+    public static MallFragment newInstance(List<CategoryMall> _categoryList,List<ProductCreate> _flashsaleList, List<MallBanner> _data, HideBottomNav hideBottomNav, ShowBottomNav showBottomNav) {
+        MallFragment fragment = new MallFragment(hideBottomNav, showBottomNav);
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM1, (Serializable) _categoryList);
-        args.putSerializable(ARG_PARAM2, (Serializable) _data );
+        args.putSerializable(ARG_PARAM2, (Serializable) _flashsaleList);
+        args.putSerializable(ARG_PARAM3, (Serializable) _data );
         fragment.setArguments(args);
         return fragment;
     }
@@ -88,7 +108,8 @@ public class MallFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mcategoryList = (List<CategoryMall>) getArguments().getSerializable(ARG_PARAM1);
-            listBanner = (List<MallBanner>) getArguments().getSerializable(ARG_PARAM2);
+            flashsaleList = (List<ProductCreate>) getArguments().getSerializable(ARG_PARAM2);
+            listBanner = (List<MallBanner>) getArguments().getSerializable(ARG_PARAM3);
         }
 
         mcategoryList = (List<CategoryMall>) getArguments().getSerializable(ARG_PARAM1);
@@ -108,14 +129,20 @@ public class MallFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        categoryRecycler = view.findViewById(R.id.recyclerCategory);
-//        categoryRecycler.setHasFixedSize(true);
-//        categoryRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-//        categoryRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2,GridLayoutManager.HORIZONTAL, false));
-//
-//        mcategoryList.size();
-//        categoryMallAdapter = new CategozzzzzzryMallAdapter(mcategoryList);
-//        categoryRecycler.setAdapter(categoryMallAdapter);
+
+        productMallRecycler = view.findViewById(R.id.recyclerProductMall);
+        productMallRecycler.setHasFixedSize(true);
+        productMallRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2,GridLayoutManager.VERTICAL, false));
+
+        featuredProductAdapter = new FeaturedProductAdapter(getContext(), flashsaleList);
+        productMallRecycler.setAdapter(featuredProductAdapter);
+
+        flashsaleRecycler = view.findViewById(R.id.recyclerFlashSales);
+        flashsaleRecycler.setHasFixedSize(true);
+        flashsaleRecycler.setLayoutManager(new GridLayoutManager(getContext(), 1,GridLayoutManager.HORIZONTAL, false));
+
+        flashSaleAdapter = new FlashSaleAdapter(flashsaleList, getContext(), MallFragment.this);
+        flashsaleRecycler.setAdapter(flashSaleAdapter);
 
         viewPager = view.findViewById(R.id.viewPager);
         circleIndicator = view.findViewById(R.id.circle_indicator);
@@ -189,5 +216,18 @@ public class MallFragment extends Fragment {
     }
 
 
+    @Override
+    public void onClickToProductSale(List<ProductCreate> flashsaleList, int position) {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, new FragmentProduct(flashsaleList.get(position).getIdProduct(),flashsaleList.get(position).getNameProduct(), flashsaleList.get(position).getDescription(), flashsaleList.get(position).getIndustry(), flashsaleList.get(position).getPriceProduct(), flashsaleList.get(position).getProductdetail(), flashsaleList.get(position).getWarehouse(),flashsaleList.get(position).getTransportfee(), flashsaleList.get(position).getStatus(), flashsaleList.get(position).getNameShop(), flashsaleList.get(position).getSoldProduct(), flashsaleList.get(position).getBrandProduct(), flashsaleList.get(position).getOriginProduct(), flashsaleList.get(position).getBaoHanhSp(), flashsaleList.get(position).getShippingProduct(), flashsaleList.get(position).getPriceFlashSale(), flashsaleList.get(position).getDiscountFlashSale(), flashsaleList.get(position).getSoldFlashSale(), flashsaleList.get(position).getImageProduct(), MallFragment.this), "MainFragment")
+                .addToBackStack(null)
+                .commit();
+        hideBottomNav.hideBottomNav();
+    }
 
+    @Override
+    public void showBottomNav() {
+        showBottomNav.showBottomNav();
+    }
 }
