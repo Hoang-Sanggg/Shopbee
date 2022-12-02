@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.CategoryAdapter;
+import com.duan1.shopbee.adapter.FeaturedProductAdapter;
 import com.duan1.shopbee.adapter.FlashSaleAdapter;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.HideBottomNav;
@@ -55,8 +56,9 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
     private List<ProductCreate> flashsaleList;
     private CategoryAdapter categoryAdapter;
     private FlashSaleAdapter flashSaleAdapter;
+    private FeaturedProductAdapter featuredProductAdapter;
 
-    private RecyclerView categoryRecycler,flashsaleRecycler;
+    private RecyclerView categoryRecycler,flashsaleRecycler,productHomeRecycler;
 
     private ViewPager viewPager;
     private CircleIndicator circleIndicator;
@@ -135,6 +137,13 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
         categoryList.size();
         categoryAdapter = new CategoryAdapter(categoryList);
         categoryRecycler.setAdapter(categoryAdapter);
+
+        productHomeRecycler = view.findViewById(R.id.recyclerProductHome);
+        productHomeRecycler.setHasFixedSize(true);
+        productHomeRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2,GridLayoutManager.VERTICAL, false));
+
+        featuredProductAdapter = new FeaturedProductAdapter(getContext(),flashsaleList);
+        productHomeRecycler.setAdapter(featuredProductAdapter);
 
         flashsaleRecycler = view.findViewById(R.id.recyclerFlashSales);
         flashsaleRecycler.setHasFixedSize(true);

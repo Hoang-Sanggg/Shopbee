@@ -91,6 +91,7 @@ public class FragmentProduct extends Fragment {
         tvShippingProduct.setText(shippingProduct); // 9
         tvNameShop.setText(nameShop); //10
         tvPriceFlashSale.setText(priceFlashSale);
+        tvIndustry.setText(industry);
         tvPriceProduct.setPaintFlags(tvPriceProduct.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
         Glide.with(this)
@@ -107,6 +108,7 @@ public class FragmentProduct extends Fragment {
         tvbrandProduct = view.findViewById(R.id.txtBrandProduct); //6
         tvOrigin = view.findViewById(R.id.txtOrigin); //7
         tvStatus = view.findViewById(R.id.txtUsage); //8
+        tvIndustry = view.findViewById(R.id.txtIndustryProduct);
         tvNameShop = view.findViewById(R.id.txtSeller); //9
         tvShippingProduct = view.findViewById(R.id.txtSendFrom); //10
         ivProduct = view.findViewById(R.id.ivProduct);
