@@ -2,10 +2,12 @@ package com.duan1.shopbee.fragment;
 
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +28,8 @@ public class FragmentProduct extends Fragment {
     private ImageView ivProduct;
 
     ShowBottomNav showBottomNav;
+    LinearLayout textView;
+    ImageView imgback;
 
     private String idProduct;
     private String nameProduct;
@@ -97,6 +101,22 @@ public class FragmentProduct extends Fragment {
         Glide.with(this)
                 .load(imageProduct)
                 .into(ivProduct);
+
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickBuyItem(view);
+            }
+        });
+
+//        imgback.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                requireActivity().getSupportFragmentManager().popBackStack();
+//
+//            }
+//        });
     }
 
     private void initViews(View view){
@@ -113,5 +133,16 @@ public class FragmentProduct extends Fragment {
         tvShippingProduct = view.findViewById(R.id.txtSendFrom); //10
         ivProduct = view.findViewById(R.id.ivProduct);
         tvPriceFlashSale = view.findViewById(R.id.txtPriceFlashsale);
+        textView = view.findViewById(R.id.btnBuyNow);
+        imgback = view.findViewById(R.id.left_icon_arrow);
+
+    }
+
+    private void onClickBuyItem(View view) {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, new Buy_Fragment(),"MainFragment")
+                .addToBackStack(null)
+                .commit();
     }
 }
