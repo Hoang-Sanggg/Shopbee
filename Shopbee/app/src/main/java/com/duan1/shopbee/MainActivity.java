@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
     public void loadFragmentMall() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_layout, MallFragment.newInstance(categoryMallList, mallBannerList), "MallFragment")
+                .replace(R.id.frame_layout, MallFragment.newInstance(categoryMallList,flashsaleList, mallBannerList, this, this), "MainFragment")
                 .commit();
     }
 
