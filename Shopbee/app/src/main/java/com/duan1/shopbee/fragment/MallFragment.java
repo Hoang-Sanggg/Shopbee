@@ -134,7 +134,7 @@ public class MallFragment extends Fragment implements ClickToProductSale, ShowBo
         productMallRecycler.setHasFixedSize(true);
         productMallRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2,GridLayoutManager.VERTICAL, false));
 
-        featuredProductAdapter = new FeaturedProductAdapter(getContext(), flashsaleList);
+        featuredProductAdapter = new FeaturedProductAdapter(flashsaleList, getContext());
         productMallRecycler.setAdapter(featuredProductAdapter);
 
         flashsaleRecycler = view.findViewById(R.id.recyclerFlashSales);

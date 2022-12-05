@@ -26,6 +26,11 @@ public class FeaturedProductAdapter extends RecyclerView.Adapter<FeaturedProduct
     private Context context;
     private ClickToProductSale clickToProduct;
 
+    public FeaturedProductAdapter(List<ProductCreate> listPC, Context context) {
+        this.listPC = listPC;
+        this.context = context;
+    }
+
     public FeaturedProductAdapter(List<ProductCreate> listPC, Context context, ClickToProductSale clickToProduct) {
         this.listPC = listPC;
         this.context = context;
