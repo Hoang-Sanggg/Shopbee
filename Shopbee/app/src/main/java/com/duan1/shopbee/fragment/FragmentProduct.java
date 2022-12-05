@@ -1,10 +1,13 @@
 package com.duan1.shopbee.fragment;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ShowBottomNav;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.checkerframework.checker.index.qual.PolyUpperBound;
 
@@ -73,7 +77,19 @@ public class FragmentProduct extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_product, container, false);
+        FloatingActionButton btnCart = view.findViewById(R.id.btnCart);
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frame_layout, new CartFragment(getContext()), "MainFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+        return view;
     }
 
     @Override
