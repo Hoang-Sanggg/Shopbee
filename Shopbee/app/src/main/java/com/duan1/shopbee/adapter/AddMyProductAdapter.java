@@ -62,10 +62,10 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
         mFunction function = new mFunction();
         String name = sharedPref.getString("username", "null");
 //        int soLuong = 0;
-//            if(mListMyProduct.get(position).getNameShop().equalsIgnoreCase(name)){
+            if(mListMyProduct.get(position).getNameShop().equals(name)){
 //                soLuong = sharedPref.getInt("soLuong", 0);
 //                soLuong+=1;
-        Log.d(">", "onBindViewHolder: "+name);
+                Log.d(">", "onBindViewHolder: "+name);
                 holder.tvThongTinSP_My_Product.setText(mListMyProduct.get(position).getNameProduct());
                 holder.txtGiaSP_My_Product.setText(mListMyProduct.get(position).getPriceProduct());
                 holder.txtKhoHang_My_Product.setText(mListMyProduct.get(position).getWarehouse());
@@ -76,9 +76,9 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
                 Glide.with(mContext)
                         .load(mListMyProduct.get(position).getImageProduct())
                         .into(holder.ivHinhSP_My_Product);
-//            }else{
-//                holder.item_lnMyProduct.setVisibility(View.GONE);
-//            }
+            }else{
+                holder.item_lnMyProduct.setVisibility(View.GONE);
+            }
 
 //        SharedPreferences.Editor editor = sharedPref.edit();
 //        editor.putInt("soLuong", soLuong);
