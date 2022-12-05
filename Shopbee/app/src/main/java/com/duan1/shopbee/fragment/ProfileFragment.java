@@ -1,5 +1,8 @@
 package com.duan1.shopbee.fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +26,7 @@ import com.duan1.shopbee.callback.HideBottomNav;
 import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.ProductCreate;
 import com.duan1.shopbee.model.Profile;
+import com.duan1.shopbee.model.User;
 
 import java.io.Serializable;
 import java.util.List;
@@ -131,6 +135,15 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
     @Override
     public void showBottomNav() {
         showBottomNav.showBottomNav();
+    }
+
+    private void writeLogin(User user) {
+       SharedPreferences sharedPreferences;
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("", true);
+        editor.putString("", user.getId());
+        editor.putString("", user.getUsername());
+        editor.commit();
     }
 
 }
