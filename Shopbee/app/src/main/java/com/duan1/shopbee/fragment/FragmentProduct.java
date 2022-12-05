@@ -1,11 +1,14 @@
 package com.duan1.shopbee.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,18 +17,25 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
+import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.ShowBottomNav;
+import com.duan1.shopbee.model.ProductCreate;
 
 import org.checkerframework.checker.index.qual.PolyUpperBound;
 
-public class FragmentProduct extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class FragmentProduct extends Fragment implements ClickToProductSale {
 
     private TextView  tvDecription, tvIndustry, tvNameProduct, tvPriceProduct, tvbrandProduct,tvOrigin ,tvProductdetail,tvWarehouse,tvTransportfee,tvStatus,
     tvNameShop, tvSoldProduct, tvBaoHanhSp, tvShippingProduct, tvPriceFlashSale;
     private ImageView ivProduct;
-
+    private LinearLayout bottom_add_product, back_product, buyNow;
     ShowBottomNav showBottomNav;
+    private List<ProductCreate> productCreateList;
 
     private String idProduct;
     private String nameProduct;
@@ -70,6 +80,28 @@ public class FragmentProduct extends Fragment {
         this.showBottomNav = showBottomNav;
     }
 
+    public FragmentProduct(String idProduct, String nameProduct, String description, String industry, String priceProduct, String productdetail, String warehouse, String transportfee, String status, String nameShop, String soldProduct, String brandProduct, String originProduct, String baoHanhSp, String shippingProduct, String priceFlashSale, String discountFlashSale, String soldFlashSale, String imageProduct) {
+        this.idProduct = idProduct;
+        this.nameProduct = nameProduct;
+        this.description = description;
+        this.industry = industry;
+        this.priceProduct = priceProduct;
+        this.productdetail = productdetail;
+        this.warehouse = warehouse;
+        this.transportfee = transportfee;
+        this.status = status;
+        this.nameShop = nameShop;
+        this.soldProduct = soldProduct;
+        this.brandProduct = brandProduct;
+        this.originProduct = originProduct;
+        this.baoHanhSp = baoHanhSp;
+        this.shippingProduct = shippingProduct;
+        this.imageProduct = imageProduct;
+        this.priceFlashSale = priceFlashSale;
+        this.discountFlashSale = discountFlashSale;
+        this.soldFlashSale = soldFlashSale;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -80,6 +112,10 @@ public class FragmentProduct extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
+
+        SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        String nameShopS = sharedPref.getString("username", "");
+
         tvNameProduct.setText(nameProduct); //1t
         tvDecription.setText(description); //t
         tvWarehouse.setText(warehouse); //3t
@@ -97,10 +133,41 @@ public class FragmentProduct extends Fragment {
         Glide.with(this)
                 .load(imageProduct)
                 .into(ivProduct);
+
+        if(nameShop.equals(nameShopS    )){
+            bottom_add_product.setVisibility(View.GONE);
+        }
+
+        back_product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requireActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+
+        buyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buyNowProduct();
+            }
+        });
+    }
+
+    @Override
+    public void onClickToProductSale(List<ProductCreate> flashsaleList, int position) {
+
+    }
+
+    private void buyNowProduct(){
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, new BuyNowFragment(idProduct,nameProduct,description,industry,priceProduct,productdetail,warehouse,transportfee,status,nameShop,soldProduct,brandProduct,originProduct,baoHanhSp,shippingProduct,priceFlashSale,discountFlashSale,soldFlashSale,imageProduct), "MainFragment")
+                .addToBackStack(null)
+                .commit();
     }
 
     private void initViews(View view){
-        tvNameProduct = view.findViewById(R.id.txtName); //1
+        tvNameProduct = view.findViewById(R.id.txtNameProduct); //1
         tvDecription = view.findViewById(R.id.txtDescription); //2
         tvPriceProduct = view.findViewById(R.id.txtPrice); //3
         tvWarehouse = view.findViewById(R.id.txtStorage); //4
@@ -113,5 +180,9 @@ public class FragmentProduct extends Fragment {
         tvShippingProduct = view.findViewById(R.id.txtSendFrom); //10
         ivProduct = view.findViewById(R.id.ivProduct);
         tvPriceFlashSale = view.findViewById(R.id.txtPriceFlashsale);
+        bottom_add_product = view.findViewById(R.id.bottom_add_product);
+
+        back_product = view.findViewById(R.id.back_product);
+        buyNow = view.findViewById(R.id.btnBuyNow);
     }
 }

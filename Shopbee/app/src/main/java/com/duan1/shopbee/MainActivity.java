@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
 
     private void readData(){
 
-        databaseReference.child("product").child("nameShop").child("productShop").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("product").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 flashsaleList.clear();

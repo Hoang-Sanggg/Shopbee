@@ -42,7 +42,6 @@ public class FlashSaleAdapter extends RecyclerView.Adapter<FlashSaleAdapter.Flas
 
     @Override
     public void onBindViewHolder(@NonNull FlashSaleAdapter.FlashSaleHoder holder, int position) {
-        mFunction function = new mFunction();
         holder.priceFlashSale.setText(flashsaleList.get(position).getPriceFlashSale());
         holder.soldFlashSale.setText(flashsaleList.get(position).getSoldFlashSale());
 //        holder.ivFlashSale.setImageBitmap(function.StringBitMap(flashsaleList.get(position).getImageFlashSale()));

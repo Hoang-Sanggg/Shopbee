@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     tools:context=".fragment.HomeFragment"
     android:fillViewport="true"
-    android:background="#E1E1E1"
+    android:background="#C8C8C8"
     android:layout_marginTop="60dp">
 
     <!-- TODO: Update blank fragment layout -->
@@ -266,8 +266,7 @@
             android:id="@+id/recyclerProductHome"
             android:layout_width="match_parent"
             android:layout_height="1000dp"
-            android:layout_margin="10dp"
-
+            android:background="#0EEEEEEE"
             app:layout_constraintTop_toBottomOf="@+id/recyclerSuggestions"
             tools:layout_editor_absoluteX="67dp" />
 

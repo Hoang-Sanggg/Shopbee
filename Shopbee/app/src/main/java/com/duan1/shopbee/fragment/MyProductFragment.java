@@ -1,5 +1,7 @@
 package com.duan1.shopbee.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,10 +17,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.AddMyProductAdapter;
 import com.duan1.shopbee.adapter.CategoryAdapter;
+import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.HideBottomNav;
 import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.ProductCreate;
@@ -29,7 +33,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class MyProductFragment extends Fragment {
+public class MyProductFragment extends Fragment implements ClickToProductSale {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,7 +43,7 @@ public class MyProductFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    TextView txtSoLuong;
     private List<ProductCreate> productCreateList;
 
     private AddMyProductAdapter addMyProductAdapter;
@@ -90,14 +94,23 @@ public class MyProductFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ImageView btn_back_myProduct = view.findViewById(R.id.btn_back_myProduct);
 
+        SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        int soLuong = sharedPref.getInt("soLuong", 0);
+
         rcyMyProduct = view.findViewById(R.id.rcyMyProduct);
 
         Button btnAdd = view.findViewById(R.id.btn_addNewProduct);
 
+        txtSoLuong = view.findViewById(R.id.txtSoLuong);
+
+        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
+
+        Log.d(">>>>>>", "size: "+soLuong);
+
         rcyMyProduct.setHasFixedSize(true);
         rcyMyProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList);
+        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList, MyProductFragment.this);
         rcyMyProduct.setAdapter(addMyProductAdapter);
 
         btn_back_myProduct.setOnClickListener(new View.OnClickListener() {
@@ -124,4 +137,12 @@ public class MyProductFragment extends Fragment {
     }
 
 
+    @Override
+    public void onClickToProductSale(List<ProductCreate> flashsaleList, int position) {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, new FragmentProduct(flashsaleList.get(position).getIdProduct(),flashsaleList.get(position).getNameProduct(), flashsaleList.get(position).getDescription(), flashsaleList.get(position).getIndustry(), flashsaleList.get(position).getPriceProduct(), flashsaleList.get(position).getProductdetail(), flashsaleList.get(position).getWarehouse(),flashsaleList.get(position).getTransportfee(), flashsaleList.get(position).getStatus(), flashsaleList.get(position).getNameShop(), flashsaleList.get(position).getSoldProduct(), flashsaleList.get(position).getBrandProduct(), flashsaleList.get(position).getOriginProduct(), flashsaleList.get(position).getBaoHanhSp(), flashsaleList.get(position).getShippingProduct(), flashsaleList.get(position).getPriceFlashSale(), flashsaleList.get(position).getDiscountFlashSale(), flashsaleList.get(position).getSoldFlashSale(), flashsaleList.get(position).getImageProduct()), "MainFragment")
+                .addToBackStack(null)
+                .commit();
+    }
 }
