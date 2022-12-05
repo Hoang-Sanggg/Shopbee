@@ -13,13 +13,13 @@
             android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="250dp">
+                android:layout_height="280dp">
 
                 <ImageView
                     android:id="@+id/ivProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/meiji_0_1"/>
+                    android:src="@drawable/meiji_0_1" />
 
             </RelativeLayout>
             <RelativeLayout
@@ -43,7 +43,7 @@
                     android:layout_marginLeft="10dp"/>
 
                 <TextView
-                    android:id="@+id/txtName"
+                    android:id="@+id/txtNameProduct"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="90dp"
@@ -478,13 +478,6 @@
                 android:background="#fff"
                 android:layout_marginTop="10dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sản phẩm khác"
-                    android:textStyle="bold"
-                    android:textSize="24dp"
-                    android:padding="5dp"/>
             </LinearLayout>
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -1071,49 +1064,66 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+        <LinearLayout
+            android:id="@+id/back_product"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:alpha="0.5"
-            android:backgroundTint="#FFFFFF"
-            android:src="@drawable/back"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+            android:background="@drawable/rounded_button"
+            android:layout_margin="10dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:padding="5dp" />
+        </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+        <LinearLayout
             android:id="@+id/btnMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:alpha="0.5"
+            android:layout_margin="10dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_margin="5dp"
-            android:alpha="0.5"
-            android:backgroundTint="#FFFFFF"
-            android:src="@drawable/menu"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+            android:background="@drawable/rounded_button">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/menu"
+                android:padding="10dp"/>
+        </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <LinearLayout
             android:id="@+id/btnEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_margin="5dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:alpha="0.5"
+            android:layout_margin="10dp"
             android:layout_toLeftOf="@id/btnMenu"
-            android:alpha="0.5"
-            android:backgroundTint="#FFFFFF"
-            android:src="@drawable/edit"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+            android:background="@drawable/rounded_button">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/edit"
+                android:padding="10dp"/>
+        </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <LinearLayout
             android:id="@+id/btnShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_toLeftOf="@+id/btnEdit"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:alpha="0.5"
-            android:backgroundTint="#FFFFFF"
-            android:src="@drawable/share"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+            android:layout_margin="10dp"
+            android:layout_toLeftOf="@+id/btnEdit"
+            android:background="@drawable/rounded_button">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/share"
+                android:padding="10dp"/>
+        </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnToTop"
@@ -1129,9 +1139,24 @@
             android:visibility="visible" />
     </RelativeLayout>
     <LinearLayout
+        android:id="@+id/bottom_add_product"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#5383DF"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="Chat"
+                android:gravity="center"/>
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/btnAddToCart"
             android:layout_width="0dp"
@@ -1146,12 +1171,20 @@
                 android:textStyle="bold"
                 android:text="Thêm vào giỏ hàng"
                 android:gravity="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Sản phẩm khác"
+                android:textSize="24dp"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/btnBuyNow"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:background="#FF5722"
             android:gravity="center">
             <TextView

@@ -142,7 +142,7 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
         productHomeRecycler.setHasFixedSize(true);
         productHomeRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2,GridLayoutManager.VERTICAL, false));
 
-        featuredProductAdapter = new FeaturedProductAdapter(getContext(),flashsaleList);
+        featuredProductAdapter = new FeaturedProductAdapter(flashsaleList,getContext() , HomeFragment.this);
         productHomeRecycler.setAdapter(featuredProductAdapter);
 
         flashsaleRecycler = view.findViewById(R.id.recyclerFlashSales);
@@ -227,6 +227,8 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
                 .commit();
         hideBottomNav.hideBottomNav();
     }
+
+
 
 
     @Override
