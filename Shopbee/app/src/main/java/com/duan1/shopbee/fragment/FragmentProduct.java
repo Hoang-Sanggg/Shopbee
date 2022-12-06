@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -105,7 +106,19 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_product, container, false);
+        FloatingActionButton btnCart = view.findViewById(R.id.btnCart);
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frame_layout, new CartFragment(getContext()), "MainFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+        return view;
     }
 
     @Override
