@@ -26,6 +26,9 @@ import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.HideBottomNav;
 import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.ProductCreate;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -49,6 +52,7 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
     private AddMyProductAdapter addMyProductAdapter;
 
     private RecyclerView rcyMyProduct;
+    Button btnDelete;
 
 
     public MyProductFragment(List<ProductCreate> productCreateList) {
@@ -103,6 +107,8 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
 
         txtSoLuong = view.findViewById(R.id.txtSoLuong);
 
+        btnDelete = view.findViewById(R.id.btnAn_My_Product);
+
         txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
 
         Log.d(">>>>>>", "size: "+soLuong);
@@ -127,6 +133,11 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
             }
         });
 
+       
+
+
+
+
     }
     public void onClickAddNewMyProduct(View view) {
         requireActivity().getSupportFragmentManager()
@@ -145,4 +156,6 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
                 .addToBackStack(null)
                 .commit();
     }
+
+
 }

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,6 +24,9 @@ import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.ProductCreate;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.checkerframework.checker.index.qual.PolyUpperBound;
 
@@ -38,6 +42,7 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
     ShowBottomNav showBottomNav;
     LinearLayout textView;
     ImageView imgback;
+    Button btnDelete;
 
     private List<ProductCreate> productCreateList;
 
@@ -147,6 +152,10 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
             }
         });
 
+
+
+
+
 //        imgback.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -172,6 +181,8 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
             }
         });
     }
+
+
 
     @Override
     public void onClickToProductSale(List<ProductCreate> flashsaleList, int position) {
