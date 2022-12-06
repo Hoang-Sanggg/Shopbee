@@ -482,7 +482,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Tài khoản ngâng hàng đã liên kết ShopbeePay"
+                        android:text="Tài khoản ngân hàng đã liên kết ShopbeePay"
                         android:drawableLeft="@drawable/badge"
                         android:drawableTint="#f00"/>
                 </LinearLayout>
