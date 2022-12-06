@@ -61,10 +61,10 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
     public void onBindViewHolder(@NonNull MyProductViewHodel holder, int position) {
         mFunction function = new mFunction();
         String nameUser = sharedPref.getString("username", "null");
-//        int soLuong = 0;
+        int soLuong = 0;
             if(mListMyProduct.get(position).getNameShop().equals(nameUser)==true){
-//                soLuong = sharedPref.getInt("soLuong", 0);
-//                soLuong+=1;
+                soLuong = sharedPref.getInt("soLuong", 0);
+                soLuong+=1;
                 holder.tvThongTinSP_My_Product.setText(mListMyProduct.get(position).getNameProduct());
                 holder.txtGiaSP_My_Product.setText(mListMyProduct.get(position).getPriceProduct());
                 holder.txtKhoHang_My_Product.setText(mListMyProduct.get(position).getWarehouse());
@@ -75,13 +75,14 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
                 Glide.with(mContext)
                         .load(mListMyProduct.get(position).getImageProduct())
                         .into(holder.ivHinhSP_My_Product);
+
             }else{
                 holder.item_lnMyProduct.setVisibility(View.GONE);
             }
+        SharedPreferences.Editor editor1 = sharedPref.edit();
+        editor1.putInt("soLuong", soLuong);
+        editor1.commit();
 
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//        editor.putInt("soLuong", soLuong);
-//        editor.commit();
         holder.item_lnMyProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
