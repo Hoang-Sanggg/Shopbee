@@ -12,11 +12,12 @@ public class Order implements Serializable {
     private String nameProductOrder;
     private String statusOrder;
     private String dateOrder;
+    private String imageOrder;
 
     public Order() {
     }
 
-    public Order(String idProductOrder, String customer, String seller, String priceOrder, String priceProductOrder, String numberOfOrder, String nameProductOrder, String statusOrder, String dateOrder) {
+    public Order(String idProductOrder, String customer, String seller, String priceOrder, String priceProductOrder, String numberOfOrder, String nameProductOrder, String statusOrder, String dateOrder, String imageOrder) {
         this.idProductOrder = idProductOrder;
         this.customer = customer;
         this.seller = seller;
@@ -26,6 +27,15 @@ public class Order implements Serializable {
         this.nameProductOrder = nameProductOrder;
         this.statusOrder = statusOrder;
         this.dateOrder = dateOrder;
+        this.imageOrder = imageOrder;
+    }
+
+    public String getImageOrder() {
+        return imageOrder;
+    }
+
+    public void setImageOrder(String imageOrder) {
+        this.imageOrder = imageOrder;
     }
 
     public String getIdProductOrder() {

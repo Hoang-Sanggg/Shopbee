@@ -118,7 +118,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
 //
 //        ProfileRecycler.setAdapter(profileAdapter);
 
-
+        logout = view.findViewById(R.id.btn_logout);
         showBottomNav.showBottomNav();
         TextView textView = view.findViewById(R.id.btn_myShop);
 
@@ -141,7 +141,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
                 editor.commit();
                 Intent intent = new Intent(getContext(), LoginActivity.class);
                 startActivity(intent);
-
+                getActivity().finish();
             }
         });
     }

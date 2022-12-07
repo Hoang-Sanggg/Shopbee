@@ -5,7 +5,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.duan1.shopbee.R;
+import com.duan1.shopbee.adapter.AddMyProductAdapter;
+import com.duan1.shopbee.adapter.OrderAdapter;
+import com.duan1.shopbee.model.Order;
+import com.duan1.shopbee.model.ProductCreate;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,6 +35,10 @@ import com.duan1.shopbee.R;
  * create an instance of this fragment.
  */
 public class OrderFragment extends Fragment {
+
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
+
 
     TextView btnBack_trans;
 
@@ -31,6 +50,10 @@ public class OrderFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private List<Order> orderList;
+    private RecyclerView orderRecycer;
+    private OrderAdapter orderAdapter;
 
     public OrderFragment() {
         // Required empty public constructor
@@ -75,17 +98,51 @@ public class OrderFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
 
+
+        readData();
+
         btnBack_trans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
         });
+
+
     }
 
     public void initViews(View view){
         btnBack_trans = view.findViewById(R.id.btnBack_trans);
     }
 
+
+    private void readData(){
+        orderList = new ArrayList<>();
+        databaseReference.child("order").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Order order = postSnapshot.getValue(Order.class);
+                    orderList.add(order);
+                    data(getView());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        orderAdapter = new OrderAdapter(orderList, getContext());
+    }
+
+    private void data(View view){
+        orderRecycer = view.findViewById(R.id.rcvTrans);
+
+        orderRecycer.setHasFixedSize(true);
+        orderRecycer.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
+        orderRecycer.setAdapter(orderAdapter);
+    }
 
 }
