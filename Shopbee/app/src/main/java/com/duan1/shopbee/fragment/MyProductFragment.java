@@ -110,9 +110,9 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
 
         btnDelete = view.findViewById(R.id.btnAn_My_Product);
 
-        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
-
-        Log.d(">>>>>>", "size: "+soLuong);
+//        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
+//
+//        Log.d(">>>>>>", "size: "+soLuong);
 
 //        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
 //

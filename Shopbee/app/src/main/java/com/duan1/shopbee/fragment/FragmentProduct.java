@@ -38,14 +38,10 @@ import java.util.List;
 public class FragmentProduct extends Fragment implements ClickToProductSale {
 
     private TextView  tvDecription, tvIndustry, tvNameProduct, tvPriceProduct, tvbrandProduct,tvOrigin ,tvProductdetail,tvWarehouse,tvTransportfee,tvStatus,
-    tvNameShop, tvSoldProduct, tvBaoHanhSp, tvShippingProduct, tvPriceFlashSale;
+            tvNameShop, tvSoldProduct, tvBaoHanhSp, tvShippingProduct, tvPriceFlashSale;
     private ImageView ivProduct;
     private LinearLayout bottom_add_product, back_product, buyNow;
     ShowBottomNav showBottomNav;
-    LinearLayout textView;
-    ImageView imgback;
-    Button btnDelete;
-
     private List<ProductCreate> productCreateList;
 
     private String idProduct;
@@ -157,29 +153,7 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
                 .load(imageProduct)
                 .into(ivProduct);
 
-
-
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickBuyItem(view);
-            }
-        });
-
-
-
-
-
-//        imgback.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                requireActivity().getSupportFragmentManager().popBackStack();
-//
-//            }
-//        });
-        if(nameShop.equals(nameShopS    )){
         if(nameShop.equals(nameShopS)){
-
             bottom_add_product.setVisibility(View.GONE);
         }
 
@@ -197,8 +171,6 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
             }
         });
     }
-
-
 
     @Override
     public void onClickToProductSale(List<ProductCreate> flashsaleList, int position) {
@@ -227,18 +199,6 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
         tvShippingProduct = view.findViewById(R.id.txtSendFrom); //10
         ivProduct = view.findViewById(R.id.ivProduct);
         tvPriceFlashSale = view.findViewById(R.id.txtPriceFlashsale);
-        textView = view.findViewById(R.id.btnBuyNow);
-        imgback = view.findViewById(R.id.left_icon_arrow);
-
-    }
-
-    private void onClickBuyItem(View view) {
-        requireActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frame_layout, new Buy_Fragment(),"MainFragment")
-                .addToBackStack(null)
-                .commit();
-
         bottom_add_product = view.findViewById(R.id.bottom_add_product);
 
         back_product = view.findViewById(R.id.back_product);
