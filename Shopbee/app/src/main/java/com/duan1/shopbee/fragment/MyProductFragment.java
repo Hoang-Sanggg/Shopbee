@@ -94,8 +94,8 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
         super.onViewCreated(view, savedInstanceState);
         ImageView btn_back_myProduct = view.findViewById(R.id.btn_back_myProduct);
 
-        SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
-        int soLuong = sharedPref.getInt("soLuong", 0);
+//        SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+//        int soLuong = sharedPref.getInt("soLuong", 0);
 
         rcyMyProduct = view.findViewById(R.id.rcyMyProduct);
 
@@ -103,9 +103,9 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
 
         txtSoLuong = view.findViewById(R.id.txtSoLuong);
 
-        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
-
-        Log.d(">>>>>>", "size: "+soLuong);
+//        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
+//
+//        Log.d(">>>>>>", "size: "+soLuong);
 
         rcyMyProduct.setHasFixedSize(true);
         rcyMyProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

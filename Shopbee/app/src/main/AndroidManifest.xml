@@ -33,7 +33,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SendOTPActivity"
+            android:name=".LoginNumberPhoneActivity"
             android:exported="false" />
         <activity
             android:name=".VerifyOTPActivity"
