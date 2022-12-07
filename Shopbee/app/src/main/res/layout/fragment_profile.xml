@@ -1132,7 +1132,7 @@
                             android:layout_marginLeft="5dp"/>
 
                         <TextView
-                            android:id="@+id/profile_tv_help"
+                            android:id="@+id/btn_logout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="13dp"

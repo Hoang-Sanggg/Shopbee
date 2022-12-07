@@ -26,6 +26,7 @@
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/activity_seller.xml" value="0.2" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/activity_test.xml" value="0.2" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/buynow_fragment.xml" value="0.2" />
+        <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_detail.xml" value="0.14065840102607952" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_editproduct.xml" value="0.2" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_home.xml" value="0.16666666666666666" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_live.xml" value="0.13333333333333333" />
@@ -36,6 +37,7 @@
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_new_product.xml" value="0.2" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_notif.xml" value="0.2" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_notification.xml" value="0.2" />
+        <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_product.xml" value="0.14065840102607952" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/fragment_upseller.xml" value="0.2" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_category_home.xml" value="0.16666666666666666" />
@@ -47,6 +49,7 @@
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_livefragment_voucher.xml" value="0.3333333333333333" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_my_product.xml" value="0.16417272338606242" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_pc_industry.xml" value="0.19895833333333332" />
+        <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_pending_product.xml" value="0.14065840102607952" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_profile.xml" value="0.16417272338606242" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_sanpham.xml" value="0.2" />
         <entry key="..\:/Git/Shopbee/Shopbee/app/src/main/res/layout/item_slide_banner.xml" value="0.12454710144927536" />

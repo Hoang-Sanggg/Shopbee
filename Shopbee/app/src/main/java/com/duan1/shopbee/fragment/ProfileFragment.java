@@ -2,6 +2,7 @@ package com.duan1.shopbee.fragment;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -17,9 +18,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.duan1.shopbee.LoginActivity;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.ProfileAdapter;
 import com.duan1.shopbee.callback.HideBottomNav;
@@ -48,6 +51,9 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
     private List<ProductCreate> productCreateList;
 
     private ProfileAdapter profileAdapter;
+
+    TextView logout;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -111,6 +117,8 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
 //        profileAdapter = new ProfileAdapter(mProfiles);
 //
 //        ProfileRecycler.setAdapter(profileAdapter);
+
+
         showBottomNav.showBottomNav();
         TextView textView = view.findViewById(R.id.btn_myShop);
 
@@ -121,7 +129,24 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
                 hideBottomNav.hideBottomNav();
             }
         });
+
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences("LOGIN_STATUS",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.commit();
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
+
+
 
     public void onClickMyShop(View view) {
         requireActivity().getSupportFragmentManager()
@@ -137,13 +162,9 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
         showBottomNav.showBottomNav();
     }
 
-    private void writeLogin(User user) {
-       SharedPreferences sharedPreferences;
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("", true);
-        editor.putString("", user.getId());
-        editor.putString("", user.getUsername());
-        editor.commit();
-    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
 
+    }
 }
