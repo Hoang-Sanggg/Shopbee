@@ -5,8 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".QRscanActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:id="@+id/QR_Back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_arrow"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#E97451"
+            android:textSize="25dp"
+            android:text="QR Scan"
+            android:layout_marginRight="20dp"
+            android:gravity="right"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"
@@ -14,12 +35,13 @@
         android:background="#E97451"
         android:gravity="center"
         android:text="Shopbee QRScan"
-        android:textColor="@color/black"
-        android:textSize="30dp"/>
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="25dp"/>
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="300dp"
         android:src="@drawable/qrscan"/>
 
 
@@ -32,6 +54,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:shadowRadius="10"
         android:background="#E97451"
@@ -39,5 +62,17 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="QR Scan"/>
+
+    <TextView
+        android:background="#EAEDED"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="370dp"
+        android:gravity="center"
+        android:text="hãy kiểm tra camera và mã trước khi quét" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
 
 </LinearLayout>
