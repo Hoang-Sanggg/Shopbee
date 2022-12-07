@@ -24,10 +24,12 @@ import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.ProductCreate;
+
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.checkerframework.checker.index.qual.PolyUpperBound;
 
 import java.util.ArrayList;
@@ -115,17 +117,17 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product, container, false);
-        FloatingActionButton btnCart = view.findViewById(R.id.btnCart);
-        btnCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                requireActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.frame_layout, new CartFragment(getContext()), "MainFragment")
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
+//        FloatingActionButton btnCart = view.findViewById(R.id.btnCart);
+//        btnCart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                requireActivity().getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.frame_layout, new CartFragment(getContext()), "MainFragment")
+//                        .addToBackStack(null)
+//                        .commit();
+//            }
+//        });
         return view;
     }
 
@@ -176,6 +178,8 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
 //            }
 //        });
         if(nameShop.equals(nameShopS    )){
+        if(nameShop.equals(nameShopS)){
+
             bottom_add_product.setVisibility(View.GONE);
         }
 
