@@ -1,5 +1,6 @@
 package com.duan1.shopbee.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,8 +16,10 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.duan1.shopbee.QRscanActivity;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.CategoryAdapter;
 import com.duan1.shopbee.adapter.FeaturedProductAdapter;
@@ -65,6 +68,7 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
     private PhotoAdaper photoAdaper;
     private List<Photo> listPhoto;
     private Timer timer;
+    private ImageView imgScan;
 
     ShowBottomNav showBottomNav;
 
@@ -166,10 +170,25 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
         photoAdaper.registerDataSetObserver(circleIndicator.getDataSetObserver());
 
 
+        imgScan = view.findViewById(R.id.imageView);
+        imgScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickQRscan();
+            }
+        });
+
+
         autoSlideImage();
         showBottomNav();
 
 
+    }
+
+    private void onClickQRscan() {
+        Intent intent = new Intent(getActivity(), QRscanActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 
     private List<Photo> getListPhoto(){
