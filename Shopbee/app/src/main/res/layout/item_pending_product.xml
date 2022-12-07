@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -21,6 +22,7 @@
                 />
         </androidx.cardview.widget.CardView>
         <TextView
+            android:id="@+id/txtCutomer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ABC"
@@ -53,16 +55,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
-                android:id="@+id/tvProductName_pending"
+                android:id="@+id/txtNameProductOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bun gao lut giam can - an kieng, thuc duong aagadaga"
-                android:maxLines="1"
                 android:ellipsize="end"
+                android:maxLines="1"
                 android:padding="10dp"
+                android:text="Bun gao lut giam can - an kieng, thuc duong aagadaga"
                 android:textSize="16dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,7 +135,7 @@
             android:layout_toEndOf="@id/tvProductQuantity2_pending"
             android:text=" sản phẩm"/>
         <TextView
-            android:id="@+id/tvTotalPrice_pending"
+            android:id="@+id/txtPriceProductOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="126000"
@@ -146,7 +150,7 @@
             android:text="đ"
             android:textColor="#f00"
             android:textSize="15dp"
-            android:layout_toLeftOf="@id/tvTotalPrice_pending"/>
+            android:layout_toLeftOf="@id/txtPriceProductOrder"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -176,7 +180,7 @@
                 android:text="Để tránh việc giao hàng trễ, vui lòng giao hàng/chuẩn bị hàng trước " />
 
             <TextView
-                android:id="@+id/tvDeliveryTime"
+                android:id="@+id/txtDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="XXXXXXXXXX"
@@ -208,7 +212,7 @@
             android:layout_height="wrap_content"
             android:text="Mã đơn hàng"/>
     <TextView
-            android:id="@+id/tvProductDeliveryID"
+            android:id="@+id/txtIdOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#22001401AFCNA141DD"

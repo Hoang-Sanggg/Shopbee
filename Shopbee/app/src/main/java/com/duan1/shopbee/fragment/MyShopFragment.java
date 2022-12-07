@@ -63,6 +63,7 @@ public class MyShopFragment extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         ImageView btn_back_myProduct = view.findViewById(R.id.btn_back_myShop);
         LinearLayout lnMyProduct = view.findViewById(R.id.lnMyProduct);
+        LinearLayout lnOrder = view.findViewById(R.id.btnDonHang);
 
         btn_back_myProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +80,13 @@ public class MyShopFragment extends Fragment{
             }
         });
 
+        lnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickMyOrder(view);
+            }
+        });
+
 //        Toast.makeText(getContext(), productCreateList.size(), Toast.LENGTH_SHORT).show();
 
     }
@@ -87,6 +95,14 @@ public class MyShopFragment extends Fragment{
         requireActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_layout, new MyProductFragment(productCreateList), "MainFragment")
+                .addToBackStack(null)
+                .commit();
+    }
+
+    public void onClickMyOrder(View view) {
+            requireActivity().getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.frame_layout, new OrderFragment(), "MainFragment")
                 .addToBackStack(null)
                 .commit();
     }

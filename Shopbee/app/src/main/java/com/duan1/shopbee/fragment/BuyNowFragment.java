@@ -156,20 +156,21 @@ public class BuyNowFragment extends Fragment {
             public void onClick(View view) {
                 SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
                 String nameShopS = sharedPref.getString("username", "");
-                String maDonHang = RandomMaDonHang(9);
+                String maDonHang = "SBX"+RandomMaDonHang(10);
 
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child("order").child(maDonHang).child("idProduct").setValue(idProduct);
+                        databaseReference.child("order").child(maDonHang).child("idProductOrder").setValue(maDonHang);
                         databaseReference.child("order").child(maDonHang).child("customer").setValue(nameShopS);
                         databaseReference.child("order").child(maDonHang).child("seller").setValue(nameShop);
                         databaseReference.child("order").child(maDonHang).child("priceOrder").setValue(String.valueOf(Integer.parseInt(priceProduct)+Integer.parseInt(transportfee)));
-                        databaseReference.child("order").child(maDonHang).child("priceProduct").setValue(priceProduct);
+                        databaseReference.child("order").child(maDonHang).child("priceProductOrder").setValue(priceProduct);
                         databaseReference.child("order").child(maDonHang).child("numberof").setValue("1");
-                        databaseReference.child("order").child(maDonHang).child("nameProduct").setValue(nameProduct);
-                        databaseReference.child("order").child(maDonHang).child("status").setValue("Status");
-                        databaseReference.child("order").child(maDonHang).child("date").setValue("");
+                        databaseReference.child("order").child(maDonHang).child("nameProductOrder").setValue(nameProduct);
+                        databaseReference.child("order").child(maDonHang).child("statusOrder").setValue("Status");
+                        databaseReference.child("order").child(maDonHang).child("dateOrder").setValue("");
+                        databaseReference.child("order").child(maDonHang).child("imageOrder").setValue(imageProduct);
 
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("description").setValue(decription);
