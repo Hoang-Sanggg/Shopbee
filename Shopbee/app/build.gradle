@@ -51,6 +51,17 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.2'
     implementation 'com.google.firebase:firebase-storage:20.1.0'
     implementation 'com.google.firebase:firebase-database:20.1.0'
+    // FirebaseUI for Firebase Realtime Database
+    implementation 'com.firebaseui:firebase-ui-database:8.0.2'
+
+    // FirebaseUI for Cloud Firestore
+    implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
+
+    // FirebaseUI for Firebase Auth
+    implementation 'com.firebaseui:firebase-ui-auth:8.0.2'
+
+    // FirebaseUI for Cloud Storage
+    implementation 'com.firebaseui:firebase-ui-storage:8.0.2'
 
     implementation 'me.relex:circleindicator:2.1.6'
     implementation 'com.github.bumptech.glide:glide:4.14.2'
@@ -76,5 +87,5 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:20.3.0'
 
     implementation 'com.hbb20:ccp:2.5.0'
-
+    implementation 'com.orhanobut:dialogplus:1.11@aar'
 }

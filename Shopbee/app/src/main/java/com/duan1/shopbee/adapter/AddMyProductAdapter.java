@@ -1,12 +1,13 @@
 package com.duan1.shopbee.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,13 +16,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.function.mFunction;
 import com.duan1.shopbee.model.ProductCreate;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.ViewHolder;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapter.MyProductViewHodel> {
 
@@ -58,7 +66,7 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyProductViewHodel holder, int position) {
+    public void onBindViewHolder(@NonNull MyProductViewHodel holder, @SuppressLint("RecyclerView") int position) {
         mFunction function = new mFunction();
         String nameUser = sharedPref.getString("username", "null");
         int soLuong = 0;
@@ -89,6 +97,55 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
                 clickToProduct.onClickToProductSale(mListMyProduct, holder.getAdapterPosition());
             }
         });
+        holder.btnSua_My_Product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = firebaseDatabase.getReference("user_info");
+                final DialogPlus dialogPlus=DialogPlus.newDialog(holder.ivHinhSP_My_Product.getContext())
+                        .setContentHolder(new ViewHolder(R.layout.dialog_edit))
+                        .setExpanded(true,1100)
+                        .create();
+
+                View view1=dialogPlus.getHolderView();
+                EditText uName= (EditText) ((LinearLayout)view1).findViewById(R.id.uName);
+                EditText uQuantity= (EditText) ((LinearLayout)view1).findViewById(R.id.uQuantity);
+                EditText uPrice= (EditText) ((LinearLayout)view1).findViewById(R.id.uPrice);
+
+                Button submit= ((LinearLayout)view1).findViewById(R.id.uSubmit);
+
+                uName.setText(mListMyProduct.get(position).getNameProduct());
+                uPrice.setText(mListMyProduct.get(position).getPriceProduct());
+                uQuantity.setText(mListMyProduct.get(position).getWarehouse());
+
+                dialogPlus.show();
+
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Map<String,Object> map=new HashMap<>();
+                        map.put("name",uName.getText().toString());
+                        map.put("quantity",uQuantity.getText().toString());
+                        map.put("price",uPrice.getText().toString());
+
+                        FirebaseDatabase.getInstance().getReference().child("students")
+                                .child(getRef(position).getKey()).updateChildren(map)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        dialogPlus.dismiss();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        dialogPlus.dismiss();
+                                    }
+                                });
+                    }
+                });
+            }
+        });
 
     }
 
@@ -105,7 +162,7 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
         private ImageView ivHinhSP_My_Product;
         private TextView tvThongTinSP_My_Product, txtGiaSP_My_Product, txtKhoHang_My_Product, txtDaBan_My_Product, txtLuotThich_My_Product, txtLuotXem_My_Product;
         private ImageView ivUuDai_My_Product;
-        private Button btnAn_My_Product, btnSua_My_Product, btnThem_My_Product;
+        private Button btnXoa_My_Product, btnSua_My_Product, btnThem_My_Product;
         private LinearLayout item_lnMyProduct;
 
         public MyProductViewHodel(@NonNull View itemView) {
@@ -119,8 +176,8 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
             txtLuotThich_My_Product = itemView.findViewById(R.id.txtLuotThich_My_Product);
             txtLuotXem_My_Product = itemView.findViewById(R.id.txtLuotXem_My_Product);
             ivUuDai_My_Product = itemView.findViewById(R.id.ivUuDai_My_Product);
-            btnAn_My_Product = itemView.findViewById(R.id.btnAn_My_Product);
-            btnSua_My_Product = itemView.findViewById(R.id.btnSua_My_Product);
+            btnXoa_My_Product = itemView.findViewById(R.id.btnDel_My_Product);
+            btnSua_My_Product = itemView.findViewById(R.id.btnEdit_My_Product);
             btnThem_My_Product = itemView.findViewById(R.id.btnThem_My_Product);
 
             item_lnMyProduct = itemView.findViewById(R.id.item_lnMyProduct);

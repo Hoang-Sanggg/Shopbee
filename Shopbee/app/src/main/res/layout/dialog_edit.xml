@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f00"
+        android:text="Chỉnh sửa thông tin sản phẩm"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+    <EditText
+        android:id="@+id/uName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="a"/>
+    <EditText
+        android:id="@+id/uPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="a"/>
+    <EditText
+        android:id="@+id/uQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="a"/>
+    <LinearLayout
+        android:id="@+id/uSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
+        android:padding="3dp"
+        android:background="#f00">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:padding="10dp"
+            android:text="Cập nhật"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#f00"
+            android:gravity="center"/>
+    </LinearLayout>
+</LinearLayout>
