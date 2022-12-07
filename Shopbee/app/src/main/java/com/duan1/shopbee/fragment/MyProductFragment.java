@@ -22,10 +22,15 @@ import android.widget.TextView;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.AddMyProductAdapter;
 import com.duan1.shopbee.adapter.CategoryAdapter;
+import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.HideBottomNav;
 import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.ProductCreate;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -33,12 +38,13 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class MyProductFragment extends Fragment implements ClickToProductSale {
+public class MyProductFragment extends Fragment implements ClickToProductSale, ClickToDeleteProduct {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -49,6 +55,8 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
     private AddMyProductAdapter addMyProductAdapter;
 
     private RecyclerView rcyMyProduct;
+
+
 
 
     public MyProductFragment(List<ProductCreate> productCreateList) {
@@ -110,7 +118,7 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
         rcyMyProduct.setHasFixedSize(true);
         rcyMyProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList, MyProductFragment.this);
+        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList, MyProductFragment.this,MyProductFragment.this);
         rcyMyProduct.setAdapter(addMyProductAdapter);
 
         btn_back_myProduct.setOnClickListener(new View.OnClickListener() {
@@ -145,4 +153,22 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
                 .addToBackStack(null)
                 .commit();
     }
+    public void onClickToDeleteProduct(List<ProductCreate> flashsalelist,int position){
+        databaseReference.child("product").child(String.valueOf(flashsalelist.get(position).getIdProduct())).removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Write was successful!
+                        // ...
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Write failed
+                        // ...
+                    }
+                });
+    }
+
 }

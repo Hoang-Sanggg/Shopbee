@@ -129,7 +129,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
                 hideBottomNav.hideBottomNav();
             }
         });
-
+        logout = view.findViewById(R.id.btn_logout);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +141,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
                 editor.commit();
                 Intent intent = new Intent(getContext(), LoginActivity.class);
                 startActivity(intent);
+                getActivity().finish();
 
             }
         });

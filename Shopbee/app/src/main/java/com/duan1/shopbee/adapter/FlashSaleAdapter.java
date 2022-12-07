@@ -31,6 +31,11 @@ public class FlashSaleAdapter extends RecyclerView.Adapter<FlashSaleAdapter.Flas
         this.flashsaleList = flashsaleList;
         this.context = context;
         this.clickToProductSale = clickToProductSale;
+        notifyDataSetChanged();
+    }
+
+    public FlashSaleAdapter(){
+        notifyDataSetChanged();
     }
 
     @NonNull

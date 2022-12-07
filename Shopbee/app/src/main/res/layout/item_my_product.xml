@@ -201,10 +201,10 @@
                     android:layout_marginLeft="10dp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnThem_My_Product"
+                    android:id="@+id/btnXoa"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    android:text="..."
+                    android:text="Xóa"
                     android:textSize="16sp"
                     android:textAllCaps="false"
                     android:background="@drawable/custom_btn_login"
