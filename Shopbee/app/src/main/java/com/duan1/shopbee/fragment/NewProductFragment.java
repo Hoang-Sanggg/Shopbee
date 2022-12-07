@@ -84,7 +84,7 @@ public class NewProductFragment extends Fragment {
 
     ImageView imageView;
     String linkDL, phiVanChuyen;
-    TextView txtNewIndustry, txtNewBrand, txtStatus, txtBaoHanh, txtShip;
+    TextView txtNewIndustry, txtNewBrand, txtStatus, txtBaoHanh, txtShip, back_new_pro;
     LinearLayout edtindustry, edtBrand, edtBaoHanh, edtStatus, edtTransfree;
     EditText  edtPrice, edtStorage;
     CountryCodePicker countryCodePicker;
@@ -146,6 +146,7 @@ public class NewProductFragment extends Fragment {
         edtTransfree = view.findViewById(R.id.lnTransportfee);
 
         countryCodePicker = view.findViewById(R.id.country);
+        back_new_pro = view.findViewById(R.id.back_new_pro);
 
 
 
@@ -308,8 +309,32 @@ public class NewProductFragment extends Fragment {
             }
         });
 
+        back_new_pro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                askBack();
+            }
+        });
 
-
+    }
+    
+    private void askBack(){
+        android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(getContext());
+        b.setIcon(R.drawable.attention_warning_14525);
+        b.setTitle("Xác nhận");
+        b.setMessage("Bạn có chắc chắn muốn xóa hủy không ?");
+        b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                requireActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+        b.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        android.app.AlertDialog al = b.create();
+        al.show();
     }
 
     private void dialog(int gravity){
