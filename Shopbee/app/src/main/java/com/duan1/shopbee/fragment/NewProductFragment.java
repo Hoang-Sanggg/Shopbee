@@ -84,7 +84,7 @@ public class NewProductFragment extends Fragment {
 
     ImageView imageView;
     String linkDL, phiVanChuyen;
-    TextView txtNewIndustry, txtNewBrand, txtStatus, txtBaoHanh, txtShip;
+    TextView txtNewIndustry, txtNewBrand, txtStatus, txtBaoHanh, txtShip, back_new_pro;
     LinearLayout edtindustry, edtBrand, edtBaoHanh, edtStatus, edtTransfree;
     EditText  edtPrice, edtStorage;
     CountryCodePicker countryCodePicker;
@@ -146,6 +146,7 @@ public class NewProductFragment extends Fragment {
         edtTransfree = view.findViewById(R.id.lnTransportfee);
 
         countryCodePicker = view.findViewById(R.id.country);
+        back_new_pro = view.findViewById(R.id.back_new_pro);
 
 
 
@@ -240,17 +241,19 @@ public class NewProductFragment extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder dialogIndustry = new AlertDialog.Builder(getContext());
                 dialogIndustry.setTitle("Ngành hàng");
-                String[] types = {"By Zip", "By Category"};
+                String[] types = {"Thời trang nữ", "Thời trang nam", "Điện thoại và phụ kiện", ""};
                 dialogIndustry.setItems(types, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
                         switch(which){
                             case 0:
-                                 dialog_catelory(view, "By Zip", new String[]{"By Zip", "By Category"}, txtNewIndustry);
+                                dialog_catelory(view, "Thời trang nữ", new String[]{"Áo", "Trang sức","Giày","Quần"}, txtNewIndustry);
                                 break;
                             case 1:
-                                 dialog_catelory(view, "By Category", new String[]{"By Zip", "By Category", "Zip", "Category"}, txtNewIndustry);
+                                dialog_catelory(view, "Thời trang nam", new String[]{"Áo", "Phụ kiện", "Giày", "Nón"}, txtNewIndustry);
                                 break;
+                            case 2:
+                                dialog_catelory(view, "Điện thoại và phụ kiện", new String[]{"Cáp sạc", "Củ sạc", "Iphone", "SamSung","Tai Nghe"}, txtNewIndustry);
                                 // them case
                         }
                     }
@@ -265,7 +268,7 @@ public class NewProductFragment extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder dialogIndustry = new AlertDialog.Builder(getContext());
                 dialogIndustry.setTitle("Thương hiệu");
-                String[] types = {"No Brand", "By Category"};
+                String[] types = {"Adidas", "Nike","Akko","Frenzy"};
                 dialogIndustry.setItems(types, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
@@ -274,8 +277,19 @@ public class NewProductFragment extends Fragment {
                                 industry[0] = types[which];
                                 break;
                             case 1:
-                                dialog_catelory(view, "Brand", new String[]{"By Zip", "By Category", "Zip", "Category"}, txtNewBrand);
+                                dialog_catelory(view, "Adidas", new String[]{"Giày", "Phụ kiện", "Áo", "Quần"}, txtNewBrand);
                                 break;
+                            case 2:
+                                dialog_catelory(view, "Nike", new String[]{"Giày", "Phụ kiện", "Áo", "Quần"}, txtNewBrand);
+                                break;
+                            case 3:
+                                dialog_catelory(view, "Akko", new String[]{"Bàn Phím", "Phụ kiện", "Keycap", "Kit"}, txtNewBrand);
+                                break;
+                            case 4:
+                                dialog_catelory(view, "Frenzy", new String[]{"Giày", "Phụ kiện", "Áo", "Quần"}, txtNewBrand);
+                                break;
+
+
                             // them case
                         }
                         txtNewBrand.setText(String.valueOf(industry[0]));
@@ -308,8 +322,32 @@ public class NewProductFragment extends Fragment {
             }
         });
 
+        back_new_pro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                askBack();
+            }
+        });
 
-
+    }
+    
+    private void askBack(){
+        android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(getContext());
+        b.setIcon(R.drawable.attention_warning_14525);
+        b.setTitle("Xác nhận");
+        b.setMessage("Bạn có chắc chắn muốn xóa hủy không ?");
+        b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                requireActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+        b.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        android.app.AlertDialog al = b.create();
+        al.show();
     }
 
     private void dialog(int gravity){
