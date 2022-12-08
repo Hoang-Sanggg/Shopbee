@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.duan1.shopbee.function.mFunction;
 import com.duan1.shopbee.model.User;
@@ -59,6 +61,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Window window = this.getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.black));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.black));
 
         edt_email = (TextInputLayout)findViewById(R.id.TextInputLayOutUsernameLogin);
         edt_password = (TextInputLayout)findViewById(R.id.TextInputLayOutPasswordLogin);
