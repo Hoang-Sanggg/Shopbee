@@ -502,8 +502,7 @@
                             android:id="@+id/ivAvt_pending"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="#0C0C0C"
-                            android:src=""/>
+                            android:background="#0C0C0C"/>
                     </androidx.cardview.widget.CardView>
                     <TextView
                         android:layout_width="wrap_content"
