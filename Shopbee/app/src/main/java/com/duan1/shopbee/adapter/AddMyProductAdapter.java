@@ -2,6 +2,7 @@ package com.duan1.shopbee.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,7 @@ import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
+import com.duan1.shopbee.fragment.NewProductFragment;
 import com.duan1.shopbee.function.mFunction;
 import com.duan1.shopbee.model.ProductCreate;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -104,11 +106,31 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
         holder.btnXoa_My_Product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,""+ holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                clickToDeleteProduct.onClickToDeleteProduct(mListMyProduct,holder.getAdapterPosition());
+                askBack(holder);
             }
         });
     }
+
+    private void askBack(MyProductViewHodel holder){
+        android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(mContext);
+        b.setIcon(R.drawable.attention_warning_14525);
+        b.setTitle("Xác nhận");
+        b.setMessage("Bạn có chắc chắn muốn xóa không?");
+        b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                clickToDeleteProduct.onClickToDeleteProduct(mListMyProduct,holder.getAdapterPosition());
+            }
+        });
+        b.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        android.app.AlertDialog al = b.create();
+        al.show();
+    }
+
+
 
     @Override
     public int getItemCount() {

@@ -18,7 +18,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.AddMyProductAdapter;
 import com.duan1.shopbee.adapter.CategoryAdapter;
@@ -57,7 +59,8 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
     private RecyclerView rcyMyProduct;
 
 
-
+    public MyProductFragment() {
+    }
 
     public MyProductFragment(List<ProductCreate> productCreateList) {
         this.productCreateList = productCreateList;
@@ -111,15 +114,9 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
 
         txtSoLuong = view.findViewById(R.id.txtSoLuong);
 
-//        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
-//
-//        Log.d(">>>>>>", "size: "+soLuong);
 
-        rcyMyProduct.setHasFixedSize(true);
-        rcyMyProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList, MyProductFragment.this,MyProductFragment.this);
-        rcyMyProduct.setAdapter(addMyProductAdapter);
+        loadData();
 
         btn_back_myProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,13 +150,14 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
                 .addToBackStack(null)
                 .commit();
     }
+
     public void onClickToDeleteProduct(List<ProductCreate> flashsalelist,int position){
         databaseReference.child("product").child(String.valueOf(flashsalelist.get(position).getIdProduct())).removeValue()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        // Write was successful!
-                        // ...
+                        Toast.makeText(getContext(), "Bạn vừa xóa sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                        loadData();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -169,6 +167,15 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
                         // ...
                     }
                 });
+
+    }
+
+    private void loadData(){
+        rcyMyProduct.setHasFixedSize(true);
+        rcyMyProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
+        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList, MyProductFragment.this,MyProductFragment.this);
+        rcyMyProduct.setAdapter(addMyProductAdapter);
     }
 
 }
