@@ -24,6 +24,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.hbb20.CountryCodePicker;
 import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.ViewHolder;
 
@@ -108,15 +109,32 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
                         .create();
 
                 View view1=dialogPlus.getHolderView();
-                EditText uName= (EditText) ((LinearLayout)view1).findViewById(R.id.uName);
-                EditText uQuantity= (EditText) ((LinearLayout)view1).findViewById(R.id.uQuantity);
-                EditText uPrice= (EditText) ((LinearLayout)view1).findViewById(R.id.uPrice);
 
-                Button submit= ((LinearLayout)view1).findViewById(R.id.uSubmit);
+                EditText uName= view1.findViewById(R.id.edtEditNameProduct);
+                EditText uDescription= view1.findViewById(R.id.edtEditDescription);
+                TextView uIndustry= view1.findViewById(R.id.txtEditIndustry);
+                TextView uBrand= view1.findViewById(R.id.txtEditBrand);
+                CountryCodePicker uCountry = view1.findViewById(R.id.Editcountry);
+                TextView uBaoHanh = view1.findViewById(R.id.txtEditBaoHanh);
+                EditText uPrice = view1.findViewById(R.id.edtEditPrice);
+                EditText uStorage = view1.findViewById(R.id.edtEditStorage);
+                TextView uShip = view1.findViewById(R.id.txtEditShip);
+                TextView uStatus = view1.findViewById(R.id.txtEditStatus);
+                Button uOrder = view1.findViewById(R.id.btnEditOrder);
+
+
+
+                LinearLayout submit= view1.findViewById(R.id.btnSubmit);
 
                 uName.setText(mListMyProduct.get(position).getNameProduct());
+                uDescription.setText(mListMyProduct.get(position).getDescription());
+                uIndustry.setText(mListMyProduct.get(position).getIndustry());
+                uBrand.setText(mListMyProduct.get(position).getBrandProduct());
+                uBaoHanh.setText(mListMyProduct.get(position).getBaoHanhSp());
                 uPrice.setText(mListMyProduct.get(position).getPriceProduct());
-                uQuantity.setText(mListMyProduct.get(position).getWarehouse());
+                uStorage.setText(mListMyProduct.get(position).getWarehouse());
+                uShip.setText(mListMyProduct.get(position).getShippingProduct());
+                uStatus.setText(mListMyProduct.get(position).getStatus());
 
                 dialogPlus.show();
 
@@ -125,23 +143,29 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
                     public void onClick(View view) {
                         Map<String,Object> map=new HashMap<>();
                         map.put("name",uName.getText().toString());
-                        map.put("quantity",uQuantity.getText().toString());
-                        map.put("price",uPrice.getText().toString());
+                        map.put("description",uDescription.getText().toString());
+                        map.put("industry",uIndustry.getText().toString());
+                        map.put("brand", uBrand.getText().toString());
+                        map.put("baohanh", uBaoHanh.getText().toString());
+                        map.put("price", uPrice.getText().toString());
+                        map.put("storage", uStatus.getText().toString());
+                        map.put("ship", uShip.getText().toString());
+                        map.put("status", uStatus.getText().toString());
 
-                        FirebaseDatabase.getInstance().getReference().child("students")
-                                .child(getRef(position).getKey()).updateChildren(map)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        dialogPlus.dismiss();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        dialogPlus.dismiss();
-                                    }
-                                });
+//                        FirebaseDatabase.getInstance().getReference().child("students")
+//                                .child(getRef(position).getKey()).updateChildren(map)
+//                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                    @Override
+//                                    public void onSuccess(Void aVoid) {
+//                                        dialogPlus.dismiss();
+//                                    }
+//                                })
+//                                .addOnFailureListener(new OnFailureListener() {
+//                                    @Override
+//                                    public void onFailure(@NonNull Exception e) {
+//                                        dialogPlus.dismiss();
+//                                    }
+//                                });
                     }
                 });
             }
