@@ -15,6 +15,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -67,6 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText   edt_username, edt_password, edt_enter_password, edt_email, edt_phone_number;
     private TextInputLayout til_username, til_password, til_enter_password, til_email, til_phone_number;
     private RadioButton rdo_male, rdo_female;
+    private Button btn_cancel_register;
     final int REQUESTCODE_READ_EXTERNAL_STORAGE = 120;
     private int dem = 0;
 
@@ -89,6 +91,14 @@ public class RegisterActivity extends AppCompatActivity {
         til_enter_password = findViewById(R.id.TextInputLayOutEnterPassword);
         til_email = findViewById(R.id.TextInputLayOutEmail);
         til_phone_number = findViewById(R.id.TextInputLayOutPhoneNumber);
+
+        btn_cancel_register = findViewById(R.id.btn_cancel_register);
+        btn_cancel_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+        });
 
         edt_username.addTextChangedListener(new TextWatcher() {
             @Override
@@ -527,5 +537,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
 
 }
