@@ -430,7 +430,7 @@
                         android:layout_height="90dp"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="15dp">
+                        android:padding="10dp">
 
                         <ImageView
                             android:id="@+id/profile_btn_medal"

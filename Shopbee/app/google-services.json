@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1005902652411-4slmlfqpfq5iqevi1kro7sqm2sn80vm3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.duan1.shopbee",
+            "certificate_hash": "d2fbb6ca3bdb5675f6ba0861f7ccd17f1f9c6de4"
+          }
+        },
+        {
           "client_id": "1005902652411-5dgr1ugfs8fmrc259imsak79ua1tpdah.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

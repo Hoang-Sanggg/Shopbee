@@ -57,6 +57,7 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
     private AddMyProductAdapter addMyProductAdapter;
 
     private RecyclerView rcyMyProduct;
+    Button btnDelete;
 
 
     public MyProductFragment() {
@@ -115,6 +116,16 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
         txtSoLuong = view.findViewById(R.id.txtSoLuong);
 
 
+        btnDelete = view.findViewById(R.id.btnAn_My_Product);
+
+//        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
+//
+//        Log.d(">>>>>>", "size: "+soLuong);
+
+//        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
+//
+//        Log.d(">>>>>>", "size: "+soLuong);
+
 
         loadData();
 
@@ -131,6 +142,11 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
                 onClickAddNewMyProduct(view);
             }
         });
+
+       
+
+
+
 
     }
     public void onClickAddNewMyProduct(View view) {

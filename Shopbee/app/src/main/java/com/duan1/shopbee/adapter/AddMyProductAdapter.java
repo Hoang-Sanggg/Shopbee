@@ -4,11 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,7 +18,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
@@ -30,7 +29,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapter.MyProductViewHodel> {
 
@@ -160,7 +161,7 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
             txtLuotXem_My_Product = itemView.findViewById(R.id.txtLuotXem_My_Product);
             ivUuDai_My_Product = itemView.findViewById(R.id.ivUuDai_My_Product);
             btnAn_My_Product = itemView.findViewById(R.id.btnAn_My_Product);
-            btnSua_My_Product = itemView.findViewById(R.id.btnSua_My_Product);
+            btnSua_My_Product = itemView.findViewById(R.id.btnEdit_My_Product);
             btnXoa_My_Product = itemView.findViewById(R.id.btnXoa);
 
             item_lnMyProduct = itemView.findViewById(R.id.item_lnMyProduct);

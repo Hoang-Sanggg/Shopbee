@@ -180,7 +180,7 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <androidx.appcompat.widget.AppCompatButton
+                <Button
                     android:id="@+id/btnAn_My_Product"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
@@ -190,8 +190,8 @@
                     android:textColor="@color/black"
                     android:background="@drawable/custom_btn_login"/>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnSua_My_Product"
+                <Button
+                    android:id="@+id/btnEdit_My_Product"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:text="Sửa"
