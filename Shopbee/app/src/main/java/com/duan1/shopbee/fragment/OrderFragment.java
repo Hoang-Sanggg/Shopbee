@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.AddMyProductAdapter;
 import com.duan1.shopbee.adapter.OrderAdapter;
+import com.duan1.shopbee.callback.ClickToOrder;
 import com.duan1.shopbee.model.Order;
 import com.duan1.shopbee.model.ProductCreate;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +35,7 @@ import java.util.List;
  * Use the {@link OrderFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OrderFragment extends Fragment {
+public class OrderFragment extends Fragment implements ClickToOrder {
 
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
@@ -133,7 +134,7 @@ public class OrderFragment extends Fragment {
 
             }
         });
-        orderAdapter = new OrderAdapter(orderList, getContext());
+        orderAdapter = new OrderAdapter(orderList, getContext(), OrderFragment.this);
     }
 
     private void data(View view){
@@ -145,4 +146,12 @@ public class OrderFragment extends Fragment {
         orderRecycer.setAdapter(orderAdapter);
     }
 
+    @Override
+    public void ClickToOrder(List<Order> orderList, int position) {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, new DetailFragment(orderList.get(position).getIdProductOrder(), orderList.get(position).getCustomer(), orderList.get(position).getSeller(), orderList.get(position).getPriceOrder(), orderList.get(position).getPriceProductOrder(), orderList.get(position).getNumberOfOrder(), orderList.get(position).getNameProductOrder(), orderList.get(position).getStatusOrder(), orderList.get(position).getDateOrder(), orderList.get(position).getImageOrder(), orderList.get(position).getAddress(), orderList.get(position).getPhone()), "MainFragment")
+                .addToBackStack(null)
+                .commit();
+    }
 }

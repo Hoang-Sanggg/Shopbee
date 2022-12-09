@@ -183,7 +183,6 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
                         // ...
                     }
                 });
-
     }
 
     private void loadData(){

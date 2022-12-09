@@ -105,8 +105,10 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
 //            name = LoginActivity.USERNAME;
 //        }
         SharedPreferences sharedPref = MainActivity.this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
-        String name = sharedPref.getString("username", "");
+        String name = sharedPref.getString("username", "1");
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+
+
 
         //Home
         categoryList = new ArrayList<>();
