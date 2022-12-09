@@ -121,6 +121,57 @@ public class NewProductFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+            tvNameProduct.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    validate_nameProduct();
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+
+            tvDecription.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    validate_description();
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+
+            edtPrice.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    validate_price();
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
         }
     }
 
@@ -366,39 +417,41 @@ public class NewProductFragment extends Fragment {
 //        return true;
 //    }
 
-//    private boolean validate_nameProduct(){
-//        String nameproduct = tvNameProduct.getText().toString();
-//        if(nameproduct.isEmpty()){
-//            tvNameProduct.setError("Vui lòng nhập tên sản phẩm");
-//            return false;
-//        }else{
-//            tvNameProduct.setError(null);
-//
-//            return true;
-//        }
-//    }
-//    private boolean validate_description(){
-//        String description = tvDecription.getText().toString();
-//        if(description.isEmpty()){
-//            tvDecription.setError("Vui lòng nhập tên sản phẩm");
-//            return false;
-//        }else{
-//            tvDecription.setError(null);
-//
-//            return true;
-//        }
-//    }
-//
-//    private boolean validate_price(){
-//
-//        String price = edtPrice.getText().toString();
-//        if(price .isEmpty()){
-//            edtPrice.setError("Nhập số tiền");
-//            return false;
-//        }
-//        edtPrice.setError(null);
-//        return true;
-//    }
+
+
+    private boolean validate_nameProduct(){
+        String nameproduct = tvNameProduct.getText().toString();
+        if(nameproduct.isEmpty()){
+            tvNameProduct.setError("Vui lòng nhập tên sản phẩm");
+            return false;
+        }else{
+            tvNameProduct.setError(null);
+
+            return true;
+        }
+    }
+    private boolean validate_description(){
+        String description = tvDecription.getText().toString();
+        if(description.isEmpty()){
+            tvDecription.setError("Vui lòng nhập tên sản phẩm");
+            return false;
+        }else{
+            tvDecription.setError(null);
+
+            return true;
+        }
+    }
+
+    private boolean validate_price(){
+
+        String price = edtPrice.getText().toString();
+        if(price .isEmpty()){
+            edtPrice.setError("Nhập số tiền");
+            return false;
+        }
+        edtPrice.setError(null);
+        return true;
+    }
 
 
     private void dialog(int gravity){
