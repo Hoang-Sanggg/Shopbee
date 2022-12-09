@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -47,7 +48,7 @@ public class BuyNowFragment extends Fragment {
     private ImageView ivProduct, buynow_ImgItem;
     private LinearLayout bottom_add_product, back_product, buyNow;
     ShowBottomNav showBottomNav;
-
+    EditText buynow_tvUsername_location, buynow_tvNumberPhone_location, buynow_tvAddress_Location;
     LinearLayout btnDatHang;
 
     private String idProduct;
@@ -142,6 +143,10 @@ public class BuyNowFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews(view);
+
+        SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        String nameShopS = sharedPref.getString("username", "");
+
         tvnameShop.setText(nameShop);
         namePd.setText(nameProduct);
         pricePd.setText(priceProduct);
@@ -149,15 +154,16 @@ public class BuyNowFragment extends Fragment {
         Glide.with(this)
                 .load(imageProduct)
                 .into(buynow_ImgItem);
-
+        buynow_tvUsername_location.setText(nameShopS);
         btnDatHang.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
-                String nameShopS = sharedPref.getString("username", "");
-                String maDonHang = "SBX"+RandomMaDonHang(10);
 
+                String maDonHang = "SBX"+RandomMaDonHang(10);
+                String address = buynow_tvAddress_Location.getText().toString();
+                String phone = buynow_tvNumberPhone_location.getText().toString();
+//                String name = buynow_tvUsername_location.getText().toString();
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -171,6 +177,8 @@ public class BuyNowFragment extends Fragment {
                         databaseReference.child("order").child(maDonHang).child("statusOrder").setValue("Status");
                         databaseReference.child("order").child(maDonHang).child("dateOrder").setValue("");
                         databaseReference.child("order").child(maDonHang).child("imageOrder").setValue(imageProduct);
+                        databaseReference.child("order").child(maDonHang).child("address").setValue(address);
+                        databaseReference.child("order").child(maDonHang).child("phone").setValue(phone);
 
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("description").setValue(decription);
@@ -212,6 +220,9 @@ public class BuyNowFragment extends Fragment {
         pricePd = view.findViewById(R.id.buynow_tvPriceItem);
         tvPriceAndShip = view.findViewById(R.id.tvPriceAndShip);
         buynow_ImgItem = view.findViewById(R.id.buynow_ImgItem);
+        buynow_tvUsername_location = view.findViewById(R.id.buynow_tvUsername_location);
+        buynow_tvNumberPhone_location = view.findViewById(R.id.buynow_tvNumberPhone_location);
+        buynow_tvAddress_Location = view.findViewById(R.id.buynow_tvAddress_Location);
 
     }
 

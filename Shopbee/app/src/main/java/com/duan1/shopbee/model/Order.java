@@ -13,6 +13,8 @@ public class Order implements Serializable {
     private String statusOrder;
     private String dateOrder;
     private String imageOrder;
+    private String address;
+    private String phone;
 
     public Order() {
     }
@@ -28,6 +30,22 @@ public class Order implements Serializable {
         this.statusOrder = statusOrder;
         this.dateOrder = dateOrder;
         this.imageOrder = imageOrder;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getImageOrder() {
