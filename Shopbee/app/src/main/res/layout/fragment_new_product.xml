@@ -571,7 +571,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="8dp"
-                                android:inputType="number"
                                 android:drawableRight="@drawable/ic_baseline_navigate_next_24"
                                 android:gravity="right"
                                 android:ellipsize="end"
@@ -612,7 +611,6 @@
                                 android:drawableRight="@drawable/ic_baseline_navigate_next_24"
                                 android:gravity="right"
                                 android:ellipsize="end"
-                                android:inputType="number"
                                 android:maxLines="1"
                                 android:hint="a"
                                 android:textSize="16dp"/>

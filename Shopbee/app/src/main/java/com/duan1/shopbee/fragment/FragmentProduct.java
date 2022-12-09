@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
@@ -50,6 +51,7 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
     private ImageView ivProduct;
     private LinearLayout bottom_add_product, back_product, buyNow, btnAddToCart;
     ShowBottomNav showBottomNav;
+    private ConstraintLayout btnCart;
     private List<ProductCreate> productCreateList;
     private List<ProductCreate> cart;
 
@@ -72,6 +74,10 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
     private String priceFlashSale;
     private String discountFlashSale;
     private String soldFlashSale;
+
+    public FragmentProduct(List<ProductCreate> productCreateList) {
+        this.productCreateList = productCreateList;
+    }
 
     public FragmentProduct(String idProduct, String nameProduct, String description, String industry, String priceProduct, String productdetail, String warehouse, String transportfee, String status, String nameShop, String soldProduct, String brandProduct, String originProduct, String baoHanhSp, String shippingProduct, String priceFlashSale, String discountFlashSale, String soldFlashSale, String imageProduct, ShowBottomNav showBottomNav) {
         this.idProduct = idProduct;
@@ -199,7 +205,7 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
                         databaseReference.child("cart").child(nameShopS).child(maSp).child("baoHanhSp").setValue(baoHanhSp);
                         databaseReference.child("cart").child(nameShopS).child(maSp).child("shippingProduct").setValue("15");
                         databaseReference.child("cart").child(nameShopS).child(maSp).child("priceFlashSale").setValue(priceFlashSale);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child(maSp).child("discountFlashSale").setValue("18");
+                        databaseReference.child("cart").child(nameShopS).child(maSp).child("discountFlashSale").setValue("18");
                         databaseReference.child("cart").child(nameShopS).child(maSp).child("soldFlashSale").setValue("18");
                         databaseReference.child("cart").child(nameShopS).child(maSp).child("imageProduct").setValue(imageProduct);
                         databaseReference.child("cart").child(nameShopS).child(maSp).child("idProduct").setValue(maSp);
@@ -234,6 +240,17 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
                 });
 
 
+            }
+        });
+
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frame_layout, new CartFragment(cart), "MainFragment")
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
@@ -298,6 +315,9 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
 
         btnAddToCart = view.findViewById(R.id.btnAddToCart);
         tvNumberOfMessages = view.findViewById(R.id.tvNumberOfMessages);
+
+        btnCart = view.findViewById(R.id.btnCart);
+
     }
 
     public static String RandomMaDonHang(int len)

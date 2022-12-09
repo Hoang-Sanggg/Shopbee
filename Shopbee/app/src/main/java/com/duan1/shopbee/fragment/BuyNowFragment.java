@@ -21,6 +21,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ShowBottomNav;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -150,7 +152,8 @@ public class BuyNowFragment extends Fragment {
         tvnameShop.setText(nameShop);
         namePd.setText(nameProduct);
         pricePd.setText(priceProduct);
-        tvPriceAndShip.setText(String.valueOf(Integer.parseInt(priceProduct)+Integer.parseInt(transportfee)));
+//        tvPriceAndShip.setText(String.valueOf(Integer.parseInt(priceProduct)+Integer.parseInt(transportfee)));
+        tvPriceAndShip.setText("30000");
         Glide.with(this)
                 .load(imageProduct)
                 .into(buynow_ImgItem);
@@ -170,7 +173,7 @@ public class BuyNowFragment extends Fragment {
                         databaseReference.child("order").child(maDonHang).child("idProductOrder").setValue(maDonHang);
                         databaseReference.child("order").child(maDonHang).child("customer").setValue(nameShopS);
                         databaseReference.child("order").child(maDonHang).child("seller").setValue(nameShop);
-                        databaseReference.child("order").child(maDonHang).child("priceOrder").setValue(String.valueOf(Integer.parseInt(priceProduct)+Integer.parseInt(transportfee)));
+                        databaseReference.child("order").child(maDonHang).child("priceOrder").setValue("30000");
                         databaseReference.child("order").child(maDonHang).child("priceProductOrder").setValue(priceProduct);
                         databaseReference.child("order").child(maDonHang).child("numberof").setValue("1");
                         databaseReference.child("order").child(maDonHang).child("nameProductOrder").setValue(nameProduct);
@@ -198,6 +201,20 @@ public class BuyNowFragment extends Fragment {
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("discountFlashSale").setValue("18");
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("soldFlashSale").setValue("18");
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("imageProduct").setValue(linkDL);
+
+                        databaseReference.child("cart").child(nameShopS).child(idProduct).removeValue()
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Write failed
+                                        // ...
+                                    }
+                                });
 
                         Toast.makeText(getContext() , "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
                         requireActivity().getSupportFragmentManager().popBackStack();

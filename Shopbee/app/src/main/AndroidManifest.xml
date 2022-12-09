@@ -38,7 +38,7 @@
             android:name=".ProductCreateActivity"
             android:exported="false" />
         <activity
-            android:name=".OpenAppActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".LoginNumberPhoneActivity"
@@ -62,7 +62,7 @@
             android:stateNotNeeded="true"
             android:theme="@style/zxing_CaptureTheme"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".OpenAppActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
