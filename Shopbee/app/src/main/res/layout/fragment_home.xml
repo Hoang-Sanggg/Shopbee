@@ -249,25 +249,18 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_margin="10dp"
-            android:background="@color/black"
+            android:layout_marginTop="8dp"
+            android:background="@mipmap/live_banner02"
             app:layout_constraintTop_toBottomOf="@+id/recyclerFlashSales1"
-            tools:layout_editor_absoluteX="170dp" />
+            tools:layout_editor_absoluteX="16dp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerSuggestions"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            android:background="@color/black"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerSearchHot"
-            tools:layout_editor_absoluteX="170dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerProductHome"
             android:layout_width="match_parent"
             android:layout_height="1000dp"
             android:background="#0EEEEEEE"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerSuggestions"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerSearchHot"
             tools:layout_editor_absoluteX="67dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
