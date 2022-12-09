@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.duan1.shopbee.EditActivity;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
