@@ -80,8 +80,8 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
         String nameUser = sharedPref.getString("username", "null");
         int soLuong = 0;
             if(mListMyProduct.get(position).getNameShop().equals(nameUser)==true){
-                soLuong = sharedPref.getInt("soLuong", 0);
-                soLuong+=1;
+//                soLuong = sharedPref.getInt("soLuong", 0);
+//                soLuong+=1;
                 holder.tvThongTinSP_My_Product.setText(mListMyProduct.get(position).getNameProduct());
                 holder.txtGiaSP_My_Product.setText(mListMyProduct.get(position).getPriceProduct());
                 holder.txtKhoHang_My_Product.setText(mListMyProduct.get(position).getWarehouse());
@@ -96,9 +96,9 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
             }else{
                 holder.item_lnMyProduct.setVisibility(View.GONE);
             }
-        SharedPreferences.Editor editor1 = sharedPref.edit();
-        editor1.putInt("soLuong", soLuong);
-        editor1.commit();
+//        SharedPreferences.Editor editor1 = sharedPref.edit();
+//        editor1.putInt("soLuong", soLuong);
+//        editor1.commit();
 
         holder.item_lnMyProduct.setOnClickListener(new View.OnClickListener() {
             @Override
