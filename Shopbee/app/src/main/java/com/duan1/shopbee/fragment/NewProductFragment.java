@@ -1,5 +1,7 @@
 package com.duan1.shopbee.fragment;
 
+import static com.duan1.shopbee.fragment.BuyNowFragment.RandomMaDonHang;
+
 import android.Manifest;
 import android.app.Dialog;
 import android.content.ClipData;
@@ -45,6 +47,7 @@ import android.widget.Toast;
 
 import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
+import com.duan1.shopbee.RegisterActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -61,6 +64,7 @@ import com.hbb20.CountryCodePicker;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.Calendar;
 
@@ -121,7 +125,6 @@ public class NewProductFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
             tvNameProduct.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -130,48 +133,16 @@ public class NewProductFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
                     validate_nameProduct();
                 }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
             });
 
-            tvDecription.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    validate_description();
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-
-            edtPrice.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    validate_price();
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
         }
     }
 
@@ -230,29 +201,37 @@ public class NewProductFragment extends Fragment {
                 String price = edtPrice.getText().toString();
                 String storage = edtStorage.getText().toString();
                 String origin = countryCodePicker.getSelectedCountryName();
+                if (linkDL==null) {
+                    new android.app.AlertDialog.Builder(getContext())
+                            .setTitle("Notification")
+                            .setMessage("Vui lòng chọn ảnh cho sản phẩm")
+                            .setPositiveButton("OK", null)
+                            .show();
+                }else {
 
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child("product").child(maSp).child("nameProduct").setValue(nameProduct);
-                        databaseReference.child("product").child(maSp).child("description").setValue(decription);
-                        databaseReference.child("product").child(maSp).child("industry").setValue(txtNewIndustry.getText());
-                        databaseReference.child("product").child(maSp).child("priceProduct").setValue(price);
-                        databaseReference.child("product").child(maSp).child("productdetail").setValue("6");
-                        databaseReference.child("product").child(maSp).child("warehouse").setValue(storage);
-                        databaseReference.child("product").child(maSp).child("transportfee").setValue(phiVanChuyen);
-                        databaseReference.child("product").child(maSp).child("status").setValue(Status);
-                        databaseReference.child("product").child(maSp).child("nameShop").setValue(name);
-                        databaseReference.child("product").child(maSp).child("soldProduct").setValue("11");
-                        databaseReference.child("product").child(maSp).child("brandProduct").setValue(txtNewBrand.getText());
-                        databaseReference.child("product").child(maSp).child("originProduct").setValue(origin);
-                        databaseReference.child("product").child(maSp).child("baoHanhSp").setValue(BaoHanh);
-                        databaseReference.child("product").child(maSp).child("shippingProduct").setValue("15");
-                        databaseReference.child("product").child(maSp).child("priceFlashSale").setValue(price);
-                        databaseReference.child("product").child(maSp).child("discountFlashSale").setValue("18");
-                        databaseReference.child("product").child(maSp).child("soldFlashSale").setValue("18");
-                        databaseReference.child("product").child(maSp).child("imageProduct").setValue(linkDL);
-                        databaseReference.child("product").child(maSp).child("idProduct").setValue(maSp);
+                        if (validate()) {
+                            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    databaseReference.child("product").child(maSp).child("nameProduct").setValue(nameProduct);
+                                    databaseReference.child("product").child(maSp).child("description").setValue(decription);
+                                    databaseReference.child("product").child(maSp).child("industry").setValue(txtNewIndustry.getText());
+                                    databaseReference.child("product").child(maSp).child("priceProduct").setValue(price);
+                                    databaseReference.child("product").child(maSp).child("productdetail").setValue("6");
+                                    databaseReference.child("product").child(maSp).child("warehouse").setValue(storage);
+                                    databaseReference.child("product").child(maSp).child("transportfee").setValue(phiVanChuyen);
+                                    databaseReference.child("product").child(maSp).child("status").setValue(Status);
+                                    databaseReference.child("product").child(maSp).child("nameShop").setValue(name);
+                                    databaseReference.child("product").child(maSp).child("soldProduct").setValue("11");
+                                    databaseReference.child("product").child(maSp).child("brandProduct").setValue(txtNewBrand.getText());
+                                    databaseReference.child("product").child(maSp).child("originProduct").setValue(origin);
+                                    databaseReference.child("product").child(maSp).child("baoHanhSp").setValue(BaoHanh);
+                                    databaseReference.child("product").child(maSp).child("shippingProduct").setValue("15");
+                                    databaseReference.child("product").child(maSp).child("priceFlashSale").setValue(price);
+                                    databaseReference.child("product").child(maSp).child("discountFlashSale").setValue("18");
+                                    databaseReference.child("product").child(maSp).child("soldFlashSale").setValue("18");
+                                    databaseReference.child("product").child(maSp).child("imageProduct").setValue(linkDL);
+                                    databaseReference.child("product").child(maSp).child("idProduct").setValue(maSp);
 
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("description").setValue(decription);
@@ -273,15 +252,25 @@ public class NewProductFragment extends Fragment {
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("soldFlashSale").setValue("18");
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("imageProduct").setValue(linkDL);
 
-                        Toast.makeText(getContext() , "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        requireActivity().getSupportFragmentManager().popBackStack();
+                                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                                    requireActivity().getSupportFragmentManager().popBackStack();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                        } else {
+                            new android.app.AlertDialog.Builder(getContext())
+                                    .setTitle("Notification")
+                                    .setMessage("Vui lòng nhập đầy đủ thông tin sản phẩm")
+                                    .setPositiveButton("OK", null)
+                                    .show();
+                        }
                     }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
             }
         });
 
@@ -387,7 +376,8 @@ public class NewProductFragment extends Fragment {
         });
 
     }
-    
+
+
     private void askBack(){
         android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(getContext());
         b.setIcon(R.drawable.attention_warning_14525);
@@ -406,16 +396,21 @@ public class NewProductFragment extends Fragment {
         android.app.AlertDialog al = b.create();
         al.show();
     }
-//    private Boolean validate(){
-//        String nameproduct = tvNameProduct.getText().toString();
-//        String description = tvDecription.getText().toString();
-//        String priceproduct = edtPrice.getText().toString();
-//        String storage = edtStorage.getText().toString();
-//        if(nameproduct.isEmpty() || description.isEmpty() || priceproduct.isEmpty() || storage.isEmpty()){
-//            return false;
-//        }
-//        return true;
-//    }
+    private Boolean validate(){
+        String nameproduct = tvNameProduct.getText().toString();
+        String description = tvDecription.getText().toString();
+        String priceproduct = edtPrice.getText().toString();
+        String storage = edtStorage.getText().toString();
+        String industry = txtNewIndustry.getText().toString();
+        String brand = txtNewBrand.getText().toString();
+        String Bh = txtBaoHanh.getText().toString();
+        String status = txtStatus.getText().toString();
+        if(nameproduct.isEmpty() || description.isEmpty() || priceproduct.isEmpty() || storage.isEmpty() || industry.isEmpty() || brand.isEmpty() || Bh.isEmpty() || status.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
 
 
 
@@ -442,16 +437,7 @@ public class NewProductFragment extends Fragment {
         }
     }
 
-    private boolean validate_price(){
 
-        String price = edtPrice.getText().toString();
-        if(price .isEmpty()){
-            edtPrice.setError("Nhập số tiền");
-            return false;
-        }
-        edtPrice.setError(null);
-        return true;
-    }
 
 
     private void dialog(int gravity){
