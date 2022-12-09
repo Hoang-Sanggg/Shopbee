@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,17 +19,14 @@ import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
-import com.duan1.shopbee.fragment.NewProductFragment;
+import com.duan1.shopbee.callback.ClickToUpdateProduct;
+import com.duan1.shopbee.fragment.MyProductFragment;
 import com.duan1.shopbee.function.mFunction;
 import com.duan1.shopbee.model.ProductCreate;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapter.MyProductViewHodel> {
 
@@ -39,10 +34,11 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
     private List<ProductCreate> mListMyProduct;
     private ClickToProductSale clickToProduct;
     private ClickToDeleteProduct clickToDeleteProduct;
+    private ClickToUpdateProduct clickToUpdateProduct;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
 
-    public AddMyProductAdapter(Context mContext) {
+    public AddMyProductAdapter(Context mContext, List<ProductCreate> productCreateList, MyProductFragment myProductFragment, MyProductFragment productFragment) {
         this.mContext = mContext;
     }
 
@@ -50,12 +46,13 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
     SharedPreferences sharedPref;
 
 
-    public AddMyProductAdapter(Context mContext, List<ProductCreate> mListMyProduct, ClickToProductSale clickToProduct, ClickToDeleteProduct clickToDeleteProduct) {
+    public AddMyProductAdapter(Context mContext, List<ProductCreate> mListMyProduct, ClickToProductSale clickToProduct, ClickToDeleteProduct clickToDeleteProduct, ClickToUpdateProduct clickToUpdateProduct) {
         this.mContext = mContext;
         sharedPref = this.mContext.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         this.mListMyProduct = mListMyProduct;
         this.clickToProduct = clickToProduct;
         this.clickToDeleteProduct = clickToDeleteProduct;
+        this.clickToUpdateProduct = clickToUpdateProduct;
 //        notifyDataSetChanged();
     }
 
@@ -110,6 +107,13 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
                 askBack(holder);
             }
         });
+
+        holder.btnSua_My_Product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Update(holder);
+            }
+        });
     }
 
     private void askBack(MyProductViewHodel holder){
@@ -130,6 +134,26 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
         android.app.AlertDialog al = b.create();
         al.show();
     }
+
+    private void Update(MyProductViewHodel holder){
+        android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(mContext);
+        b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                clickToUpdateProduct.onClickToUpdateProduct(mListMyProduct,holder.getAdapterPosition());
+            }
+        });
+        b.setNegativeButton("Undo", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        android.app.AlertDialog al = b.create();
+        al.show();
+    }
+
+
 
 
 
@@ -163,6 +187,7 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
             btnAn_My_Product = itemView.findViewById(R.id.btnAn_My_Product);
             btnSua_My_Product = itemView.findViewById(R.id.btnEdit_My_Product);
             btnXoa_My_Product = itemView.findViewById(R.id.btnXoa);
+            btnSua_My_Product = itemView.findViewById(R.id.btnEdit_My_Product);
 
             item_lnMyProduct = itemView.findViewById(R.id.item_lnMyProduct);
 

@@ -135,32 +135,32 @@ public class ProductCreateActivity extends AppCompatActivity {
                 });
     }
 
-//    public void readProductDatafromFirestorebyID(){
-//        db.collection("product")
-//                .whereEqualTo("id","01")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                String name = document.getString("name");
-//                                String industry = document.getString("industry");
-//                                String description = document.getString("description");
-//                                String detail = document.getString("detail");
-//                                String status = document.getString("status");
-//                                String warehouse = document.getString("warehouse");
-//                                String transportfee = document.getString("transportfee");
-//                                String id = document.getString("id");
-//                                textviewdata.setText("id: " + id + "\n" + "name: "+ name + "\n" + "industry: " + industry + "\n" + "description: " + description + "\n" + "detail: " + detail + "\n" + "status: " + status + "\n" + "warehouse: " + warehouse + "\n" + "transportfee: " + transportfee);
-//                                Log.d(TAG, document.getId() + " => " + document.getData());
-//                            }
-//                        } else {
-//                            Log.w(TAG, "Error getting documents.", task.getException());
-//                        }
-//                    }
-//                });
-//    }
+    public void readProductDatafromFirestorebyID(){
+        db.collection("product")
+                .whereEqualTo("id","01")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String name = document.getString("name");
+                                String industry = document.getString("industry");
+                                String description = document.getString("description");
+                                String detail = document.getString("detail");
+                                String status = document.getString("status");
+                                String warehouse = document.getString("warehouse");
+                                String transportfee = document.getString("transportfee");
+                                String id = document.getString("id");
+                                textviewdata.setText("id: " + id + "\n" + "name: "+ name + "\n" + "industry: " + industry + "\n" + "description: " + description + "\n" + "detail: " + detail + "\n" + "status: " + status + "\n" + "warehouse: " + warehouse + "\n" + "transportfee: " + transportfee);
+                                Log.d(TAG, document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.w(TAG, "Error getting documents.", task.getException());
+                        }
+                    }
+                });
+    }
 //    public void readProductDatafromFirestore() {
 ////        DocumentReference docref = db.collection("product").document("abc");
 //        db.collection("product")
@@ -187,7 +187,7 @@ public class ProductCreateActivity extends AppCompatActivity {
 //                    }
 //                });
 //    }
-
+//
 //     counters/${ID}
 //    public class Counter {
 //        int numShards;
@@ -205,7 +205,7 @@ public class ProductCreateActivity extends AppCompatActivity {
 //            this.count = count;
 //        }
 //    }
-//
+
 //    public Task<Void> createCounter(final DocumentReference ref, final int numShards) {
 //        // Initialize the counter document, then initialize each shard.
 //        return ref.set(new Counter(numShards))
@@ -231,11 +231,11 @@ public class ProductCreateActivity extends AppCompatActivity {
 //                    }
 //                });
 //    }
-//
-//    public Task<Void> incrementCounter(final DocumentReference ref, final int numShards) {
-//        int shardId = (int) Math.floor(Math.random() * numShards);
-//        DocumentReference shardRef = ref.collection("shards").document(String.valueOf(shardId));
-//
-//        return shardRef.update("count", FieldValue.increment(1));
-//    }
+
+    public Task<Void> incrementCounter(final DocumentReference ref, final int numShards) {
+        int shardId = (int) Math.floor(Math.random() * numShards);
+        DocumentReference shardRef = ref.collection("shards").document(String.valueOf(shardId));
+
+        return shardRef.update("count", FieldValue.increment(1));
+    }
 }
