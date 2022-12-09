@@ -225,4 +225,5 @@ public class ProductCreate implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
+
 }

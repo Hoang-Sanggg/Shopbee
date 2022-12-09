@@ -180,18 +180,18 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnAn_My_Product"
+                <Button
+                    android:id="@+id/btnDel_My_Product"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
-                    android:text="Ẩn"
+                    android:text="Xóa"
                     android:textSize="18sp"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
                     android:background="@drawable/custom_btn_login"/>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnSua_My_Product"
+                <Button
+                    android:id="@+id/btnEdit_My_Product"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:text="Sửa"
