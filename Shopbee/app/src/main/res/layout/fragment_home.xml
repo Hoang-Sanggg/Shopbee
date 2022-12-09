@@ -244,21 +244,21 @@
                 tools:layout_editor_absoluteX="170dp" />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <ImageView
             android:id="@+id/recyclerSearchHot"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_margin="10dp"
-            android:background="@color/black"
+            android:background="@drawable/banner2"
             app:layout_constraintTop_toBottomOf="@+id/recyclerFlashSales1"
             tools:layout_editor_absoluteX="170dp" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <ImageView
             android:id="@+id/recyclerSuggestions"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_margin="10dp"
-            android:background="@color/black"
+            android:background="@drawable/banner_6"
             app:layout_constraintTop_toBottomOf="@+id/recyclerSearchHot"
             tools:layout_editor_absoluteX="170dp" />
 

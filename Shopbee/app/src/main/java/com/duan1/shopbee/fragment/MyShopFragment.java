@@ -1,5 +1,7 @@
 package com.duan1.shopbee.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,16 +14,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.duan1.shopbee.R;
+import com.duan1.shopbee.adapter.OrderAdapter;
 import com.duan1.shopbee.callback.ShowBottomNav;
+import com.duan1.shopbee.model.Order;
 import com.duan1.shopbee.model.ProductCreate;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyShopFragment extends Fragment{
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
+
+    private List<Order> orderList;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,6 +48,7 @@ public class MyShopFragment extends Fragment{
     private String mParam2;
     private List<ProductCreate> productCreateList;
     ShowBottomNav showBottomNav;
+    TextView textView;
 
     public MyShopFragment(List<ProductCreate> productCreateList, ShowBottomNav showBottomNav) {
         this.productCreateList = productCreateList;
@@ -64,6 +80,10 @@ public class MyShopFragment extends Fragment{
         ImageView btn_back_myProduct = view.findViewById(R.id.btn_back_myShop);
         LinearLayout lnMyProduct = view.findViewById(R.id.lnMyProduct);
         LinearLayout lnOrder = view.findViewById(R.id.btnDonHang);
+        LinearLayout myOrder = view.findViewById(R.id.myOrder);
+        textView = view.findViewById(R.id.box1);
+
+
 
         btn_back_myProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +107,17 @@ public class MyShopFragment extends Fragment{
             }
         });
 
+        myOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickMyyOrder(view);
+            }
+        });
+
 //        Toast.makeText(getContext(), productCreateList.size(), Toast.LENGTH_SHORT).show();
 
+
+        readData();
     }
 
     public void onClickMyProduct(View view) {
@@ -105,6 +134,42 @@ public class MyShopFragment extends Fragment{
                     .replace(R.id.frame_layout, new OrderFragment(), "MainFragment")
                 .addToBackStack(null)
                 .commit();
+    }
+
+    public void onClickMyyOrder(View view) {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, new MyOrderFragment(), "MainFragment")
+                .addToBackStack(null)
+                .commit();
+    }
+
+
+
+    private void readData(){
+
+        SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        String nameShopS = sharedPref.getString("username", "");
+
+        orderList = new ArrayList<>();
+        databaseReference.child("order").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    Order order = postSnapshot.getValue(Order.class);
+                    if(String.valueOf(order.getSeller()).equals(String.valueOf(nameShopS))){
+                        orderList.add(order);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        textView.setText(String.valueOf(orderList.size()));
     }
 
 }

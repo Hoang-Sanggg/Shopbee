@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,13 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToOrder;
-import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.model.Order;
-import com.duan1.shopbee.model.ProductCreate;
 
 import java.util.List;
 
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> {
+public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.MyOrderHoder> {
 
     private List<Order> orderList;
     private Context context;
@@ -30,7 +27,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
 //    private ClickToProductSale clickToProductSale;
 
 
-    public OrderAdapter(List<Order> orderList, Context context, ClickToOrder clickToOrder) {
+    public MyOrderAdapter(List<Order> orderList, Context context, ClickToOrder clickToOrder) {
         this.orderList = orderList;
         this.context = context;
         this.clickToOrder = clickToOrder;
@@ -38,18 +35,18 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
 
     @NonNull
     @Override
-    public OrderAdapter.OrderHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyOrderAdapter.MyOrderHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pending_product, parent, false);
-        return new OrderAdapter.OrderHoder(view);
+        return new MyOrderAdapter.MyOrderHoder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OrderAdapter.OrderHoder holder, int position) {
+    public void onBindViewHolder(@NonNull MyOrderAdapter.MyOrderHoder holder, int position) {
 
         SharedPreferences sharedPref = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String nameShopS = sharedPref.getString("username", "");
 
-        if(String.valueOf(orderList.get(position).getSeller()).equals(String.valueOf(nameShopS))){
+        if(String.valueOf(orderList.get(position).getCustomer()).equals(String.valueOf(nameShopS))){
             holder.idProductOrder.setText(orderList.get(position).getIdProductOrder());
             holder.customer.setText(orderList.get(position).getCustomer());
             holder.priceProductOrder.setText(orderList.get(position).getPriceProductOrder());
@@ -67,7 +64,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
         holder.root_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               clickToOrder.ClickToOrder(orderList, holder.getAdapterPosition());
+                clickToOrder.ClickToOrder(orderList, holder.getAdapterPosition());
             }
         });
 //        holder.rootFlashSale.setOnClickListener(new View.OnClickListener() {
@@ -83,11 +80,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
         return orderList.size();
     } //quan trong
 
-    public class OrderHoder extends RecyclerView.ViewHolder{
+    public class MyOrderHoder extends RecyclerView.ViewHolder{
         private TextView idProductOrder, customer,  seller, priceOrder, priceProductOrder, numberOfOrder, nameProductOrder, statusOrder, dateOrder;
         private ImageView ivProduct;
         private LinearLayout root_order;
-        public OrderHoder(@NonNull View itemView) {
+        public MyOrderHoder(@NonNull View itemView) {
             super(itemView);
 
             idProductOrder = itemView.findViewById(R.id.txtIdOrder);
