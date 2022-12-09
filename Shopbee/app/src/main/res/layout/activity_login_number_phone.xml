@@ -49,58 +49,73 @@
 
         <ImageView
             android:id="@+id/ivShopee"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_below="@+id/toolbar"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
             android:src="@drawable/ic_shopee" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilPhone"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_below="@+id/ivShopee"
-            android:hint="Số điện thoại"
-            android:textColorHint="@color/black"
-            android:fontFamily="@font/nunito_light"
-            app:boxStrokeColor="@color/shopbee_color"
-            app:hintTextColor="@color/shopbee_color"
-            app:boxStrokeWidthFocused="2dp"
-            app:endIconTint="@color/purple_300"
-            app:startIconDrawable="@drawable/ic_phone"
-            android:layout_centerHorizontal="true">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtMobile"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:text="+84"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginLeft="30dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPhone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginBottom="4dp"
-                android:fontFamily="@font/nunito_bold"
-                android:inputType="number"
-                android:textColor="@color/shopbee_color" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="60dp"
+                android:layout_marginRight="30dp"
+                android:layout_below="@+id/ivShopee"
+                android:hint="Số điện thoại"
+                android:textColorHint="@color/black"
+                android:fontFamily="@font/nunito_light"
+                app:boxStrokeColor="@color/shopbee_color"
+                app:hintTextColor="@color/shopbee_color"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconTint="@color/purple_300"
+                app:startIconDrawable="@drawable/ic_phone"
+                android:layout_centerHorizontal="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/nunito_bold"
+                    android:inputType="number"
+                    android:textColor="@color/shopbee_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnGetOTP"
+            android:id="@+id/btnLoginOTP"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:background="@drawable/custom_btn_login"
             android:gravity="center"
             android:text="Đăng nhập"
             android:textAllCaps="false"
             android:textColor="@color/shopbee_color"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/txtDangNhapBangMatKhau"
@@ -112,7 +127,8 @@
             android:textSize="14sp"
             android:textColor="@color/shopbee_color"
             android:gravity="right"
-            android:paddingRight="10dp"/>
+            android:paddingRight="10dp"
+            android:layout_margin="5dp"/>
 
         <ImageView
             android:id="@+id/hoacDangNhapVoi"

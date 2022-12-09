@@ -10,9 +10,9 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
         <ImageView
+            android:id="@+id/iv_black_register"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/left_icon_arrow"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_baseline_arrow"/>
 
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@id/left_icon_arrow"
+            android:layout_toEndOf="@id/iv_black_register"
             android:text="Đăng ký"
             android:textColor="@color/black"
             android:textSize="20sp" />

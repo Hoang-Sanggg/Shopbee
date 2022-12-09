@@ -61,49 +61,52 @@ public class VerifyOTPActivity extends AppCompatActivity {
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
+                btnVerify.setVisibility(View.VISIBLE);
                 if (edtCode1.getText().toString().trim().isEmpty()
                         || edtCode2.getText().toString().trim().isEmpty()
                         || edtCode3.getText().toString().trim().isEmpty()
                         || edtCode4.getText().toString().trim().isEmpty()
                         || edtCode5.getText().toString().trim().isEmpty()
                         || edtCode6.getText().toString().trim().isEmpty()) {
-
-                    Toast.makeText(VerifyOTPActivity.this, "Please enter valid code", Toast.LENGTH_SHORT).show();
-                    PhoneAuthProvider();
-                    return;
-                }
-                String code =
-                        edtCode1.getText().toString() +
-                                edtCode2.getText().toString() +
-                                edtCode3.getText().toString() +
-                                edtCode4.getText().toString() +
-                                edtCode5.getText().toString() +
-                                edtCode6.getText().toString();
-                if (verifycationId != null) {
-                    progressBar.setVisibility(View.GONE);
-                    progressBar.setVisibility(View.VISIBLE);
-                    PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
-                            verifycationId,
-                            code
-                    );
-                    FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    progressBar.setVisibility(View.GONE);
-                                    btnVerify.setVisibility(View.VISIBLE);
-                                    if (task.isSuccessful()) {
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
-                                    } else {
-                                        Toast.makeText(VerifyOTPActivity.this, "The verification code entered was invalid", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VerifyOTPActivity.this, "Vui lòng nhập mã hợp lệ", Toast.LENGTH_SHORT).show();
+                }else if (verifycationId != null) {
+                    String code =
+                            edtCode1.getText().toString().trim() +
+                                    edtCode2.getText().toString().trim() +
+                                    edtCode3.getText().toString().trim() +
+                                    edtCode4.getText().toString().trim() +
+                                    edtCode5.getText().toString().trim() +
+                                    edtCode6.getText().toString().trim();
+                    if (verifycationId != null) {
+                        progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.VISIBLE);
+                        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
+                                verifycationId,
+                                code
+                        );
+                        FirebaseAuth.getInstance()
+                                .signInWithCredential(phoneAuthCredential)
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        progressBar.setVisibility(View.GONE);
+                                        btnVerify.setVisibility(View.VISIBLE);
+                                        if (task.isSuccessful()) {
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                            Toast.makeText(VerifyOTPActivity.this, "Xác minh thành công", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(VerifyOTPActivity.this, "Mã xác minh đã nhập không hợp lệ", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                }
-                            });
+                                });
+                    }
                 }
             }
         });
+
 
         findViewById(R.id.txtResendOTP).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,39 +114,6 @@ public class VerifyOTPActivity extends AppCompatActivity {
                 PhoneAuthProvider();
             }
         });
-
-        /*CountDown Timer thuc hien dem nguoc thoi gian, sau 60 giay gui lai code moi*/
-        //Assign variable
-        txtCountdown = findViewById(R.id.txtCountdown);
-
-        //Initialize timer duration
-        long duration = TimeUnit.MINUTES.toMillis(1);
-
-        //Initialize countdownt timer
-        new CountDownTimer(duration, 1000) {
-            @Override
-            public void onTick(long l) {
-                //when tick
-                //Convert millisecond to minute and second
-                String sDucation = String.format(Locale.ENGLISH, "%02d",
-//                        TimeUnit.MILLISECONDS.toMinutes(l),
-                        TimeUnit.MILLISECONDS.toSeconds(l));
-//                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l)));
-                //Set convert string on text view
-                txtCountdown.setText(sDucation);
-            }
-
-            @Override
-            public void onFinish() {
-                //when finish
-                //Hide text view
-                txtCountdown.setVisibility(View.GONE);
-                //Dislay toast
-                Toast.makeText(getApplicationContext(), "Countdown timer has ended", Toast.LENGTH_SHORT).show();
-                PhoneAuthProvider();
-                return;
-            }
-        }.start();
     }
 
     private void PhoneAuthProvider() {
@@ -167,7 +137,7 @@ public class VerifyOTPActivity extends AppCompatActivity {
                     @Override
                     public void onCodeSent(@NonNull String newVerificationId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         verifycationId = newVerificationId;
-                        Toast.makeText(VerifyOTPActivity.this, "OTP Sent", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(VerifyOTPActivity.this, "Login thành công", Toast.LENGTH_SHORT).show();
                     }
                 }
         );

@@ -102,14 +102,13 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-//        txtRegister_Number_Phone = findViewById(R.id.txtRegister_Number_Phone);
-//        txtRegister_Number_Phone.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(RegisterActivity.this, RegisterNumberPhoneActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        txtRegister_Number_Phone = findViewById(R.id.txtRegister_Number_Phone);
+        txtRegister_Number_Phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterActivity.this, RegisterNumberPhoneActivity.class));
+            }
+        });
 
 
         edt_username.addTextChangedListener(new TextWatcher() {

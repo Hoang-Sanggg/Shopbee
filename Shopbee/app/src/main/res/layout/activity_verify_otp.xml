@@ -55,7 +55,7 @@
             android:layout_marginEnd="50dp"
             android:gravity="center"
             android:hint="@string/app_name"
-            android:textColor="@color/colorTextPrimary"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"/>
 
@@ -160,19 +160,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vui lòng chờ"
+                android:text="Bạn muốn gửi lại mã OTP !!!"
                 android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"/>
-
-            <TextView
-                android:id="@+id/txtCountdown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#F80000"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="5dp"
-                android:hint="60"
                 android:fontFamily="@font/roboto_regular"/>
 
             <TextView
@@ -180,8 +169,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="@string/gi_y_g_i_l_i_m_x_c_th_c_m_i"
-                android:textSize="14sp"
+                android:text="Gửi Lại"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/shopbee_color"
                 android:fontFamily="@font/roboto_regular"/>
         </LinearLayout>
 

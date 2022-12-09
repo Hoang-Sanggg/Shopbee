@@ -335,7 +335,7 @@
                     android:id="@+id/txtRegister_Number_Phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=" Đăng ký"
+                    android:text="  Đăng ký"
                     android:textSize="14sp"
                     android:textColor="@color/shopbee_color"
                     android:textStyle="bold"/>

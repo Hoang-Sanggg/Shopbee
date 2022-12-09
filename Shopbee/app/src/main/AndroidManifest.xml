@@ -56,6 +56,11 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".RegisterNumberPhoneActivity"
+            android:exported="false" />
+
         <!--QRScan-->
         <activity android:name=".CaptureAct"
             android:screenOrientation="portrait"

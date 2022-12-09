@@ -22,42 +22,59 @@
         android:layout_marginRight="30dp"
         android:src="@drawable/ic_shopee" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPhone"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+    <LinearLayout
+        android:id="@+id/linearLayout_Register"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_below="@+id/ivShopee"
-        android:hint="Số điện thoại"
-        android:textColorHint="@color/black"
-        android:fontFamily="@font/nunito_light"
-        app:boxStrokeColor="@color/shopbee_color"
-        app:hintTextColor="@color/shopbee_color"
-        app:boxStrokeWidthFocused="2dp"
-        app:endIconTint="@color/purple_300"
-        app:startIconDrawable="@drawable/ic_phone"
-        android:layout_centerHorizontal="true">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtTextPhone_Register"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="+84"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPhone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginTop="15dp"
-            android:fontFamily="@font/nunito_bold"
-            android:textColor="@color/shopbee_color"
-            android:inputType="textPhonetic" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="60dp"
+            android:layout_marginRight="30dp"
+            android:layout_below="@+id/ivShopee"
+            android:hint="Số điện thoại"
+            android:textColorHint="@color/black"
+            android:fontFamily="@font/nunito_light"
+            app:boxStrokeColor="@color/shopbee_color"
+            app:hintTextColor="@color/shopbee_color"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconTint="@color/purple_300"
+            app:startIconDrawable="@drawable/ic_phone"
+            android:layout_centerHorizontal="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPhone_Register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="number"
+                android:textColor="@color/shopbee_color" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNext_Register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tilPhone"
+        android:layout_below="@+id/linearLayout_Register"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="15dp"
@@ -122,6 +139,7 @@
         android:layout_marginRight="30dp"
         android:text="Đăng ký Google"
         android:textSize="18sp"
+        android:textStyle="bold"
         android:textAllCaps="false"
         android:fontFamily="@font/roboto_regular"
         android:layout_below="@+id/hoacDangNhapVoi"/>
@@ -130,17 +148,31 @@
         android:id="@+id/btnLoginFacebook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_below="@+id/btnLoginGoogle"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginRight="30dp"
         android:background="@drawable/custom_btn_login"
         android:drawableLeft="@drawable/ic_facebook_login"
-        android:paddingLeft="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:text="Đăng ký bằng Facebook"
-        android:textSize="18sp"
         android:fontFamily="@font/roboto_regular"
+        android:paddingLeft="10dp"
+        android:text="Đăng ký bằng Facebook"
         android:textAllCaps="false"
-        android:layout_below="@+id/btnLoginGoogle"/>
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <FrameLayout
+        android:id="@+id/fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp">
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -148,7 +180,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@+id/btnLoginFacebook"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:gravity="center">
         <LinearLayout
             android:layout_width="match_parent"
@@ -220,11 +252,11 @@
             android:layout_height="wrap_content"/>
 
         <TextView
-            android:id="@+id/tvLogin"
+            android:id="@+id/txtLogin"
             android:text="Đăng nhập"
             android:textSize="14sp"
             android:fontFamily="@font/roboto_bold"
-            android:textColor="#4781e4"
+            android:textColor="#005EFF"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
