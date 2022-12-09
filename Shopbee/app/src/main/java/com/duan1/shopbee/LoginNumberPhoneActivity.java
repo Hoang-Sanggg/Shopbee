@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginNumberPhoneActivity extends AppCompatActivity {
 
-    ImageView left_icon_arrow, right_icon_help;
+    ImageView iv_black_login_number_phone, right_icon_help;
     Button btnGetOTP;
     TextView txtDangNhapBangMatKhau;
 
@@ -89,6 +89,14 @@ public class LoginNumberPhoneActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginNumberPhoneActivity.this, LoginActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        iv_black_login_number_phone = findViewById(R.id.iv_black_login_number_phone);
+        iv_black_login_number_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginNumberPhoneActivity.this, LoginActivity.class));
             }
         });
     }

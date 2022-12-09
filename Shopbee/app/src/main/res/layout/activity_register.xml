@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="Username"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/shopbee_color"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="28dp"
                 android:textSize="18sp" />
@@ -76,8 +76,10 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
                 android:layout_below="@+id/ivShopee"
-                android:textColorHint="#B8B8B8"
-                app:boxStrokeColor="@color/purple_300"
+                android:textColorHint="@color/black"
+                android:fontFamily="@font/nunito_light"
+                app:boxStrokeColor="@color/shopbee_color"
+                app:hintTextColor="@color/shopbee_color"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconTint="@color/purple_300"
                 app:errorEnabled="true"
@@ -86,8 +88,8 @@
                     android:id="@+id/edt_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/nunito_light"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/shopbee_color"
                     android:hint="Enter your username"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -98,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:text="Password"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/shopbee_color"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="28dp"
                 android:textSize="18sp" />
@@ -111,8 +113,10 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
                 android:layout_below="@+id/ivShopee"
-                android:textColorHint="#B8B8B8"
-                app:boxStrokeColor="@color/purple_300"
+                android:textColorHint="@color/black"
+                android:fontFamily="@font/nunito_light"
+                app:boxStrokeColor="@color/shopbee_color"
+                app:hintTextColor="@color/shopbee_color"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconTint="@color/purple_300"
                 app:passwordToggleEnabled="true"
@@ -122,8 +126,8 @@
                     android:id="@+id/edt_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/nunito_light"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/shopbee_color"
                     android:hint="Enter your password"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -136,8 +140,10 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
                 android:layout_below="@+id/ivShopee"
-                android:textColorHint="#B8B8B8"
-                app:boxStrokeColor="@color/purple_300"
+                android:textColorHint="@color/black"
+                android:fontFamily="@font/nunito_light"
+                app:boxStrokeColor="@color/shopbee_color"
+                app:hintTextColor="@color/shopbee_color"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconTint="@color/purple_300"
                 app:passwordToggleEnabled="true"
@@ -147,8 +153,8 @@
                     android:id="@+id/edt_enter_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/nunito_light"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/shopbee_color"
                     android:hint="Re-enter your password"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -159,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:text="Gender"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/shopbee_color"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="28dp"
                 android:textSize="18sp" />
@@ -182,6 +188,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginRight="40dp"
                         android:text="Male"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
                         android:checked="true"/>
 
                     <RadioButton
@@ -189,7 +197,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Female" />
+                        android:text="Female"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
                 </RadioGroup>
 
             </LinearLayout>
@@ -201,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:text="Email"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/shopbee_color"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="28dp"
                 android:textSize="18sp" />
@@ -214,8 +224,10 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
                 android:layout_below="@+id/ivShopee"
-                android:textColorHint="#B8B8B8"
-                app:boxStrokeColor="@color/purple_300"
+                android:textColorHint="@color/black"
+                android:fontFamily="@font/nunito_light"
+                app:boxStrokeColor="@color/shopbee_color"
+                app:hintTextColor="@color/shopbee_color"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconTint="@color/purple_300"
                 app:errorEnabled="true"
@@ -224,8 +236,8 @@
                     android:id="@+id/edt_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/nunito_light"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/shopbee_color"
                     android:hint="Enter your username"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -236,7 +248,7 @@
                 android:layout_height="wrap_content"
                 android:text="Phone Number"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/shopbee_color"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="28dp"
                 android:textSize="18sp" />
@@ -250,8 +262,10 @@
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
                 android:layout_below="@+id/ivShopee"
-                android:textColorHint="#B8B8B8"
-                app:boxStrokeColor="@color/purple_300"
+                android:textColorHint="@color/black"
+                android:fontFamily="@font/nunito_light"
+                app:boxStrokeColor="@color/shopbee_color"
+                app:hintTextColor="@color/shopbee_color"
                 app:boxStrokeWidthFocused="2dp"
                 app:endIconTint="@color/purple_300"
                 app:errorEnabled="true"
@@ -260,8 +274,8 @@
                     android:id="@+id/edt_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/nunito_light"
+                    android:fontFamily="@font/nunito_bold"
+                    android:textColor="@color/shopbee_color"
                     android:hint="Enter your phone number"
                     android:inputType="textPhonetic"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -276,24 +290,30 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Register"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
                     android:textAllCaps="false"
                     android:background="@drawable/custom_btn_login"
+                    android:backgroundTint="@color/shopbee_color"
                     android:layout_weight="1"
                     android:layout_marginRight="30dp"
                     android:onClick="onClickRegister"/>
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_cancel_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cancel"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
                     android:textAllCaps="false"
                     android:background="@drawable/custom_btn_login"
+                    android:backgroundTint="@color/shopbee_color"
                     android:layout_weight="1"
                     android:layout_marginLeft="30dp"/>
 
