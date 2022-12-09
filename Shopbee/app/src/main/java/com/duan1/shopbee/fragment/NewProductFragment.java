@@ -28,6 +28,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,7 +83,8 @@ public class NewProductFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    EditText tvNameProduct;
+    EditText tvDecription;
     ImageView imageView;
     String linkDL, phiVanChuyen;
     TextView txtNewIndustry, txtNewBrand, txtStatus, txtBaoHanh, txtShip, back_new_pro;
@@ -135,8 +138,8 @@ public class NewProductFragment extends Fragment {
         SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String name = sharedPref.getString("username", "");
 
-        EditText tvNameProduct = view.findViewById(R.id.edtNewNameProduct);
-        EditText tvDecription = view.findViewById(R.id.edtNewDescription);
+        tvNameProduct = view.findViewById(R.id.edtNewNameProduct);
+        tvDecription = view.findViewById(R.id.edtNewDescription);
 
 
         edtindustry = view.findViewById(R.id.edtindustry);
@@ -161,6 +164,8 @@ public class NewProductFragment extends Fragment {
         txtShip = view.findViewById(R.id.txtShip);
 
         Button button = view.findViewById(R.id.btn_addProduct);
+
+
 
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -196,6 +201,7 @@ public class NewProductFragment extends Fragment {
                         databaseReference.child("product").child(maSp).child("discountFlashSale").setValue("18");
                         databaseReference.child("product").child(maSp).child("soldFlashSale").setValue("18");
                         databaseReference.child("product").child(maSp).child("imageProduct").setValue(linkDL);
+                        databaseReference.child("product").child(maSp).child("idProduct").setValue(maSp);
 
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("description").setValue(decription);
@@ -349,6 +355,51 @@ public class NewProductFragment extends Fragment {
         android.app.AlertDialog al = b.create();
         al.show();
     }
+//    private Boolean validate(){
+//        String nameproduct = tvNameProduct.getText().toString();
+//        String description = tvDecription.getText().toString();
+//        String priceproduct = edtPrice.getText().toString();
+//        String storage = edtStorage.getText().toString();
+//        if(nameproduct.isEmpty() || description.isEmpty() || priceproduct.isEmpty() || storage.isEmpty()){
+//            return false;
+//        }
+//        return true;
+//    }
+
+//    private boolean validate_nameProduct(){
+//        String nameproduct = tvNameProduct.getText().toString();
+//        if(nameproduct.isEmpty()){
+//            tvNameProduct.setError("Vui lòng nhập tên sản phẩm");
+//            return false;
+//        }else{
+//            tvNameProduct.setError(null);
+//
+//            return true;
+//        }
+//    }
+//    private boolean validate_description(){
+//        String description = tvDecription.getText().toString();
+//        if(description.isEmpty()){
+//            tvDecription.setError("Vui lòng nhập tên sản phẩm");
+//            return false;
+//        }else{
+//            tvDecription.setError(null);
+//
+//            return true;
+//        }
+//    }
+//
+//    private boolean validate_price(){
+//
+//        String price = edtPrice.getText().toString();
+//        if(price .isEmpty()){
+//            edtPrice.setError("Nhập số tiền");
+//            return false;
+//        }
+//        edtPrice.setError(null);
+//        return true;
+//    }
+
 
     private void dialog(int gravity){
         final Dialog dialog1 = new Dialog(getContext());
@@ -480,6 +531,7 @@ public class NewProductFragment extends Fragment {
         }
     }
 
+
     ActivityResultLauncher<Intent> selectCapture = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -537,4 +589,6 @@ public class NewProductFragment extends Fragment {
         }
         return transFreeString;
     }
+
+
 }
