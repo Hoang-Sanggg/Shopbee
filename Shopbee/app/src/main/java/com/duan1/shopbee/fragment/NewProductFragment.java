@@ -32,6 +32,7 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -253,6 +254,7 @@ public class NewProductFragment extends Fragment {
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("imageProduct").setValue(linkDL);
 
                                     Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                                    Log.d(">>>>>","linkdl: "+ linkDL);
                                     requireActivity().getSupportFragmentManager().popBackStack();
                                 }
 
