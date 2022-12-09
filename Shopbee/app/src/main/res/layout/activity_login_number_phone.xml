@@ -75,17 +75,18 @@
             app:endIconTint="@color/purple_300"
             app:startIconDrawable="@drawable/ic_phone"
             android:layout_centerHorizontal="true">
+
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtMobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
                 android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
                 android:fontFamily="@font/nunito_bold"
-                android:textColor="@color/shopbee_color"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@color/shopbee_color" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -94,12 +95,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:background="@drawable/custom_btn_login"
+            android:gravity="center"
             android:text="Đăng nhập"
             android:textAllCaps="false"
             android:textColor="@color/shopbee_color"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtDangNhapBangMatKhau"
