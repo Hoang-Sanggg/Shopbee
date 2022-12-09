@@ -127,28 +127,28 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/img_hoacdangnhap" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLoginGoogle"
-        android:layout_width="match_parent"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_sign_google_regiter_number_phone"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/hoacDangNhapVoi"
         android:background="@drawable/custom_btn_login"
         android:drawableLeft="@drawable/icon_google"
-        android:paddingLeft="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:text="Đăng ký Google"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="Đăng nhập với google"
         android:textAllCaps="false"
-        android:fontFamily="@font/roboto_regular"
-        android:layout_below="@+id/hoacDangNhapVoi"/>
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLoginFacebook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLoginGoogle"
+        android:layout_below="@+id/btn_sign_google_regiter_number_phone"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="19dp"
         android:layout_marginRight="30dp"
@@ -167,7 +167,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp">
         <ProgressBar
-            android:id="@+id/progressBar"
+            android:id="@+id/progressBar_Register_Numer_Phone"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center"

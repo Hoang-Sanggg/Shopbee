@@ -9,17 +9,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.duan1.shopbee.LoginActivity;
@@ -29,7 +23,8 @@ import com.duan1.shopbee.callback.HideBottomNav;
 import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.ProductCreate;
 import com.duan1.shopbee.model.Profile;
-import com.duan1.shopbee.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.Serializable;
 import java.util.List;
@@ -46,6 +41,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
     private static final String ARG_PARAM1 = "DATA_PROFILE";
     private static final String ARG_PARAM2 = "param2";
     private RecyclerView ProfileRecycler;
+    private FirebaseAuth mAuth;
 
     private List<Profile> mProfiles;
     private List<ProductCreate> productCreateList;
@@ -93,15 +89,29 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
             mProfiles = (List<Profile>) getArguments().getSerializable(ARG_PARAM1);
             productCreateList = (List<ProductCreate>) getArguments().getSerializable(ARG_PARAM2);
 //            mParam2 = getArguments().getString(ARG_PARAM2);
+
+            mAuth = FirebaseAuth.getInstance();
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
-    }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//                             Bundle savedInstanceState) {
+//        // Inflate the layout for this fragment
+//        return inflater.inflate(R.layout.fragment_profile, container, false);
+//    }
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        FirebaseUser mFirebaseAuth = mAuth.getCurrentUser();
+//        if (mFirebaseAuth != null){
+//
+//        }else {
+//            startActivity(new Intent(getContext(), LoginActivity.class));
+//            getActivity().finish();
+//        }
+//    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -134,7 +144,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+//                mAuth.signOut();
                 SharedPreferences sharedPreferences = getContext().getSharedPreferences("LOGIN_STATUS",MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear();
@@ -145,8 +155,6 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
             }
         });
     }
-
-
 
     public void onClickMyShop(View view) {
         requireActivity().getSupportFragmentManager()

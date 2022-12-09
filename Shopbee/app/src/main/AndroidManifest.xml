@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -20,10 +19,23 @@
         android:roundIcon="@mipmap/ic_app_shopee"
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopbee"
-        tools:targetApi="31">
+        tools:targetApi="31" >
+
+        <activity
+            android:name=".FacebookAuthActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="com.facebook.sdk.ApplicationId"
+                android:value="@string/facebook_app_id" />
+            <meta-data
+                android:name="com.facebook.sdk.ClientToken"
+                android:value="@string/facebook_client_token" />
+        </activity>
+
+
         <activity
             android:name=".QRscanActivity"
-            android:exported="false">
+            android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -40,13 +52,13 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".LoginNumberPhoneActivity"
             android:exported="false" />
         <activity
             android:name=".VerifyOTPActivity"
             android:exported="false" />
-
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
@@ -56,19 +68,17 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".RegisterNumberPhoneActivity"
-            android:exported="false" />
-
-        <!--QRScan-->
-        <activity android:name=".CaptureAct"
+            android:exported="false" /> <!-- QRScan -->
+        <activity
+            android:name=".CaptureAct"
             android:screenOrientation="portrait"
             android:stateNotNeeded="true"
-            android:theme="@style/zxing_CaptureTheme"/>
+            android:theme="@style/zxing_CaptureTheme" />
         <activity
             android:name=".OpenAppActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

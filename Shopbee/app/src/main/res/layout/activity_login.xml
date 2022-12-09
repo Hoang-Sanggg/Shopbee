@@ -145,26 +145,24 @@
         android:layout_gravity="center"
         android:text="Hoặc"/>
 
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/imb_login"
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_sign_google"
         android:layout_width="350dp"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/custom_btn_login"
+        android:drawableLeft="@drawable/icon_google"
         android:gravity="center"
-        android:padding="10dp"
+        android:padding="2dp"
         android:text="Đăng nhập với google"
-        android:textSize="20sp"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:drawableLeft="@drawable/icon_google"/>
+        android:textSize="20sp" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLoginFace"
+        android:id="@+id/btnLogin_Facebook"
         android:layout_width="350dp"
         android:layout_gravity="center"
         android:layout_height="wrap_content"

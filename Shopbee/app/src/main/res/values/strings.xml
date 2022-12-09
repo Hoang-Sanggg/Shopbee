@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Shopbee</string>
-    <string name="facebook_app_id">1828308530843520</string>
-    <string name="facebook_client_token">806eb8060777e3f6bc5334e2dace1cef</string>
+
+    //Login Facebook
+    <string name="facebook_app_id">1234</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
 
     <string name="otp_verification">OTP Verification</string>
     <string name="we_will_send_you_one_time_password_on_this_mobile_number">We will send you One Time Password on this mobile number</string>

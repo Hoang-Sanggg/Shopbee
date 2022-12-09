@@ -1,17 +1,21 @@
 package com.duan1.shopbee;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -27,6 +31,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -48,10 +53,10 @@ public class LoginActivity extends AppCompatActivity {
     private CheckBox chk_remember_login;
     private String idUser, usernameIntent;
     private TextView tvLogin, tvRegister;
-    private Button btnLogin;
+    private Button btnLogin, btnLogin_Google, btnLogin_Facebook;
 
     public static String USERNAME = "";
-    public static String _id ;
+    public static String _id;
 
     @SuppressLint("MissingInflatedId")
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -60,36 +65,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        edt_email = (TextInputLayout)findViewById(R.id.TextInputLayOutUsernameLogin);
-        edt_password = (TextInputLayout)findViewById(R.id.TextInputLayOutPasswordLogin);
+        edt_email = (TextInputLayout) findViewById(R.id.TextInputLayOutUsernameLogin);
+        edt_password = (TextInputLayout) findViewById(R.id.TextInputLayOutPasswordLogin);
         chk_remember_login = findViewById(R.id.chk_remember_login);
         btnLogin = findViewById(R.id.btnLogin);
 
-
-        //Đăng nhập google
-        GoogleSignInOptions gso = new GoogleSignInOptions
-                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestProfile()
-                .requestEmail()
-                .build();
-        gsc = GoogleSignIn.getClient(LoginActivity.this, gso);
-        //Kiểm tra login Google
-        account = GoogleSignIn.getLastSignedInAccount(LoginActivity.this);
-        if (account != null) {
-            Intent homeIntent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(homeIntent);
-            finish();
-        }
-
-//        ImageButton imbLogin = findViewById(R.id.imb_login);
-//        imbLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent googleIntent = gsc.getSignInIntent();
-//                googleLauncher.launch(googleIntent);
-//            }
-//        });
-
+        //Đăng ký
         tvLogin = findViewById(R.id.tvLogin);
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,9 +81,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //Đăng nhập
-
         btnLogin = findViewById(R.id.btnLogin);
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +99,75 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Đăng nhập Facebook
+        btnLogin_Facebook = findViewById(R.id.btnLogin_Facebook);
+        btnLogin_Facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, FacebookAuthActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+
+        //Đăng nhập google
+        GoogleSignInOptions gso = new GoogleSignInOptions
+                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestProfile()
+                .requestEmail()
+                .build();
+        gsc = GoogleSignIn.getClient(LoginActivity.this, gso);
+
+        //Kiểm tra login Google
+        account = GoogleSignIn.getLastSignedInAccount(LoginActivity.this);
+
+        SignInButton signInButton = findViewById(R.id.btn_sign_google);
+        signInButton.setSize(SignInButton.SIZE_WIDE);
+
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent signInIntent = gsc.getSignInIntent();
+                starActivityForResult.launch(signInIntent);
+            }
+        });
+    }
+
+    ActivityResultLauncher<Intent> starActivityForResult = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK){
+                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+                        handleSignInResult(task);
+                    }
+                }
+            }
+    );
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            if (account != null) {
+                String personName = account.getDisplayName();
+                String personGivenName = account.getGivenName();
+                String personFamilyName = account.getFamilyName();
+                String personEmail = account.getEmail();
+                String personId = account.getId();
+                Uri personPhoto = account.getPhotoUrl();
+                Toast.makeText(this, "Email: " + personEmail, Toast.LENGTH_SHORT).show();
+
+                Intent homeIntent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(homeIntent);
+                finish();
+            }
+            // Signed in successfully, show authenticated UI.
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.d("GOOGLE ERROR", e.getMessage());
+        }
     }
 
     public void onClickRegister(View view) {
