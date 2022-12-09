@@ -75,9 +75,9 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
     @Override
     public void onBindViewHolder(@NonNull MyProductViewHodel holder, @SuppressLint("RecyclerView") int position) {
         mFunction function = new mFunction();
-        String nameUser = sharedPref.getString("username", "null");
+        String nameUser = sharedPref.getString("username", "");
         int soLuong = 0;
-            if(mListMyProduct.get(position).getNameShop().equals(nameUser)==true){
+            if(mListMyProduct.get(position).getNameShop().equals(String.valueOf(nameUser))==true){
 //                soLuong = sharedPref.getInt("soLuong", 0);
 //                soLuong+=1;
                 holder.tvThongTinSP_My_Product.setText(mListMyProduct.get(position).getNameProduct());
