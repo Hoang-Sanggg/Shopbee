@@ -2,6 +2,8 @@ package com.duan1.shopbee.fragment;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import static com.duan1.shopbee.LoginActivity.USERNAME;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -53,6 +55,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
     private ProfileAdapter profileAdapter;
 
     TextView logout;
+    TextView profile_username;
 
 
     // TODO: Rename and change types of parameters
@@ -93,6 +96,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
             mProfiles = (List<Profile>) getArguments().getSerializable(ARG_PARAM1);
             productCreateList = (List<ProductCreate>) getArguments().getSerializable(ARG_PARAM2);
 //            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -118,9 +122,12 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
 //
 //        ProfileRecycler.setAdapter(profileAdapter);
 
+
         logout = view.findViewById(R.id.btn_logout);
         showBottomNav.showBottomNav();
         TextView textView = view.findViewById(R.id.btn_myShop);
+        profile_username = view.findViewById(R.id.profile_username);
+        profile_username.setText(""+USERNAME);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
