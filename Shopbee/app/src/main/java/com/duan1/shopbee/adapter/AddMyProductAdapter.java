@@ -139,7 +139,7 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
             txtLuotXem_My_Product = itemView.findViewById(R.id.txtLuotXem_My_Product);
             ivUuDai_My_Product = itemView.findViewById(R.id.ivUuDai_My_Product);
             btnAn_My_Product = itemView.findViewById(R.id.btnAn_My_Product);
-            btnSua_My_Product = itemView.findViewById(R.id.btnSua_My_Product);
+            btnSua_My_Product = itemView.findViewById(R.id.btnEdit_My_Product);
             btnXoa_My_Product = itemView.findViewById(R.id.btnXoa);
 
             item_lnMyProduct = itemView.findViewById(R.id.item_lnMyProduct);

@@ -181,10 +181,10 @@
                 android:gravity="center">
 
                 <Button
-                    android:id="@+id/btnDel_My_Product"
+                    android:id="@+id/btnAn_My_Product"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
-                    android:text="Xóa"
+                    android:text="Ẩn"
                     android:textSize="18sp"
                     android:textAllCaps="false"
                     android:textColor="@color/black"
