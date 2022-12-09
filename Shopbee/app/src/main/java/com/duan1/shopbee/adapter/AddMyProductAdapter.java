@@ -3,6 +3,7 @@ package com.duan1.shopbee.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,6 +103,13 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
             @Override
             public void onClick(View view) {
                 clickToProduct.onClickToProductSale(mListMyProduct, holder.getAdapterPosition());
+            }
+        });
+        holder.btnSua_My_Product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, EditActivity.class);
+                mContext.startActivity(intent);
             }
         });
         holder.btnXoa_My_Product.setOnClickListener(new View.OnClickListener() {
