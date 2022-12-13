@@ -213,7 +213,7 @@ public class NewProductFragment extends Fragment {
                             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    databaseReference.child("product").child(maSp).child("nameProduct").setValue(nameProduct);
+                                    databaseReference.child("product").child("26XMM0KWE").child("nameProduct").setValue("Hoang Sang ne");
                                     databaseReference.child("product").child(maSp).child("description").setValue(decription);
                                     databaseReference.child("product").child(maSp).child("industry").setValue(txtNewIndustry.getText());
                                     databaseReference.child("product").child(maSp).child("priceProduct").setValue(price);

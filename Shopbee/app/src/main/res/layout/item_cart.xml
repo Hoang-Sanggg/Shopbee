@@ -7,6 +7,7 @@
     android:layout_marginEnd="5dp"
     android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
+    android:padding="10dp"
     android:background="@drawable/rounded_item"
     android:padding="10dp">
     <androidx.cardview.widget.CardView
@@ -107,5 +108,39 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_cart">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="right|bottom"
+            android:background="@drawable/custom_btn_login"
+            android:text="Xóa sản phẩm"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBuy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:layout_gravity="right|bottom"
+            android:background="@drawable/custom_btn_login"
+            android:text="Mua ngay"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

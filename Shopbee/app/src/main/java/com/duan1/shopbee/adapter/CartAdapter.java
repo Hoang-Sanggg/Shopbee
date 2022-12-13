@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToBuy;
+import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToOrder;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.model.Order;
@@ -30,12 +31,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHoder> {
     private Context context;
     private ClickToProductSale clickToProductSale;
     private ClickToBuy clickToBuy;
+    private ClickToDeleteProduct clickToDeleteProduct;
 
-    public CartAdapter(List<ProductCreate> orderList, Context context, ClickToProductSale clickToProductSale, ClickToBuy clickToBuy) {
+    public CartAdapter(List<ProductCreate> orderList, Context context, ClickToProductSale clickToProductSale, ClickToBuy clickToBuy, ClickToDeleteProduct clickToDeleteProduct) {
         this.orderList = orderList;
         this.context = context;
         this.clickToProductSale = clickToProductSale;
         this.clickToBuy = clickToBuy;
+        this.clickToDeleteProduct = clickToDeleteProduct;
     }
 
     @NonNull
@@ -78,6 +81,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHoder> {
             }
         });
 
+        holder.btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickToDeleteProduct.onClickToDeleteProduct(orderList, holder.getAdapterPosition());
+            }
+        });
+
     }
 
     @Override
@@ -89,7 +99,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHoder> {
         private TextView idProductOrder, customer,  seller, priceOrder, priceProductOrder, numberOfOrder, nameProductOrder, statusOrder, dateOrder;
         private ImageView ivProduct;
         private LinearLayout root_Cart;
-        private Button btnBuy;
+        private Button btnBuy, btnXoa;
         public CartHoder(@NonNull View itemView) {
             super(itemView);
 
@@ -99,6 +109,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHoder> {
             root_Cart = itemView.findViewById(R.id.item_cart);
 
             btnBuy = itemView.findViewById(R.id.btnBuy);
+            btnXoa = itemView.findViewById(R.id.btnDelete);
 
         }
     }
