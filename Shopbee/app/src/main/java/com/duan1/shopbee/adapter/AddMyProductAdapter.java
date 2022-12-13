@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
+import com.duan1.shopbee.callback.ClickToUpdateProduct;
 import com.duan1.shopbee.fragment.NewProductFragment;
 import com.duan1.shopbee.function.mFunction;
 import com.duan1.shopbee.model.ProductCreate;
@@ -39,6 +40,7 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
     private List<ProductCreate> mListMyProduct;
     private ClickToProductSale clickToProduct;
     private ClickToDeleteProduct clickToDeleteProduct;
+    private ClickToUpdateProduct clickToUpdateProduct;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
 
@@ -50,12 +52,13 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
     SharedPreferences sharedPref;
 
 
-    public AddMyProductAdapter(Context mContext, List<ProductCreate> mListMyProduct, ClickToProductSale clickToProduct, ClickToDeleteProduct clickToDeleteProduct) {
+    public AddMyProductAdapter(Context mContext, List<ProductCreate> mListMyProduct, ClickToProductSale clickToProduct, ClickToDeleteProduct clickToDeleteProduct, ClickToUpdateProduct clickToUpdateProduct) {
         this.mContext = mContext;
         sharedPref = this.mContext.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         this.mListMyProduct = mListMyProduct;
         this.clickToProduct = clickToProduct;
         this.clickToDeleteProduct = clickToDeleteProduct;
+        this.clickToUpdateProduct = clickToUpdateProduct;
 //        notifyDataSetChanged();
     }
 
@@ -104,12 +107,21 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
                 clickToProduct.onClickToProductSale(mListMyProduct, holder.getAdapterPosition());
             }
         });
+
         holder.btnXoa_My_Product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 askBack(holder);
             }
         });
+
+        holder.btnSua_My_Product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickToUpdateProduct.onClickToUpdateroduct(mListMyProduct, holder.getAdapterPosition());
+            }
+        });
+
     }
 
     private void askBack(MyProductViewHodel holder){
@@ -164,7 +176,9 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
             btnSua_My_Product = itemView.findViewById(R.id.btnEdit_My_Product);
             btnXoa_My_Product = itemView.findViewById(R.id.btnXoa);
 
+
             item_lnMyProduct = itemView.findViewById(R.id.item_lnMyProduct);
+
 
         }
     }
