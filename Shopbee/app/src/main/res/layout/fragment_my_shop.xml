@@ -82,10 +82,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
-                android:layout_margin="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -104,33 +105,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Fit Nuts TP dinh dưỡng"
-                        android:textSize="20dp"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
-                        />
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_km"
                         android:text="Shopbee.vn/dunghoang1321"
-                        android:textSize="10dp"
-                        android:layout_below="@+id/tv_km"/>
-
+                        android:textSize="10dp" />
 
 
                     <TextView
                         android:id="@+id/iv_next"
-                        android:layout_marginTop="15dp"
                         android:layout_width="65dp"
-                        android:textSize="10dp"
                         android:layout_height="20dp"
-                        android:gravity="center"
-                        android:textColor="#FF5722"
-                        android:text="Xem Shop"
-                        android:background="@drawable/radius"
                         android:layout_alignParentRight="true"
-                        />
+                        android:layout_marginTop="15dp"
+                        android:background="@drawable/radius"
+                        android:gravity="center"
+                        android:text="Xem Shop"
+                        android:textColor="#FF5722"
+                        android:textSize="10dp" />
 
                 </RelativeLayout>
             </LinearLayout>
@@ -186,20 +184,22 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <LinearLayout
-                android:padding="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="5dp">
 
 
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:gravity="center"
                     android:layout_marginRight="5dp"
-                    android:orientation="vertical"
                     android:background="#F4EFEF"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:padding="5dp">
 
                     <TextView
@@ -207,12 +207,12 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginTop="5dp"
-                        android:text="2"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:background="#F4EFEF"
                         android:gravity="center"
+                        android:text="2"
                         android:textColor="#FF5722"
-                        android:background="#F4EFEF" />
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -225,10 +225,10 @@
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:gravity="center"
                     android:layout_marginRight="5dp"
-                    android:orientation="vertical"
                     android:background="#F4EFEF"
+                    android:gravity="center"
+                    android:orientation="vertical"
                     android:padding="5dp">
 
                     <TextView
@@ -236,12 +236,12 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginTop="5dp"
-                        android:text="0"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:background="#F4EFEF"
                         android:gravity="center"
+                        android:text="0"
                         android:textColor="@color/black"
-                        android:background="#F4EFEF" />
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -254,9 +254,9 @@
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:background="#F4EFEF"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:background="#F4EFEF"
                     android:padding="5dp">
 
                     <TextView
@@ -264,12 +264,12 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_marginTop="5dp"
-                        android:text="1"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:background="#F4EFEF"
                         android:gravity="center"
+                        android:text="1"
                         android:textColor="#FF5722"
-                        android:background="#F4EFEF" />
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -282,10 +282,10 @@
                 <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:gravity="center"
                     android:layout_marginLeft="5dp"
-                    android:orientation="vertical"
                     android:background="#F4EFEF"
+                    android:gravity="center"
+                    android:orientation="vertical"
 
                     android:padding="5dp">
 
@@ -294,17 +294,17 @@
                         android:layout_width="50dp"
                         android:layout_height="25dp"
                         android:layout_marginTop="5dp"
-                        android:text="2,3k"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
+                        android:background="#F4EFEF"
                         android:gravity="center"
+                        android:text="2,3k"
                         android:textColor="#FF5722"
-                        android:background="#F4EFEF" />
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:text="Phản hồi đánh giá"
                         android:textColor="@color/black"
                         android:textSize="10dp" />

@@ -45,7 +45,7 @@
                         android:id="@+id/tv_description"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chưa có cạp nhật đơn hàng"
+                        android:text="Chưa có cập nhật đơn hàng"
                         android:textSize="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@+id/iv_salse"
