@@ -18,14 +18,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.AddMyProductAdapter;
 import com.duan1.shopbee.adapter.CategoryAdapter;
+import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.HideBottomNav;
 import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.ProductCreate;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -33,12 +40,13 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class MyProductFragment extends Fragment implements ClickToProductSale {
+public class MyProductFragment extends Fragment implements ClickToProductSale, ClickToDeleteProduct {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -49,7 +57,11 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
     private AddMyProductAdapter addMyProductAdapter;
 
     private RecyclerView rcyMyProduct;
+    Button btnDelete;
 
+
+    public MyProductFragment() {
+    }
 
     public MyProductFragment(List<ProductCreate> productCreateList) {
         this.productCreateList = productCreateList;
@@ -94,8 +106,8 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
         super.onViewCreated(view, savedInstanceState);
         ImageView btn_back_myProduct = view.findViewById(R.id.btn_back_myProduct);
 
-        SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
-        int soLuong = sharedPref.getInt("soLuong", 0);
+//        SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+//        int soLuong = sharedPref.getInt("soLuong", 0);
 
         rcyMyProduct = view.findViewById(R.id.rcyMyProduct);
 
@@ -103,15 +115,19 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
 
         txtSoLuong = view.findViewById(R.id.txtSoLuong);
 
-        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
 
-        Log.d(">>>>>>", "size: "+soLuong);
+        btnDelete = view.findViewById(R.id.btnAn_My_Product);
 
-        rcyMyProduct.setHasFixedSize(true);
-        rcyMyProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+//        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
+//
+//        Log.d(">>>>>>", "size: "+soLuong);
 
-        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList, MyProductFragment.this);
-        rcyMyProduct.setAdapter(addMyProductAdapter);
+//        txtSoLuong.setText("( "+String.valueOf(soLuong)+" )");
+//
+//        Log.d(">>>>>>", "size: "+soLuong);
+
+
+        loadData();
 
         btn_back_myProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +142,11 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
                 onClickAddNewMyProduct(view);
             }
         });
+
+       
+
+
+
 
     }
     public void onClickAddNewMyProduct(View view) {
@@ -145,4 +166,31 @@ public class MyProductFragment extends Fragment implements ClickToProductSale {
                 .addToBackStack(null)
                 .commit();
     }
+
+    public void onClickToDeleteProduct(List<ProductCreate> flashsalelist,int position){
+        databaseReference.child("product").child(String.valueOf(flashsalelist.get(position).getIdProduct())).removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getContext(), "Bạn vừa xóa sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                        loadData();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Write failed
+                        // ...
+                    }
+                });
+    }
+
+    private void loadData(){
+        rcyMyProduct.setHasFixedSize(true);
+        rcyMyProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
+        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList, MyProductFragment.this,MyProductFragment.this);
+        rcyMyProduct.setAdapter(addMyProductAdapter);
+    }
+
 }

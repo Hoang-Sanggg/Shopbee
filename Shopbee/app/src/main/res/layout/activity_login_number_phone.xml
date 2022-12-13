@@ -1,243 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginNPActivity">
-    <include layout="@layout/toolbar_register"/>
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    tools:context=".LoginNumberPhoneActivity">
 
-    <ImageView
-        android:id="@+id/ivShopee"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="30dp"
-        android:src="@drawable/ic_shopee" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputLayoutPhone"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/ivShopee"
-        android:hint="Số điện thoại"
-        android:textColorHint="#B8B8B8"
-        app:boxStrokeColor="@color/purple_300"
-        app:boxStrokeWidthFocused="2dp"
-        app:endIconTint="@color/purple_300"
-        app:startIconDrawable="@drawable/ic_phone"
-        android:layout_centerHorizontal="true">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtTextPhone"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/roboto_regular"
-            android:inputType="textPhonetic" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:padding="16dp">
+            <ImageView
+                android:id="@+id/iv_black_login_number_phone"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_arrow"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnNext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextInputLayoutPhone"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/bg_btn_regiter_next"
-        android:text="@string/next"
-        android:textAllCaps="false"
-        android:fontFamily="@font/roboto_medium"
-        android:textColor="#8E8C8C"
-        android:textSize="20sp" />
+            <TextView
+                android:id="@+id/txtDangKy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@id/iv_black_login_number_phone"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:textSize="22sp"
+                android:text="@string/dang_nhap"/>
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnNext"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/right_icon_help"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_help"/>
+
+        </RelativeLayout>
+
 
         <ImageView
-            android:layout_width="14dp"
-            android:layout_height="14dp"
-            android:layout_alignBottom="@+id/chkActivated"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="253dp"
-            android:layout_marginEnd="104dp"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/ic_text_help" />
+            android:id="@+id/ivShopee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_shopee" />
 
-        <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/chkActivated"
-            android:layout_width="400dp"
-            android:layout_height="50dp"
-            android:button="@drawable/bg_checkbox_register"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPhone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/ivShopee"
+            android:hint="Số điện thoại"
+            android:textColorHint="@color/black"
+            android:fontFamily="@font/nunito_light"
+            app:boxStrokeColor="@color/shopbee_color"
+            app:hintTextColor="@color/shopbee_color"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconTint="@color/purple_300"
+            app:startIconDrawable="@drawable/ic_phone"
+            android:layout_centerHorizontal="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/nunito_bold"
+                android:inputType="number"
+                android:textColor="@color/shopbee_color" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGetOTP"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:background="@drawable/custom_btn_login"
+            android:gravity="center"
+            android:text="Đăng nhập"
+            android:textAllCaps="false"
+            android:textColor="@color/shopbee_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDangNhapBangMatKhau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="Đăng nhập bằng mật khẩu"
+            android:textSize="14sp"
+            android:textColor="@color/shopbee_color"
+            android:gravity="right"
+            android:paddingRight="10dp"/>
+
+        <ImageView
+            android:id="@+id/hoacDangNhapVoi"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/img_hoacdangnhap" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLoginGoogle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_btn_login"
+            android:drawableLeft="@drawable/icon_google"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/login_google"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_below="@+id/hoacDangNhapVoi"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLoginFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_btn_login"
+            android:drawableLeft="@drawable/ic_facebook_login"
+            android:paddingLeft="10dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/login_facebook"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto_regular"
+            android:textAllCaps="false"
+            android:layout_below="@+id/btnLoginGoogle"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLoginApp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnLoginFacebook"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/custom_btn_login"
+            android:drawableLeft="@drawable/apple_logo"
             android:fontFamily="@font/roboto_regular"
             android:paddingLeft="10dp"
-            android:text="@string/text_checkbox"
-            android:textColor="#5A5A5A"
-            android:textSize="14sp" />
-    </RelativeLayout>
+            android:text="Đăng nhập với Apple ID"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
 
-    <ImageView
-        android:id="@+id/hoacDangNhapVoi"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_below="@+id/relativeLayout"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/img_hoacdangnhap" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLoginGoogle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/bg_btn_register"
-        android:drawableLeft="@drawable/icon_google"
-        android:paddingLeft="10dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:text="@string/register_google"
-        android:textSize="18sp"
-        android:textAllCaps="false"
-        android:fontFamily="@font/roboto_regular"
-        android:layout_below="@+id/hoacDangNhapVoi"/>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLoginFacebook"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLoginGoogle"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/bg_btn_register"
-        android:drawableLeft="@drawable/ic_facebook_login"
-        android:fontFamily="@font/roboto_regular"
-        android:paddingLeft="10dp"
-        android:text="Đăng ký bằng Facebook"
-        android:textAllCaps="false"
-        android:textSize="18sp" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLoginApp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnLoginFacebook"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/bg_btn_register"
-        android:drawableLeft="@drawable/apple_logo"
-        android:fontFamily="@font/roboto_regular"
-        android:paddingLeft="10dp"
-        android:text="Đăng ký với Apple ID"
-        android:textAllCaps="false"
-        android:textSize="18sp" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/btnLoginFacebook"
-        android:layout_marginTop="135dp"
-        android:gravity="center">
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/fragment_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bang_viec_dang_ky_voi"
-                android:textColor="#5A5A5A"
-                android:textSize="13sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dieu_khoan"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                android:paddingLeft="3dp"
-                android:fontFamily="@font/roboto_regular"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" &amp; "
-                android:textSize="13sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/ch_nh"
-                android:textSize="13sp"
-                android:textColor="@color/black"/>
-        </LinearLayout>
+            android:layout_marginTop="100dp">
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="40dp"
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+
+            android:orientation="horizontal">
             <TextView
+                android:text="@string/ban_da_co_tai_khoan"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="#000"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sach_bao_mat"
-                android:textColor="@color/black"
-                android:textSize="13sp"
-                android:fontFamily="@font/roboto_regular"/>
+                android:layout_height="wrap_content"/>
+
             <TextView
+                android:id="@+id/tvLoginPhoneMumber"
+                android:text="Đăng ký"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="#4781e4"
+                android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/cua_Shopee"
-                android:paddingLeft="3dp"
-                android:textSize="13sp"/>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/linearLayout"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="30dp"
-        android:gravity="center"
-        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_regular"
-            android:text="@string/ban_da_co_tai_khoan"
-            android:textColor="#000" />
-
-        <TextView
-            android:id="@+id/tvLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Đăng nhập"
-            android:textColor="#4781e4"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-
-</RelativeLayout>
+</ScrollView>

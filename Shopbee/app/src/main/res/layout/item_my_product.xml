@@ -2,11 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="5dp"
+    android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp">
+    android:background="@drawable/rounded_item"
+    android:orientation="vertical">
         <LinearLayout
             android:id="@+id/item_lnMyProduct"
             android:layout_width="match_parent"
@@ -180,7 +180,7 @@
                 android:layout_marginTop="5dp"
                 android:gravity="center">
 
-                <androidx.appcompat.widget.AppCompatButton
+                <Button
                     android:id="@+id/btnAn_My_Product"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
@@ -190,8 +190,8 @@
                     android:textColor="@color/black"
                     android:background="@drawable/custom_btn_login"/>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnSua_My_Product"
+                <Button
+                    android:id="@+id/btnEdit_My_Product"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:text="Sửa"
@@ -201,10 +201,10 @@
                     android:layout_marginLeft="10dp"/>
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnThem_My_Product"
+                    android:id="@+id/btnXoa"
                     android:layout_width="50dp"
                     android:layout_height="40dp"
-                    android:text="..."
+                    android:text="Xóa"
                     android:textSize="16sp"
                     android:textAllCaps="false"
                     android:background="@drawable/custom_btn_login"

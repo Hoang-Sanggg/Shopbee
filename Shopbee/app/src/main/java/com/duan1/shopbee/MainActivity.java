@@ -2,6 +2,7 @@ package com.duan1.shopbee;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.viewpager.widget.ViewPager;
 
@@ -18,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -92,8 +94,9 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
 
         ///
 
-
-
+        Window window = this.getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.black));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.black));
 
         ///
 
@@ -102,8 +105,10 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
 //            name = LoginActivity.USERNAME;
 //        }
         SharedPreferences sharedPref = MainActivity.this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
-        String name = sharedPref.getString("username", "");
+        String name = sharedPref.getString("username", "1");
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+
+
 
         //Home
         categoryList = new ArrayList<>();

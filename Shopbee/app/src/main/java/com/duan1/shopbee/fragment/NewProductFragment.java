@@ -1,5 +1,7 @@
 package com.duan1.shopbee.fragment;
 
+import static com.duan1.shopbee.fragment.BuyNowFragment.RandomMaDonHang;
+
 import android.Manifest;
 import android.app.Dialog;
 import android.content.ClipData;
@@ -28,6 +30,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +47,7 @@ import android.widget.Toast;
 
 import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
+import com.duan1.shopbee.RegisterActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -59,6 +64,7 @@ import com.hbb20.CountryCodePicker;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.Calendar;
 
@@ -81,10 +87,11 @@ public class NewProductFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    EditText tvNameProduct;
+    EditText tvDecription;
     ImageView imageView;
     String linkDL, phiVanChuyen;
-    TextView txtNewIndustry, txtNewBrand, txtStatus, txtBaoHanh, txtShip;
+    TextView txtNewIndustry, txtNewBrand, txtStatus, txtBaoHanh, txtShip, back_new_pro;
     LinearLayout edtindustry, edtBrand, edtBaoHanh, edtStatus, edtTransfree;
     EditText  edtPrice, edtStorage;
     CountryCodePicker countryCodePicker;
@@ -118,6 +125,24 @@ public class NewProductFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            tvNameProduct.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    validate_nameProduct();
+                }
+            });
+
+
         }
     }
 
@@ -135,8 +160,8 @@ public class NewProductFragment extends Fragment {
         SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String name = sharedPref.getString("username", "");
 
-        EditText tvNameProduct = view.findViewById(R.id.edtNewNameProduct);
-        EditText tvDecription = view.findViewById(R.id.edtNewDescription);
+        tvNameProduct = view.findViewById(R.id.edtNewNameProduct);
+        tvDecription = view.findViewById(R.id.edtNewDescription);
 
 
         edtindustry = view.findViewById(R.id.edtindustry);
@@ -146,6 +171,7 @@ public class NewProductFragment extends Fragment {
         edtTransfree = view.findViewById(R.id.lnTransportfee);
 
         countryCodePicker = view.findViewById(R.id.country);
+        back_new_pro = view.findViewById(R.id.back_new_pro);
 
 
 
@@ -161,6 +187,8 @@ public class NewProductFragment extends Fragment {
 
         Button button = view.findViewById(R.id.btn_addProduct);
 
+
+
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -173,28 +201,37 @@ public class NewProductFragment extends Fragment {
                 String price = edtPrice.getText().toString();
                 String storage = edtStorage.getText().toString();
                 String origin = countryCodePicker.getSelectedCountryName();
+                if (linkDL==null) {
+                    new android.app.AlertDialog.Builder(getContext())
+                            .setTitle("Notification")
+                            .setMessage("Vui lòng chọn ảnh cho sản phẩm")
+                            .setPositiveButton("OK", null)
+                            .show();
+                }else {
 
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child("product").child(maSp).child("nameProduct").setValue(nameProduct);
-                        databaseReference.child("product").child(maSp).child("description").setValue(decription);
-                        databaseReference.child("product").child(maSp).child("industry").setValue(txtNewIndustry.getText());
-                        databaseReference.child("product").child(maSp).child("priceProduct").setValue(price);
-                        databaseReference.child("product").child(maSp).child("productdetail").setValue("6");
-                        databaseReference.child("product").child(maSp).child("warehouse").setValue(storage);
-                        databaseReference.child("product").child(maSp).child("transportfee").setValue(phiVanChuyen);
-                        databaseReference.child("product").child(maSp).child("status").setValue(Status);
-                        databaseReference.child("product").child(maSp).child("nameShop").setValue(name);
-                        databaseReference.child("product").child(maSp).child("soldProduct").setValue("11");
-                        databaseReference.child("product").child(maSp).child("brandProduct").setValue(txtNewBrand.getText());
-                        databaseReference.child("product").child(maSp).child("originProduct").setValue(origin);
-                        databaseReference.child("product").child(maSp).child("baoHanhSp").setValue(BaoHanh);
-                        databaseReference.child("product").child(maSp).child("shippingProduct").setValue("15");
-                        databaseReference.child("product").child(maSp).child("priceFlashSale").setValue(price);
-                        databaseReference.child("product").child(maSp).child("discountFlashSale").setValue("18");
-                        databaseReference.child("product").child(maSp).child("soldFlashSale").setValue("18");
-                        databaseReference.child("product").child(maSp).child("imageProduct").setValue(linkDL);
+                        if (validate()) {
+                            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    databaseReference.child("product").child(maSp).child("nameProduct").setValue(nameProduct);
+                                    databaseReference.child("product").child(maSp).child("description").setValue(decription);
+                                    databaseReference.child("product").child(maSp).child("industry").setValue(txtNewIndustry.getText());
+                                    databaseReference.child("product").child(maSp).child("priceProduct").setValue(price);
+                                    databaseReference.child("product").child(maSp).child("productdetail").setValue("6");
+                                    databaseReference.child("product").child(maSp).child("warehouse").setValue(storage);
+                                    databaseReference.child("product").child(maSp).child("transportfee").setValue(phiVanChuyen);
+                                    databaseReference.child("product").child(maSp).child("status").setValue(Status);
+                                    databaseReference.child("product").child(maSp).child("nameShop").setValue(name);
+                                    databaseReference.child("product").child(maSp).child("soldProduct").setValue("11");
+                                    databaseReference.child("product").child(maSp).child("brandProduct").setValue(txtNewBrand.getText());
+                                    databaseReference.child("product").child(maSp).child("originProduct").setValue(origin);
+                                    databaseReference.child("product").child(maSp).child("baoHanhSp").setValue(BaoHanh);
+                                    databaseReference.child("product").child(maSp).child("shippingProduct").setValue("15");
+                                    databaseReference.child("product").child(maSp).child("priceFlashSale").setValue(price);
+                                    databaseReference.child("product").child(maSp).child("discountFlashSale").setValue("18");
+                                    databaseReference.child("product").child(maSp).child("soldFlashSale").setValue("18");
+                                    databaseReference.child("product").child(maSp).child("imageProduct").setValue(linkDL);
+                                    databaseReference.child("product").child(maSp).child("idProduct").setValue(maSp);
 
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("description").setValue(decription);
@@ -215,15 +252,25 @@ public class NewProductFragment extends Fragment {
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("soldFlashSale").setValue("18");
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("imageProduct").setValue(linkDL);
 
-                        Toast.makeText(getContext() , "Thêm thành công", Toast.LENGTH_SHORT).show();
-                        requireActivity().getSupportFragmentManager().popBackStack();
+                                    Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                                    requireActivity().getSupportFragmentManager().popBackStack();
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                        } else {
+                            new android.app.AlertDialog.Builder(getContext())
+                                    .setTitle("Notification")
+                                    .setMessage("Vui lòng nhập đầy đủ thông tin sản phẩm")
+                                    .setPositiveButton("OK", null)
+                                    .show();
+                        }
                     }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
             }
         });
 
@@ -240,17 +287,19 @@ public class NewProductFragment extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder dialogIndustry = new AlertDialog.Builder(getContext());
                 dialogIndustry.setTitle("Ngành hàng");
-                String[] types = {"By Zip", "By Category"};
+                String[] types = {"Thời trang nữ", "Thời trang nam", "Điện thoại và phụ kiện", ""};
                 dialogIndustry.setItems(types, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
                         switch(which){
                             case 0:
-                                 dialog_catelory(view, "By Zip", new String[]{"By Zip", "By Category"}, txtNewIndustry);
+                                dialog_catelory(view, "Thời trang nữ", new String[]{"Áo", "Trang sức","Giày","Quần"}, txtNewIndustry);
                                 break;
                             case 1:
-                                 dialog_catelory(view, "By Category", new String[]{"By Zip", "By Category", "Zip", "Category"}, txtNewIndustry);
+                                dialog_catelory(view, "Thời trang nam", new String[]{"Áo", "Phụ kiện", "Giày", "Nón"}, txtNewIndustry);
                                 break;
+                            case 2:
+                                dialog_catelory(view, "Điện thoại và phụ kiện", new String[]{"Cáp sạc", "Củ sạc", "Iphone", "SamSung","Tai Nghe"}, txtNewIndustry);
                                 // them case
                         }
                     }
@@ -265,7 +314,7 @@ public class NewProductFragment extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder dialogIndustry = new AlertDialog.Builder(getContext());
                 dialogIndustry.setTitle("Thương hiệu");
-                String[] types = {"No Brand", "By Category"};
+                String[] types = {"Adidas", "Nike","Akko","Frenzy"};
                 dialogIndustry.setItems(types, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int which) {
@@ -274,8 +323,19 @@ public class NewProductFragment extends Fragment {
                                 industry[0] = types[which];
                                 break;
                             case 1:
-                                dialog_catelory(view, "Brand", new String[]{"By Zip", "By Category", "Zip", "Category"}, txtNewBrand);
+                                dialog_catelory(view, "Adidas", new String[]{"Giày", "Phụ kiện", "Áo", "Quần"}, txtNewBrand);
                                 break;
+                            case 2:
+                                dialog_catelory(view, "Nike", new String[]{"Giày", "Phụ kiện", "Áo", "Quần"}, txtNewBrand);
+                                break;
+                            case 3:
+                                dialog_catelory(view, "Akko", new String[]{"Bàn Phím", "Phụ kiện", "Keycap", "Kit"}, txtNewBrand);
+                                break;
+                            case 4:
+                                dialog_catelory(view, "Frenzy", new String[]{"Giày", "Phụ kiện", "Áo", "Quần"}, txtNewBrand);
+                                break;
+
+
                             // them case
                         }
                         txtNewBrand.setText(String.valueOf(industry[0]));
@@ -308,9 +368,77 @@ public class NewProductFragment extends Fragment {
             }
         });
 
-
+        back_new_pro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                askBack();
+            }
+        });
 
     }
+
+
+    private void askBack(){
+        android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(getContext());
+        b.setIcon(R.drawable.attention_warning_14525);
+        b.setTitle("Xác nhận");
+        b.setMessage("Bạn có chắc chắn muốn xóa hủy không ?");
+        b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                requireActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
+        b.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        android.app.AlertDialog al = b.create();
+        al.show();
+    }
+    private Boolean validate(){
+        String nameproduct = tvNameProduct.getText().toString();
+        String description = tvDecription.getText().toString();
+        String priceproduct = edtPrice.getText().toString();
+        String storage = edtStorage.getText().toString();
+        String industry = txtNewIndustry.getText().toString();
+        String brand = txtNewBrand.getText().toString();
+        String Bh = txtBaoHanh.getText().toString();
+        String status = txtStatus.getText().toString();
+        if(nameproduct.isEmpty() || description.isEmpty() || priceproduct.isEmpty() || storage.isEmpty() || industry.isEmpty() || brand.isEmpty() || Bh.isEmpty() || status.isEmpty()){
+            return false;
+        }
+        return true;
+    }
+
+
+
+
+    private boolean validate_nameProduct(){
+        String nameproduct = tvNameProduct.getText().toString();
+        if(nameproduct.isEmpty()){
+            tvNameProduct.setError("Vui lòng nhập tên sản phẩm");
+            return false;
+        }else{
+            tvNameProduct.setError(null);
+
+            return true;
+        }
+    }
+    private boolean validate_description(){
+        String description = tvDecription.getText().toString();
+        if(description.isEmpty()){
+            tvDecription.setError("Vui lòng nhập tên sản phẩm");
+            return false;
+        }else{
+            tvDecription.setError(null);
+
+            return true;
+        }
+    }
+
+
+
 
     private void dialog(int gravity){
         final Dialog dialog1 = new Dialog(getContext());
@@ -442,6 +570,7 @@ public class NewProductFragment extends Fragment {
         }
     }
 
+
     ActivityResultLauncher<Intent> selectCapture = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -499,4 +628,6 @@ public class NewProductFragment extends Fragment {
         }
         return transFreeString;
     }
+
+
 }

@@ -1,8 +1,9 @@
 package com.duan1.shopbee.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +16,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
+import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
+import com.duan1.shopbee.callback.ClickToUpdateProduct;
+import com.duan1.shopbee.fragment.MyProductFragment;
 import com.duan1.shopbee.function.mFunction;
 import com.duan1.shopbee.model.ProductCreate;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -28,8 +33,12 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
     private Context mContext;
     private List<ProductCreate> mListMyProduct;
     private ClickToProductSale clickToProduct;
+    private ClickToDeleteProduct clickToDeleteProduct;
+    private ClickToUpdateProduct clickToUpdateProduct;
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
-    public AddMyProductAdapter(Context mContext) {
+
+    public AddMyProductAdapter(Context mContext, List<ProductCreate> productCreateList, MyProductFragment myProductFragment, MyProductFragment productFragment) {
         this.mContext = mContext;
     }
 
@@ -37,11 +46,14 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
     SharedPreferences sharedPref;
 
 
-    public AddMyProductAdapter(Context mContext, List<ProductCreate> mListMyProduct, ClickToProductSale clickToProduct) {
+    public AddMyProductAdapter(Context mContext, List<ProductCreate> mListMyProduct, ClickToProductSale clickToProduct, ClickToDeleteProduct clickToDeleteProduct, ClickToUpdateProduct clickToUpdateProduct) {
         this.mContext = mContext;
         sharedPref = this.mContext.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         this.mListMyProduct = mListMyProduct;
         this.clickToProduct = clickToProduct;
+        this.clickToDeleteProduct = clickToDeleteProduct;
+        this.clickToUpdateProduct = clickToUpdateProduct;
+//        notifyDataSetChanged();
     }
 
 
@@ -58,14 +70,13 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyProductViewHodel holder, int position) {
+    public void onBindViewHolder(@NonNull MyProductViewHodel holder, @SuppressLint("RecyclerView") int position) {
         mFunction function = new mFunction();
-        String name = sharedPref.getString("username", "null");
-//        int soLuong = 0;
-            if(mListMyProduct.get(position).getNameShop().equals(name)){
+        String nameUser = sharedPref.getString("username", "");
+        int soLuong = 0;
+            if(mListMyProduct.get(position).getNameShop().equals(String.valueOf(nameUser))==true){
 //                soLuong = sharedPref.getInt("soLuong", 0);
 //                soLuong+=1;
-                Log.d(">", "onBindViewHolder: "+name);
                 holder.tvThongTinSP_My_Product.setText(mListMyProduct.get(position).getNameProduct());
                 holder.txtGiaSP_My_Product.setText(mListMyProduct.get(position).getPriceProduct());
                 holder.txtKhoHang_My_Product.setText(mListMyProduct.get(position).getWarehouse());
@@ -76,21 +87,75 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
                 Glide.with(mContext)
                         .load(mListMyProduct.get(position).getImageProduct())
                         .into(holder.ivHinhSP_My_Product);
+
             }else{
                 holder.item_lnMyProduct.setVisibility(View.GONE);
             }
+//        SharedPreferences.Editor editor1 = sharedPref.edit();
+//        editor1.putInt("soLuong", soLuong);
+//        editor1.commit();
 
-//        SharedPreferences.Editor editor = sharedPref.edit();
-//        editor.putInt("soLuong", soLuong);
-//        editor.commit();
         holder.item_lnMyProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clickToProduct.onClickToProductSale(mListMyProduct, holder.getAdapterPosition());
             }
         });
+        holder.btnXoa_My_Product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                askBack(holder);
+            }
+        });
 
+        holder.btnSua_My_Product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Update(holder);
+            }
+        });
     }
+
+    private void askBack(MyProductViewHodel holder){
+        android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(mContext);
+        b.setIcon(R.drawable.attention_warning_14525);
+        b.setTitle("Xác nhận");
+        b.setMessage("Bạn có chắc chắn muốn xóa không?");
+        b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                clickToDeleteProduct.onClickToDeleteProduct(mListMyProduct,holder.getAdapterPosition());
+            }
+        });
+        b.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        android.app.AlertDialog al = b.create();
+        al.show();
+    }
+
+    private void Update(MyProductViewHodel holder){
+        android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(mContext);
+        b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                clickToUpdateProduct.onClickToUpdateProduct(mListMyProduct,holder.getAdapterPosition());
+            }
+        });
+        b.setNegativeButton("Undo", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        android.app.AlertDialog al = b.create();
+        al.show();
+    }
+
+
+
+
 
     @Override
     public int getItemCount() {
@@ -105,7 +170,7 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
         private ImageView ivHinhSP_My_Product;
         private TextView tvThongTinSP_My_Product, txtGiaSP_My_Product, txtKhoHang_My_Product, txtDaBan_My_Product, txtLuotThich_My_Product, txtLuotXem_My_Product;
         private ImageView ivUuDai_My_Product;
-        private Button btnAn_My_Product, btnSua_My_Product, btnThem_My_Product;
+        private Button btnAn_My_Product, btnSua_My_Product, btnXoa_My_Product;
         private LinearLayout item_lnMyProduct;
 
         public MyProductViewHodel(@NonNull View itemView) {
@@ -120,8 +185,9 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
             txtLuotXem_My_Product = itemView.findViewById(R.id.txtLuotXem_My_Product);
             ivUuDai_My_Product = itemView.findViewById(R.id.ivUuDai_My_Product);
             btnAn_My_Product = itemView.findViewById(R.id.btnAn_My_Product);
-            btnSua_My_Product = itemView.findViewById(R.id.btnSua_My_Product);
-            btnThem_My_Product = itemView.findViewById(R.id.btnThem_My_Product);
+            btnSua_My_Product = itemView.findViewById(R.id.btnEdit_My_Product);
+            btnXoa_My_Product = itemView.findViewById(R.id.btnXoa);
+            btnSua_My_Product = itemView.findViewById(R.id.btnEdit_My_Product);
 
             item_lnMyProduct = itemView.findViewById(R.id.item_lnMyProduct);
 

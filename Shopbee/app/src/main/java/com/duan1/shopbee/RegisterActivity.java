@@ -15,8 +15,11 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -27,6 +30,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.duan1.shopbee.model.User;
 import com.google.android.gms.tasks.Continuation;
@@ -59,6 +63,8 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
+
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -67,6 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
     private TextInputEditText   edt_username, edt_password, edt_enter_password, edt_email, edt_phone_number;
     private TextInputLayout til_username, til_password, til_enter_password, til_email, til_phone_number;
     private RadioButton rdo_male, rdo_female;
+    private Button btn_cancel_register;
+    private TextView txtRegister_Number_Phone;
     final int REQUESTCODE_READ_EXTERNAL_STORAGE = 120;
     private int dem = 0;
 
@@ -74,6 +82,11 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        Window window = this.getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.black));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.black));
+
         imv_choose = findViewById(R.id.btn_choose_avartar);
         edt_username = findViewById(R.id.edt_username);
         edt_password = findViewById(R.id.edt_password);
@@ -89,6 +102,24 @@ public class RegisterActivity extends AppCompatActivity {
         til_enter_password = findViewById(R.id.TextInputLayOutEnterPassword);
         til_email = findViewById(R.id.TextInputLayOutEmail);
         til_phone_number = findViewById(R.id.TextInputLayOutPhoneNumber);
+
+        btn_cancel_register = findViewById(R.id.btn_cancel_register);
+        btn_cancel_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+        });
+
+//        txtRegister_Number_Phone = findViewById(R.id.txtRegister_Number_Phone);
+//        txtRegister_Number_Phone.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(RegisterActivity.this, RegisterNumberPhoneActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+
 
         edt_username.addTextChangedListener(new TextWatcher() {
             @Override
@@ -527,5 +558,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 }

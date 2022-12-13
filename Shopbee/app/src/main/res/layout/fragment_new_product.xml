@@ -21,12 +21,13 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Chỉnh sửa sản phẩm"
+                    android:text="Thêm sản phẩm"
                     android:paddingTop="15dp"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:gravity="center" />
                 <TextView
+                    android:id="@+id/back_new_pro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/back"
@@ -218,15 +219,16 @@
                             android:layout_toLeftOf="@id/txt120"
                             android:text="0"
                             android:paddingTop="10dp"/>
+
                         <EditText
                             android:id="@+id/edtNewNameProduct"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:maxLines="1"
+                            android:layout_marginTop="30dp"
                             android:ellipsize="end"
                             android:hint="Tên sản phẩm"
-                            android:layout_marginTop="30dp"
-                            android:padding="10dp"/>
+                            android:maxLines="1"
+                            android:padding="10dp" />
                     </RelativeLayout>
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -255,14 +257,15 @@
                             android:layout_toLeftOf="@id/txt3000"
                             android:text="0"
                             android:paddingTop="10dp"/>
+
                         <EditText
                             android:id="@+id/edtNewDescription"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:maxLines="4"
-                            android:hint="Mô tả"
                             android:layout_marginTop="30dp"
-                            android:padding="10dp"/>
+                            android:hint="Mô tả"
+                            android:maxLines="4"
+                            android:padding="10dp" />
                     </RelativeLayout>
                     <LinearLayout
                         android:id="@+id/edtindustry"
@@ -363,10 +366,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="3">
+
                         <com.hbb20.CountryCodePicker
                             android:id="@+id/country"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                            android:layout_height="match_parent" />
                     </LinearLayout>
                 </LinearLayout>
                     <LinearLayout
@@ -749,7 +753,6 @@
                             android:layout_height="match_parent"
                             android:layout_weight="3">
                             <androidx.appcompat.widget.SwitchCompat
-                                android:id="@+id/btnOrder"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"/>
                         </LinearLayout>
@@ -826,7 +829,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#ff0000"
-                android:text="Cập nhật"
+                android:text="Thêm"
                 android:textAllCaps="false"
                 android:textSize="16dp"
                 android:textStyle="bold"
