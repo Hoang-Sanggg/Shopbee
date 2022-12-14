@@ -55,6 +55,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
     private ProfileAdapter profileAdapter;
 
     TextView logout;
+    TextView history;
     TextView profile_username;
 
 
@@ -151,6 +152,20 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
                 getActivity().finish();
             }
         });
+
+
+
+        history = view.findViewById(R.id.btnHistory);
+         history.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 requireActivity().getSupportFragmentManager()
+                         .beginTransaction()
+                         .replace(R.id.frame_layout, new MyOrderFragment(), "MainFragment")
+                         .addToBackStack(null)
+                         .commit();
+             }
+         });
     }
 
 

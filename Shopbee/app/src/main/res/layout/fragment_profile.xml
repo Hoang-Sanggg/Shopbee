@@ -332,6 +332,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/btnHistory"
                         android:layout_width="133dp"
                         android:layout_height="13dp"
                         android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
