@@ -11,18 +11,19 @@
         android:padding="10dp"
         android:background="#fff">
         <TextView
-            android:id="@+id/btnBack_trans"
+            android:id="@+id/btnBack_Cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/back"
             android:drawableTint="#f00"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Đơn hàng"
+            android:layout_centerInParent="true"
+            android:text="Giỏ hàng"
             android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_centerInParent="true"/>
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/btnChat_trans"
             android:layout_width="wrap_content"
@@ -165,126 +166,12 @@
                 android:textSize="16dp"/>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:layout_marginTop="5dp"
-        android:padding="10dp">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="1dp"
-            android:background="#f00"
-            android:layout_margin="5dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:background="#fff"
-                    android:padding="5dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sắp xếp theo"
-                        android:textColor="#f00"
-                        android:gravity="center"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Ngày đặt: "
-                            android:textColor="#f00"/>
-                        <TextView
-                            android:id="@+id/tvSortBy"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#f00"
-                            android:text="Gần - Xa nhất"/>
-                    </LinearLayout>
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/btnSortBy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/down"
-                    android:background="#fff"
-                    android:padding="10dp"
-                    android:drawableTint="#f00"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="1dp"
-            android:background="#f00"
-            android:layout_margin="5dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:background="#fff"
-                    android:padding="5dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Đơn vị vận chuyển"
-                        android:textColor="#f00"
-                        android:gravity="center"/>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center">
-                        <TextView
-                            android:id="@+id/tvTransport"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="#f00"
-                            android:text="Tất cả"/>
-                    </LinearLayout>
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/btnTransport"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableRight="@drawable/down"
-                    android:background="#fff"
-                    android:padding="10dp"
-                    android:drawableTint="#f00"/>
-            </LinearLayout>
 
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
-    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvTrans"
+            android:id="@+id/rcvCart"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </ScrollView>

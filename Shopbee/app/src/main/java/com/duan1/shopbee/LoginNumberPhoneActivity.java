@@ -6,6 +6,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,8 +53,12 @@ public class LoginNumberPhoneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_number_phone);
 
-        final EditText edtPhone = findViewById(R.id.edtPhone);
-        btnLoginOTP = findViewById(R.id.btnLoginOTP);
+        Window window = this.getWindow();
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.black));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.black));
+
+        final EditText edtMobile = findViewById(R.id.edtMobile);
+        btnGetOTP = findViewById(R.id.btnGetOTP);
 
         final ProgressBar progressBar = findViewById(R.id.progressBar_Login_Number_Phone);
 

@@ -38,34 +38,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="45dp"
-                    android:orientation="horizontal"
-                    >
-                    <TextView
+                    android:orientation="horizontal">
+                    <EditText
                         android:id="@+id/buynow_tvUsername_location"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="40dp"
+                        android:hint="Tên nhận hàng"
                         android:textColor="@color/black"
-                        android:textSize="15dp"
-                        android:text="Trần Văn mèo |"/>
+                        android:textSize="15dp" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/buynow_tvNumberPhone_location"
-                        android:layout_width="248dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="15dp"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
                         android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_12"
-                        android:text="(+84) 869 799 544"
-                        android:textColor="@color/black" />
+                        android:hint="Số điện thoại "
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
                 </LinearLayout>
-                <TextView
+                <EditText
                     android:id="@+id/buynow_tvAddress_Location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
+                    android:maxLines="2"
                     android:layout_marginLeft="45dp"
                     android:textColor="@color/black"
-                    android:text="911/7/10 Đường Quang Trung \nPhường 12, Quận Gò Vấp, TP.Hồ Chí Minh "
-                    />
+                    android:hint="Địa chỉ nhận hàng"/>
             </LinearLayout>
             <View
                 android:layout_width="fill_parent"
@@ -542,6 +543,7 @@
                 android:text="Tổng thanh toán"
                 android:textStyle="bold" />
             <TextView
+                android:id="@+id/total"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="5dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="5dp"
+    android:padding="10dp"
+    android:background="@drawable/rounded_item"
+    android:padding="10dp">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:cardCornerRadius="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FF5722"
+            android:padding="2dp">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:id="@+id/item_cart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/Cart_image"
+                                android:layout_width="120dp"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/bun_ngu_sac" />
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="120dp"
+                                android:padding="10dp">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/CartName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bún ngũ sắc rau củ 1kg thực phẩm ăn
+                                                            kiêng, hỗ trợ giảm cân 1kg"
+                                    android:textColor="@color/black"
+                                    android:ellipsize="end"
+                                    android:maxLines="2"
+                                    android:textSize="14sp" />
+
+                                <ImageView
+                                    android:id="@+id/ivUuDai_My_Product"
+                                    android:layout_width="50dp"
+                                    android:layout_height="25dp"
+                                    android:src="@drawable/img_uu_dai" />
+
+                                <TextView
+                                    android:id="@+id/Cart_price"
+                                    android:layout_width="130dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="₫35.000 - đ68.000"
+                                    android:maxLines="1"
+                                    android:ellipsize="end"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp" />
+                                </LinearLayout>
+                                <Button
+                                    android:id="@+id/btnBuy"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right|bottom"
+                                    android:text="Mua ngay"
+                                    android:textColor="#fff"
+                                    android:backgroundTint="#f00"
+                                    android:textAllCaps="false"
+                                    android:textSize="16sp"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_alignParentBottom="true"/>
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_cart">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_gravity="right|bottom"
+            android:background="@drawable/custom_btn_login"
+            android:text="Xóa sản phẩm"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBuy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:layout_gravity="right|bottom"
+            android:background="@drawable/custom_btn_login"
+            android:text="Mua ngay"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

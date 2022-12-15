@@ -8,19 +8,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.duan1.shopbee.R;
-import com.duan1.shopbee.adapter.AddMyProductAdapter;
+import com.duan1.shopbee.adapter.MyOrderAdapter;
 import com.duan1.shopbee.adapter.OrderAdapter;
 import com.duan1.shopbee.callback.ClickToOrder;
 import com.duan1.shopbee.model.Order;
-import com.duan1.shopbee.model.ProductCreate;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,11 +29,10 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link OrderFragment#newInstance} factory method to
+ * Use the {@link MyOrderFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OrderFragment extends Fragment implements ClickToOrder {
-
+public class MyOrderFragment extends Fragment implements ClickToOrder {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
@@ -54,9 +50,9 @@ public class OrderFragment extends Fragment implements ClickToOrder {
 
     private List<Order> orderList;
     private RecyclerView orderRecycer;
-    private OrderAdapter orderAdapter;
+    private MyOrderAdapter orderAdapter;
 
-    public OrderFragment() {
+    public MyOrderFragment() {
         // Required empty public constructor
     }
 
@@ -91,7 +87,7 @@ public class OrderFragment extends Fragment implements ClickToOrder {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order, container, false);
+        return inflater.inflate(R.layout.fragment_my_order, container, false);
     }
 
     @Override
@@ -134,7 +130,7 @@ public class OrderFragment extends Fragment implements ClickToOrder {
 
             }
         });
-        orderAdapter = new OrderAdapter(orderList, getContext(), OrderFragment.this);
+        orderAdapter = new MyOrderAdapter(orderList, getContext(), MyOrderFragment.this);
     }
 
     private void data(View view){

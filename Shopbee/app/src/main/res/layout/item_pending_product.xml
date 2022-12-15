@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:background="@color/white"
+    android:id="@+id/root_order">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -168,11 +169,12 @@
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="wrap_content"
+            android:layout_weight="2"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
@@ -188,7 +190,8 @@
 
         <Button
             android:id="@+id/btnDeliveryPending"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
+            android:layout_weight="2"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textAllCaps="false"

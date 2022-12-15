@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -1095,20 +1096,41 @@
                 android:padding="10dp"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/btnEdit"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnCart"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:alpha="0.5"
             android:layout_margin="10dp"
             android:layout_toLeftOf="@id/btnMenu"
             android:background="@drawable/rounded_button">
+
             <ImageView
+                android:id="@+id/imageView5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/edit"
-                android:padding="10dp"/>
-        </LinearLayout>
+                android:padding="10dp"
+                android:src="@drawable/shopping_cart_shopeecolor"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="1dp" />
+
+            <LinearLayout
+                android:id="@+id/LnBackGroundNumberOfMessages"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/rounded_number_of_messages"
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <TextView
+                    android:id="@+id/tvNumberOfMessages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="25"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:id="@+id/btnShare"
@@ -1116,7 +1138,7 @@
             android:layout_height="45dp"
             android:alpha="0.5"
             android:layout_margin="10dp"
-            android:layout_toLeftOf="@+id/btnEdit"
+            android:layout_toLeftOf="@+id/btnCart"
             android:background="@drawable/rounded_button">
             <ImageView
                 android:layout_width="match_parent"
