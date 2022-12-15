@@ -47,6 +47,10 @@ import com.duan1.shopbee.slide_image.MallBanner;
 import com.duan1.shopbee.model.Profile;
 import com.duan1.shopbee.slide_image.LivePhoto;
 import com.duan1.shopbee.slide_image.Photo;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -86,11 +90,32 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
     List<Profile> mProfiles;
 
     LinearLayout toolbar;
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        gsc = GoogleSignIn.getClient(this, gso);
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account!= null){
+            String name = account.getDisplayName();
+            String Mail = account.getEmail();
+
+
+
+        }
+
+
 
         ///
 

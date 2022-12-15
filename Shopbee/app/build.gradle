@@ -91,4 +91,8 @@ dependencies {
 
     //QR
     implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    //Lggoogle
+    implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    //Logface
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
 }

@@ -1,5 +1,7 @@
 package com.duan1.shopbee;
 
+
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,12 +15,14 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -43,14 +47,16 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     //Google
-    private GoogleSignInClient gsc;
-    private GoogleSignInAccount account;
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
     private TextInputLayout edt_email, edt_password;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CheckBox chk_remember_login;
     private String idUser, usernameIntent;
     private TextView tvLogin, tvRegister;
     private Button btnLogin;
+   private Button btnGoogle;
+
 
     public static String USERNAME = "";
     public static String _id ;
@@ -71,21 +77,22 @@ public class LoginActivity extends AppCompatActivity {
         chk_remember_login = findViewById(R.id.chk_remember_login);
         btnLogin = findViewById(R.id.btnLogin);
 
-
+        btnGoogle = findViewById(R.id.btnLoginGoogle);
         //Đăng nhập google
-        GoogleSignInOptions gso = new GoogleSignInOptions
-                .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestProfile()
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-        gsc = GoogleSignIn.getClient(LoginActivity.this, gso);
-        //Kiểm tra login Google
-        account = GoogleSignIn.getLastSignedInAccount(LoginActivity.this);
-        if (account != null) {
-            Intent homeIntent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(homeIntent);
-            finish();
-        }
+
+        gsc = GoogleSignIn.getClient(this, gso);
+
+        btnGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SignIn();
+            }
+        });
+
+
 
 //        ImageButton imbLogin = findViewById(R.id.imb_login);
 //        imbLogin.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +133,33 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void SignIn() {
+
+        Intent intent = gsc.getSignInIntent();
+        startActivityForResult(intent, 100);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode==100){
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                task.getResult(ApiException.class);
+                MainActivity();
+            } catch (ApiException e) {
+                Toast.makeText(this, "Erro", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                startActivity(intent);
+            }
+        }
+    }
+    private void MainActivity(){
+        finish();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
     }
 
     public void onClickRegister(View view) {
@@ -251,4 +285,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onResume();
         readLogin();
     }
+
+
 }
