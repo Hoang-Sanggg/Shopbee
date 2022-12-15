@@ -49,9 +49,6 @@
         <activity
             android:name=".ProductCreateActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
 
         <activity
             android:name=".LoginNumberPhoneActivity"

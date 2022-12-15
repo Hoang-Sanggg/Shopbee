@@ -1,11 +1,7 @@
 package com.duan1.shopbee.fragment;
 
-import static com.duan1.shopbee.fragment.BuyNowFragment.RandomMaDonHang;
-
 import android.Manifest;
 import android.app.Dialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -45,9 +41,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
-import com.duan1.shopbee.RegisterActivity;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -64,7 +58,6 @@ import com.hbb20.CountryCodePicker;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.util.Calendar;
 

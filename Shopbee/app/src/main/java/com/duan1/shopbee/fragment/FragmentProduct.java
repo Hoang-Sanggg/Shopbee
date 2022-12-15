@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,22 +19,17 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
-import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.model.ProductCreate;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.ValueEventListener;
-
-import org.checkerframework.checker.index.qual.PolyUpperBound;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
