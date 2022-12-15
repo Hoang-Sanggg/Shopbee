@@ -143,13 +143,14 @@
             android:layout_weight="1"
             android:background="#fff"
             android:layout_margin="1dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chưa xử lý"
-                android:padding="10dp"
                 android:gravity="center"
-                android:textSize="16dp"/>
+                android:padding="10dp"
+                android:text="Chưa xử lý"
+                android:textSize="16dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"

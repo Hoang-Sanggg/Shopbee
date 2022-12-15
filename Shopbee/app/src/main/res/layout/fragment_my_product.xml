@@ -97,25 +97,30 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tvTrangThaiConHang"
-                        android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="#fff">
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Còn hàng"
-                        android:textColor="#F4511E"
-                        android:textSize="16sp" />
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/tvTrangThaiConHang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Còn hàng"
+                            android:textColor="#FF3D00"
+                            android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/txtSoLuong"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="(35)"
-                        android:textColor="#F4511E"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/txtSoLuong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="(35)"
+                            android:textColor="#FF3D00"
+                            android:textSize="16sp" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -213,9 +218,8 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </HorizontalScrollView>
-
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayout_"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
@@ -230,7 +234,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="Gần đây"
-            android:textColor="#F4511E"
+            android:textColor="#FF3D00"
             android:textSize="18sp"
             android:gravity="center"/>
 
@@ -245,6 +249,33 @@
             android:textSize="18sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout__"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#fff"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#f00"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#D6D6D6"/>
+        </LinearLayout>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcyMyProduct"
@@ -255,7 +286,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout__"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatButton
