@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
     private String idUser, usernameIntent;
     private TextView tvLogin, tvRegister;
     private Button btnLogin;
-   private Button btnGoogle;
+    private Button btnGoogle;
 
 
     public static String USERNAME = "";
@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         chk_remember_login = findViewById(R.id.chk_remember_login);
         btnLogin = findViewById(R.id.btnLogin);
 
-        btnGoogle = findViewById(R.id.btnLoginGoogle);
+        btnGoogle = findViewById(R.id.imb_login);
         //Đăng nhập google
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
