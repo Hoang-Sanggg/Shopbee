@@ -48,20 +48,22 @@ public class FeaturedProductAdapter extends RecyclerView.Adapter<FeaturedProduct
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 //        holder.imageProduct.setImageBitmap(function.StringBitMap(listPC.get(position).getImageProduct()));
 
-
-
-        holder.nameProduct.setText(listPC.get(position).getNameProduct());
-        holder.priceProduct.setText(listPC.get(position).getPriceProduct());
-        holder.soldProduct.setText(listPC.get(position).getSoldProduct());
-        Glide.with(context)
-                .load(listPC.get(position).getImageProduct())
-                .into(holder.imageProduct);
-        holder.rootProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickToProduct.onClickToProductSale(listPC, holder.getAdapterPosition());
-            }
-        });
+        if(String.valueOf(listPC.get(position).getProductdetail()).equals("1")){
+            holder.nameProduct.setText(listPC.get(position).getNameProduct());
+            holder.priceProduct.setText(listPC.get(position).getPriceProduct());
+            holder.soldProduct.setText(listPC.get(position).getSoldProduct());
+            Glide.with(context)
+                    .load(listPC.get(position).getImageProduct())
+                    .into(holder.imageProduct);
+            holder.rootProduct.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickToProduct.onClickToProductSale(listPC, holder.getAdapterPosition());
+                }
+            });
+        }else{
+            holder.rootProduct.setVisibility(View.GONE);
+        }
 
     }
 

@@ -1,47 +1,34 @@
 package com.duan1.shopbee.fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.duan1.shopbee.R;
-import com.duan1.shopbee.adapter.AddMyProductAdapter;
-import com.duan1.shopbee.adapter.NotifiAdapter;
 import com.duan1.shopbee.adapter.OrderAdapter;
+import com.duan1.shopbee.adapter.Order_Customer_Adapter;
 import com.duan1.shopbee.adapter.StatusPDApdater;
-import com.duan1.shopbee.callback.ClickToOrder;
-import com.duan1.shopbee.callback.SelectTab;
+import com.duan1.shopbee.adapter.StatusPD_Customer_Apdater;
 import com.duan1.shopbee.model.Order;
-import com.duan1.shopbee.model.ProductCreate;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link OrderFragment#newInstance} factory method to
+ * Use the {@link Order_Customer_Fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OrderFragment extends Fragment {
+public class Order_Customer_Fragment extends Fragment {
 
     TextView btnBack_trans;
 
@@ -55,13 +42,13 @@ public class OrderFragment extends Fragment {
     private String mParam2;
     TabLayout tabLayout;
     ViewPager2 viewPager2;
-    StatusPDApdater statusPDApdater;
+    StatusPD_Customer_Apdater statusPDApdater;
 
     private List<Order> orderList;
     private RecyclerView orderRecycer;
-    private OrderAdapter orderAdapter;
+    private Order_Customer_Adapter orderAdapter;
 
-    public OrderFragment() {
+    public Order_Customer_Fragment() {
         // Required empty public constructor
     }
 
@@ -74,8 +61,8 @@ public class OrderFragment extends Fragment {
      * @return A new instance of fragment OrderFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static OrderFragment newInstance(String param1, String param2) {
-        OrderFragment fragment = new OrderFragment();
+    public static Order_Customer_Fragment newInstance(String param1, String param2) {
+        Order_Customer_Fragment fragment = new Order_Customer_Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -108,7 +95,7 @@ public class OrderFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager2 = view.findViewById(R.id.view_pager);
 
-        statusPDApdater = new StatusPDApdater(getActivity());
+        statusPDApdater = new StatusPD_Customer_Apdater(getActivity());
         viewPager2.setAdapter(statusPDApdater);
 
         new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {

@@ -48,6 +48,7 @@ import com.duan1.shopbee.MainActivity;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.AddMyProductAdapter;
 import com.duan1.shopbee.adapter.CategoryAdapter;
+import com.duan1.shopbee.callback.ClickHideProduct;
 import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.ClickToUpdateProduct;
@@ -79,7 +80,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class MyProductFragment extends Fragment implements ClickToProductSale, ClickToDeleteProduct, ClickToUpdateProduct {
+public class MyProductFragment extends Fragment implements ClickToProductSale, ClickToDeleteProduct, ClickToUpdateProduct, ClickHideProduct {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -99,6 +100,7 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
     LinearLayout edtindustry, edtBrand, edtBaoHanh, edtStatus, edtTransfree;
     EditText  edtPrice, edtStorage;
     CountryCodePicker countryCodePicker;
+    String maSp;
 
     final String[] industry = new String[1];
 
@@ -248,7 +250,7 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
         rcyMyProduct.setHasFixedSize(true);
         rcyMyProduct.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
-        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList, MyProductFragment.this,MyProductFragment.this, MyProductFragment.this);
+        addMyProductAdapter = new AddMyProductAdapter(getContext(), productCreateList, MyProductFragment.this,MyProductFragment.this, MyProductFragment.this, MyProductFragment.this);
         rcyMyProduct.setAdapter(addMyProductAdapter);
     }
 
@@ -258,7 +260,6 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
         dialogEr.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogEr.setCancelable(true);
         dialogEr.setContentView(R.layout.dialog_update_product);
-
 
         tvNameProduct = dialogEr.findViewById(R.id.edtNewNameProduct);
         tvDecription = dialogEr.findViewById(R.id.edtNewDescription);
@@ -272,8 +273,6 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
 
         countryCodePicker = dialogEr.findViewById(R.id.country);
         back_new_pro = dialogEr.findViewById(R.id.back_new_pro);
-
-
 
         edtPrice = dialogEr.findViewById(R.id.edtNewPrice);
         edtStorage = dialogEr.findViewById(R.id.edtNewStorage);
@@ -299,15 +298,16 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
         txtNewBrand.setText(flashsaleList.get(position).getBrandProduct());
         edtPrice.setText(flashsaleList.get(position).getPriceProduct());
         edtStorage.setText(flashsaleList.get(position).getWarehouse());
-
-
+        linkDL = flashsaleList.get(position).getImageProduct();
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View view) {
                 onSelectPicture(view);
+                Toast.makeText(getContext(), ""+linkDL, Toast.LENGTH_SHORT).show();
             }
+
         });
 
         edtindustry.setOnClickListener(new View.OnClickListener() {
@@ -403,12 +403,6 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
             }
         });
 
-
-
-
-
-
-
         Button button = dialogEr.findViewById(R.id.btn_addProduct);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -416,12 +410,14 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
             public void onClick(View view) {
                 String nameProduct = tvNameProduct.getText().toString();
                 String decription = tvDecription.getText().toString();
-                String maSp = flashsaleList.get(position).getIdProduct();
+                maSp = flashsaleList.get(position).getIdProduct();
                 String Status = txtStatus.getText().toString();
                 String BaoHanh = txtBaoHanh.getText().toString();
                 String price = edtPrice.getText().toString();
                 String storage = edtStorage.getText().toString();
                 String origin = countryCodePicker.getSelectedCountryName();
+                String image = linkDL;
+
 
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -430,7 +426,6 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
                         databaseReference.child("product").child(maSp).child("description").setValue(decription);
                         databaseReference.child("product").child(maSp).child("industry").setValue(txtNewIndustry.getText());
                         databaseReference.child("product").child(maSp).child("priceProduct").setValue(price);
-                        databaseReference.child("product").child(maSp).child("productdetail").setValue("6");
                         databaseReference.child("product").child(maSp).child("warehouse").setValue(storage);
                         databaseReference.child("product").child(maSp).child("transportfee").setValue(phiVanChuyen);
                         databaseReference.child("product").child(maSp).child("status").setValue(Status);
@@ -702,4 +697,34 @@ public class MyProductFragment extends Fragment implements ClickToProductSale, C
         });
     }
 
+    @Override
+    public void onClickHideProduct(List<ProductCreate> cart, int position) {
+        android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(getContext());
+        b.setIcon(R.drawable.attention_warning_14525);
+        b.setTitle("Xác nhận");
+        b.setMessage("Bạn có chắc chắn muốn hủy không ?");
+        b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                if(cart.get(position).getProductdetail().equals("1")){
+                    databaseReference.child("product").child(cart.get(position).getIdProduct()).child("productdetail").setValue("2");
+                }else{
+                    databaseReference.child("product").child(cart.get(position).getIdProduct()).child("productdetail").setValue("1");
+                }
+                requireActivity().getSupportFragmentManager().popBackStack();
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frame_layout, new MyProductFragment(productCreateList), "MainFragment")
+                        .addToBackStack(null)
+                        .commit();
+                dialog.dismiss();
+            }
+        });
+        b.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        android.app.AlertDialog al = b.create();
+        al.show();
+    }
 }

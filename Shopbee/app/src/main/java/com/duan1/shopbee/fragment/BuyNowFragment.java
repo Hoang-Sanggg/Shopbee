@@ -43,9 +43,6 @@ public class BuyNowFragment extends Fragment {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
-
-
-
     private TextView tvDecription, tvIndustry, tvNameProduct, tvPriceProduct, tvbrandProduct,tvOrigin ,tvProductdetail,tvWarehouse,tvTransportfee,tvStatus,
             tvNameShop, tvSoldProduct, tvBaoHanhSp, tvShippingProduct, tvPriceFlashSale, tvnameShop,namePd, pricePd, tvPriceAndShip, total;
     private ImageView ivProduct, buynow_ImgItem;
@@ -177,17 +174,18 @@ public class BuyNowFragment extends Fragment {
                             databaseReference.child("order").child(maDonHang).child("idProductOrder").setValue(maDonHang);
                             databaseReference.child("order").child(maDonHang).child("customer").setValue(nameShopS);
                             databaseReference.child("order").child(maDonHang).child("seller").setValue(nameShop);
-                            Log.d("TAG12", "onDataChange: "+nameShopS);
-                            Log.d("TAG12", "onDataChange: "+nameShop);
                             databaseReference.child("order").child(maDonHang).child("priceOrder").setValue(priceProduct);
                             databaseReference.child("order").child(maDonHang).child("priceProductOrder").setValue(priceProduct);
                             databaseReference.child("order").child(maDonHang).child("numberof").setValue("1");
                             databaseReference.child("order").child(maDonHang).child("nameProductOrder").setValue(nameProduct);
-                            databaseReference.child("order").child(maDonHang).child("statusOrder").setValue("Status");
+                            databaseReference.child("order").child(maDonHang).child("statusOrder").setValue("1");
                             databaseReference.child("order").child(maDonHang).child("dateOrder").setValue("");
                             databaseReference.child("order").child(maDonHang).child("imageOrder").setValue(imageProduct);
                             databaseReference.child("order").child(maDonHang).child("address").setValue(address);
                             databaseReference.child("order").child(maDonHang).child("phone").setValue(phone);
+                            databaseReference.child("order").child(maDonHang).child("cancelCustomer").setValue("0");
+                            databaseReference.child("order").child(maDonHang).child("cancelSeller").setValue("0");
+                            databaseReference.child("order").child(maDonHang).child("idOrder").setValue(maDonHang);
 
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("description").setValue(decription);

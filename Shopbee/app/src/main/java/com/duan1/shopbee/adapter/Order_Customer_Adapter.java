@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,16 +17,12 @@ import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.callback.ClickNextStatus;
 import com.duan1.shopbee.callback.ClickToOrder;
-import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.SelectTab;
 import com.duan1.shopbee.model.Order;
-import com.duan1.shopbee.model.ProductCreate;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> {
+public class Order_Customer_Adapter extends RecyclerView.Adapter<Order_Customer_Adapter.OrderHoder> {
 
     private List<Order> orderList;
     private Context context;
@@ -37,7 +32,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
 //    private ClickToProductSale clickToProductSale;
 
 
-    public OrderAdapter(List<Order> orderList, Context context, ClickToOrder clickToOrder, ClickNextStatus clickNextStatus) {
+    public Order_Customer_Adapter(List<Order> orderList, Context context, ClickToOrder clickToOrder, ClickNextStatus clickNextStatus) {
         this.orderList = orderList;
         this.context = context;
         this.clickToOrder = clickToOrder;
@@ -46,18 +41,18 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
 
     @NonNull
     @Override
-    public OrderAdapter.OrderHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Order_Customer_Adapter.OrderHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pending_product, parent, false);
-        return new OrderAdapter.OrderHoder(view);
+        return new Order_Customer_Adapter.OrderHoder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OrderAdapter.OrderHoder holder, int position) {
+    public void onBindViewHolder(@NonNull Order_Customer_Adapter.OrderHoder holder, int position) {
 
         SharedPreferences sharedPref = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String nameShopS = sharedPref.getString("username", "");
 
-        if(String.valueOf(orderList.get(position).getSeller()).equals(nameShopS)==true && String.valueOf(orderList.get(position).getStatusOrder()).equals("1")==true){
+        if(String.valueOf(orderList.get(position).getCustomer()).equals(nameShopS)==true && String.valueOf(orderList.get(position).getStatusOrder()).equals("1")==true){
             holder.idProductOrder.setText(orderList.get(position).getIdProductOrder());
             holder.customer.setText(orderList.get(position).getCustomer());
             holder.priceProductOrder.setText(orderList.get(position).getPriceProductOrder());
@@ -85,6 +80,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
 //            }
 //        });
         holder.btnDeliveryPending.setText("Chuẩn bị hàng");
+        holder.btnDeliveryPending.setEnabled(false);
         holder.btnDeliveryPending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,10 +114,5 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
 
 
         }
-    }
-
-    public OrderAdapter(List<Order> orderList) {
-        this.orderList = orderList;
-        notifyDataSetChanged();
     }
 }

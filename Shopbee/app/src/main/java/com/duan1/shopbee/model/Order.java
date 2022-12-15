@@ -15,6 +15,68 @@ public class Order implements Serializable {
     private String imageOrder;
     private String address;
     private String phone;
+    private String cancelCustomer;
+    private String cancelSeller;
+    private String idOrder;
+
+    public Order(String idProductOrder, String customer, String seller, String priceOrder, String priceProductOrder, String numberOfOrder, String nameProductOrder, String statusOrder, String dateOrder, String imageOrder, String address, String phone, String cancelCustomer, String cancelSeller, String idOrder) {
+        this.idProductOrder = idProductOrder;
+        this.customer = customer;
+        this.seller = seller;
+        this.priceOrder = priceOrder;
+        this.priceProductOrder = priceProductOrder;
+        this.numberOfOrder = numberOfOrder;
+        this.nameProductOrder = nameProductOrder;
+        this.statusOrder = statusOrder;
+        this.dateOrder = dateOrder;
+        this.imageOrder = imageOrder;
+        this.address = address;
+        this.phone = phone;
+        this.cancelCustomer = cancelCustomer;
+        this.cancelSeller = cancelSeller;
+        this.idOrder = idOrder;
+    }
+
+    public String getIdOrder() {
+        return idOrder;
+    }
+
+    public void setIdOrder(String idOrder) {
+        this.idOrder = idOrder;
+    }
+
+    public String getCancelCustomer() {
+        return cancelCustomer;
+    }
+
+    public void setCancelCustomer(String cancelCustomer) {
+        this.cancelCustomer = cancelCustomer;
+    }
+
+    public String getCancelSeller() {
+        return cancelSeller;
+    }
+
+    public void setCancelSeller(String cancelSeller) {
+        this.cancelSeller = cancelSeller;
+    }
+
+    public Order(String idProductOrder, String customer, String seller, String priceOrder, String priceProductOrder, String numberOfOrder, String nameProductOrder, String statusOrder, String dateOrder, String imageOrder, String address, String phone, String cancelCustomer, String cancelSeller) {
+        this.idProductOrder = idProductOrder;
+        this.customer = customer;
+        this.seller = seller;
+        this.priceOrder = priceOrder;
+        this.priceProductOrder = priceProductOrder;
+        this.numberOfOrder = numberOfOrder;
+        this.nameProductOrder = nameProductOrder;
+        this.statusOrder = statusOrder;
+        this.dateOrder = dateOrder;
+        this.imageOrder = imageOrder;
+        this.address = address;
+        this.phone = phone;
+        this.cancelCustomer = cancelCustomer;
+        this.cancelSeller = cancelSeller;
+    }
 
     public Order() {
     }
