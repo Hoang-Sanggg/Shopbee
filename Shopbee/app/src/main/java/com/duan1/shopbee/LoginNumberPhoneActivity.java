@@ -45,7 +45,7 @@ public class LoginNumberPhoneActivity extends AppCompatActivity {
     private GoogleSignInClient gsc;
     private GoogleSignInAccount account;
     ImageView iv_black_login_number_phone, right_icon_help;
-    Button btnLoginOTP;
+    Button btnGetOTP;
     TextView txtDangNhapBangMatKhau;
 
     @Override
@@ -84,22 +84,22 @@ public class LoginNumberPhoneActivity extends AppCompatActivity {
             }
         });
 
-        btnLoginOTP.setOnClickListener(new View.OnClickListener() {
+        btnGetOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (edtPhone.getText().toString().trim().isEmpty()) {
+                if (edtMobile.getText().toString().trim().isEmpty()) {
                     Toast.makeText(LoginNumberPhoneActivity.this, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
                     return;
-                } else if(edtPhone.getText().toString().trim().length() > 10 ||
-                        edtPhone.getText().toString().trim().length() < 9){
+                } else if(edtMobile.getText().toString().trim().length() > 10 ||
+                        edtMobile.getText().toString().trim().length() < 9){
                     Toast.makeText(LoginNumberPhoneActivity.this, "Nhập số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 progressBar.setVisibility(View.GONE);
-                btnLoginOTP.setVisibility(View.VISIBLE);
+                btnGetOTP.setVisibility(View.VISIBLE);
 
                 PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                        "+84" + edtPhone.getText().toString(),
+                        "+84" + edtMobile.getText().toString(),
                         60,
                         TimeUnit.SECONDS,
                         LoginNumberPhoneActivity.this,
@@ -108,24 +108,24 @@ public class LoginNumberPhoneActivity extends AppCompatActivity {
                             @Override
                             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                                 progressBar.setVisibility(View.GONE);
-                                btnLoginOTP.setVisibility(View.VISIBLE);
+                                btnGetOTP.setVisibility(View.VISIBLE);
 
                             }
 
                             @Override
                             public void onVerificationFailed(@NonNull FirebaseException e) {
                                 progressBar.setVisibility(View.GONE);
-                                btnLoginOTP.setVisibility(View.VISIBLE);
+                                btnGetOTP.setVisibility(View.VISIBLE);
                                 Toast.makeText(LoginNumberPhoneActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onCodeSent(@NonNull String verification, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 progressBar.setVisibility(View.GONE);
-                                btnLoginOTP.setVisibility(View.VISIBLE);
+                                btnGetOTP.setVisibility(View.VISIBLE);
                                 Toast.makeText(LoginNumberPhoneActivity.this, "Đã gửi mã OTP", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(), VerifyOTPActivity.class);
-                                intent.putExtra("mobile", edtPhone.getText().toString());
+                                intent.putExtra("mobile", edtMobile.getText().toString());
                                 intent.putExtra("verificationId", verification);
                                 startActivity(intent);
                             }

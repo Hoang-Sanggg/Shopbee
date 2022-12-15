@@ -92,7 +92,7 @@
                 android:layout_centerHorizontal="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtPhone"
+                    android:id="@+id/edtMobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
@@ -105,7 +105,7 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnLoginOTP"
+            android:id="@+id/btnGetOTP"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"

@@ -94,39 +94,39 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
         }
     }
 
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_profile, container, false);
-//    }
-//
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        FirebaseUser mFirebaseAuth = mAuth.getCurrentUser();
-//        if (mFirebaseAuth != null){
-//
-//        }else {
-//            startActivity(new Intent(getContext(), LoginActivity.class));
-//            getActivity().finish();
-//        }
-//    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser mFirebaseAuth = mAuth.getCurrentUser();
+        if (mFirebaseAuth != null){
+
+        }else {
+            startActivity(new Intent(getContext(), LoginActivity.class));
+            getActivity().finish();
+        }
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        ProfileRecycler = view.findViewById(R.id.recyclerProfile);
-//
-//        ProfileRecycler.setHasFixedSize(true);
-//
-//        ProfileRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-//
-//        mProfiles.size();
-//
-//        profileAdapter = new ProfileAdapter(mProfiles);
-//
-//        ProfileRecycler.setAdapter(profileAdapter);
+        ProfileRecycler = view.findViewById(R.id.recyclerProfile);
+
+        ProfileRecycler.setHasFixedSize(true);
+
+        ProfileRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        mProfiles.size();
+
+        profileAdapter = new ProfileAdapter(mProfiles);
+
+        ProfileRecycler.setAdapter(profileAdapter);
 
         logout = view.findViewById(R.id.btn_logout);
         showBottomNav.showBottomNav();
