@@ -2,11 +2,17 @@ package com.duan1.shopbee;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.MenuItemCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,15 +26,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.duan1.shopbee.adapter.CartsSearchAdapter;
 import com.duan1.shopbee.callback.HideBottomNav;
 import com.duan1.shopbee.callback.ShowAddProduct;
 import com.duan1.shopbee.callback.ShowBottomNav;
 import com.duan1.shopbee.databinding.ActivityMainBinding;
 import com.duan1.shopbee.fragment.FragmentProduct;
+import com.duan1.shopbee.fragment.Fragment_Search;
 import com.duan1.shopbee.fragment.HomeFragment;
 import com.duan1.shopbee.fragment.LiveFragment;
 import com.duan1.shopbee.fragment.MallFragment;
@@ -84,13 +93,28 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
     private List<Photo> listPhoto;
     private String name;
     List<Profile> mProfiles;
+    private LinearLayout linearLayout, linearLayout_Search;
 
-    LinearLayout toolbar;
+
+    private RecyclerView rcvCart;
+    private CartsSearchAdapter cartAdapter;
+    private SearchView searchView;
+    LinearLayout toolbar, btnSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        rcvCart = findViewById(R.id.rvc_cart);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rcvCart.setLayoutManager(linearLayoutManager);
+
+        cartAdapter = new CartsSearchAdapter(this, getListCart());
+        rcvCart.setAdapter(cartAdapter);
+
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        rcvCart.addItemDecoration(itemDecoration);
 
         ///
 
@@ -107,6 +131,16 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
         SharedPreferences sharedPref = MainActivity.this.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String name = sharedPref.getString("username", "1");
         Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+
+      btnSearch = findViewById(R.id.btn_search);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                onClickSearch();
+                Intent intent = new Intent(MainActivity.this, Fragment_Search.class);
+                startActivity(intent);
+            }
+        });
 
 
 
@@ -197,6 +231,11 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
 
     }
 
+    public void onClickSearch(){
+        Intent intent = new Intent(MainActivity.this, QRscanActivity.class);
+        startActivity(intent);
+    }
+
     public void loadFragmentHome() {
         Log.d(">>>", "loadFragmentHome: "+ flashsaleList.size());
         getSupportFragmentManager()
@@ -233,6 +272,7 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
                 .replace(R.id.frame_layout, ProfileFragment.newInstance(mProfiles, flashsaleList, this, this), "MainFragment")
                 .commit();
     }
+
 
 
     public void readFireStoreCategory() {
@@ -358,7 +398,7 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
     @Override
     public void showBottomNav() {
         binding.bottomNavigation.setVisibility(View.VISIBLE);
-        toolbar = findViewById(R.id.linearLayout1);
+        toolbar = findViewById(R.id.linearLayout_Shearch);
         toolbar.setVisibility(View.VISIBLE);
     }
 
@@ -388,6 +428,49 @@ public class MainActivity extends AppCompatActivity implements HideBottomNav, Sh
         });
     }
 
+    private List<Cart> getListCart() {
+        List<Cart> list = new ArrayList<>();
+        list.add(new Cart(R.drawable.meiji1,"Sản phẩm Sữa Meji Chai","15000D"));
+        list.add(new Cart(R.drawable.meiji2,"Sản phẩm Sữa Meji Hộp","16000D"));
+        list.add(new Cart(R.drawable.meiji3,"San pham Sua C","17000D"));
+        list.add(new Cart(R.drawable.meiji4,"San pham Sua D","18000D"));
+        list.add(new Cart(R.drawable.meiji5,"San pham Sua E","19000D"));
+        return list;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menusearch, menu);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView =(androidx.appcompat.widget.SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                cartAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                cartAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(!searchView.isIconified()){
+            searchView.setIconified(true);
+            return;
+        }
+        super.onBackPressed();
+    }
 
 
 

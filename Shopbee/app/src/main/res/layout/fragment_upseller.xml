@@ -208,7 +208,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Đọc tất cả(2)"
+                android:text="Đọc tất cả"
                 android:textColor="#FF5722"
                 android:layout_weight="1"/>
         </LinearLayout>

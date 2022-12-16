@@ -1,12 +1,18 @@
 package com.duan1.shopbee.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.duan1.shopbee.MainActivity;
+import com.duan1.shopbee.QRscanActivity;
 import com.duan1.shopbee.R;
 
 /**
@@ -15,6 +21,8 @@ import com.duan1.shopbee.R;
  * create an instance of this fragment.
  */
 public class NotifFragment extends Fragment {
+
+    private CardView cvsale;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,5 +71,32 @@ public class NotifFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_notif, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+
+
+
+        cvsale = view.findViewById(R.id.cv_sale);
+        cvsale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickNotif();
+            }
+        });
+
+
+
+
+    }
+
+    private void onClickNotif() {
+        Intent intent = new Intent(getActivity(), Fragment_Search.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 }

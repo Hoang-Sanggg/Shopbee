@@ -178,6 +178,8 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
         });
 
 
+
+
         autoSlideImage();
         showBottomNav();
 
@@ -189,6 +191,7 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
         startActivity(intent);
         getActivity().finish();
     }
+
 
     private List<Photo> getListPhoto(){
         List<Photo> list = new ArrayList<>();

@@ -380,7 +380,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Đọc tất cả(36)"
+                android:text="Đọc tất cả"
                 android:textColor="#FF5722"
                 android:layout_weight="1"/>
         </LinearLayout>
@@ -390,6 +390,7 @@
             android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_Notification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
