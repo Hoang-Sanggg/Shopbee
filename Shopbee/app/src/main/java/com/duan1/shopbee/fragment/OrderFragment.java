@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,10 +18,15 @@ import android.widget.TextView;
 
 import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.AddMyProductAdapter;
+import com.duan1.shopbee.adapter.NotifiAdapter;
 import com.duan1.shopbee.adapter.OrderAdapter;
+import com.duan1.shopbee.adapter.StatusPDApdater;
 import com.duan1.shopbee.callback.ClickToOrder;
+import com.duan1.shopbee.callback.SelectTab;
 import com.duan1.shopbee.model.Order;
 import com.duan1.shopbee.model.ProductCreate;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,11 +41,7 @@ import java.util.List;
  * Use the {@link OrderFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OrderFragment extends Fragment implements ClickToOrder {
-
-
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
-
+public class OrderFragment extends Fragment {
 
     TextView btnBack_trans;
 
@@ -51,6 +53,9 @@ public class OrderFragment extends Fragment implements ClickToOrder {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    TabLayout tabLayout;
+    ViewPager2 viewPager2;
+    StatusPDApdater statusPDApdater;
 
     private List<Order> orderList;
     private RecyclerView orderRecycer;
@@ -100,7 +105,35 @@ public class OrderFragment extends Fragment implements ClickToOrder {
         initViews(view);
 
 
-        readData();
+        tabLayout = view.findViewById(R.id.tabLayout);
+        viewPager2 = view.findViewById(R.id.view_pager);
+
+        statusPDApdater = new StatusPDApdater(getActivity());
+        viewPager2.setAdapter(statusPDApdater);
+
+        new TabLayoutMediator(tabLayout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                switch (position){
+                    case 0:
+                        tab.setText("Chờ xác nhận") ;
+                        break;
+                    case 1:
+                        tab.setText("Chờ lấy hàng") ;
+                        break;
+                    case 2:
+                        tab.setText("Đang giao") ;
+                        break;
+                    case 3:
+                        tab.setText("Đã giao") ;
+                        break;
+                    case 4:
+                        tab.setText("Đơn hủy") ;
+                        break;
+                }
+            }
+        }).attach();
+
 
         btnBack_trans.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,48 +143,10 @@ public class OrderFragment extends Fragment implements ClickToOrder {
         });
 
 
+
     }
 
     public void initViews(View view){
         btnBack_trans = view.findViewById(R.id.btnBack_trans);
-    }
-
-
-    private void readData(){
-        orderList = new ArrayList<>();
-        databaseReference.child("order").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
-                    Order order = postSnapshot.getValue(Order.class);
-                    orderList.add(order);
-                    data(getView());
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        orderAdapter = new OrderAdapter(orderList, getContext(), OrderFragment.this);
-    }
-
-    private void data(View view){
-        orderRecycer = view.findViewById(R.id.rcvTrans);
-
-        orderRecycer.setHasFixedSize(true);
-        orderRecycer.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-
-        orderRecycer.setAdapter(orderAdapter);
-    }
-
-    @Override
-    public void ClickToOrder(List<Order> orderList, int position) {
-        requireActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frame_layout, new DetailFragment(orderList.get(position).getIdProductOrder(), orderList.get(position).getCustomer(), orderList.get(position).getSeller(), orderList.get(position).getPriceOrder(), orderList.get(position).getPriceProductOrder(), orderList.get(position).getNumberOfOrder(), orderList.get(position).getNameProductOrder(), orderList.get(position).getStatusOrder(), orderList.get(position).getDateOrder(), orderList.get(position).getImageOrder(), orderList.get(position).getAddress(), orderList.get(position).getPhone()), "MainFragment")
-                .addToBackStack(null)
-                .commit();
     }
 }

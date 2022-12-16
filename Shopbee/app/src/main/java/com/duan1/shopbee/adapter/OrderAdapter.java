@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,10 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
+import com.duan1.shopbee.callback.ClickNextStatus;
 import com.duan1.shopbee.callback.ClickToOrder;
 import com.duan1.shopbee.callback.ClickToProductSale;
+import com.duan1.shopbee.callback.SelectTab;
 import com.duan1.shopbee.model.Order;
 import com.duan1.shopbee.model.ProductCreate;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -27,13 +32,16 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
     private List<Order> orderList;
     private Context context;
     private ClickToOrder clickToOrder;
+    private ClickNextStatus clickNextStatus;
+    private SelectTab selectTab;
 //    private ClickToProductSale clickToProductSale;
 
 
-    public OrderAdapter(List<Order> orderList, Context context, ClickToOrder clickToOrder) {
+    public OrderAdapter(List<Order> orderList, Context context, ClickToOrder clickToOrder, ClickNextStatus clickNextStatus) {
         this.orderList = orderList;
         this.context = context;
         this.clickToOrder = clickToOrder;
+        this.clickNextStatus = clickNextStatus;
     }
 
     @NonNull
@@ -49,7 +57,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
         SharedPreferences sharedPref = context.getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String nameShopS = sharedPref.getString("username", "");
 
-        if(orderList.get(position).getSeller().equals(nameShopS)){
+        if(String.valueOf(orderList.get(position).getSeller()).equals(nameShopS)==true && String.valueOf(orderList.get(position).getStatusOrder()).equals("1")==true){
             holder.idProductOrder.setText(orderList.get(position).getIdProductOrder());
             holder.customer.setText(orderList.get(position).getCustomer());
             holder.priceProductOrder.setText(orderList.get(position).getPriceProductOrder());
@@ -76,6 +84,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
 ////                clickToProductSale.onClickToProductSale(flashsaleList, holder.getAdapterPosition());
 //            }
 //        });
+        holder.btnDeliveryPending.setText("Chuẩn bị hàng");
+        holder.btnDeliveryPending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickNextStatus.onClickNextStatus(orderList, holder.getAdapterPosition(), 1);
+            }
+        });
     }
 
     @Override
@@ -87,6 +102,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
         private TextView idProductOrder, customer,  seller, priceOrder, priceProductOrder, numberOfOrder, nameProductOrder, statusOrder, dateOrder;
         private ImageView ivProduct;
         private LinearLayout root_order;
+        private Button btnDeliveryPending;
         public OrderHoder(@NonNull View itemView) {
             super(itemView);
 
@@ -98,6 +114,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHoder> 
             nameProductOrder = itemView.findViewById(R.id.txtNameProductOrder);
             ivProduct = itemView.findViewById(R.id.ivAvtProduct_pending);
             root_order = itemView.findViewById(R.id.root_order);
+            btnDeliveryPending = itemView.findViewById(R.id.btnDeliveryPending);
+
+
         }
+    }
+
+    public OrderAdapter(List<Order> orderList) {
+        this.orderList = orderList;
+        notifyDataSetChanged();
     }
 }

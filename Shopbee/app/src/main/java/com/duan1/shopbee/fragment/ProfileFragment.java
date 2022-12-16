@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -53,6 +54,7 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
     private ProfileAdapter profileAdapter;
 
     TextView logout;
+    ConstraintLayout constraintLayout;
 
 
     // TODO: Rename and change types of parameters
@@ -119,6 +121,21 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
 //        ProfileRecycler.setAdapter(profileAdapter);
 
         logout = view.findViewById(R.id.btn_logout);
+
+        constraintLayout = view.findViewById(R.id.cTr_profile_img_bill);
+
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frame_layout, new Order_Customer_Fragment(), "MainFragment")
+                        .addToBackStack(null)
+                        .commit();
+                hideBottomNav.hideBottomNav();
+            }
+        });
+
         showBottomNav.showBottomNav();
         TextView textView = view.findViewById(R.id.btn_myShop);
 

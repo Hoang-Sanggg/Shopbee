@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -47,19 +48,23 @@ public class FlashSaleAdapter extends RecyclerView.Adapter<FlashSaleAdapter.Flas
 
     @Override
     public void onBindViewHolder(@NonNull FlashSaleAdapter.FlashSaleHoder holder, int position) {
-        holder.priceFlashSale.setText(flashsaleList.get(position).getPriceFlashSale());
-        holder.soldFlashSale.setText(flashsaleList.get(position).getSoldFlashSale());
+        if(String.valueOf(flashsaleList.get(position).getProductdetail()).equals("1")==true){
+            holder.priceFlashSale.setText(flashsaleList.get(position).getPriceFlashSale());
+            holder.soldFlashSale.setText(flashsaleList.get(position).getSoldFlashSale());
 //        holder.ivFlashSale.setImageBitmap(function.StringBitMap(flashsaleList.get(position).getImageFlashSale()));
 //        holder.discountFlashSale.setText(flashsaleList.get(position).getDiscountFlashSale());
-        Glide.with(context)
-                .load(flashsaleList.get(position).getImageProduct())
-                .into(holder.ivFlashSale);
-        holder.rootFlashSale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickToProductSale.onClickToProductSale(flashsaleList, holder.getAdapterPosition());
-            }
-        });
+            Glide.with(context)
+                    .load(flashsaleList.get(position).getImageProduct())
+                    .into(holder.ivFlashSale);
+            holder.rootFlashSale.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickToProductSale.onClickToProductSale(flashsaleList, holder.getAdapterPosition());
+                }
+            });
+        }else{
+            holder.rootFlashSale.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -72,7 +77,7 @@ public class FlashSaleAdapter extends RecyclerView.Adapter<FlashSaleAdapter.Flas
 
         private TextView priceFlashSale, discountFlashSale, soldFlashSale;
         private ImageView ivFlashSale;
-        private LinearLayout rootFlashSale;
+        private CardView rootFlashSale;
         public FlashSaleHoder(@NonNull View itemView) {
             super(itemView);
             priceFlashSale = itemView.findViewById(R.id.tvPriceFlashSale);

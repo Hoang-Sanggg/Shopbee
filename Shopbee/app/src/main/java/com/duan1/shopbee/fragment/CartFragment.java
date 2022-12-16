@@ -1,5 +1,7 @@
 package com.duan1.shopbee.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,8 +21,13 @@ import com.duan1.shopbee.R;
 import com.duan1.shopbee.adapter.CartAdapter;
 import com.duan1.shopbee.adapter.OrderAdapter;
 import com.duan1.shopbee.callback.ClickToBuy;
+import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.model.ProductCreate;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -29,7 +36,10 @@ import java.util.List;
  * Use the {@link CartFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CartFragment extends Fragment implements ClickToProductSale, ClickToBuy {
+public class CartFragment extends Fragment implements ClickToProductSale, ClickToBuy, ClickToDeleteProduct {
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -124,7 +134,7 @@ public class CartFragment extends Fragment implements ClickToProductSale, ClickT
 
 
 
-       adapter = new CartAdapter(cart, getContext(), CartFragment.this, CartFragment.this);
+       adapter = new CartAdapter(cart, getContext(), CartFragment.this, CartFragment.this, CartFragment.this);
        Toast.makeText(getContext(), String.valueOf(cart.size()), Toast.LENGTH_SHORT).show();
 
        data(view);
@@ -161,5 +171,31 @@ public class CartFragment extends Fragment implements ClickToProductSale, ClickT
                 .replace(R.id.frame_layout, new BuyNowFragment(flashsaleList.get(position).getIdProduct(),flashsaleList.get(position).getNameProduct(), flashsaleList.get(position).getDescription(), flashsaleList.get(position).getIndustry(), flashsaleList.get(position).getPriceProduct(), flashsaleList.get(position).getProductdetail(), flashsaleList.get(position).getWarehouse(),flashsaleList.get(position).getTransportfee(), flashsaleList.get(position).getStatus(), flashsaleList.get(position).getNameShop(), flashsaleList.get(position).getSoldProduct(), flashsaleList.get(position).getBrandProduct(), flashsaleList.get(position).getOriginProduct(), flashsaleList.get(position).getBaoHanhSp(), flashsaleList.get(position).getShippingProduct(), flashsaleList.get(position).getPriceFlashSale(), flashsaleList.get(position).getDiscountFlashSale(), flashsaleList.get(position).getSoldFlashSale(), flashsaleList.get(position).getImageProduct()), "MainFragment")
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void onClickToDeleteProduct(List<ProductCreate> flashsaleList, int position) {
+
+        SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        String nameShopS = sharedPref.getString("username", "");
+
+        databaseReference.child("cart").child(nameShopS).child(String.valueOf(flashsaleList.get(position).getIdProduct())).removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getContext(), "Bạn vừa xóa sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                        recyclerView.setHasFixedSize(true);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
+                        recyclerView.setAdapter(adapter);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Write failed
+                        // ...
+                    }
+                });
     }
 }

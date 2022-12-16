@@ -266,7 +266,7 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
                 for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                     ProductCreate productCreate = postSnapshot.getValue(ProductCreate.class);
                     cart.add(productCreate);
-                    Log.d("iiii", "onClick: "+cart.size());
+                    Log.d("hehe", "onDataChange: "+productCreate.getNameProduct());
                 }
                 tvNumberOfMessages.setText(String.valueOf(cart.size()));
             }

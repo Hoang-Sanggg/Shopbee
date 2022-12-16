@@ -5,6 +5,5 @@ import com.duan1.shopbee.model.ProductCreate;
 import java.util.List;
 
 public interface ClickToUpdateProduct {
-    public void onClickToUpdateProduct(List<ProductCreate> flashsaleList, int position);
-
+    public void onClickToUpdateroduct(List<ProductCreate> flashsaleList, int position);
 }

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,11 +43,8 @@ public class BuyNowFragment extends Fragment {
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
 
-
-
-
     private TextView tvDecription, tvIndustry, tvNameProduct, tvPriceProduct, tvbrandProduct,tvOrigin ,tvProductdetail,tvWarehouse,tvTransportfee,tvStatus,
-            tvNameShop, tvSoldProduct, tvBaoHanhSp, tvShippingProduct, tvPriceFlashSale, tvnameShop,namePd, pricePd, tvPriceAndShip;
+            tvNameShop, tvSoldProduct, tvBaoHanhSp, tvShippingProduct, tvPriceFlashSale, tvnameShop,namePd, pricePd, tvPriceAndShip, total;
     private ImageView ivProduct, buynow_ImgItem;
     private LinearLayout bottom_add_product, back_product, buyNow;
     ShowBottomNav showBottomNav;
@@ -158,6 +156,8 @@ public class BuyNowFragment extends Fragment {
                 .load(imageProduct)
                 .into(buynow_ImgItem);
         buynow_tvUsername_location.setText(nameShopS);
+
+        total.setText(priceProduct);
         btnDatHang.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -167,21 +167,25 @@ public class BuyNowFragment extends Fragment {
                 String address = buynow_tvAddress_Location.getText().toString();
                 String phone = buynow_tvNumberPhone_location.getText().toString();
 //                String name = buynow_tvUsername_location.getText().toString();
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        databaseReference.child("order").child(maDonHang).child("idProductOrder").setValue(maDonHang);
-                        databaseReference.child("order").child(maDonHang).child("customer").setValue(nameShopS);
-                        databaseReference.child("order").child(maDonHang).child("seller").setValue(nameShop);
-                        databaseReference.child("order").child(maDonHang).child("priceOrder").setValue("30000");
-                        databaseReference.child("order").child(maDonHang).child("priceProductOrder").setValue(priceProduct);
-                        databaseReference.child("order").child(maDonHang).child("numberof").setValue("1");
-                        databaseReference.child("order").child(maDonHang).child("nameProductOrder").setValue(nameProduct);
-                        databaseReference.child("order").child(maDonHang).child("statusOrder").setValue("Status");
-                        databaseReference.child("order").child(maDonHang).child("dateOrder").setValue("");
-                        databaseReference.child("order").child(maDonHang).child("imageOrder").setValue(imageProduct);
-                        databaseReference.child("order").child(maDonHang).child("address").setValue(address);
-                        databaseReference.child("order").child(maDonHang).child("phone").setValue(phone);
+                if(Integer.parseInt(warehouse)!=0){
+                    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            databaseReference.child("order").child(maDonHang).child("idProductOrder").setValue(maDonHang);
+                            databaseReference.child("order").child(maDonHang).child("customer").setValue(nameShopS);
+                            databaseReference.child("order").child(maDonHang).child("seller").setValue(nameShop);
+                            databaseReference.child("order").child(maDonHang).child("priceOrder").setValue(priceProduct);
+                            databaseReference.child("order").child(maDonHang).child("priceProductOrder").setValue(priceProduct);
+                            databaseReference.child("order").child(maDonHang).child("numberof").setValue("1");
+                            databaseReference.child("order").child(maDonHang).child("nameProductOrder").setValue(nameProduct);
+                            databaseReference.child("order").child(maDonHang).child("statusOrder").setValue("1");
+                            databaseReference.child("order").child(maDonHang).child("dateOrder").setValue("");
+                            databaseReference.child("order").child(maDonHang).child("imageOrder").setValue(imageProduct);
+                            databaseReference.child("order").child(maDonHang).child("address").setValue(address);
+                            databaseReference.child("order").child(maDonHang).child("phone").setValue(phone);
+                            databaseReference.child("order").child(maDonHang).child("cancelCustomer").setValue("0");
+                            databaseReference.child("order").child(maDonHang).child("cancelSeller").setValue("0");
+                            databaseReference.child("order").child(maDonHang).child("idOrder").setValue(maDonHang);
 
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("description").setValue(decription);
@@ -202,29 +206,45 @@ public class BuyNowFragment extends Fragment {
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("soldFlashSale").setValue("18");
 //                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("imageProduct").setValue(linkDL);
 
-                        databaseReference.child("cart").child(nameShopS).child(idProduct).removeValue()
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        // Write failed
-                                        // ...
-                                    }
-                                });
+                            databaseReference.child("cart").child(nameShopS).child(idProduct).removeValue()
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            // Write failed
+                                            // ...
+                                        }
+                                    });
 
-                        Toast.makeText(getContext() , "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
-                        requireActivity().getSupportFragmentManager().popBackStack();
-                    }
+                            Toast.makeText(getContext() , "Đặt hàng thành công", Toast.LENGTH_SHORT).show();
+                            requireActivity().getSupportFragmentManager().popBackStack();
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
+                }else{
+                    Toast.makeText(getContext(), "Sản phẩm hết hàng", Toast.LENGTH_SHORT).show();
+                    databaseReference.child("cart").child(nameShopS).child(idProduct).removeValue()
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    // Write failed
+                                    // ...
+                                }
+                            });
+                }
             }
         });
     }
@@ -240,6 +260,7 @@ public class BuyNowFragment extends Fragment {
         buynow_tvUsername_location = view.findViewById(R.id.buynow_tvUsername_location);
         buynow_tvNumberPhone_location = view.findViewById(R.id.buynow_tvNumberPhone_location);
         buynow_tvAddress_Location = view.findViewById(R.id.buynow_tvAddress_Location);
+        total = view.findViewById(R.id.total);
 
     }
 
