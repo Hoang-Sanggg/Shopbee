@@ -159,5 +159,20 @@ public class DetailFragment extends Fragment {
                 btnCancel = view.findViewById(R.id.btnCancel);
 
             }
+        });
+
+        private void initViews(View ){
+            tvAddressName = view.findViewById(R.id.tvAddressName);
+            tvAddressPhoneNumber = view.findViewById(R.id.tvAddressPhoneNumber);
+            tvAddressAddress = view.findViewById(R.id.tvAddressAddress);
+            ivAvtProduct_pending = view.findViewById(R.id.ivAvtProduct_pending);
+            tvProductName_pending = view.findViewById(R.id.tvProductName_pending);
+            tvnameShop = view.findViewById(R.id.tvnameShop);
+            tvCode_detail = view.findViewById(R.id.tvCode_detail);
+            tvPaymentDetail = view.findViewById(R.id.tvPaymentDetail);
+
+            btnCancel = view.findViewById(R.id.btnCancel);
+
         }
+    }
 }
