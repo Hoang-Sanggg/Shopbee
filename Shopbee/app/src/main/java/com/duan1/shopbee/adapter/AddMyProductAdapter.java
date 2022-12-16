@@ -21,6 +21,7 @@ import com.duan1.shopbee.callback.ClickHideProduct;
 import com.duan1.shopbee.callback.ClickToDeleteProduct;
 import com.duan1.shopbee.callback.ClickToProductSale;
 import com.duan1.shopbee.callback.ClickToUpdateProduct;
+import com.duan1.shopbee.fragment.MyProductFragment;
 import com.duan1.shopbee.fragment.NewProductFragment;
 import com.duan1.shopbee.function.mFunction;
 import com.duan1.shopbee.model.ProductCreate;
@@ -160,7 +161,7 @@ public class AddMyProductAdapter extends RecyclerView.Adapter<AddMyProductAdapte
         b.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                clickToUpdateProduct.onClickToUpdateProduct(mListMyProduct,holder.getAdapterPosition());
+                clickToUpdateProduct.onClickToUpdateroduct(mListMyProduct,holder.getAdapterPosition());
             }
         });
         b.setNegativeButton("Undo", new DialogInterface.OnClickListener() {
