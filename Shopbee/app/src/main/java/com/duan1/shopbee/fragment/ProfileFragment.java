@@ -56,8 +56,11 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
     private ProfileAdapter profileAdapter;
 
     TextView logout;
+
     ConstraintLayout history;
     TextView profile_username;
+    ConstraintLayout constraintLayout;
+>>>>>>> main
 
 
     // TODO: Rename and change types of parameters
@@ -126,6 +129,21 @@ public class ProfileFragment extends Fragment implements ShowBottomNav{
 
 
         logout = view.findViewById(R.id.btn_logout);
+
+        constraintLayout = view.findViewById(R.id.cTr_profile_img_bill);
+
+        constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frame_layout, new Order_Customer_Fragment(), "MainFragment")
+                        .addToBackStack(null)
+                        .commit();
+                hideBottomNav.hideBottomNav();
+            }
+        });
+
         showBottomNav.showBottomNav();
         TextView textView = view.findViewById(R.id.btn_myShop);
         profile_username = view.findViewById(R.id.profile_username);

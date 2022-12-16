@@ -138,7 +138,6 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
         categoryRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         categoryRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2,GridLayoutManager.HORIZONTAL, false));
 
-        categoryList.size();
         categoryAdapter = new CategoryAdapter(categoryList);
         categoryRecycler.setAdapter(categoryAdapter);
 

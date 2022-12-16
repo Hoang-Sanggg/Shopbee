@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#ECEBEB">
+    android:background="#ECEBEB"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/white">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout"
@@ -91,8 +91,8 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                android:padding="5dp">
+                android:padding="5dp"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -123,8 +123,8 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                android:padding="5dp">
+                android:padding="5dp"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -154,8 +154,8 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                android:padding="5dp">
+                android:padding="5dp"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -185,8 +185,8 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
-                app:cardCornerRadius="10dp"
-                android:padding="5dp">
+                android:padding="5dp"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -229,18 +229,18 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Gần đây"
             android:textColor="#F4511E"
-            android:textSize="18sp"
-            android:gravity="center"/>
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableRight="@drawable/ic_unfold"
-            android:text="Kho hàng"
             android:gravity="center"
+            android:text="Kho hàng"
             android:textColor="@color/black"
             android:textSize="18sp" />
     </LinearLayout>
@@ -251,12 +251,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_addNewProduct"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_addNewProduct"

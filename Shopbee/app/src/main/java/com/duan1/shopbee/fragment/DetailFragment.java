@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.duan1.shopbee.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +25,9 @@ import com.duan1.shopbee.R;
  * create an instance of this fragment.
  */
 public class DetailFragment extends Fragment {
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +54,7 @@ public class DetailFragment extends Fragment {
     TextView tvAddressName, tvAddressPhoneNumber, tvAddressAddress, tvProductName_pending, tvnameShop, tvCode_detail, tvPaymentDetail;
             ImageView ivAvtProduct_pending;
             Button btnreadyProduct;
+    Button btnCancel;
 
     public DetailFragment() {
         // Required empty public constructor
@@ -124,19 +130,34 @@ public class DetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                btnCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        databaseReference.child("order").child(idProductOrder).child("cancelCustomer").setValue("1");
+                        requireActivity().getSupportFragmentManager().popBackStack();
+                        requireActivity().getSupportFragmentManager().popBackStack();
+                        requireActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.frame_layout, new Order_Customer_Fragment(), "MainFragment")
+                                .addToBackStack(null)
+                                .commit();
+                    }
+                });
             }
-        });
-    }
 
-    private void initViews(View view){
-        tvAddressName = view.findViewById(R.id.tvAddressName);
-        tvAddressPhoneNumber = view.findViewById(R.id.tvAddressPhoneNumber);
-        tvAddressAddress = view.findViewById(R.id.tvAddressAddress);
-        ivAvtProduct_pending = view.findViewById(R.id.ivAvtProduct_pending);
-        tvProductName_pending = view.findViewById(R.id.tvProductName_pending);
-        tvnameShop = view.findViewById(R.id.tvnameShop);
-        tvCode_detail = view.findViewById(R.id.tvCode_detail);
-        tvPaymentDetail = view.findViewById(R.id.tvPaymentDetail);
-        btnreadyProduct = view.findViewById(R.id.btnPrepare_detail);
-    }
+            private void initViews(View view) {
+                tvAddressName = view.findViewById(R.id.tvAddressName);
+                tvAddressPhoneNumber = view.findViewById(R.id.tvAddressPhoneNumber);
+                tvAddressAddress = view.findViewById(R.id.tvAddressAddress);
+                ivAvtProduct_pending = view.findViewById(R.id.ivAvtProduct_pending);
+                tvProductName_pending = view.findViewById(R.id.tvProductName_pending);
+                tvnameShop = view.findViewById(R.id.tvnameShop);
+                tvCode_detail = view.findViewById(R.id.tvCode_detail);
+                tvPaymentDetail = view.findViewById(R.id.tvPaymentDetail);
+                btnreadyProduct = view.findViewById(R.id.btnPrepare_detail);
+
+                btnCancel = view.findViewById(R.id.btnCancel);
+
+            }
+        }
 }

@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/white"
-    android:id="@+id/root_order">
+    android:id="@+id/root_order"
+    android:paddingTop="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,7 +16,7 @@
             android:layout_height="40dp"
             app:cardCornerRadius="90dp"
             android:layout_margin="10dp">
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivAvt_pending"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -37,7 +38,7 @@
             android:layout_alignParentEnd="true"
             android:text="Chờ lấy hàng"
             android:padding="15dp"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:textColor="#f00"/>
     </RelativeLayout>
@@ -47,8 +48,8 @@
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/ivAvtProduct_pending"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             android:background="#000"/>
         <LinearLayout
@@ -103,18 +104,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="đ"
-                    android:paddingTop="10dp"
-                    android:layout_toLeftOf="@id/tvProductPrice_pending"/>
-                <TextView
                     android:id="@+id/tvProductPrice_pending"
                     android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="24000"
-                    android:paddingTop="10dp"
                     android:paddingRight="10dp"
                     android:textStyle="bold"/>
             </RelativeLayout>
@@ -165,7 +159,7 @@
         android:background="#EAE7E7"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:orientation="horizontal">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -178,17 +172,19 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
+                android:textSize="12dp"
                 android:text="Để tránh việc giao hàng trễ, vui lòng giao hàng/chuẩn bị hàng trước " />
 
             <TextView
                 android:id="@+id/txtDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="12dp"
                 android:text="XXXXXXXXXX"
                 android:paddingLeft="10dp"/>
         </LinearLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnDeliveryPending"
             android:layout_width="0dp"
             android:layout_weight="2"
