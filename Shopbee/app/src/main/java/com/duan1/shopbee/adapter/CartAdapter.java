@@ -88,6 +88,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHoder> {
             }
         });
 
+        holder.soLuong.setText(orderList.get(position).getSoldProduct());
+
     }
 
     @Override
@@ -96,7 +98,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHoder> {
     } //quan trong
 
     public class CartHoder extends RecyclerView.ViewHolder{
-        private TextView idProductOrder, customer,  seller, priceOrder, priceProductOrder, numberOfOrder, nameProductOrder, statusOrder, dateOrder;
+        private TextView idProductOrder, customer,  seller, priceOrder, priceProductOrder, numberOfOrder, nameProductOrder, statusOrder, dateOrder, soLuong;
         private ImageView ivProduct;
         private LinearLayout root_Cart;
         private Button btnBuy, btnXoa;
@@ -111,8 +113,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartHoder> {
             btnBuy = itemView.findViewById(R.id.btnBuy);
             btnXoa = itemView.findViewById(R.id.btnDelete);
 
+            soLuong = itemView.findViewById(R.id.soLuong);
         }
     }
-
 
 }

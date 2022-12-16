@@ -1,14 +1,22 @@
 package com.duan1.shopbee.fragment;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -74,6 +82,7 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
     private String priceFlashSale;
     private String discountFlashSale;
     private String soldFlashSale;
+    private String soLuong;
 
     public FragmentProduct(List<ProductCreate> productCreateList) {
         this.productCreateList = productCreateList;
@@ -184,60 +193,9 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        dialog(Gravity.CENTER);
 
-                        String maSp = "CRT"+RandomMaDonHang(10);
 
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("nameProduct").setValue(nameProduct);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("description").setValue(description);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("industry").setValue(industry);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("priceProduct").setValue(priceProduct);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("productdetail").setValue("6");
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("warehouse").setValue(warehouse);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("transportfee").setValue(transportfee);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("status").setValue(status);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("nameShop").setValue(nameShopS);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("soldProduct").setValue("11");
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("brandProduct").setValue(brandProduct);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("originProduct").setValue(originProduct);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("baoHanhSp").setValue(baoHanhSp);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("shippingProduct").setValue("15");
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("priceFlashSale").setValue(priceFlashSale);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("discountFlashSale").setValue("18");
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("soldFlashSale").setValue("18");
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("imageProduct").setValue(imageProduct);
-                        databaseReference.child("cart").child(nameShopS).child(maSp).child("idProduct").setValue(maSp);
-
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("description").setValue(decription);
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("industry").setValue(txtNewIndustry.getText());
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("priceProduct").setValue("5");
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("productdetail").setValue("6");
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("warehouse").setValue(storage);
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("transportfee").setValue("8");
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("status").setValue(Status);
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameShop").setValue(name);
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("soldProduct").setValue("11");
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("brandProduct").setValue(txtNewBrand.getText());
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("originProduct").setValue("13");
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("baoHanhSp").setValue(BaoHanh);
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("shippingProduct").setValue("15");
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("priceFlashSale").setValue(price);
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("discountFlashSale").setValue("18");
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("soldFlashSale").setValue("18");
-//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("imageProduct").setValue(linkDL);
-
-                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-//                        requireActivity().getSupportFragmentManager().popBackStack();
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
 
 
             }
@@ -339,4 +297,155 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
 
         return sb.toString();
     }
+
+    private void dialog(int gravity){
+        final Dialog dialog1 = new Dialog(getContext());
+        dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog1.setCancelable(true);
+        dialog1.setContentView(R.layout.sold_product);
+
+        Window window = dialog1.getWindow();
+        if (window==null){
+            return;
+        }
+
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        WindowManager.LayoutParams layoutParams = window.getAttributes();
+        layoutParams.gravity = gravity;
+        window.setAttributes(layoutParams);
+
+        if (Gravity.CENTER == gravity){
+            dialog1.setCancelable(true);
+        }else{
+
+        }
+
+        TextView edtTrongLuong = dialog1.findViewById(R.id.edtTrongLuong);
+        Button btnAddTransfree = dialog1.findViewById(R.id.btnSucess);
+        ImageView add = dialog1.findViewById(R.id.edtCongsl);
+        ImageView rule = dialog1.findViewById(R.id.edtTrusl);
+
+        edtTrongLuong.setText("1");
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                soLuong = String.valueOf(Integer.parseInt(edtTrongLuong.getText().toString())+1);
+                edtTrongLuong.setText(soLuong);
+            }
+        });
+
+        rule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                soLuong = String.valueOf(Integer.parseInt(edtTrongLuong.getText().toString())-1);
+                edtTrongLuong.setText(soLuong);
+            }
+        });
+
+        btnAddTransfree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                soLuong = edtTrongLuong.getText().toString();
+                if(Integer.parseInt(soLuong)<=0){
+                    android.app.AlertDialog.Builder b = new android.app.AlertDialog.Builder(getContext());
+                    b.setIcon(R.drawable.attention_warning_14525);
+                    b.setTitle("Xác nhận");
+                    b.setMessage("Số lượng lớn 0 ?");
+                    b.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.dismiss();
+                        }
+                    });
+                    android.app.AlertDialog al = b.create();
+                    al.show();
+                }else{
+                    dialog1.dismiss();
+                    checkNumber();
+                }
+
+            }
+        });
+
+
+        dialog1.show();
+    }
+
+    private void addCart(){
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+                String nameShopS = sharedPref.getString("username", "");
+
+                String maSp = "CRT"+RandomMaDonHang(10);
+
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("nameProduct").setValue(nameProduct);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("description").setValue(description);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("industry").setValue(industry);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("priceProduct").setValue(priceProduct);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("productdetail").setValue("6");
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("warehouse").setValue(warehouse);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("transportfee").setValue(transportfee);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("status").setValue(status);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("nameShop").setValue(nameShopS);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("soldProduct").setValue(soLuong);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("brandProduct").setValue(brandProduct);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("originProduct").setValue(originProduct);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("baoHanhSp").setValue(baoHanhSp);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("shippingProduct").setValue(idProduct);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("priceFlashSale").setValue(priceFlashSale);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("discountFlashSale").setValue("18");
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("soldFlashSale").setValue("18");
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("imageProduct").setValue(imageProduct);
+                databaseReference.child("cart").child(nameShopS).child(maSp).child("idProduct").setValue(maSp);
+
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameProduct").setValue(nameProduct);
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("description").setValue(decription);
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("industry").setValue(txtNewIndustry.getText());
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("priceProduct").setValue("5");
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("productdetail").setValue("6");
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("warehouse").setValue(storage);
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("transportfee").setValue("8");
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("status").setValue(Status);
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("nameShop").setValue(name);
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("soldProduct").setValue("11");
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("brandProduct").setValue(txtNewBrand.getText());
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("originProduct").setValue("13");
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("baoHanhSp").setValue(BaoHanh);
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("shippingProduct").setValue("15");
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("priceFlashSale").setValue(price);
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("discountFlashSale").setValue("18");
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("soldFlashSale").setValue("18");
+//                        databaseReference.child("product").child(name).child("productShop").child(maSp).child("imageProduct").setValue(linkDL);
+
+                Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+//                        requireActivity().getSupportFragmentManager().popBackStack();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void checkNumber(){
+        SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
+        String nameShopS = sharedPref.getString("username", "");
+        for (int i = 0; i < cart.size(); i++) {
+            if(String.valueOf(cart.get(i).getShippingProduct()).equals(idProduct)==true){
+                databaseReference.child("cart").child(nameShopS).child(cart.get(i).getIdProduct()).child("soldProduct").setValue(String.valueOf(Integer.parseInt(cart.get(i).getSoldProduct())+Integer.parseInt(soLuong)));
+                break;
+            }else{
+                addCart();
+
+            }
+        }
+    }
+
+
 }

@@ -131,9 +131,7 @@ public class CartFragment extends Fragment implements ClickToProductSale, ClickT
                 requireActivity().getSupportFragmentManager().popBackStack();
             }
         });
-
-
-
+        
        adapter = new CartAdapter(cart, getContext(), CartFragment.this, CartFragment.this, CartFragment.this);
        Toast.makeText(getContext(), String.valueOf(cart.size()), Toast.LENGTH_SHORT).show();
 
