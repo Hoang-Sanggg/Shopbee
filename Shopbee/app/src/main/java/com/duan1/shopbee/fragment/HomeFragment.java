@@ -16,6 +16,7 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -35,6 +36,8 @@ import com.duan1.shopbee.slide_image.PhotoAdaper;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -132,6 +135,15 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Button btnSort = view.findViewById(R.id.btnSort);
+
+        btnSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sortASC();
+            }
+        });
+
 
         categoryRecycler = view.findViewById(R.id.recyclerCategory);
         categoryRecycler.setHasFixedSize(true);
@@ -144,6 +156,8 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
         productHomeRecycler = view.findViewById(R.id.recyclerProductHome);
         productHomeRecycler.setHasFixedSize(true);
         productHomeRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2,GridLayoutManager.VERTICAL, false));
+
+
 
         featuredProductAdapter = new FeaturedProductAdapter(flashsaleList,getContext() , HomeFragment.this);
         productHomeRecycler.setAdapter(featuredProductAdapter);
@@ -252,5 +266,18 @@ public class HomeFragment extends Fragment implements ClickToProductSale, ShowBo
     @Override
     public void showBottomNav() {
         showBottomNav.showBottomNav();
+    }
+
+    public void sortASC() {
+//        List<ProductCreate> employees = new ArrayList<>();
+//
+//        employees = flashsaleList;
+//        Comparator<ProductCreate> compareById =
+//                (ProductCreate o1, ProductCreate o2) -> o1.getNameProduct().compareTo( o2.getNameProduct());
+//
+//        Collections.sort(employees, compareById);
+//
+//        featuredProductAdapter = new FeaturedProductAdapter(employees,getContext() , HomeFragment.this);
+//        productHomeRecycler.setAdapter(featuredProductAdapter);
     }
 }

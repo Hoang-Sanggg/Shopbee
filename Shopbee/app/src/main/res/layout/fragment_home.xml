@@ -262,12 +262,20 @@
             app:layout_constraintTop_toBottomOf="@+id/recyclerSearchHot"
             tools:layout_editor_absoluteX="170dp" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sắp xếp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerSuggestions" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerProductHome"
             android:layout_width="match_parent"
             android:layout_height="1000dp"
             android:background="#0EEEEEEE"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerSuggestions"
+            app:layout_constraintTop_toBottomOf="@+id/btnSort"
             tools:layout_editor_absoluteX="67dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

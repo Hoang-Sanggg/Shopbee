@@ -226,4 +226,9 @@ public class ProductCreate implements Serializable {
         this.status = status;
     }
 
+    public int compareTo(ProductCreate student) {
+        // sort student's name by ASC
+        return this.getPriceProduct().compareTo(student.getPriceProduct());
+    }
+
 }
