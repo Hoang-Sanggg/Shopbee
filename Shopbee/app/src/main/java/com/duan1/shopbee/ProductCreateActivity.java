@@ -60,11 +60,6 @@ public class ProductCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_create);
 
-
-
-
-
-
         txtIndustry = findViewById(R.id.txtIndustry);
         txtProductDetail = findViewById(R.id.txtProductDetail);
         edtProductName = findViewById(R.id.edtProductName);
