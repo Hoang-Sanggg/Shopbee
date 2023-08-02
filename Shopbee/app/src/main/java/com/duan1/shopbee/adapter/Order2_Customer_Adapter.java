@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,10 +20,15 @@ import com.duan1.shopbee.callback.ClickNextStatus;
 import com.duan1.shopbee.callback.ClickToOrder;
 import com.duan1.shopbee.callback.SelectTab;
 import com.duan1.shopbee.model.Order;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 public class Order2_Customer_Adapter extends RecyclerView.Adapter<Order2_Customer_Adapter.OrderHoder> {
+
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://shopbee-936e3-default-rtdb.firebaseio.com/");
+
 
     private List<Order> orderList;
     private Context context;
@@ -80,12 +86,13 @@ public class Order2_Customer_Adapter extends RecyclerView.Adapter<Order2_Custome
 ////                clickToProductSale.onClickToProductSale(flashsaleList, holder.getAdapterPosition());
 //            }
 //        });
-        holder.btnDeliveryPending.setText("Vận chuyển");
-        holder.btnDeliveryPending.setEnabled(false);
+        holder.btnDeliveryPending.setVisibility(View.GONE);
         holder.btnDeliveryPending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clickNextStatus.onClickNextStatus(orderList, holder.getAdapterPosition(), 2);
+                Toast.makeText(context, "Hủy thành công", Toast.LENGTH_SHORT).show();
+                databaseReference.child("order").child(orderList.get(holder.getAdapterPosition()).getIdProductOrder()).child("cancelCustomer").setValue("1");
             }
         });
     }

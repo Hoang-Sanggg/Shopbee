@@ -87,6 +87,7 @@ public class Order3_Customer_Adapter extends RecyclerView.Adapter<Order3_Custome
             @Override
             public void onClick(View view) {
                 clickNextStatus.onClickNextStatus(orderList, holder.getAdapterPosition(), 1);
+
             }
         });
     }

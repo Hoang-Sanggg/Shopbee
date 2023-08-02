@@ -362,8 +362,8 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
                     android.app.AlertDialog al = b.create();
                     al.show();
                 }else{
-                    dialog1.dismiss();
                     checkNumber();
+                    dialog1.dismiss();
                 }
 
             }
@@ -436,13 +436,18 @@ public class FragmentProduct extends Fragment implements ClickToProductSale {
     private void checkNumber(){
         SharedPreferences sharedPref = getContext().getSharedPreferences("MyPreferences", Context.MODE_PRIVATE);
         String nameShopS = sharedPref.getString("username", "");
-        for (int i = 0; i < cart.size(); i++) {
-            if(String.valueOf(cart.get(i).getShippingProduct()).equals(idProduct)==true){
-                databaseReference.child("cart").child(nameShopS).child(cart.get(i).getIdProduct()).child("soldProduct").setValue(String.valueOf(Integer.parseInt(cart.get(i).getSoldProduct())+Integer.parseInt(soLuong)));
-                break;
-            }else{
-                addCart();
-
+        Log.d(">>>>>", "onClick: "+0);
+        if(cart.size()==0){
+            addCart();
+        }else{
+            for (int i = 0; i < cart.size(); i++) {
+                Log.d(">>>>>", "onClick: "+1);
+                if(String.valueOf(cart.get(i).getShippingProduct()).equals(idProduct)==true){
+                    databaseReference.child("cart").child(nameShopS).child(cart.get(i).getIdProduct()).child("soldProduct").setValue(String.valueOf(Integer.parseInt(cart.get(i).getSoldProduct())+Integer.parseInt(soLuong)));
+                }else{
+                    Log.d(">>>>>", "onClick: "+2);
+                    addCart();
+                }
             }
         }
     }

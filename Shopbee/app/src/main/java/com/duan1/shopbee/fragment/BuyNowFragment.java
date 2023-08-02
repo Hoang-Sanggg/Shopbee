@@ -171,7 +171,7 @@ public class BuyNowFragment extends Fragment {
                     databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            databaseReference.child("order").child(maDonHang).child("idProductOrder").setValue(maDonHang);
+                            databaseReference.child("order").child(maDonHang).child("idProductOrder").setValue(idProduct);
                             databaseReference.child("order").child(maDonHang).child("customer").setValue(nameShopS);
                             databaseReference.child("order").child(maDonHang).child("seller").setValue(nameShop);
                             databaseReference.child("order").child(maDonHang).child("priceOrder").setValue(priceProduct);
